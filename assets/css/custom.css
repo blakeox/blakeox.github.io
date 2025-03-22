@@ -1,9 +1,24 @@
+/* Custom Properties */
+:root {
+    --primary-color: #0D5CAB;
+    --hover-color: #0A4A8A;
+    --accent-color: #FFD700;
+    --background-color: #fff;
+    --text-color: #333;
+    --font-family: 'Open Sans', sans-serif;
+}
+
+/* Global Transitions (for interactive elements) */
+* {
+    transition: color 0.2s ease, background 0.2s ease;
+}
+
 /* Base Styles */
 body {
     margin: 0;
-    font-family: 'Open Sans', sans-serif;
-    color: #333;
-    background: #fff;
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background: var(--background-color);
     line-height: 1.6;
 }
 .container {
@@ -12,9 +27,29 @@ body {
     padding: 1rem;
 }
 
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Skip-to-Content Link */
+.skip-to-content {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary-color);
+    color: #fff;
+    padding: 0.5rem;
+    z-index: 100;
+    transition: top 0.3s ease;
+}
+.skip-to-content:focus {
+    top: 0;
+}
+
 /* Navigation */
 .navbar {
-    background-color: #0D5CAB;
+    background-color: var(--primary-color);
     padding: 0.5rem;
     position: sticky;
     top: 0;
@@ -42,10 +77,10 @@ body {
 .nav-links li a {
     color: #ffffff;
     text-decoration: none;
-    transition: color 0.2s ease;
 }
-.nav-links li a:hover, .nav-links li a:focus {
-    color: #FFD700;
+.nav-links li a:hover, 
+.nav-links li a:focus {
+    color: var(--accent-color);
     outline: none;
 }
 .nav-toggle {
@@ -57,7 +92,7 @@ body {
     cursor: pointer;
 }
 .nav-toggle:focus {
-    outline: 2px solid #FFD700;
+    outline: 2px solid var(--accent-color);
 }
 .nav-social img {
     width: 20px;
@@ -67,7 +102,7 @@ body {
 
 /* Hero Section */
 .home-page .hero {
-    background: linear-gradient(135deg, #0D5CAB 0%, #00A1FF 100%);
+    background: linear-gradient(135deg, var(--primary-color) 0%, #00A1FF 100%);
     color: #ffffff;
     padding: 4rem 1rem;
     text-align: center;
@@ -108,15 +143,14 @@ body {
     margin-bottom: 1.5rem;
 }
 .call-to-action .btn {
-    background: #0D5CAB;
+    background: var(--primary-color);
     color: #ffffff;
     padding: 0.75rem 1.5rem;
     text-decoration: none;
     border-radius: 4px;
-    transition: background 0.2s ease, transform 0.1s ease;
 }
 .call-to-action .btn:hover {
-    background: #0A4A8A;
+    background: var(--hover-color);
     transform: translateY(-2px);
 }
 
@@ -166,7 +200,7 @@ body {
     padding-bottom: 0.5rem;
 }
 .latest-blog-posts li a {
-    color: #0D5CAB;
+    color: var(--primary-color);
     text-decoration: none;
     font-weight: bold;
 }
@@ -176,34 +210,32 @@ body {
 .latest-blog-posts .btn {
     display: inline-block;
     margin-top: 1rem;
-    background: #0D5CAB;
+    background: var(--primary-color);
     color: #ffffff;
     padding: 0.75rem 1.5rem;
     text-decoration: none;
     border-radius: 4px;
-    transition: background 0.2s ease, transform 0.1s ease;
 }
 .latest-blog-posts .btn:hover {
-    background: #0A4A8A;
+    background: var(--hover-color);
     transform: translateY(-2px);
 }
 
 /* Buttons */
 a.btn, button.btn {
     display: inline-block;
-    background: #0D5CAB;
+    background: var(--primary-color);
     color: #ffffff;
     padding: 0.75rem 1.5rem;
     text-decoration: none;
     border-radius: 4px;
-    transition: background 0.2s ease, transform 0.1s ease;
 }
 a.btn:hover, button.btn:hover {
-    background: #0A4A8A;
+    background: var(--hover-color);
     transform: translateY(-2px);
 }
 a.btn:focus, button.btn:focus {
-    outline: 2px solid #FFD700;
+    outline: 2px solid var(--accent-color);
 }
 
 /* Footer */
@@ -216,7 +248,7 @@ a.btn:focus, button.btn:focus {
     font-size: 0.9rem;
 }
 .footer-container a {
-    color: #0D5CAB;
+    color: var(--primary-color);
     text-decoration: none;
 }
 .footer-container a:hover {
@@ -250,7 +282,7 @@ a.btn:focus, button.btn:focus {
     margin-top: 0;
 }
 .tag {
-    background: #0D5CAB;
+    background: var(--primary-color);
     color: #fff;
     padding: 0.2rem 0.5rem;
     border-radius: 3px;
@@ -264,7 +296,7 @@ a.btn:focus, button.btn:focus {
         display: none;
         flex-direction: column;
         gap: 0.5rem;
-        background: #0D5CAB;
+        background: var(--primary-color);
         padding: 1rem;
         position: absolute;
         top: 100%;
@@ -284,15 +316,94 @@ a.btn:focus, button.btn:focus {
     }
 }
 
-/* Hidden class for filtered items */
+/* Hidden Class for Filtered Items */
 .hidden {
     display: none;
 }
 
-/* Active state for filter buttons */
+/* Active State for Filter Buttons */
 .filter-button.active {
-    background: #FFD700;
-    color: #0D5CAB;
+    background: var(--accent-color);
+    color: var(--primary-color);
     font-weight: bold;
-    border: 1px solid #0D5CAB;
+    border: 1px solid var(--primary-color);
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background: #121212;
+    color: #e0e0e0;
+}
+body.dark-mode a {
+    color: #90caf9;
+}
+body.dark-mode .navbar {
+    background-color: #1e1e1e;
+}
+body.dark-mode .footer-container {
+    background: #1e1e1e;
+    color: #e0e0e0;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--hover-color);
+}
+
+/* Back-to-Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--primary-color);
+    color: #fff;
+    padding: 0.75rem 1rem;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    display: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+.back-to-top:hover {
+    background: var(--hover-color);
+    transform: translateY(-2px);
+}
+
+/* Code Block Styling */
+pre, code {
+    font-family: 'Courier New', Courier, monospace;
+    background: #f4f4f4;
+    padding: 0.5rem;
+    border-radius: 4px;
+    overflow-x: auto;
+}
+
+/* Utility Classes */
+.mt-1 {
+    margin-top: 1rem;
+}
+.mb-1 {
+    margin-bottom: 1rem;
+}
+.p-1 {
+    padding: 1rem;
+}
+.m-1 {
+    margin: 1rem;
+}
+.mb-2 {
+    margin-bottom: 2rem;
+}
+.text-center {
+    text-align: center;
+}
+.text-right {
+    text-align: right;
 }
