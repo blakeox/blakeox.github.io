@@ -407,3 +407,10 @@ pre, code {
 .text-right {
     text-align: right;
 }
+
+.about-photo {
+    max-width: 200px;
+    border-radius: 50%;
+    float: left;
+    margin: 0 1rem 1rem 0;
+}

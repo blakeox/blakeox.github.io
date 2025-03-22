@@ -6,7 +6,7 @@ permalink: /about/
 
 # About Me
 
-<img src="/assets/images/Blake-O-scaled.jpeg" alt="Blake Oxford" style="max-width: 200px; border-radius: 50%; float: left; margin: 0 1rem 1rem 0;">
+<img src="/assets/images/Blake-O-scaled.jpeg" alt="Blake Oxford" class="about-photo">
 
 I am a visionary leader with a proven track record of scaling companies, optimizing financial systems, and leveraging AI to drive operational efficiency. I have successfully led digital transformation initiatives that:
 - Scaled an organization from 12 to 180 employees with an 8x revenue increase.

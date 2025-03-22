@@ -14,7 +14,7 @@ I'm always excited to discuss new opportunities and collaborations. Feel free to
 
 ## Or Send Me a Message
 
-<form action="https://formspree.io/f/yourFormID" method="POST">
+<form action="https://formspree.io/f/yourFormID" method="POST" class="contact-form">
   <label for="name">Name</label>
   <input type="text" name="name" id="name" required>
 
