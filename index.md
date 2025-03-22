@@ -3,10 +3,6 @@ layout: home
 title: "Welcome to My Portfolio"
 ---
 
-# Welcome to My Portfolio
-
-Hello, I'm **Blake Oxford**, a visionary leader in IT and business transformation. I specialize in bridging the gap between technology and business strategy to drive efficiency and scale operations.
-
-Explore my site to learn more about my background, projects, and how I can help your organization succeed.
-
-[Learn More](about/){: .btn }
+<h1>Welcome to My Portfolio</h1>
+<p>Hello, I'm <strong>Blake Oxford</strong>, a visionary leader in IT and business transformation. I specialize in bridging the gap between technology and business strategy to drive efficiency and scale operations.</p>
+<p><a href="/about/" class="btn">Learn More About Me</a></p>

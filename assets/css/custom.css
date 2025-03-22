@@ -1,20 +1,19 @@
-/* Example custom styling */
-
+/* Base Styles */
 body {
     margin: 0;
     font-family: 'Open Sans', sans-serif;
     color: #333;
+    background: #fff;
   }
-  
   .container {
     max-width: 960px;
     margin: 0 auto;
     padding: 1rem;
   }
   
-  /* Navigation Bar */
+  /* Navigation */
   .navbar {
-    background-color: #0D5CAB; /* Example color - adjust as desired */
+    background-color: #0D5CAB;
     padding: 0.5rem;
   }
   .nav-container {
@@ -42,19 +41,10 @@ body {
     transition: color 0.2s ease;
   }
   .nav-links li a:hover {
-    color: #FFD700; /* Gold on hover */
+    color: #FFD700;
   }
   
-  /* Footer */
-  .footer-container {
-    text-align: center;
-    padding: 1rem;
-    color: #555;
-    background: #f5f5f5;
-    margin-top: 2rem;
-  }
-  
-  /* Hero Section (Home Page) */
+  /* Hero Section */
   .home-page .hero {
     background: linear-gradient(135deg, #0D5CAB 0%, #00A1FF 100%);
     color: #ffffff;
@@ -71,7 +61,7 @@ body {
     margin: 0 auto 2rem;
   }
   
-  /* Button Styles */
+  /* Buttons */
   a.btn, button.btn {
     display: inline-block;
     background: #0D5CAB;
@@ -85,7 +75,16 @@ body {
     background: #0A4A8A;
   }
   
-  /* Project Grid */
+  /* Footer */
+  .footer-container {
+    text-align: center;
+    padding: 1rem;
+    color: #555;
+    background: #f5f5f5;
+    margin-top: 2rem;
+  }
+  
+  /* Project Grid & Items */
   .project-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -93,7 +92,7 @@ body {
     margin-top: 2rem;
   }
   .project-item {
-    background: #ffffff;
+    background: #fff;
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 1rem;
@@ -109,5 +108,48 @@ body {
   }
   .project-item h3 {
     margin-top: 0;
+  }
+  .tag {
+    background: #0D5CAB;
+    color: #fff;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    margin-right: 0.3rem;
+  }
+  
+  /* Blog Post List */
+  .blog-post-list {
+    list-style: none;
+    padding: 0;
+  }
+  .blog-post-list li {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.5rem;
+  }
+  
+  /* Contact Form */
+  form label {
+    display: block;
+    margin-top: 1rem;
+  }
+  form input, form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.3rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  form button {
+    margin-top: 1rem;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 600px) {
+    .nav-links {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
   }
   

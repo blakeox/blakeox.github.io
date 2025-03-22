@@ -8,12 +8,9 @@ permalink: /about/
 
 <img src="/assets/images/Blake-O-scaled.jpeg" alt="Blake Oxford" style="max-width: 200px; border-radius: 50%; float: left; margin: 0 1rem 1rem 0;">
 
-I am a visionary leader with a track record of scaling companies, optimizing financial systems, and leveraging AI to drive operational efficiency. I’ve successfully implemented digital transformation initiatives that:
+I am a visionary leader with a proven track record of scaling companies, optimizing financial systems, and leveraging AI to drive operational efficiency. I have successfully led digital transformation initiatives that:
+- Scaled an organization from 12 to 180 employees with an 8x revenue increase.
+- Saved over $250K annually through streamlined business processes and automation.
+- Implemented multi-location IT systems and cloud-based SaaS solutions for sustained growth.
 
-- Scaled an organization from 12 to 180 employees while achieving an 8x revenue increase.
-- Saved over $250K annually by streamlining business processes and automating workflows.
-- Implemented multi-location IT systems and cloud-based SaaS solutions to drive growth.
-
-I bring extensive experience in enterprise systems, IT infrastructure, business process automation, and executive strategy.
-
-**Download my [Resume (PDF)](/assets/files/BlakeOxford_Resume.pdf){: .btn }** for more details.
+**Download my [Resume (PDF)](/assets/files/BlakeOxford_Resume.pdf){: .btn }** for additional details.

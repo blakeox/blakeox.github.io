@@ -6,13 +6,11 @@ permalink: /contact/
 
 # Contact Me
 
-I’m always interested in discussing new opportunities or collaborations in digital transformation and enterprise solutions. Feel free to reach out:
+I'm always excited to discuss new opportunities and collaborations. Feel free to reach out:
 
 - **Email:** [blakepoxford@outlook.com](mailto:blakepoxford@outlook.com)
 - **Phone:** 248-202-4479
 - **LinkedIn:** [linkedin.com/in/blake-o-powell](https://linkedin.com/in/blake-o-powell)
-
----
 
 ## Or Send Me a Message
 
@@ -29,4 +27,4 @@ I’m always interested in discussing new opportunities or collaborations in dig
   <button class="btn" type="submit">Send</button>
 </form>
 
-> *Note:* Update `yourFormID` with the one you get from [Formspree](https://formspree.io/). 
+<!-- Note: Replace "yourFormID" with your actual Formspree ID -->

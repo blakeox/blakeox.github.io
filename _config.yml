@@ -1,5 +1,5 @@
 title: "Blake Oxford Portfolio"
-description: "Portfolio of Blake Oxford – IT Director, Business Systems Manager, and Digital Transformation Consultant."
+description: "Portfolio of Blake Oxford – IT Director, Business Systems Manager, Digital Transformation Consultant, Enterprise Solutions Architect, and Operations & Strategy Manager."
 theme: jekyll-theme-cayman
 permalink: /:title/
 
@@ -8,5 +8,10 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
 
-# (Optional) If you have Google Analytics, add your ID here
+# (Optional) Google Analytics – replace UA-XXXXXX-X with your tracking ID
 google_analytics: UA-XXXXXX-X
+
+# Define a collection for projects
+collections:
+  projects:
+    output: true
