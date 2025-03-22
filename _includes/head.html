@@ -5,11 +5,34 @@
 <!-- SEO: Provided by jekyll-seo-tag -->
 {% seo %}
 
+<!-- Open Graph Metadata -->
+<meta property="og:title" content="{{ page.title }} | {{ site.title }}">
+<meta property="og:description" content="{{ site.description }}">
+<meta property="og:image" content="{{ '/assets/images/og-image.png' | relative_url }}">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+<meta property="og:type" content="website">
+
+<!-- Twitter Card Metadata -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ page.title }} | {{ site.title }}">
+<meta name="twitter:description" content="{{ site.description }}">
+<meta name="twitter:image" content="{{ '/assets/images/og-image.png' | relative_url }}">
+
 <!-- Custom CSS -->
 <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
 
-<!-- Google Fonts (Optional) -->
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+<!-- Preload Google Fonts -->
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"></noscript>
 
-<!-- Favicon (Optional) -->
+<!-- Favicon -->
 <link rel="icon" href="{{ '/assets/images/favicon.png' | relative_url }}" type="image/png">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/images/favicon-32x32.png' | relative_url }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/images/favicon-16x16.png' | relative_url }}">
+
+<!-- Theme Color -->
+<meta name="theme-color" content="#0D5CAB">
+
+<!-- Manifest File -->
+<link rel="manifest" href="{{ '/manifest.json' | relative_url }}">

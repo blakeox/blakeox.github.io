@@ -2,21 +2,46 @@
 layout: default
 ---
 <article class="project-detail">
+  <!-- Breadcrumb Navigation -->
+  <nav class="breadcrumb">
+    <a href="{{ '/' | relative_url }}">Home</a> &gt; 
+    <a href="{{ '/projects/' | relative_url }}">Projects</a> &gt; 
+    <span>{{ page.title }}</span>
+  </nav>
+
   <h1>{{ page.title }}</h1>
+
   {% if page.image %}
-    <img src="{{ page.image | relative_url }}" alt="{{ page.title }}">
+    <div class="project-image">
+      <img src="{{ page.image | relative_url }}" alt="{{ page.title }}">
+    </div>
   {% endif %}
+
   <p><strong>Date:</strong> {{ page.date | date: "%B %Y" }}</p>
+
   {% if page.link %}
     <p><a href="{{ page.link }}" target="_blank" class="btn">View Project</a></p>
   {% endif %}
+
   <div class="project-body">
     {{ content }}
   </div>
+
   <p>
     <strong>Tags:</strong>
     {% for tag in page.tags %}
-      <span class="tag">{{ tag }}</span>
+      <a href="/projects/?filter={{ tag | downcase }}" class="tag">{{ tag }}</a>
     {% endfor %}
   </p>
+
+  <!-- Social Sharing Buttons -->
+  <div class="social-sharing">
+    <p>Share this project:</p>
+    <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ page.url | absolute_url }}" target="_blank">Twitter</a> |
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | absolute_url }}&title={{ page.title | url_encode }}" target="_blank">LinkedIn</a> |
+    <a href="mailto:?subject={{ page.title | url_encode }}&body=Check out this project: {{ page.url | absolute_url }}">Email</a>
+  </div>
+
+  <!-- Back to Projects Button -->
+  <p><a href="{{ '/projects/' | relative_url }}" class="btn">Back to Projects</a></p>
 </article>

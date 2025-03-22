@@ -4,16 +4,24 @@
     {% include head.html %}
   </head>
   <body>
+    <!-- Skip to Content Link -->
+    <a href="#main-content" class="skip-to-content">Skip to Content</a>
+
     <header>
       {% include nav.html %}
     </header>
 
-    <main class="container">
+    <main id="main-content" class="container">
       {{ content }}
     </main>
 
     <footer>
       {% include footer.html %}
     </footer>
+
+    <!-- Fallback Content for No-JS -->
+    <noscript>
+      <p>JavaScript is disabled in your browser. Some features may not work as intended.</p>
+    </noscript>
   </body>
 </html>
