@@ -6,7 +6,7 @@ permalink: /about/
 
 # About Me
 
-![Headshot](assets/images/Blake-O-scaled.jpeg)
+<img src="/assets/images/Blake-O-scaled.jpeg" alt="Blake Oxford" style="max-width: 200px; border-radius: 50%; float: left; margin: 0 1rem 1rem 0;">
 
 I am a visionary leader with a track record of scaling companies, optimizing financial systems, and leveraging AI to drive operational efficiency. I’ve successfully implemented digital transformation initiatives that:
 
@@ -16,4 +16,4 @@ I am a visionary leader with a track record of scaling companies, optimizing fin
 
 I bring extensive experience in enterprise systems, IT infrastructure, business process automation, and executive strategy.
 
-**Download my [Resume (PDF)](assets/files/BlakeOxford_Resume.pdf) for more details.**
+**Download my [Resume (PDF)](/assets/files/BlakeOxford_Resume.pdf){: .btn }** for more details.

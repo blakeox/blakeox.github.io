@@ -9,4 +9,4 @@ Hello, I'm **Blake Oxford**, a visionary leader in IT and business transformatio
 
 Explore my site to learn more about my background, projects, and how I can help your organization succeed.
 
-[About Me](/about/) | [Projects](/projects/) | [Contact](/contact/)
+[Learn More](about/){: .btn }
