@@ -1,0 +1,23 @@
+---
+layout: default
+title: "Page Not Found"
+permalink: /404.html
+---
+<div class="container error-page">
+  <h1>404 - Page Not Found</h1>
+  <p>Oops! The page you're looking for doesn't exist. It might have been moved or deleted.</p>
+  <p>You can try one of the following options:</p>
+  <ul>
+    <li><a href="{{ '/' | relative_url }}">Return to the Homepage</a></li>
+    <li><a href="javascript:history.back()">Go Back to the Previous Page</a></li>
+    <li><a href="{{ '/contact/' | relative_url }}">Contact Us for Assistance</a></li>
+  </ul>
+
+  <div class="search-box">
+    <h2>Search Our Site</h2>
+    <form action="{{ '/search/' | relative_url }}" method="get">
+      <input type="text" name="q" placeholder="Search..." required>
+      <button type="submit" class="btn">Search</button>
+    </form>
+  </div>
+</div>

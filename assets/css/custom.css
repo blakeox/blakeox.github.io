@@ -140,7 +140,6 @@ html {
 }
 
 /* Add this below your existing Hero Section rules */
-
 .hero-figure {
     margin: 0 auto 1rem;
     width: 200px; /* Adjust to desired size */
@@ -441,4 +440,63 @@ pre, code {
     max-width: 200px;
     margin: 0 auto 1rem auto;
     border-radius: 50%;
+}
+
+/* NEW: Error Page Styles */
+.error-page {
+    text-align: center;
+    padding: 2rem;
+}
+.error-page h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+.error-page p {
+    margin-bottom: 1rem;
+}
+.error-page ul {
+    list-style: disc;
+    margin: 1rem 0 1rem 2rem;
+}
+.error-page a {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+/* NEW: Search Box Styles (used on error and search pages) */
+.search-box {
+    margin-top: 2rem;
+    text-align: center;
+}
+.search-box h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+.search-box form {
+    display: inline-block;
+}
+.search-box input[type="text"] {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 80%;
+    max-width: 300px;
+}
+.search-box button {
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    margin-left: 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.search-box button:hover {
+    background: var(--hover-color);
+}
+
+/* Social Media Icon Styles */
+.social-icon {
+    width: 20px;
+    height: 20px;
 }

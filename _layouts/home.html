@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta charset="UTF-8"> <!-- Specifies the character encoding -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures responsive design -->
+    <title>{{ site.title }} - Home</title> <!-- Adds a title for navigation -->
     {% include head.html %}
   </head>
   <body class="home-page">
@@ -31,7 +34,7 @@
             {% endif %}
             <h3><a href="{{ project.url | relative_url }}">{{ project.title }}</a></h3>
             <p>{{ project.description }}</p>
-            <a href="{{ project.link }}" class="btn" target="_blank">View Project</a>
+            <a href="{{ project.link }}" class="btn" target="_blank" rel="noopener">View Project</a>
           </div>
         {% endfor %}
       </div>
@@ -39,16 +42,16 @@
 
     <!-- Latest Blog Posts -->
     <section class="latest-blog-posts container">
-      <h2>Latest Blog Posts</h2>
-      <ul>
-        {% for post in site.posts limit:3 %}
+        <h2>Latest Blog Posts</h2>
+        <ul>{%- for post in site.posts limit:3 -%}
           <li>
-            <a href="{{ post.url | relative_url }}">{{ post.title }}</a> - <small>{{ post.date | date: "%B %d, %Y" }}</small>
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            <small>{{ post.date | date: "%B %d, %Y" }}</small>
           </li>
-        {% endfor %}
-      </ul>
-      <a href="/blog/" class="btn">View All Blog Posts</a>
-    </section>
+        {%- endfor -%}</ul>
+        <a href="/blog/" class="btn">View All Blog Posts</a>
+      </section>
+      
 
     <!-- Call-to-Action Section -->
     <section class="call-to-action container">
