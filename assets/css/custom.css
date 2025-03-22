@@ -139,6 +139,21 @@ html {
     }
 }
 
+/* Add this below your existing Hero Section rules */
+
+.hero-figure {
+    margin: 0 auto 1rem;
+    width: 200px; /* Adjust to desired size */
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+.hero-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
 /* Call-to-Action Section */
 .call-to-action {
     background: #f5f5f5;
@@ -422,8 +437,8 @@ pre, code {
 }
 
 .about-photo {
+    display: block; /* Remove float if centering is desired */
     max-width: 200px;
+    margin: 0 auto 1rem auto;
     border-radius: 50%;
-    float: left;
-    margin: 0 1rem 1rem 0;
 }
