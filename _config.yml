@@ -6,6 +6,11 @@ permalink: pretty
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-paginate
+
+# Pagination Settings
+paginate: 6
+paginate_path: "/projects/page:num/"
 
 # (Optional) Google Analytics – replace UA-XXXXXX-X with your tracking ID
 google_analytics: UA-XXXXXX-X
