@@ -4,7 +4,6 @@ title: "Projects & Case Studies"
 permalink: /projects/
 ---
 
-# Projects & Case Studies
 
 <!-- (Optional) Filtering Buttons -->
 <div class="filter-buttons">

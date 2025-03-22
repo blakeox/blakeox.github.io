@@ -4,8 +4,6 @@ title: "Contact"
 permalink: /contact/
 ---
 
-# Contact Me
-
 I'm always excited to discuss new opportunities and collaborations. Feel free to reach out:
 
 - **Email:** [blakepoxford@outlook.com](mailto:blakepoxford@outlook.com)
@@ -15,16 +13,22 @@ I'm always excited to discuss new opportunities and collaborations. Feel free to
 ## Or Send Me a Message
 
 <form action="https://formspree.io/f/yourFormID" method="POST" class="contact-form">
-  <label for="name">Name</label>
-  <input type="text" name="name" id="name" required>
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" placeholder="Your Full Name" required>
+  </div>
 
-  <label for="email">Email</label>
-  <input type="email" name="_replyto" id="email" required>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" name="_replyto" id="email" placeholder="Your Email Address" required>
+  </div>
 
-  <label for="message">Message</label>
-  <textarea name="message" id="message" rows="5" required></textarea>
+  <div class="form-group">
+    <label for="message">Message</label>
+    <textarea name="message" id="message" rows="5" placeholder="Your Message" required></textarea>
+  </div>
 
-  <button class="btn" type="submit">Send</button>
+  <button class="btn" type="submit">Send Message</button>
 </form>
 
 <!-- Note: Replace "yourFormID" with your actual Formspree ID -->

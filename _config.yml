@@ -1,7 +1,6 @@
 title: "Blake Oxford Portfolio"
 description: "Portfolio of Blake Oxford – IT Director, Business Systems Manager, Digital Transformation Consultant, Enterprise Solutions Architect, and Operations & Strategy Manager."
-theme: jekyll-theme-cayman
-permalink: /:title/
+permalink: pretty
 
 # Enable Jekyll plugins on GitHub Pages
 plugins:
@@ -15,3 +14,15 @@ google_analytics: UA-XXXXXX-X
 collections:
   projects:
     output: true
+
+# Metadata
+author: "Blake Oxford"
+email: "blakepoxford@outlook.com"
+
+# Sitemap Configuration
+sitemap:
+  exclude:
+    - /404.html
+
+# Base URL for subdirectory hosting
+baseurl: "" # Replace with your subdirectory name or leave empty for root

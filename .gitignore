@@ -1,0 +1,17 @@
+# Ignore the generated _site/ directory
+_site/
+
+# Ignore log files and temp files
+*.log
+*.tmp
+*.swp
+*.DS_Store
+Thumbs.db
+
+# Ignore dependency files
+Gemfile.lock
+node_modules/
+
+# Ignore system files
+.sass-cache/
+.bundle/
