@@ -107,16 +107,21 @@ html {
     padding: 4rem 1rem;
     text-align: center;
 }
+
 .home-page .hero h1 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
     animation: fadeIn 1s ease-in-out;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
 }
+
 .home-page .hero p {
     font-size: 1.1rem;
     max-width: 600px;
     margin: 0 auto 2rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
 }
+
 @keyframes fadeIn {
     from {
         opacity: 0;
