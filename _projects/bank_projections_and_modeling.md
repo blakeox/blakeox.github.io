@@ -1,0 +1,26 @@
+---
+layout: project
+title: "Bank Projections and Financial Modeling"
+image: "/assets/images/bank-projections-modeling.png"
+description: "Developed detailed financial models and projections to secure a $10M loan for a 36,000 sq. ft facility."
+tags: [Financial Modeling, Bank Projections, Commercial Real Estate, Loan, Financial Analysis]
+date: 2022-01-01
+link: ""
+---
+
+## Background
+
+To secure a $10 million loan for a new 36,000 sq. ft facility, I developed comprehensive financial models and bank projections. The goal was to present a clear and data-driven picture of the facility's financial viability, covering revenue forecasts, expense breakdowns, and cash flow projections.
+
+## Key Achievements
+
+- **In-depth Financial Analysis:** Performed detailed financial, market, and operational analyses to forecast revenues, expenses, and ROI over multiple scenarios.
+- **Robust Modeling:** Built dynamic, spreadsheet-based models that incorporated sensitivity analysis and various market conditions, reinforcing our loan application.
+- **Detailed Bank Projections:** Created projections that aligned with lender requirements, providing transparency and building confidence in the financial soundness of the project.
+- **Strategic Loan Preparation:** Positioned the project for success by delivering compelling evidence of the facility’s cash flow generation and long-term financial stability.
+
+## Impact
+
+The accuracy and thoroughness of these models were critical in securing the $10 million loan, enabling the construction and successful launch of the 36,000 sq. ft facility. This work not only demonstrated financial feasibility but also laid a strong foundation for future growth and expansion.
+
+<p><a href="#" target="_blank" rel="noopener" class="btn" aria-label="Learn more about Bank Projections and Financial Modeling">Learn More</a></p>

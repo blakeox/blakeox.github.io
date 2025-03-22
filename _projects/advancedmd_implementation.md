@@ -1,0 +1,26 @@
+---
+layout: project
+title: "AdvancedMD Implementation"
+image: "/assets/images/advancedmd-implementation.png"
+description: "Transitioned from paper records to a unified digital EHR system, integrating ABA, PT, OT, ST, and medical appointments with electronic billing."
+tags: [EHR, Digital Transformation, Automation, Healthcare]
+date: 2018-01-01
+link: "https://www.advancedmd.com/"
+---
+
+## Background
+
+In 2018, I led the implementation of AdvancedMD, a comprehensive Electronic Health Record (EHR) system, to replace outdated paper-based workflows. This transformation streamlined operations and improved efficiency across multiple disciplines.
+
+## Key Achievements
+
+- **Unified System:** Built a system capable of handling Applied Behavior Analysis (ABA), Physical Therapy (PT), Occupational Therapy (OT), Speech Therapy (ST), and medical appointments within a single platform.
+- **Electronic Billing:** Configured the system to integrate with all major insurance providers, enabling seamless electronic billing and reducing claim processing times.
+- **Operational Efficiency:** Eliminated manual record-keeping, improving data accuracy and accessibility for staff and patients.
+- **Scalability:** Positioned the organization for future growth by adopting a scalable, cloud-based solution.
+
+## Impact
+
+This project revolutionized the way the organization managed patient records and appointments, saving time, reducing errors, and enhancing the overall patient experience. The integration of electronic billing further streamlined financial operations, ensuring faster reimbursements and improved cash flow.
+
+<p><a href="https://www.advancedmd.com/" target="_blank" rel="noopener" class="btn" aria-label="Learn more about AdvancedMD">Learn More About AdvancedMD</a></p>

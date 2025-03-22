@@ -1,0 +1,26 @@
+---
+layout: project
+title: "Sage Intacct Integration with Square POS"
+image: "/assets/images/sage-intacct-implementation.png"
+description: "Implemented Sage Intacct and integrated it with Square POS through Shogo, building custom reports for seamless accounting reconciliation."
+tags: [Accounting, Sage Intacct, Square POS, Integration, Reporting]
+date: 2020-01-01
+link: "https://www.sageintacct.com/"
+---
+
+## Background
+
+To streamline financial operations and enhance accuracy, I led the integration of Sage Intacct with Square POS through the use of Shogo. This project was focused on automating the reconciliation process for accounting, providing real-time reporting and financial visibility.
+
+## Key Achievements
+
+- **ERP Integration:** Successfully implemented Sage Intacct and tied it to Square POS, creating a smooth data flow between sales transactions and accounting records.
+- **Leveraged Shogo:** Utilized the Shogo platform to bridge the gap between disparate systems, ensuring data consistency and reducing manual intervention.
+- **Custom Reporting:** Developed robust custom reports that reconcile transactional data, enhancing financial accuracy and simplifying audits.
+- **Operational Efficiency:** Improved the speed and reliability of financial reporting, leading to faster month-end closures and more accurate financial statements.
+
+## Impact
+
+This integration not only streamlined the reconciliation process but also provided a reliable financial overview. By automating data transfers and report generation, the system minimized manual errors and empowered stakeholders with timely, actionable insights.
+
+<p><a href="https://www.sageintacct.com/" target="_blank" rel="noopener" class="btn" aria-label="Learn more about Sage Intacct">Learn More About Sage Intacct</a></p>
