@@ -1,1 +1,4 @@
-theme: minima
+title: "Blake Powell Portfolio"
+description: "Portfolio of Blake Powell – IT Director, Business Systems Manager, Digital Transformation Consultant, Enterprise Solutions Architect, and Operations & Strategy Manager."
+theme: jekyll-theme-cayman
+permalink: /:title/

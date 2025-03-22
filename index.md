@@ -1,17 +1,12 @@
 ---
 layout: home
-title: "Blake Powell's Portfolio"
+title: "Welcome to My Portfolio"
 ---
 
-# Welcome to My Portfolio 🎨
+# Welcome to My Portfolio
 
-## About Me
-I'm a developer passionate about building solutions in tech.
+Hello, I'm **Blake Powell**, a visionary leader in IT and business transformation. I specialize in bridging the gap between technology and business strategy to drive efficiency and scale operations.
 
-## Projects
-- **[Project One](https://github.com/blakeox/project1)** – Description.
-- **[Project Two](https://github.com/blakeox/project2)** – Another project.
+Explore my site to learn more about my background, projects, and how I can help your organization succeed.
 
-## Contact
-- **GitHub:** [blakeox](https://github.com/blakeox)
-- **Email:** blakepoxford@outlook.com
+[About Me](/about/) | [Projects](/projects/) | [Contact](/contact/)
