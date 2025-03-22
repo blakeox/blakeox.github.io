@@ -8,10 +8,13 @@
       {% include nav.html %}
     </header>
 
-    <section class="hero" style="background: linear-gradient(135deg, #0D5CAB 0%, #00A1FF 100%); color: #fff; text-align: center; padding: 4rem 1rem;">
-      <h1>Welcome to My Portfolio</h1>
-      <p>Hi, I'm <strong>Blake Oxford</strong>, a leader in IT and business transformation. I specialize in bridging the gap between technology and strategy to drive efficiency and scale operations.</p>
-      <a href="/about/" class="btn">Learn More About Me</a>
+    <section class="hero" style="background: url('/assets/images/hero-bg.jpg') no-repeat center center/cover; color: #fff; text-align: center; padding: 4rem 1rem;">
+      <div class="hero-content" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+        <img src="/assets/images/Blake-O-scaled.jpeg" alt="Blake Oxford" style="max-width: 150px; border-radius: 50%; margin-bottom: 1rem;">
+        <h1>Welcome to My Portfolio</h1>
+        <p>Hi, I'm <strong>Blake Oxford</strong>, a leader in IT and business transformation. I specialize in bridging the gap between technology and strategy to drive efficiency and scale operations.</p>
+        <a href="/about/" class="btn">Learn More About Me</a>
+      </div>
     </section>
 
     <section class="featured-projects container">
@@ -20,7 +23,7 @@
         {% for project in site.projects limit:3 %}
           <div class="project-item">
             {% if project.image %}
-              <img src="{{ project.image | relative_url }}" alt="{{ project.title }}">
+              <img src="{{ project.image | relative_url }}" alt="{{ project.title }}" loading="lazy">
             {% endif %}
             <h3><a href="{{ project.url | relative_url }}">{{ project.title }}</a></h3>
             <p>{{ project.description }}</p>
@@ -28,6 +31,24 @@
           </div>
         {% endfor %}
       </div>
+    </section>
+
+    <section class="latest-blog-posts container">
+      <h2>Latest Blog Posts</h2>
+      <ul>
+        {% for post in site.posts limit:3 %}
+          <li>
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a> - <small>{{ post.date | date: "%B %d, %Y" }}</small>
+          </li>
+        {% endfor %}
+      </ul>
+      <a href="/blog/" class="btn">View All Blog Posts</a>
+    </section>
+
+    <section class="call-to-action" style="background: #f5f5f5; padding: 2rem; text-align: center;">
+      <h2>Want to Work Together?</h2>
+      <p>I'm always open to exciting new opportunities and collaborations. Let's create something amazing together!</p>
+      <a href="/contact/" class="btn">Contact Me</a>
     </section>
 
     <footer>
