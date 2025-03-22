@@ -15,16 +15,19 @@
   </head>
   <body>
     <!-- Skip to Content Link -->
-    <a href="#main-content" class="skip-to-content">Skip to Content</a>
+    <a href="#main-content" class="skip-to-content" aria-label="Skip to main content">Skip to Content</a>
 
+    <!-- Header -->
     <header>
       {% include nav.html %}
     </header>
 
+    <!-- Main Content -->
     <main id="main-content" class="container">
       {{ content }}
     </main>
 
+    <!-- Footer -->
     <footer>
       {% include footer.html %}
     </footer>

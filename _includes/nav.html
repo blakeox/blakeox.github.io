@@ -1,25 +1,48 @@
-<nav class="navbar">
-    <div class="nav-container">
-      <a class="nav-logo" href="{{ '/' | relative_url }}" aria-label="Home">
-        {{ site.title }}
-      </a>
-      <button class="nav-toggle" aria-label="Toggle navigation">
-        <span class="hamburger"></span>
-      </button>
-      <ul class="nav-links">
-        <li><a href="{{ '/' | relative_url }}" class="{% if page.url == '/' %}active{% endif %}">Home</a></li>
-        <li><a href="{{ '/about/' | relative_url }}" class="{% if page.url contains '/about/' %}active{% endif %}">About</a></li>
-        <li><a href="{{ '/projects/' | relative_url }}" class="{% if page.url contains '/projects/' %}active{% endif %}">Projects</a></li>
-        <li><a href="{{ '/blog/' | relative_url }}" class="{% if page.url contains '/blog/' %}active{% endif %}">Blog</a></li>
-        <li><a href="{{ '/contact/' | relative_url }}" class="{% if page.url contains '/contact/' %}active{% endif %}">Contact</a></li>
-      </ul>
-      <div class="nav-social">
-        <a href="https://linkedin.com/in/blake-o-powell" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <img src="/assets/images/linkedin-icon.png" alt="LinkedIn" class="social-icon">
-        </a>
-        <a href="https://github.com/blakeox" target="_blank" rel="noopener" aria-label="GitHub">
-          <img src="/assets/images/github-icon.png" alt="GitHub" class="social-icon">
-        </a>
-      </div>
-    </div>
-</nav>
+<!-- This file is an HTML fragment (partial) intended to be included in a full document,
+     so it does not include a DOCTYPE, <html>, or <head> element.  -->
+
+      <nav class="navbar" aria-label="Main Navigation">
+        <div class="nav-container">
+          <a class="nav-logo" href="{{ '/' | relative_url }}" aria-label="Home">
+            {{ site.title }}
+          </a>
+          <button class="nav-toggle" aria-label="Toggle navigation">
+            <span class="hamburger"></span>
+          </button>
+          <ul class="nav-links">
+            <li>
+              <a href="{{ '/' | relative_url }}" class="{% if page.url == '/' %}active{% endif %}">
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="{{ '/about/' | relative_url }}" class="{% if page.url contains '/about/' %}active{% endif %}">
+                About
+              </a>
+            </li>
+            <li>
+              <a href="{{ '/projects/' | relative_url }}" class="{% if page.url contains '/projects/' %}active{% endif %}">
+                Projects
+              </a>
+            </li>
+            <li>
+              <a href="{{ '/blog/' | relative_url }}" class="{% if page.url contains '/blog/' %}active{% endif %}">
+                Blog
+              </a>
+            </li>
+            <li>
+              <a href="{{ '/contact/' | relative_url }}" class="{% if page.url contains '/contact/' %}active{% endif %}">
+                Contact
+              </a>
+            </li>
+          </ul>
+          <div class="nav-social">
+            <a href="https://linkedin.com/in/blake-oxford" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <img src="/assets/images/linkedin-icon.png" alt="LinkedIn" class="social-icon">
+            </a>
+            <a href="https://github.com/blakeox" target="_blank" rel="noopener" aria-label="GitHub">
+              <img src="/assets/images/github-icon.png" alt="GitHub" class="social-icon">
+            </a>
+          </div>
+        </div>
+      </nav>

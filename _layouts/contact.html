@@ -4,12 +4,21 @@ layout: default
 
 <section class="contact-page container">
   <h1>{{ page.title }}</h1>
+  
   <div class="contact-info">
-    <p>I'm always excited to discuss new opportunities and collaborations. Feel free to reach out:</p>
+    <p>I’m always excited to discuss new opportunities and collaborations. Feel free to reach out:</p>
     <ul>
-      <li><strong>Email:</strong> <a href="mailto:blakepoxford@outlook.com">blakepoxford@outlook.com</a></li>
-      <li><strong>Phone:</strong> 248-202-4479</li>
-      <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/blake-o-powell" target="_blank" rel="noopener">linkedin.com/in/blake-o-powell</a></li>
+      <li><strong>Email:</strong> 
+        <a href="mailto:blakepoxford@outlook.com" aria-label="Email Blake Oxford">blakepoxford@outlook.com</a>
+      </li>
+      <li><strong>Phone:</strong> 
+        <a href="tel:2482024479" aria-label="Call Blake Oxford">248-202-4479</a>
+      </li>
+      <li><strong>LinkedIn:</strong> 
+        <a href="https://linkedin.com/in/blake-oxford" target="_blank" rel="noopener" aria-label="Visit Blake Oxford’s LinkedIn profile">
+          linkedin.com/in/blake-oxford
+        </a>
+      </li>
     </ul>
   </div>
 
@@ -19,17 +28,14 @@ layout: default
       <label for="name">Name</label>
       <input type="text" name="name" id="name" placeholder="Your Full Name" required>
     </div>
-
     <div class="form-group">
       <label for="email">Email</label>
       <input type="email" name="_replyto" id="email" placeholder="Your Email Address" required>
     </div>
-
     <div class="form-group">
       <label for="message">Message</label>
       <textarea name="message" id="message" rows="5" placeholder="Your Message" required></textarea>
     </div>
-
-    <button class="btn" type="submit">Send Message</button>
+    <button class="btn" type="submit" aria-label="Send your message to Blake Oxford">Send Message</button>
   </form>
 </section>
