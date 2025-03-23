@@ -1,17 +1,26 @@
-<div class="footer-container">
-    <p>© {{ site.time | date: '%Y' }} {{ site.title }}. All rights reserved.</p>
-    <p>
-      Built with <a href="https://pages.github.com/">GitHub Pages</a> &amp; <a href="https://jekyllrb.com/">Jekyll</a>.
-    </p>
-    <p>
-      <a href="https://linkedin.com/in/blake-oxford" target="_blank" rel="noopener" aria-label="LinkedIn">
-        <img src="{{ '/assets/images/linkedin-icon.png' | relative_url }}" alt="LinkedIn" class="social-icon">
-      </a>
-      <a href="https://github.com/blakeox" target="_blank" rel="noopener" aria-label="GitHub">
-        <img src="{{ '/assets/images/github-icon.png' | relative_url }}" alt="GitHub" class="social-icon">
-      </a>
-    </p>
-    <p>
-      <a href="#top" class="btn">Back to Top</a>
-    </p>
-</div>
+<footer class="footer-container" role="contentinfo">
+  <p>© {{ site.time | date: '%Y' }} {{ site.title }}. All rights reserved.</p>
+  <p>
+    Built with 
+    <a href="https://pages.github.com/" target="_blank" rel="noopener" aria-label="Visit GitHub Pages">GitHub Pages</a>
+    &amp; 
+    <a href="https://jekyllrb.com/" target="_blank" rel="noopener" aria-label="Visit Jekyll">Jekyll</a>.
+  </p>
+  <nav class="social-links" aria-label="Social Media Links">
+    <ul>
+      <li>
+        <a href="https://linkedin.com/in/blake-oxford" target="_blank" rel="noopener" aria-label="Visit my LinkedIn Profile">
+          <img src="{{ '/assets/images/linkedin-icon.png' | relative_url }}" alt="LinkedIn Icon" class="social-icon">
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/blakeox" target="_blank" rel="noopener" aria-label="Visit my GitHub Profile">
+          <img src="{{ '/assets/images/github-icon.png' | relative_url }}" alt="GitHub Icon" class="social-icon">
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <p>
+    <a href="#top" class="btn" aria-label="Back to Top">Back to Top</a>
+  </p>
+</footer>
