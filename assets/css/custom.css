@@ -6,6 +6,15 @@
     --background-color: #fff;
     --text-color: #333;
     --font-family: 'Work Sans', sans-serif;
+    --primary-color-dark: #4DC8AA;
+    --hover-color-dark: rgba(77, 200, 170, 0.8);
+    --background-color-dark: #121212;
+    --text-color-dark: #e0e0e0;
+    --link-color-dark: #90caf9;
+    --border-color-dark: #333;
+    --button-bg-dark: #333;
+    --button-hover-bg-dark: #444;
+    --placeholder-color-dark: #888;
 }
 
 /* Global Transitions (for interactive elements) */
@@ -47,15 +56,16 @@ html {
     top: 0;
 }
 
-/* Navigation */
+/* Navigation Bar Styles */
 .navbar {
-  background-color: #ffffff; /* White background */
+  background-color: var(--background-color); /* Light mode background */
   border-bottom: 1px solid #ddd;
   position: sticky;
   top: 0;
   z-index: 1000;
   padding: 0.5rem 0;
 }
+
 .nav-container {
   max-width: 960px;
   margin: 0 auto;
@@ -64,15 +74,15 @@ html {
   justify-content: space-between;
 }
 
-/* Logo and Circle */
 .nav-logo {
   display: flex;
   align-items: center;
   font-size: 1.5rem;
   font-weight: bold;
-  color: #000;
+  color: var(--text-color); /* Light mode text color */
   text-decoration: none;
 }
+
 .logo-circle {
   display: inline-flex;
   align-items: center;
@@ -80,14 +90,13 @@ html {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 2px solid #000;
+  border: 2px solid var(--text-color); /* Light mode border color */
   font-size: 1.2rem;
   font-weight: 700;
-  color: #000;
+  color: var(--text-color); /* Light mode text color */
   margin-right: 0.5rem;
 }
 
-/* Nav Links (horizontal layout) */
 .nav-links {
   display: flex;
   list-style: none;
@@ -95,16 +104,44 @@ html {
   padding: 0;
   gap: 1rem;
 }
+
 .nav-links li a {
   text-decoration: none;
   font-weight: 300; /* Lighter font weight */
-  color: #000;
+  color: var(--text-color); /* Light mode text color */
   transition: color 0.2s ease;
 }
+
 .nav-links li a:hover,
 .nav-links li a:focus {
-  color: var(--accent-color);
+  color: var(--accent-color); /* Accent color for hover/focus */
   outline: none;
+}
+
+/* Dark Mode Styles */
+@media (prefers-color-scheme: dark) {
+  .navbar {
+    background-color: var(--background-color-dark); /* Dark mode background */
+    border-bottom: 1px solid var(--border-color-dark);
+  }
+
+  .nav-logo {
+    color: var(--text-color-dark); /* Dark mode text color */
+  }
+
+  .logo-circle {
+    border-color: var(--text-color-dark); /* Dark mode border color */
+    color: var(--text-color-dark); /* Dark mode text color */
+  }
+
+  .nav-links li a {
+    color: var(--text-color-dark); /* Dark mode text color */
+  }
+
+  .nav-links li a:hover,
+  .nav-links li a:focus {
+    color: var(--link-color-dark); /* Dark mode hover/focus color */
+  }
 }
 
 /* Hamburger Icon for Mobile */
@@ -277,45 +314,83 @@ html {
 
 /* Blog Post List */
 .latest-blog-posts {
-    margin-top: 2rem;
-    padding: 2rem 1rem;
-    background: #f9f9f9;
-    border-top: 1px solid #ddd;
+  margin-top: 2rem;
+  padding: 2rem 1rem;
+  background: var(--background-color); /* Use the light mode background variable */
+  color: var(--text-color); /* Use the light mode text color variable */
+  border-top: 1px solid #ddd;
 }
+
 .latest-blog-posts h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
 }
+
 .latest-blog-posts ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
+
 .latest-blog-posts li {
-    margin-bottom: 1rem;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5rem;
 }
+
 .latest-blog-posts li a {
-    color: var(--primary-color);
-    text-decoration: none;
-    font-weight: bold;
+  color: var(--primary-color); /* Use the primary color variable */
+  text-decoration: none;
+  font-weight: bold;
 }
+
 .latest-blog-posts li a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
+
 .latest-blog-posts .btn {
-    display: inline-block;
-    margin-top: 1rem;
-    background: var(--primary-color);
-    color: #ffffff;
-    padding: 0.75rem 1.5rem;
-    text-decoration: none;
-    border-radius: 4px;
+  display: inline-block;
+  margin-top: 1rem;
+  background: var(--primary-color);
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border-radius: 4px;
 }
+
 .latest-blog-posts .btn:hover {
-    background: var(--hover-color);
-    transform: translateY(-2px);
+  background: var(--hover-color);
+  transform: translateY(-2px);
+}
+
+/* Dark Mode Styles */
+@media (prefers-color-scheme: dark) {
+  .latest-blog-posts {
+    background: var(--background-color-dark); /* Use the dark mode background variable */
+    color: var(--text-color-dark); /* Use the dark mode text color variable */
+    border-top: 1px solid var(--border-color-dark);
+  }
+
+  .latest-blog-posts li {
+    border-bottom: 1px solid var(--border-color-dark);
+  }
+
+  .latest-blog-posts li a {
+    color: var(--link-color-dark); /* Use the dark mode link color variable */
+  }
+
+  .latest-blog-posts li a:hover {
+    color: var(--primary-color-dark); /* Use the dark mode primary color */
+  }
+
+  .latest-blog-posts .btn {
+    background: var(--button-bg-dark);
+    color: var(--text-color-dark);
+  }
+
+  .latest-blog-posts .btn:hover {
+    background: var(--button-hover-bg-dark);
+  }
 }
 
 /* Buttons */
@@ -333,6 +408,11 @@ a.btn:hover, button.btn:hover {
 }
 a.btn:focus, button.btn:focus {
     outline: 2px solid var(--accent-color);
+}
+
+.btn {
+  background: var(--primary-color);
+  color: #fff;
 }
 
 /* Footer */
@@ -504,6 +584,14 @@ pre, code {
     padding: 0.5rem;
     border-radius: 4px;
     overflow-x: auto;
+    color: #333;
+}
+
+@media (prefers-color-scheme: dark) {
+  pre, code {
+    background: #1e1e1e;
+    color: #ccc;
+  }
 }
 
 /* Utility Classes */
@@ -899,4 +987,284 @@ pre, code {
 
 .about-skills li, .about-timeline li {
   margin-bottom: 0.5rem;
+}
+
+/* Default (Light Mode) Styles */
+body {
+  background: #ffffff;
+  color: #333;
+}
+
+/* Dark Mode Styles */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: var(--background-color-dark);
+    color: var(--text-color-dark);
+  }
+
+  a {
+    color: var(--link-color-dark);
+  }
+
+  .navbar {
+    background-color: var(--background-color-dark);
+    border-bottom: 1px solid var(--border-color-dark);
+  }
+
+  .footer-container {
+    background: var(--background-color-dark);
+    color: var(--text-color-dark);
+  }
+
+  .footer-container a {
+    color: var(--link-color-dark);
+  }
+
+  .btn {
+    background: var(--button-bg-dark);
+    color: var(--text-color-dark);
+  }
+
+  .btn:hover {
+    background: var(--button-hover-bg-dark);
+  }
+
+  .contact-form {
+    background: var(--background-color-dark);
+    border: 1px solid var(--border-color-dark);
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    background: var(--button-bg-dark);
+    color: var(--text-color-dark);
+    border: 1px solid var(--border-color-dark);
+  }
+
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder {
+    color: var(--placeholder-color-dark);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #121212;
+    color: #e0e0e0;
+  }
+
+  a {
+    color: #90caf9;
+  }
+
+  .navbar {
+    background-color: #1e1e1e;
+    border-bottom: 1px solid #333;
+  }
+
+  .nav-links li a {
+    color: #e0e0e0;
+  }
+
+  .nav-links li a:hover,
+  .nav-links li a:focus {
+    color: #90caf9;
+  }
+
+  .footer-container {
+    background: #1e1e1e;
+    color: #ccc;
+  }
+
+  .footer-container a {
+    color: #90caf9;
+  }
+
+  .footer-container a:hover {
+    text-decoration: underline;
+  }
+
+  .btn {
+    background: #333;
+    color: #fff;
+  }
+
+  .btn:hover {
+    background: #444;
+  }
+
+  .hero {
+    background: 
+      radial-gradient(circle at center, #1e1e1e 0%, #1e1e1e 35%, transparent 45%), /* Dark gray center */
+      radial-gradient(circle at bottom left, #ff8c00 0%, #ff8c00 8%, transparent 20%), /* Vibrant orange bottom left */
+      radial-gradient(circle at top right, #4dc8aa 0%, #4dc8aa 10%, transparent 20%); /* Primary color top right */
+    color: var(--text-color-dark); /* Ensure text is readable in dark mode */
+  }
+
+  .hero h1 {
+    color: #ffffff; /* Bright white for contrast */
+  }
+
+  .hero p {
+    color: #cccccc; /* Light gray for readability */
+  }
+
+  .hero .btn {
+    background: var(--button-bg-dark); /* Dark button background */
+    color: var(--text-color-dark); /* Light text for contrast */
+  }
+
+  .hero .btn:hover {
+    background: var(--button-hover-bg-dark); /* Slightly lighter hover effect */
+  }
+
+  .project-item {
+    background: #1e1e1e;
+    border: 1px solid #333;
+  }
+
+  .project-item:hover {
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+  }
+
+  .testimonial {
+    color: #ccc;
+  }
+
+  .testimonial strong {
+    color: #fff;
+  }
+
+  .call-to-action {
+    background: #1e1e1e;
+    color: #ccc;
+  }
+
+  .call-to-action .btn {
+    background: #333;
+    color: #fff;
+  }
+
+  .call-to-action .btn:hover {
+    background: #444;
+  }
+
+  .contact-form {
+    background: #1e1e1e;
+    border: 1px solid #333;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    background: #333;
+    color: #e0e0e0;
+    border: 1px solid #555;
+  }
+
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder {
+    color: #888;
+  }
+
+  .contact-form button {
+    background: #333;
+    color: #fff;
+  }
+
+  .contact-form button:hover {
+    background: #444;
+  }
+
+  .about-photo {
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+  }
+
+  .about-text {
+    color: #ccc;
+  }
+
+  .about-skills li,
+  .about-timeline li {
+    color: #ccc;
+  }
+
+  .back-to-top {
+    background: #333;
+    color: #fff;
+  }
+
+  .back-to-top:hover {
+    background: #444;
+  }
+
+  .error-page {
+    background: #1e1e1e;
+    color: #ccc;
+  }
+
+  .error-page a {
+    color: #90caf9;
+  }
+
+  .search-box input[type="text"] {
+    background: #333;
+    color: #e0e0e0;
+    border: 1px solid #555;
+  }
+
+  .search-box button {
+    background: #333;
+    color: #fff;
+  }
+
+  .search-box button:hover {
+    background: #444;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .project-item {
+    background: var(--background-color-dark);
+    border: 1px solid var(--border-color-dark);
+  }
+}
+
+img.invert-on-dark {
+  filter: none; /* Ensure no inversion in light mode */
+}
+
+@media (prefers-color-scheme: dark) {
+  img.invert-on-dark {
+    filter: invert(1); /* Apply inversion only in dark mode */
+  }
+}
+
+/* Hero Section */
+.hero {
+  background: 
+    radial-gradient(circle at center, var(--background-color) 0%, var(--background-color) 35%, transparent 45%),
+    radial-gradient(circle at bottom left, #FFDFA8 0%, #FFDFA8 8%, transparent 20%),
+    radial-gradient(circle at top right, var(--primary-color) 0%, var(--primary-color) 10%, transparent 20%);
+  background-blend-mode: normal;
+  background-size: cover;
+}
+
+@media (prefers-color-scheme: dark) {
+  .hero {
+    background: 
+      radial-gradient(circle at center, var(--background-color-dark) 0%, var(--background-color-dark) 35%, transparent 45%),
+      radial-gradient(circle at bottom left, #FFDFA8 0%, #FFDFA8 8%, transparent 20%),
+      radial-gradient(circle at top right, var(--primary-color-dark) 0%, var(--primary-color-dark) 10%, transparent 20%);
+  }
+}
+
+/* Dark Mode for Images */
+img.invert-on-dark {
+  filter: none; /* Ensure no inversion in light mode */
+}
+
+@media (prefers-color-scheme: dark) {
+  img.invert-on-dark {
+    filter: invert(1); /* Apply inversion only in dark mode */
+  }
 }

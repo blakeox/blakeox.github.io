@@ -46,7 +46,7 @@
           {% for project in site.projects limit:3 %}
             <div class="project-item">
               {% if project.image %}
-                <img src="{{ project.image | relative_url }}" alt="{{ project.title }}" loading="lazy">
+                <img src="{{ project.image | relative_url }}" alt="{{ project.title }}" loading="lazy" class="invert-on-dark">
               {% endif %}
               <h3>
                 <a href="{{ project.url | relative_url }}" aria-label="View details about {{ project.title }}">

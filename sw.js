@@ -55,3 +55,16 @@ self.addEventListener('fetch', e => {
     })
   );
 });
+
+// Add offline fallback
+self.addEventListener('fetch', e => {
+  e.respondWith(
+    caches.match(e.request).then(response => {
+      return response || fetch(e.request).catch(() => {
+        if (e.request.destination === 'document') {
+          return caches.match('/offline.html');
+        }
+      });
+    })
+  );
+});

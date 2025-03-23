@@ -2,13 +2,15 @@
 layout: default
 ---
 
-<section class="latest-blog-posts container">
+<section class="blog-page container">
   <h1>{{ page.title }}</h1>
-  <ul class="blog-post-list">
+  <div class="blog-posts">
     {% for post in site.posts %}
-      <li>
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a> - <small>{{ post.date | date: "%B %d, %Y" }}</small>
-      </li>
+      <article class="blog-post">
+        <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+        <p>{{ post.excerpt }}</p>
+        <a href="{{ post.url | relative_url }}" class="btn">Read More</a>
+      </article>
     {% endfor %}
-  </ul>
+  </div>
 </section>
