@@ -10,4 +10,55 @@ layout: default
       {{ content }}
     </div>
   </div>
+  <div class="about-skills">
+    <h2>Key Skills</h2>
+    <ul>
+      <li>Digital Transformation</li>
+      <li>Cloud-Based SaaS Solutions</li>
+      <li>Financial Systems Optimization</li>
+      <li>AI and Automation</li>
+    </ul>
+  </div>
+  <div class="about-timeline">
+    <h2>Career Highlights</h2>
+    <ul>
+      <li><strong>2018-2024:</strong> IT Director at XYZ Corp – Led digital transformation initiatives.</li>
+      <li><strong>2014-2018:</strong> Business Systems Manager at ABC Inc – Implemented scalable IT solutions.</li>
+    </ul>
+  </div>
+  <div class="about-social">
+    <p>Connect with me:</p>
+    <a href="https://linkedin.com/in/blake-oxford" target="_blank" rel="noopener" aria-label="Visit Blake Oxford's LinkedIn">
+      LinkedIn
+    </a> |
+    <a href="https://github.com/blakeox" target="_blank" rel="noopener" aria-label="Visit Blake Oxford's GitHub">
+      GitHub
+    </a>
+  </div>
+  <div class="about-cta">
+    <a href="/assets/files/BlakeOxford_Resume.pdf" class="btn" aria-label="Download Blake Oxford's Resume">Download Resume</a>
+  </div>
+  <a href="#top" class="back-to-top" aria-label="Back to Top">↑ Back to Top</a>
 </section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Blake Oxford",
+  "url": "{{ site.url | default: site.github.url | absolute_url }}",
+  "description": "Visionary leader in IT and business transformation.",
+  "image": "{{ '/assets/images/Blake-O-scaled.jpg' | relative_url }}",
+  "jobTitle": "IT Director, Business Systems Manager",
+  "sameAs": [
+    "https://linkedin.com/in/blake-oxford",
+    "https://github.com/blakeox"
+  ],
+  "knowsAbout": [
+    "Digital Transformation",
+    "Cloud-Based SaaS Solutions",
+    "Financial Systems Optimization",
+    "AI and Automation"
+  ]
+}
+</script>

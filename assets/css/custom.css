@@ -756,3 +756,147 @@ pre, code {
     padding-right: 0.5rem; /* Reduced gutter */
   }
 }
+
+.form-messages {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  text-align: center;
+}
+.form-messages.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+.form-messages.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* Contact Form Styles */
+.contact-page {
+  padding: 2rem 1rem; /* Add padding to prevent content from touching screen edges */
+}
+
+.contact-form {
+  max-width: 600px; /* Limit the form width */
+  margin: 0 auto; /* Center the form */
+  padding: 1rem; /* Add padding inside the form */
+  background: #fff; /* Ensure a white background */
+  border: 1px solid #ddd; /* Add a subtle border */
+  border-radius: 8px; /* Round the corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a soft shadow */
+}
+
+.contact-form .form-group {
+  margin-bottom: 1.5rem; /* Add spacing between form fields */
+}
+
+.contact-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%; /* Make inputs full width */
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.contact-form textarea {
+  resize: vertical; /* Allow vertical resizing only */
+}
+
+.contact-form button {
+  display: block;
+  width: 100%; /* Full-width button on smaller screens */
+  padding: 0.75rem;
+  background: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.contact-form button:hover {
+  background: var(--hover-color);
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+  .contact-page {
+    padding: 1.5rem 1rem; /* Reduce padding on smaller screens */
+  }
+
+  .contact-form {
+    padding: 1rem; /* Adjust padding for smaller screens */
+  }
+
+  .contact-form button {
+    width: auto; /* Allow button to shrink if needed */
+  }
+}
+
+/* About Page Styles */
+.about-page {
+  padding: 2rem 1rem;
+}
+
+.about-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+}
+
+.about-photo {
+  max-width: 200px;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.about-text {
+  flex: 1;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.about-cta {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.about-cta .btn {
+  margin: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary-color);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.about-cta .btn:hover {
+  background-color: var(--hover-color);
+}
+
+.about-skills, .about-timeline {
+  margin-top: 2rem;
+}
+
+.about-skills ul, .about-timeline ul {
+  list-style: none;
+  padding: 0;
+}
+
+.about-skills li, .about-timeline li {
+  margin-bottom: 0.5rem;
+}

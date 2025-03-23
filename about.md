@@ -10,3 +10,5 @@ I am a visionary leader with a proven track record of scaling companies, optimiz
 - Implemented multi-location IT systems and cloud-based SaaS solutions for sustained growth.
 
 **Download my [Resume (PDF)](/assets/files/BlakeOxford_Resume.pdf){: .btn }** for additional details.
+
+**Want to work together? [Contact Me](/contact/){: .btn }**
