@@ -140,7 +140,7 @@ html {
 
   .nav-links li a:hover,
   .nav-links li a:focus {
-    color: var(--link-color-dark); /* Dark mode hover/focus color */
+    color: var (--link-color-dark); /* Dark mode hover/focus color */
   }
 }
 
@@ -1266,5 +1266,79 @@ img.invert-on-dark {
 @media (prefers-color-scheme: dark) {
   img.invert-on-dark {
     filter: invert(1); /* Apply inversion only in dark mode */
+  }
+}
+
+/* Desktop (min-width: 769px): Show normal nav, hide hamburger */
+@media screen and (min-width: 769px) {
+  .nav-links {
+    display: flex; /* Keep desktop nav visible */
+    gap: 1rem;
+  }
+  .nav-toggle {
+    display: none; /* Hide hamburger on desktop */
+  }
+}
+
+/* Mobile (max-width: 768px): Show hamburger, hide nav until toggled */
+@media screen and (max-width: 768px) {
+  .nav-links {
+    display: none; /* Hidden until dropdown is toggled */
+    flex-direction: column;
+    background-color: #ffffff; /* Light mode dropdown background */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 1rem 0;
+  }
+
+  .nav-links.active {
+    display: flex; /* Show dropdown when active */
+  }
+
+  .nav-toggle {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #000; /* Light mode hamburger color */
+  }
+}
+
+/* Dark mode for hamburger & dropdown */
+@media (prefers-color-scheme: dark) {
+  .nav-toggle {
+    color: #fff; /* Dark mode hamburger color */
+  }
+  .nav-links {
+    background-color: #1e1e1e; /* Dark mode dropdown background */
+  }
+  .nav-links li a {
+    color: #e0e0e0; /* Dark mode link color */
+  }
+  .nav-links li a:hover {
+    color: #90caf9;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  /* Hamburger lines turn white in dark mode */
+  .hamburger,
+  .hamburger::before,
+  .hamburger::after {
+    background-color: #fff; /* White for dark mode */
+  }
+
+  /* Dropdown background and text for dark mode */
+  .nav-links {
+    background-color: #1e1e1e; /* Dark mode dropdown background */
+  }
+  .nav-links li a {
+    color: #e0e0e0; /* Dark mode text color */
+  }
+  .nav-links li a:hover {
+    color: #90caf9; /* Hover color in dark mode */
   }
 }
