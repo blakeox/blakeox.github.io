@@ -47,14 +47,14 @@ html {
     top: 0;
 }
 
-/* Navigation Styles */
+/* Navigation */
 .navbar {
   background-color: #ffffff; /* White background */
-  padding: 0.5rem;
+  border-bottom: 1px solid #ddd;
   position: sticky;
   top: 0;
   z-index: 1000;
-  border-bottom: 1px solid #ddd;
+  padding: 0.5rem 0;
 }
 .nav-container {
   max-width: 960px;
@@ -63,84 +63,53 @@ html {
   align-items: center;
   justify-content: space-between;
 }
-/* Logo Styles (keep as is) */
+
+/* Logo and Circle */
 .nav-logo {
-  color: #000; /* Black text */
-  font-weight: bold;
-  text-decoration: none;
-  font-size: 1.5rem;
   display: flex;
   align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000;
+  text-decoration: none;
 }
 .logo-circle {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 40px;
   height: 40px;
-  line-height: 40px;
   border-radius: 50%;
-  background-color: #ffffff;
-  color: #000;
   border: 2px solid #000;
-  text-align: center;
-  font-weight: bold;
   font-size: 1.2rem;
+  font-weight: 700;
+  color: #000;
   margin-right: 0.5rem;
 }
 
-/* Set nav links to display as a horizontal row with lighter font weight */
+/* Nav Links (horizontal layout) */
 .nav-links {
   display: flex;
-  flex-direction: row;
-  gap: 1rem;
   list-style: none;
   margin: 0;
   padding: 0;
+  gap: 1rem;
 }
 .nav-links li a {
-  color: #000; /* Black text */
   text-decoration: none;
-  font-weight: 300; /* Reduced weight for a lighter appearance */
+  font-weight: 300; /* Lighter font weight */
+  color: #000;
+  transition: color 0.2s ease;
 }
-.nav-links li a:hover, 
+.nav-links li a:hover,
 .nav-links li a:focus {
   color: var(--accent-color);
   outline: none;
 }
 
-/* Ensure mobile styles remain unchanged (shown below) */
-@media screen and (max-width: 768px) {
-  .nav-toggle {
-    display: block;
-    background: none;
-    border: none;
-    color: #000;
-    font-size: 1.5rem;
-    cursor: pointer;
-  }
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    gap: 1rem;
-    background: #ffffff;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    padding: 1rem 0;
-  }
-  .nav-links.active {
-    display: flex;
-  }
-  .nav-social {
-    display: none;
-  }
-}
-
-/* Social icons remain (adjust as needed) */
-.nav-social img {
-  width: 20px;
-  height: 20px;
-  margin-left: 0.5rem;
+/* Hamburger Icon for Mobile */
+.nav-toggle {
+  display: none; /* Hidden on desktop */
 }
 
 /* Mobile Styles */
@@ -153,20 +122,23 @@ html {
     font-size: 1.5rem;
     cursor: pointer;
   }
+  /* Ensure the nav links are initially hidden on mobile */
   .nav-links {
     display: none;
     flex-direction: column;
     gap: 1rem;
     background: #ffffff;
     position: absolute;
-    top: 100%;
+    top: 100%; /* Below the nav bar */
     left: 0;
     width: 100%;
     padding: 1rem 0;
   }
+  /* When active, show nav links as a drop-down */
   .nav-links.active {
     display: flex;
   }
+  /* Optionally hide social icons for mobile */
   .nav-social {
     display: none;
   }
@@ -686,8 +658,9 @@ pre, code {
   display: block;
   width: 25px;
   height: 3px;
-  background-color: #fff;
+  background-color: #000; /* Changed to black */
   position: relative;
+  transition: transform 0.3s ease;
 }
 .hamburger::before,
 .hamburger::after {
@@ -695,14 +668,26 @@ pre, code {
   position: absolute;
   width: 25px;
   height: 3px;
-  background-color: #fff;
+  background-color: #000; /* Changed to black */
   left: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 .hamburger::before {
   top: -8px;
 }
 .hamburger::after {
   top: 8px;
+}
+
+/* When the toggle is active, add a class to animate to a cross icon */
+.nav-toggle.active .hamburger {
+  transform: rotate(45deg);
+}
+.nav-toggle.active .hamburger::before {
+  transform: rotate(90deg) translate(8px, -8px);
+}
+.nav-toggle.active .hamburger::after {
+  opacity: 0;
 }
 
 /* Mobile styles */
@@ -716,5 +701,58 @@ pre, code {
   }
   .nav-toggle {
     display: block;
+  }
+}
+@media screen and (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+    background: none;
+    border: none;
+    color: #000;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+  /* Ensure the nav links are initially hidden on mobile */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: #ffffff; /* White background */
+    position: absolute;
+    top: 100%; /* Below the nav bar */
+    left: 0;
+    width: 100%;
+    padding: 1rem 0;
+  }
+  .nav-links li a {
+    color: #000; /* Black text */
+  }
+  /* When active, show nav links as a drop-down */
+  .nav-links.active {
+    display: flex;
+  }
+  /* Optionally hide social icons for mobile */
+  .nav-social {
+    display: none;
+  }
+}
+@media screen and (max-width: 768px) {
+  /* Add horizontal padding to the nav container for a gutter */
+  .nav-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  /* Add horizontal padding to the dropdown menu */
+  .nav-links {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .nav-container {
+    padding-left: 0.5rem; /* Reduced gutter */
+    padding-right: 0.5rem; /* Reduced gutter */
   }
 }
