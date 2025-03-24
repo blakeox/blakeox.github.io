@@ -114,7 +114,7 @@ html {
 
 .nav-links li a:hover,
 .nav-links li a:focus {
-  color: var(--accent-color); /* Accent color for hover/focus */
+  color: var (--accent-color); /* Accent color for hover/focus */
   outline: none;
 }
 
@@ -1340,5 +1340,125 @@ img.invert-on-dark {
   }
   .nav-links li a:hover {
     color: #90caf9; /* Hover color in dark mode */
+  }
+}
+
+/* About Page Styles */
+.about-page {
+  background: var(--background-color);
+  color: var(--text-color);
+  padding: 2rem 1rem;
+}
+
+.about-content {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.about-photo {
+  max-width: 200px;
+  border-radius: 50%;
+}
+
+/* Dark mode overrides */
+@media (prefers-color-scheme: dark) {
+  .about-page {
+    background: var(--background-color-dark);
+    color: var(--text-color-dark);
+  }
+}
+
+/* ABOUT PAGE STYLES */
+.about-page {
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 2rem 1rem; /* Consistent spacing */
+}
+
+.about-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2rem;  /* Add spacing to separate sections */
+}
+
+.about-photo {
+  max-width: 200px;
+  border-radius: 50%;
+  margin: 0 auto;
+  display: block;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for emphasis */
+}
+
+.about-text {
+  flex: 1;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.about-skills, .about-timeline, .about-social {
+  margin-top: 2rem; /* Space between sections */
+}
+
+.about-skills h2, .about-timeline h2, .about-social h2 {
+  margin-bottom: 1rem;
+}
+
+.about-skills li, .about-timeline li {
+  margin-bottom: 0.5rem;
+}
+
+.about-cta {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.about-cta .btn {
+  margin: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary-color);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.about-cta .btn:hover {
+  background-color: var(--hover-color);
+}
+
+.back-to-top {
+  display: inline-block;
+  margin-top: 2rem;
+  background: #333;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.back-to-top:hover {
+  background: #444;
+  transform: translateY(-2px);
+}
+
+/* Dark Mode Overrides */
+@media (prefers-color-scheme: dark) {
+  .about-page {
+    background: var(--background-color-dark);
+    color: var(--text-color-dark);
+  }
+  .about-photo {
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+  }
+  .back-to-top {
+    background: var(--button-bg-dark);
+    color: var(--text-color-dark);
+  }
+  .back-to-top:hover {
+    background: var(--button-hover-bg-dark);
   }
 }

@@ -2,32 +2,66 @@
 layout: default
 ---
 
-<section class="about-page container">
+<section class="about-page container" aria-label="About Blake Oxford" id="top">
+  <!-- Anchor Link Navigation -->
+  <nav class="anchor-links" aria-label="Page Sections">
+    <ul>
+      <li><a href="#about-background">Background</a></li>
+      <li><a href="#about-skills">Key Skills</a></li>
+      <li><a href="#about-timeline">Career Highlights</a></li>
+      <li><a href="#about-social">Connect</a></li>
+    </ul>
+  </nav>
+
   <h1>{{ page.title }}</h1>
-  <div class="about-content">
-    <img src="/assets/images/Blake-O-scaled.jpg" alt="Blake Oxford" class="about-photo">
+
+  <!-- Introduction -->
+  <p class="intro">
+    I’m Blake Oxford, a visionary IT leader who turns business challenges into growth opportunities through innovative technology solutions.
+  </p>
+
+  <!-- Background / Professional Summary -->
+  <div class="about-content" id="about-background">
+    <img src="/assets/images/Blake-O-scaled.jpg" alt="Blake Oxford, a professional IT leader" class="about-photo">
     <div class="about-text">
+      <h2>Professional Summary</h2>
+      <p>
+        I’ve led digital transformations that scaled organizations from 12 to 180 employees, contributing to an 8x revenue increase while keeping administrative costs low through AI-driven automation. I’ve saved over $250K annually by consolidating systems and automating workflows, and implemented tools like Sage Intacct, ADP Workforce Now, and Power BI to modernize operations across multiple locations.
+      </p>
+
+      <h3>Background Highlights</h3>
       {{ content }}
     </div>
   </div>
-  <div class="about-skills">
+
+  <!-- Key Skills Section -->
+  <div class="about-skills" id="about-skills" aria-label="Key Skills">
     <h2>Key Skills</h2>
-    <ul>
-      <li>Digital Transformation</li>
+    <ul role="list">
+      <li>Enterprise Systems Implementation</li>
       <li>Cloud-Based SaaS Solutions</li>
+      <li>Business Process Automation</li>
       <li>Financial Systems Optimization</li>
       <li>AI and Automation</li>
+      <li>IT Infrastructure & Cloud Computing</li>
+      <li>SQL Database Development & Data Analytics</li>
+      <li>Financial Planning & Reporting</li>
     </ul>
   </div>
-  <div class="about-timeline">
+
+  <!-- Career Highlights Section -->
+  <div class="about-timeline" id="about-timeline" aria-label="Career Highlights">
     <h2>Career Highlights</h2>
-    <ul>
-      <li><strong>2018-2024:</strong> IT Director at XYZ Corp – Led digital transformation initiatives.</li>
-      <li><strong>2014-2018:</strong> Business Systems Manager at ABC Inc – Implemented scalable IT solutions.</li>
+    <ul role="list">
+      <li><strong>2018-2024:</strong> Director of Special Projects at The Oxford Center – Led digital transformation initiatives, scaled the organization from 12 to 180 employees, and implemented enterprise systems like AdvancedMD and Sage Intacct.</li>
+      <li><strong>2014-2018:</strong> Marketing and Finance Manager – Implemented scalable IT solutions and optimized financial workflows.</li>
     </ul>
   </div>
-  <div class="about-social">
-    <p>Connect with me:</p>
+
+  <!-- Social Links Section -->
+  <div class="about-social" id="about-social" aria-label="Social Links">
+    <h2>Connect</h2>
+    <p>Feel free to reach out on:</p>
     <a href="https://linkedin.com/in/blake-oxford" target="_blank" rel="noopener" aria-label="Visit Blake Oxford's LinkedIn">
       LinkedIn
     </a> |
@@ -35,9 +69,19 @@ layout: default
       GitHub
     </a>
   </div>
-  <div class="about-cta">
-    <a href="/assets/files/BlakeOxford_Resume.pdf" class="btn" aria-label="Download Blake Oxford's Resume">Download Resume</a>
+
+  <!-- Quick Contact Action -->
+  <div class="connect-cta">
+    <a href="/contact.md" class="btn" aria-label="Let's Connect">Ready to scale your business? Let’s connect!</a>
   </div>
+
+  <!-- Call to Action -->
+  <div class="about-cta">
+    <a href="/assets/files/BlakeOxford_Resume.pdf" class="btn" aria-label="Download Blake Oxford's Resume">
+      Download Resume
+    </a>
+  </div>
+
   <a href="#top" class="back-to-top" aria-label="Back to Top">↑ Back to Top</a>
 </section>
 
@@ -55,10 +99,26 @@ layout: default
     "https://github.com/blakeox"
   ],
   "knowsAbout": [
-    "Digital Transformation",
+    "Enterprise Systems Implementation",
     "Cloud-Based SaaS Solutions",
+    "Business Process Automation",
     "Financial Systems Optimization",
-    "AI and Automation"
+    "AI and Automation",
+    "IT Infrastructure & Cloud Computing",
+    "SQL Database Development & Data Analytics",
+    "Financial Planning & Reporting"
   ]
 }
+</script>
+
+<!-- Smooth Scrolling JavaScript -->
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
 </script>
