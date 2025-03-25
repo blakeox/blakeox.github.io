@@ -4,20 +4,36 @@ layout: default
 
 <section class="projects-list container">
   <h1>{{ page.title | replace: '&', '&amp;' }}</h1>
+  <!-- Add a short intro paragraph -->
+  <p class="projects-intro">
+    Explore a curated collection of projects showcasing key skills in process automation, 
+    finance, and more. Use the filters to narrow your interests.
+  </p>
 
-  <!-- Filtering Dropdown -->
-  <div class="filter-dropdown-container">
-    <label for="filter-dropdown">Filter projects:</label>
-    {% comment %}
-      Join all tags using commas so multi-word tags are preserved.
-    {% endcomment %}
-    {% assign all_tags = site.projects | map: "tags" | join: "," | split: "," | uniq %}
-    <select id="filter-dropdown" aria-label="Filter projects by tag">
-      <option value="all">All</option>
-      {% for tag in all_tags %}
-        <option value="{{ tag | downcase | replace: ' ', '-' }}">{{ tag | capitalize }}</option>
-      {% endfor %}
-    </select>
+  <!-- Filtering Controls -->
+  <div class="filter-controls">
+    <div class="filter-dropdown-container">
+      <label for="filter-dropdown">Filter projects:</label>
+      {% comment %}
+        Join all tags using commas so multi-word tags are preserved.
+      {% endcomment %}
+      {% assign all_tags = site.projects | map: "tags" | join: "," | split: "," | uniq %}
+      <select id="filter-dropdown" aria-label="Filter projects by tag">
+        <option value="all">All</option>
+        {% for tag in all_tags %}
+          <option value="{{ tag | downcase | replace: ' ', '-' }}">{{ tag | capitalize }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <!-- Sort By Dropdown -->
+    <div class="sort-dropdown-container">
+      <label for="sort-dropdown">Sort by:</label>
+      <select id="sort-dropdown">
+        <option value="title-asc">Title (A–Z)</option>
+        <option value="title-desc">Title (Z–A)</option>
+      </select>
+    </div>
   </div>
 
   <!-- Search Input -->
@@ -26,7 +42,7 @@ layout: default
   </div>
 
   <!-- Project Grid -->
-  <div class="project-grid">
+  <div class="project-grid" id="project-grid">
     {% comment %}
       Use paginator.projects if available; otherwise, fall back to site.projects.
     {% endcomment %}
@@ -64,6 +80,16 @@ layout: default
     {% endif %}
   </div>
 
+  <!-- No results placeholder -->
+  <div id="no-results" class="hidden">
+    <p>No matching projects found.</p>
+  </div>
+
+  <!-- “Load More” Button -->
+  <div class="load-more-container">
+    <button id="load-more-btn" class="btn">Load More</button>
+  </div>
+
   <!-- Pagination (if available) -->
   {% if paginator and paginator.total_pages > 1 %}
     <nav class="pagination">
@@ -84,3 +110,122 @@ layout: default
 
 <!-- Include the filtering script -->
 <script src="/assets/js/filter.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const dropdown = document.querySelector('#filter-dropdown');
+  const searchInput = document.querySelector('#search-input');
+  const projectItems = document.querySelectorAll('.project-item');
+  const noResults = document.querySelector('#no-results');
+  const sortDropdown = document.querySelector('#sort-dropdown');
+  const loadMoreBtn = document.querySelector('#load-more-btn');
+
+  let debounceTimer;
+  let itemsPerPage = 6; // For "Load More" functionality
+
+  // Restore user filters on load
+  const savedTag = localStorage.getItem('filterTag');
+  const savedQuery = localStorage.getItem('filterQuery');
+  if (dropdown && savedTag) dropdown.value = savedTag;
+  if (searchInput && savedQuery) searchInput.value = savedQuery;
+
+  /**
+   * Highlights text only in a given element (e.g., the <p> description),
+   * so we avoid replacing the heading anchor markup.
+   */
+  function highlightTextInEl(el, query) {
+    // If no element or no query, just restore the original text
+    if (!el) return;
+    const originalText = el.dataset.originalText || el.textContent;
+    el.dataset.originalText = originalText;
+    if (!query) {
+      el.innerHTML = originalText;
+      return;
+    }
+    // Replace matched text with <mark> tags
+    const regex = new RegExp(`(${query})`, 'gi');
+    el.innerHTML = originalText.replace(regex, '<mark>$1</mark>');
+  }
+
+  function filterProjects() {
+    const selectedTag = dropdown?.value || 'all';
+    const query = (searchInput?.value || '').toLowerCase();
+
+    // Save filter preferences
+    localStorage.setItem('filterTag', selectedTag);
+    localStorage.setItem('filterQuery', query);
+
+    let visibleCount = 0;
+
+    projectItems.forEach(item => {
+      const itemText = item.textContent.toLowerCase();
+      const itemTags = item.dataset.tags || '';
+
+      const matchesTag = (selectedTag === 'all' || itemTags.includes(selectedTag));
+      const matchesQuery = itemText.includes(query);
+
+      // Highlight text in the <p> description only
+      const descriptionEl = item.querySelector('p'); 
+      highlightTextInEl(descriptionEl, query);
+
+      if (matchesTag && matchesQuery) {
+        item.classList.remove('hidden');
+        visibleCount++;
+      } else {
+        item.classList.add('hidden');
+      }
+    });
+
+    // Show or hide "no results" message
+    if (noResults) {
+      noResults.classList.toggle('hidden', visibleCount !== 0);
+    }
+  }
+
+  // Debounce helper so we don't filter on every keystroke
+  function debounceFilterProjects() {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(filterProjects, 300);
+  }
+
+  dropdown?.addEventListener('change', filterProjects);
+  searchInput?.addEventListener('input', debounceFilterProjects);
+
+  // Run once on load
+  filterProjects();
+
+  // Sort by title example
+  sortDropdown?.addEventListener('change', () => {
+    filterProjects(); // first apply any active filter
+    const projectGrid = document.querySelector('#project-grid');
+    const itemsArray = [...projectGrid.querySelectorAll('.project-item:not(.hidden)')];
+    const sortValue = sortDropdown.value;
+
+    itemsArray.sort((a, b) => {
+      const titleA = a.querySelector('h3')?.textContent.trim().toLowerCase() || '';
+      const titleB = b.querySelector('h3')?.textContent.trim().toLowerCase() || '';
+      if (sortValue === 'title-asc') return titleA.localeCompare(titleB);
+      if (sortValue === 'title-desc') return titleB.localeCompare(titleA);
+      return 0;
+    });
+
+    itemsArray.forEach(item => projectGrid.appendChild(item));
+  });
+
+  // Load More button logic
+  function showLimitedItems() {
+    const allItems = document.querySelectorAll('.project-item');
+    allItems.forEach((item, index) => {
+      // Hide items beyond itemsPerPage
+      item.classList.toggle('hidden', index >= itemsPerPage);
+    });
+  }
+  showLimitedItems();
+
+  loadMoreBtn?.addEventListener('click', () => {
+    itemsPerPage += 6; // Increase how many items are shown
+    showLimitedItems();
+    filterProjects();
+  });
+});
+</script>
