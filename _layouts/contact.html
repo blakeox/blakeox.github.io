@@ -23,39 +23,19 @@ layout: default
   </div>
 
   <h2>Or Send Me a Message</h2>
-  <form id="contact-form" action="https://formspree.io/f/yourFormID" method="POST" class="contact-form">
-    <fieldset>
-      <legend>Contact Form</legend>
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" name="name" id="name" placeholder="Your Full Name" required aria-describedby="name-help">
-        <small id="name-help" class="form-text">Please enter your full name.</small>
-        <small class="error-message" id="name-error" style="display:none; color:red;">Name is required.</small>
-      </div>
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" name="_replyto" id="email" placeholder="Your Email Address" required aria-describedby="email-help">
-        <small id="email-help" class="form-text">We’ll never share your email with anyone else.</small>
-        <small class="error-message" id="email-error" style="display:none; color:red;">Please enter a valid email address.</small>
-      </div>
-      <div class="form-group">
-        <label for="message">Message</label>
-        <textarea name="message" id="message" rows="5" placeholder="Your Message" required></textarea>
-        <small class="error-message" id="message-error" style="display:none; color:red;">Message is required.</small>
-      </div>
-      <!-- Honeypot Field -->
-      <div style="display:none;">
-        <label for="honeypot">Leave this field empty</label>
-        <input type="text" name="honeypot" id="honeypot">
-      </div>
-      <div style="display:none;">
-        <label for="hidden_field">Leave this field empty</label>
-        <input type="text" name="hidden_field" id="hidden_field" tabindex="-1" autocomplete="off">
-      </div>
-      <button class="btn" type="submit" aria-label="Send your message to Blake Oxford">Send Message</button>
-    </fieldset>
-  </form>
-
-  <!-- Success/Error Message Container -->
-  <div id="form-messages" class="form-messages" aria-live="polite"></div>
+  <div class="form-container">
+    <iframe 
+      width="640px" 
+      height="480px" 
+      src="https://forms.office.com/r/VM1YEqhx1m?embed=true" 
+      frameborder="0" 
+      marginwidth="0" 
+      marginheight="0" 
+      style="border: none; max-width:100%; max-height:100vh" 
+      allowfullscreen 
+      webkitallowfullscreen 
+      mozallowfullscreen 
+      msallowfullscreen>
+    </iframe>
+  </div>
 </section>
