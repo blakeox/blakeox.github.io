@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8"> <!-- Specifies the character encoding -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures responsive design -->
-    <meta name="description" content="Welcome to Blake Oxford's portfolio. Explore projects, blog posts, and learn more about IT and business transformation.">
+    <meta charset="UTF-8"> <!-- Determines character encoding -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Enables responsive design -->
+    <meta name="description" content="Welcome to Blake Oxford's portfolio. Explore projects, blog posts, and discover how IT and business transformation drive success.">
     <link rel="canonical" href="{{ site.url | default: site.github.url | absolute_url }}">
     <meta property="og:title" content="{{ site.title }} - Home">
-    <meta property="og:description" content="Welcome to Blake Oxford's portfolio. Explore projects, blog posts, and learn more about IT and business transformation.">
+    <meta property="og:description" content="Welcome to Blake Oxford's portfolio. Explore projects, blog posts, and discover transformative business solutions.">
     <meta property="og:image" content="/assets/images/Blake-O-scaled.jpg">
     <meta property="og:url" content="{{ site.url | default: site.github.url | absolute_url }}">
     <meta name="twitter:card" content="summary_large_image">
@@ -14,8 +14,21 @@
     {% include head.html %}
     <link rel="preload" href="/assets/images/Blake-O-scaled.jpg" as="image">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-
-    <!-- Basic JSON-LD Structured Data for SEO -->
+    
+    <!-- Home Page JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "url": "{{ site.url | default: site.github.url | absolute_url }}",
+      "name": "{{ site.title }}",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "{{ site.url | default: site.github.url | absolute_url }}/search/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
     <script type="application/ld+json">
     {
       "@context": "http://schema.org",
@@ -45,26 +58,26 @@
   <body class="home-page">
     <!-- Skip link for improved keyboard navigation -->
     <a href="#main-content" class="skip-link" aria-label="Skip to main content">Skip to main content</a>
-
+    
     <header>
       {% include nav.html %}
     </header>
-
-    <!-- Hero Section -->
+    
+    <!-- Hero Section with fade-in animation -->
     <main id="main-content" aria-label="Main Content">
-      <section class="hero">
+      <section class="hero" role="banner">
         <div class="hero-content">
           <figure class="hero-figure">
-            <!-- Lazy-load the hero image for performance -->
-            <img src="/assets/images/Blake-O-scaled.jpg" alt="Blake Oxford" loading="lazy">
+            <!-- Lazy-loading with width/height defined to prevent layout shifts -->
+            <img src="/assets/images/Blake-O-scaled.jpg" alt="Blake Oxford" loading="lazy" width="800" height="400">
           </figure>
-          <h1>Welcome to My Portfolio</h1>
-          <p>Hi, I'm <strong>Blake Oxford</strong>, a leader in IT and business transformation. I specialize in bridging the gap between technology and strategy to drive efficiency and scale operations.</p>
-          <a href="/about/" class="btn" aria-label="Learn more about Blake Oxford">Learn More About Me</a>
+          <h1 class="fade-in">Welcome to My Portfolio</h1>
+          <p class="fade-in">Hi, I'm <strong>Blake Oxford</strong>, a leader in IT and business transformation. I specialize in bridging the gap between technology and strategy to drive efficiency and scale operations.</p>
+          <a href="/about/" class="btn fade-in" aria-label="Learn more about Blake Oxford">Learn More About Me</a>
         </div>
       </section>
-
-      <!-- Featured Projects -->
+      
+      <!-- Featured Projects Section -->
       <section class="featured-projects container" aria-live="polite">
         <h2>Featured Projects</h2>
         {% if site.projects.size > 0 %}
@@ -86,13 +99,13 @@
               </div>
             {% endfor %}
           </div>
-          <a href="/projects/" class="btn secondary" aria-label="View Blake Oxford's projects">View My Projects</a>
+          <a href="/projects/" class="btn secondary" aria-label="View all projects">View My Projects</a>
         {% else %}
           <p>No projects available at the moment. Please check back later!</p>
         {% endif %}
       </section>
-
-      <!-- Latest Blog Posts -->
+      
+      <!-- Latest Blog Posts Section -->
       <section class="latest-blog-posts container">
         <h2>Latest Blog Posts</h2>
         {% if site.posts.size > 0 %}
@@ -109,7 +122,7 @@
           <p>No blog posts available at the moment. Please check back later!</p>
         {% endif %}
       </section>
-
+      
       <!-- Call-to-Action Section -->
       <section class="call-to-action container">
         <h2>Want to Work Together?</h2>
@@ -117,7 +130,10 @@
         <a href="/contact/" class="btn" aria-label="Contact Blake Oxford">Contact Me</a>
       </section>
     </main>
-
+    
+    <!-- Back-to-Top Link -->
+    <a href="#top" class="back-to-top" aria-label="Back to Top">↑</a>
+    
     <footer>
       {% include footer.html %}
     </footer>

@@ -10,7 +10,7 @@ layout: default
 
   {% if page.image %}
     <div class="project-image">
-      <img src="{{ page.image | relative_url }}" alt="{{ page.title | escape }}">
+      <img src="{{ page.image | relative_url }}" alt="{{ page.title | escape }}" loading="lazy" width="800" height="400">
     </div>
   {% endif %}
 
@@ -37,28 +37,35 @@ layout: default
 
   <p>
     <strong>Tags:</strong>
-    {% for tag in page.tags %}
-      <a href="/projects/?filter={{ tag | downcase | replace: ' ', '-' }}" class="tag" aria-label="Filter projects by {{ tag }}">
-        {{ tag }}
-      </a>
-    {% endfor %}
+    <ul class="tag-list" role="list">
+      {% for tag in page.tags %}
+        <li>
+          <a href="/projects/?filter={{ tag | downcase | replace: ' ', '-' }}" class="tag" aria-label="Filter projects by {{ tag }}">
+            {{ tag }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </p>
+
+  <p>
+    <button onclick="window.print()" class="btn" aria-label="Print this project">Print Project</button>
   </p>
 
   <!-- Social Sharing Buttons -->
   <div class="social-sharing">
     <p>Share this project:</p>
     <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ page.url | absolute_url }}" target="_blank" rel="noopener" aria-label="Share on Twitter">
-      Twitter
-    </a> |
+      <img src="/assets/images/twitter-icon.png" alt="Twitter Icon">
+    </a>
     <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | absolute_url }}&title={{ page.title | url_encode }}" target="_blank" rel="noopener" aria-label="Share on LinkedIn">
-      LinkedIn
-    </a> |
+      <img src="/assets/images/linkedin-icon.png" alt="LinkedIn Icon">
+    </a>
     <a href="mailto:?subject={{ page.title | url_encode }}&body=Check out this project: {{ page.url | absolute_url }}" target="_blank" rel="noopener" aria-label="Share via Email">
-      Email
-    </a> |
-    <!-- Additional share option -->
+      <img src="/assets/images/email-icon.png" alt="Email Icon">
+    </a>
     <a href="https://facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" target="_blank" rel="noopener" aria-label="Share on Facebook">
-      Facebook
+      <img src="/assets/images/facebook-icon.png" alt="Facebook Icon">
     </a>
   </div>
 
@@ -66,17 +73,37 @@ layout: default
   <section class="related-projects mt-1">
     <h2>Related Projects</h2>
     <ul>
-      <li><a href="/projects/advancedmd_implementation" aria-label="View AdvancedMD Implementation">AdvancedMD Integration</a></li>
-      <li><a href="/projects/adp_workforcenow" aria-label="View ADP WorkforceNow Setup">ADP WorkforceNow Setup</a></li>
+      {% assign related_projects = site.projects | where_exp: "item", "item.tags contains page.tags[0]" | where: "title", page.title | limit: 3 %}
+      {% for project in related_projects %}
+        <li>
+          <a href="{{ project.url | relative_url }}" aria-label="View {{ project.title }}">
+            {{ project.title }}
+          </a>
+        </li>
+      {% endfor %}
     </ul>
   </section>
 
-  <!-- Back to Projects Button -->
-  <p>
-    <a href="{{ '/projects/' | relative_url }}" class="btn" aria-label="Back to Projects">
-      Back to Projects
-    </a>
-  </p>
+  <!-- Back to Projects & Pagination -->
+  <div class="project-navigation" aria-label="Project Navigation">
+    <p>
+      <a href="{{ '/projects/' | relative_url }}" class="btn" aria-label="Back to Projects">
+        Back to Projects
+      </a>
+    </p>
+    <nav class="project-pagination" aria-label="Project Pagination">
+      {% if page.previous %}
+        <a href="{{ page.previous.url | relative_url }}" class="btn" aria-label="Previous Project: {{ page.previous.title }}">
+          ← Previous Project
+        </a>
+      {% endif %}
+      {% if page.next %}
+        <a href="{{ page.next.url | relative_url }}" class="btn" aria-label="Next Project: {{ page.next.title }}">
+          Next Project →
+        </a>
+      {% endif %}
+    </nav>
+  </div>
 </article>
 
 <!-- Structured Data for SEO -->
@@ -88,6 +115,19 @@ layout: default
   "description": "{{ page.description }}",
   "image": "{{ page.image | absolute_url }}",
   "url": "{{ page.url | absolute_url }}",
-  "datePublished": "{{ page.date | date_to_xmlschema }}"
+  "datePublished": "{{ page.date | date_to_xmlschema }}",
+  "about": [
+    {% for tag in page.tags %}
+    {
+      "@type": "Thing",
+      "name": "{{ tag }}"
+    }{% if forloop.last == false %},{% endif %}
+    {% endfor %}
+  ],
+  "isPartOf": {
+    "@type": "CreativeWorkSeries",
+    "name": "Projects",
+    "url": "{{ '/projects/' | absolute_url }}"
+  }
 }
 </script>

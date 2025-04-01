@@ -459,11 +459,15 @@ a:focus, button:focus {
     border-radius: 8px; /* Rounded corners */
     padding: 1.5rem; /* Add padding inside the card */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
 }
 .project-item:hover {
-    transform: translateY(-5px); /* Lift effect on hover */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+    transform: translateY(-8px); /* Lift effect on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+.project-item.hidden {
+    opacity: 0;
+    transform: translateY(20px);
 }
 .project-item img {
     width: 100%; /* Ensure image fills the card width */
@@ -1542,4 +1546,23 @@ img.invert-on-dark {
   .hero p {
     font-size: 1rem;
   }
+}
+
+/* Spinner for loading more items */
+.load-more-container .spinner {
+  display: inline-block;
+  margin-left: 1rem;
+  border: 3px solid rgba(0,0,0,0.1);
+  border-top: 3px solid var(--primary-color);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+}
+.spinner.hidden {
+  display: none;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
