@@ -1,5 +1,7 @@
 ---
 layout: default
+title: "About Me"
+permalink: /about/
 ---
 
 <meta name="description" content="Learn about Blake Oxford, a visionary leader in IT and business transformation. Explore key skills, career highlights, and connect with Blake.">
@@ -11,99 +13,96 @@ layout: default
     <img src="/assets/images/Blake-O-scaled.jpg" alt="Blake Oxford" class="hero-photo" loading="lazy">
     <div class="hero-text">
       <h1>{{ page.title }}</h1>
-      <p class="intro">Hi there! I’m Blake Oxford, a technology leader passionate about bridging IT and business strategy.</p>
-      <a href="/contact.md" class="btn" aria-label="Connect with Blake">Let’s Connect</a>
+      <p class="intro">Hi there! I’m Blake Oxford, a technology leader passionate about bridging IT and business strategy to drive innovation, growth, and lasting impact.</p>
+      <a href="/contact/" class="btn" aria-label="Connect with Blake">Let’s Connect</a>
     </div>
   </div>
 
-  <!-- Anchor Link Navigation -->
+  <!-- Anchor Navigation -->
   <nav class="anchor-links" aria-label="Page Sections">
     <ul>
-      <li><a href="#about-background">Background</a></li>
+      <li><a href="#about-summary">Summary</a></li>
       <li><a href="#about-skills">Key Skills</a></li>
       <li><a href="#about-timeline">Career Highlights</a></li>
       <li><a href="#about-social">Connect</a></li>
     </ul>
   </nav>
 
-  <!-- Background / Professional Summary -->
-  <div class="about-content" id="about-background">
-    <div class="about-text">
-      <h2>Professional Summary</h2>
-      <p>
-        Visionary leader in IT and business transformation with a proven track record of scaling organizations, 
-        optimizing systems, and leveraging technology to drive operational efficiency. Adept at aligning executive 
-        strategy with digital solutions to enhance performance and scalability. Skilled in enterprise software 
-        selection, business process automation, and team leadership, with achievements including $250K+ in annual 
-        savings, growing teams from 12 to 180 employees, and enabling 8x revenue growth.
-      </p>
-      <h3>Background Highlights</h3>
-      {{ content }}
-    </div>
-  </div>
+  <!-- Professional Summary -->
+  <section class="about-section" id="about-summary">
+    <h2>Professional Summary</h2>
+    <p>I am a visionary leader with a proven track record of scaling organizations, optimizing financial systems, and leveraging technology to streamline operations and maximize business outcomes.</p>
 
-  <!-- Key Skills Section -->
-  <div class="about-skills" id="about-skills" aria-label="Key Skills">
+    <div class="key-achievements">
+      <h3>Key Achievements</h3>
+      <ul>
+        <li>✅ Scaled an organization from 12 to 180 employees with an 8x revenue increase.</li>
+        <li>💰 Saved over $250K annually through business process automation and consolidation.</li>
+        <li>☁️ Implemented multi-location IT systems and cloud-based SaaS tools for scalability.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section class="about-section" id="about-skills">
     <h2>Key Skills</h2>
-    <ul role="list">
-      <li>Enterprise Systems Implementation (AdvancedMD, Sage Intacct, ADP, QuickBooks, MS Fabric)</li>
-      <li>Business Process Automation & AI Integration</li>
-      <li>IT Infrastructure & Cloud Computing (Azure, Intune)</li>
-      <li>SQL Database Development & Data Analytics (Power BI, Python)</li>
-      <li>Financial Planning & Reporting (P&L, Cash Flow Forecasting)</li>
-      <li>Team Leadership & Stakeholder Collaboration</li>
+    <ul class="tag-list">
+      <li class="tag">Enterprise Systems (AdvancedMD, Sage Intacct, ADP)</li>
+      <li class="tag">AI & Business Process Automation</li>
+      <li class="tag">IT Infrastructure & Azure Cloud</li>
+      <li class="tag">SQL, Power BI, Python</li>
+      <li class="tag">Financial Reporting & Forecasting</li>
+      <li class="tag">Team Leadership & Strategy</li>
     </ul>
-  </div>
+  </section>
 
-  <!-- Career Highlights Section -->
-  <div class="about-timeline" id="about-timeline" aria-label="Career Highlights">
+  <!-- Career Timeline -->
+  <section class="about-section timeline" id="about-timeline">
     <h2>Career Highlights</h2>
-    <ul role="list">
-      <li><strong>2018-2024:</strong> Director of Special Projects at The Oxford Center –
-        Led digital transformation initiatives, scaled the organization from 12 to 180 employees, and 
-        implemented enterprise systems like AdvancedMD and Sage Intacct.
-      </li>
-      <li><strong>2014-2018:</strong> Marketing and Finance Manager –
-        Implemented scalable IT solutions and optimized financial workflows.
-      </li>
-    </ul>
-  </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2018–2024</div>
+      <div class="timeline-content">
+        <strong>Director of Special Projects, The Oxford Center</strong>
+        <p>Led enterprise system integration, scaled company-wide operations, and drove digital transformation across departments.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2014–2018</div>
+      <div class="timeline-content">
+        <strong>Marketing & Finance Manager</strong>
+        <p>Executed IT modernization strategies and championed financial optimization initiatives that improved cash flow and reporting accuracy.</p>
+      </div>
+    </div>
+  </section>
 
-  <!-- Additional Resume Details -->
-  <div class="extra-resume-details">
+  <!-- Resume Summary -->
+  <section class="about-section resume-summary">
     <h2>Resume Highlights</h2>
-    <ul role="list">
-      <li><strong>Scaled Organization:</strong> Grew team from 12 to 180 employees with minimal admin hires through automation.</li>
-      <li><strong>Financial Savings:</strong> $250K+ yearly savings by consolidating and automating business systems.</li>
-      <li><strong>Enterprise Systems:</strong> AdvancedMD, Sage Intacct, ADP Workforce Now, QuickBooks, MS Fabric, Microsoft Azure.</li>
+    <ul>
+      <li><strong>Scaled Organization:</strong> From 12 to 180 employees while minimizing overhead through automation.</li>
+      <li><strong>Operational Savings:</strong> $250K+ in annual savings via streamlined processes and systems.</li>
+      <li><strong>Enterprise Platforms:</strong> AdvancedMD, Sage Intacct, ADP, QuickBooks, Azure, Intune, Power BI.</li>
     </ul>
-  </div>
+  </section>
 
-  <!-- Social Links -->
-  <div class="about-social" id="about-social" aria-label="Social Links">
+  <!-- Social Media -->
+  <section class="about-section about-social" id="about-social">
     <h2>Connect</h2>
-    <p>Feel free to reach out on:</p>
-    <a href="https://linkedin.com/in/blake-oxford" target="_blank" rel="noopener" aria-label="Visit Blake Oxford's LinkedIn">
-      LinkedIn
-    </a> |
-    <a href="https://github.com/blakeox" target="_blank" rel="noopener" aria-label="Visit Blake Oxford's GitHub">
-      GitHub
-    </a>
-  </div>
+    <p>Let’s stay in touch. You can find me on:</p>
+    <a href="https://linkedin.com/in/blake-oxford" target="_blank" rel="noopener">🔗 LinkedIn</a> |
+    <a href="https://github.com/blakeox" target="_blank" rel="noopener">💻 GitHub</a>
+  </section>
 
-  <!-- Secondary CTAs -->
+  <!-- CTAs -->
   <div class="about-cta-group">
-    <div class="connect-cta">
-      <a href="/contact.md" class="btn" aria-label="Connect with Blake">Ready to scale your business? Let’s connect!</a>
-    </div>
-    <div class="about-cta">
-      <a href="/assets/files/BlakeOxford_Resume.pdf" class="btn secondary" aria-label="Download Blake Oxford's Resume">Download Resume</a>
-    </div>
+    <a href="/contact/" class="btn" aria-label="Contact Blake">🚀 Ready to scale your business? Let’s talk!</a>
+    <a href="/assets/files/BlakeOxford_Resume.pdf" class="btn secondary" aria-label="Download Resume">📄 Download Resume</a>
   </div>
 
   <a href="#top" class="back-to-top" aria-label="Back to Top">↑ Back to Top</a>
 </section>
 
+<!-- Structured Data for SEO -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -116,26 +115,6 @@ layout: default
   "sameAs": [
     "https://linkedin.com/in/blake-oxford",
     "https://github.com/blakeox"
-  ],
-  "knowsAbout": [
-    "Enterprise Systems Implementation",
-    "Business Process Automation",
-    "IT Infrastructure & Cloud Computing",
-    "SQL Database Development & Data Analytics",
-    "Financial Planning & Reporting",
-    "Team Leadership & Stakeholder Collaboration"
   ]
 }
-</script>
-
-<!-- Smooth Scrolling -->
-<script>
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
-        behavior: 'smooth'
-      });
-    });
-  });
 </script>
