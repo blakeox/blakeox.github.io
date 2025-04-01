@@ -14,12 +14,9 @@ layout: default
   <div class="filter-controls">
     <div class="filter-dropdown-container">
       <label for="filter-dropdown">Filter projects:</label>
-      {% comment %}
-        Join all tags using commas so multi-word tags are preserved.
-      {% endcomment %}
-      {% assign all_tags = site.projects | map: "tags" | join: "," | split: "," | uniq %}
-      <select id="filter-dropdown" aria-label="Filter projects by tag">
+      <select id="filter-dropdown" class="btn secondary" aria-label="Filter projects by tag">
         <option value="all">All</option>
+        {% assign all_tags = site.projects | map: "tags" | join: "," | split: "," | uniq %}
         {% for tag in all_tags %}
           <option value="{{ tag | downcase | replace: ' ', '-' }}">{{ tag | capitalize }}</option>
         {% endfor %}
@@ -29,7 +26,7 @@ layout: default
     <!-- Sort By Dropdown -->
     <div class="sort-dropdown-container">
       <label for="sort-dropdown">Sort by:</label>
-      <select id="sort-dropdown">
+      <select id="sort-dropdown" class="btn secondary">
         <option value="title-asc">Title (A–Z)</option>
         <option value="title-desc">Title (Z–A)</option>
       </select>
@@ -38,14 +35,11 @@ layout: default
 
   <!-- Search Input -->
   <div class="search-input-container">
-    <input type="text" id="search-input" placeholder="Search projects..." aria-label="Search projects">
+    <input type="text" id="search-input" class="btn secondary" placeholder="Search projects..." aria-label="Search projects">
   </div>
 
   <!-- Project Grid -->
   <div class="project-grid" id="project-grid">
-    {% comment %}
-      Use paginator.projects if available; otherwise, fall back to site.projects.
-    {% endcomment %}
     {% assign projects_list = paginator.projects | default: site.projects %}
     {% if projects_list and projects_list.size > 0 %}
       {% for project in projects_list %}
@@ -87,7 +81,7 @@ layout: default
 
   <!-- “Load More” Button with Spinner -->
   <div class="load-more-container">
-    <button id="load-more-btn" class="btn">Load More</button>
+    <button id="load-more-btn" class="btn" aria-label="Load more projects">Load More</button>
     <span id="load-more-spinner" class="spinner hidden"></span>
   </div>
 
@@ -96,12 +90,12 @@ layout: default
     <nav class="pagination">
       <p>Page {{ paginator.page }} of {{ paginator.total_pages }}</p>
       {% if paginator.previous_page %}
-        <a href="{{ paginator.previous_page_path | relative_url }}" class="btn" aria-label="Go to previous page">
+        <a href="{{ paginator.previous_page_path | relative_url }}" class="btn secondary" aria-label="Go to previous page">
           Previous
         </a>
       {% endif %}
       {% if paginator.next_page %}
-        <a href="{{ paginator.next_page_path | relative_url }}" class="btn" aria-label="Go to next page">
+        <a href="{{ paginator.next_page_path | relative_url }}" class="btn secondary" aria-label="Go to next page">
           Next
         </a>
       {% endif %}

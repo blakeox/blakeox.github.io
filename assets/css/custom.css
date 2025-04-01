@@ -429,6 +429,16 @@ a:focus, button:focus {
   color: #fff;
 }
 
+.btn.secondary {
+    background: transparent;
+    color: #4dc8aa; /* Primary color */
+    border: 1px solid #4dc8aa; /* Outline button */
+    padding: 0.75rem 1.5rem;
+    text-align: center;
+    transition: background 0.2s ease, color 0.2s ease;
+    margin-top: 2rem; /* Add spacing above the button */
+}
+
 /* Footer */
 .footer-container {
     text-align: center;
@@ -449,21 +459,22 @@ a:focus, button:focus {
 /* Project Grid & Items */
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjust card width */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid layout */
     gap: 1.5rem; /* Add spacing between cards */
-    margin-top: 2rem;
+    margin-top: 2rem; /* Add spacing above the grid */
 }
 .project-item {
-    background: #1e1e1e; /* Dark background for dark mode */
-    border: 1px solid #333; /* Subtle border for separation */
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    justify-content: flex-start; /* Align items at the top */
+    background: var(--background-color); /* Light mode background */
+    border: 1px solid #ddd; /* Light border */
     border-radius: 8px; /* Rounded corners */
-    padding: 1.5rem; /* Add padding inside the card */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
-}
-.project-item:hover {
-    transform: translateY(-8px); /* Lift effect on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+    padding: 1.5rem; /* Add padding */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    color: #333; /* Darker text for better readability */
+    height: 100%; /* Ensure consistent height for all cards */
 }
 .project-item.hidden {
     opacity: 0;
@@ -471,29 +482,37 @@ a:focus, button:focus {
 }
 .project-item img {
     width: 100%; /* Ensure image fills the card width */
-    height: auto; /* Maintain aspect ratio */
+    height: 200px; /* Set a consistent height for all images */
+    object-fit: cover; /* Crop the image to fit the container */
     border-radius: 4px; /* Slight rounding for images */
     margin-bottom: 1rem; /* Space between image and content */
 }
 .project-item h3 {
-    font-size: 1.25rem; /* Slightly larger title */
-    margin-bottom: 0.5rem;
-    color: #90caf9; /* Light blue for dark mode */
+    margin-top: 0.5rem;
+    margin-bottom: 1rem; /* Add spacing below the title */
+    font-size: 1.25rem;
+    text-align: center; /* Optional: Center-align the title */
+    min-height: 3rem; /* Ensure consistent vertical space for titles */
+    display: flex;
+    align-items: center; /* Vertically center the text */
+    justify-content: center; /* Horizontally center the text */
 }
 .project-item h3 a {
     text-decoration: none; /* Remove underline */
+    color: var(--primary-color); /* Use primary color for the title */
+    transition: color 0.3s ease;
 }
 .project-item h3 a:hover {
-    text-decoration: underline; /* Add underline on hover */
+    color: var(--hover-color); /* Change color on hover */
 }
 .project-item p {
-    font-size: 1rem; /* Consistent font size */
-    color: #ccc; /* Light gray for readability */
-    margin-bottom: 1rem;
+    flex-grow: 1; /* Allow the description to take up remaining space */
+    margin-bottom: 1rem; /* Add spacing below the description */
+    text-align: center; /* Optional: Center-align the description */
 }
 .project-item .btn {
     display: inline-block;
-    background: #4dc8aa; /* Primary color */
+    background: var(--primary-color); /* Primary color */
     color: #fff; /* White text */
     padding: 0.75rem 1.5rem;
     text-decoration: none;
@@ -501,6 +520,8 @@ a:focus, button:focus {
     font-size: 1rem;
     text-align: center;
     transition: background 0.2s ease, transform 0.2s ease;
+    margin-top: auto; /* Push the button to the bottom */
+    align-self: center; /* Center-align the button */
 }
 .project-item .btn:hover {
     background: #3ba88a; /* Darker green on hover */
@@ -513,10 +534,7 @@ a:focus, button:focus {
     padding: 0.75rem 1.5rem;
     text-align: center;
     transition: background 0.2s ease, color 0.2s ease;
-}
-.btn.secondary:hover {
-    background: #4dc8aa; /* Fill background on hover */
-    color: #fff; /* White text on hover */
+    margin-top: 2rem; /* Add spacing above the button */
 }
 
 /* Responsive Adjustments */
@@ -1565,4 +1583,60 @@ img.invert-on-dark {
 
 @keyframes spin {
   to { transform: rotate(360deg); }
+}
+
+/* Base Button Styles */
+.btn {
+    display: inline-block;
+    background: var(--primary-color); /* Primary color */
+    color: #fff; /* White text */
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    text-align: center;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background: var(--hover-color); /* Hover color */
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.btn:focus {
+    outline: 2px solid var(--accent-color); /* Focus outline */
+    outline-offset: 2px;
+}
+
+/* Secondary Button Styles */
+.btn.secondary {
+    background: transparent;
+    color: var(--primary-color); /* Primary color for text */
+    border: 1px solid var(--primary-color); /* Outline button */
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.btn.secondary:hover {
+    background: var(--primary-color); /* Fill background on hover */
+    color: #fff; /* White text on hover */
+}
+
+/* Disabled Button Styles */
+.btn:disabled {
+    background: #ccc; /* Gray background */
+    color: #666; /* Gray text */
+    cursor: not-allowed;
+    transform: none; /* No lift effect */
+}
+
+/* Utility Classes for Button Alignment */
+.btn-container {
+    text-align: center; /* Center-align buttons */
+    margin-top: 2rem; /* Add spacing above */
+}
+
+/* Ensure spacing between the project grid and the "View My Projects" button */
+.project-grid + .btn-container {
+    margin-top: 2rem; /* Add spacing above the button */
+    text-align: center; /* Center-align the button */
 }

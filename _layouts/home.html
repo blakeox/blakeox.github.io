@@ -63,7 +63,7 @@
       {% include nav.html %}
     </header>
     
-    <!-- Hero Section with fade-in animation -->
+    <!-- Hero Section -->
     <main id="main-content" aria-label="Main Content">
       <section class="hero" role="banner">
         <div class="hero-content">
@@ -99,7 +99,9 @@
               </div>
             {% endfor %}
           </div>
-          <a href="/projects/" class="btn secondary" aria-label="View all projects">View My Projects</a>
+          <div class="btn-container">
+            <a href="/projects/" class="btn secondary" aria-label="View all projects">View My Projects</a>
+          </div>
         {% else %}
           <p>No projects available at the moment. Please check back later!</p>
         {% endif %}
