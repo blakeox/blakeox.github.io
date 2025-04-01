@@ -449,46 +449,70 @@ a:focus, button:focus {
 /* Project Grid & Items */
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjust card width */
+    gap: 1.5rem; /* Add spacing between cards */
     margin-top: 2rem;
 }
 .project-item {
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 1rem;
-    transition: box-shadow 0.2s ease, transform 0.1s ease;
+    background: #1e1e1e; /* Dark background for dark mode */
+    border: 1px solid #333; /* Subtle border for separation */
+    border-radius: 8px; /* Rounded corners */
+    padding: 1.5rem; /* Add padding inside the card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .project-item:hover {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transform: translateY(-2px);
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
 }
 .project-item img {
-    max-width: 100%;
-    border-radius: 4px;
-    margin-bottom: 0.5rem;
+    width: 100%; /* Ensure image fills the card width */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 4px; /* Slight rounding for images */
+    margin-bottom: 1rem; /* Space between image and content */
 }
 .project-item h3 {
-    margin-top: 0;
+    font-size: 1.25rem; /* Slightly larger title */
+    margin-bottom: 0.5rem;
+    color: #90caf9; /* Light blue for dark mode */
 }
-.tag {
-    background: var(--primary-color);
-    color: #fff;
-    padding: 0.2rem 0.5rem;
-    border-radius: 3px;
-    font-size: 0.8rem;
-    margin-right: 0.3rem;
+.project-item h3 a {
+    text-decoration: none; /* Remove underline */
 }
-
-.project-item {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+.project-item h3 a:hover {
+    text-decoration: underline; /* Add underline on hover */
 }
-.project-item.visible {
-  opacity: 1;
-  transform: translateY(0);
+.project-item p {
+    font-size: 1rem; /* Consistent font size */
+    color: #ccc; /* Light gray for readability */
+    margin-bottom: 1rem;
+}
+.project-item .btn {
+    display: inline-block;
+    background: #4dc8aa; /* Primary color */
+    color: #fff; /* White text */
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    text-align: center;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+.project-item .btn:hover {
+    background: #3ba88a; /* Darker green on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+.btn.secondary {
+    background: transparent;
+    color: #4dc8aa; /* Primary color */
+    border: 1px solid #4dc8aa; /* Outline button */
+    padding: 0.75rem 1.5rem;
+    text-align: center;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+.btn.secondary:hover {
+    background: #4dc8aa; /* Fill background on hover */
+    color: #fff; /* White text on hover */
 }
 
 /* Responsive Adjustments */
