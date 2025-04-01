@@ -6,6 +6,16 @@ layout: default
 <meta property="og:description" content="Learn about Blake Oxford, a visionary leader in IT and business transformation. Explore key skills, career highlights, and connect with Blake.">
 
 <section class="about-page container" aria-label="About Blake Oxford" id="top">
+  <!-- Hero / Introduction -->
+  <div class="hero-banner">
+    <img src="/assets/images/Blake-O-scaled.jpg" alt="Blake Oxford" class="hero-photo" loading="lazy">
+    <div class="hero-text">
+      <h1>{{ page.title }}</h1>
+      <p class="intro">Hi there! I’m Blake Oxford, a technology leader passionate about bridging IT and business strategy.</p>
+      <a href="/contact.md" class="btn" aria-label="Connect with Blake">Let’s Connect</a>
+    </div>
+  </div>
+
   <!-- Anchor Link Navigation -->
   <nav class="anchor-links" aria-label="Page Sections">
     <ul>
@@ -16,16 +26,8 @@ layout: default
     </ul>
   </nav>
 
-  <h1>{{ page.title }}</h1>
-
-  <!-- Introduction -->
-  <p class="intro">
-    Hi there! I’m Blake Oxford, a technology leader passionate about bridging IT and business strategy.
-  </p>
-
   <!-- Background / Professional Summary -->
   <div class="about-content" id="about-background">
-    <img src="/assets/images/Blake-O-scaled.jpg" alt="Blake Oxford, IT and Business Transformation Leader" class="about-photo" loading="lazy">
     <div class="about-text">
       <h2>Professional Summary</h2>
       <p>
@@ -35,7 +37,6 @@ layout: default
         selection, business process automation, and team leadership, with achievements including $250K+ in annual 
         savings, growing teams from 12 to 180 employees, and enabling 8x revenue growth.
       </p>
-
       <h3>Background Highlights</h3>
       {{ content }}
     </div>
@@ -59,8 +60,8 @@ layout: default
     <h2>Career Highlights</h2>
     <ul role="list">
       <li><strong>2018-2024:</strong> Director of Special Projects at The Oxford Center –
-        Led digital transformation initiatives, scaled the organization from 12 to 180 employees, 
-        and implemented enterprise systems like AdvancedMD and Sage Intacct.
+        Led digital transformation initiatives, scaled the organization from 12 to 180 employees, and 
+        implemented enterprise systems like AdvancedMD and Sage Intacct.
       </li>
       <li><strong>2014-2018:</strong> Marketing and Finance Manager –
         Implemented scalable IT solutions and optimized financial workflows.
@@ -68,7 +69,7 @@ layout: default
     </ul>
   </div>
 
-  <!-- (Optional) Additional Resume Details -->
+  <!-- Additional Resume Details -->
   <div class="extra-resume-details">
     <h2>Resume Highlights</h2>
     <ul role="list">
@@ -78,7 +79,7 @@ layout: default
     </ul>
   </div>
 
-  <!-- Social Links Section -->
+  <!-- Social Links -->
   <div class="about-social" id="about-social" aria-label="Social Links">
     <h2>Connect</h2>
     <p>Feel free to reach out on:</p>
@@ -90,16 +91,14 @@ layout: default
     </a>
   </div>
 
-  <!-- Quick Contact Action -->
-  <div class="connect-cta">
-    <a href="/contact.md" class="btn" aria-label="Let's Connect">Ready to scale your business? Let’s connect!</a>
-  </div>
-
-  <!-- Call to Action -->
-  <div class="about-cta">
-    <a href="/assets/files/BlakeOxford_Resume.pdf" class="btn" aria-label="Download Blake Oxford's Resume">
-      Download Resume
-    </a>
+  <!-- Secondary CTAs -->
+  <div class="about-cta-group">
+    <div class="connect-cta">
+      <a href="/contact.md" class="btn" aria-label="Connect with Blake">Ready to scale your business? Let’s connect!</a>
+    </div>
+    <div class="about-cta">
+      <a href="/assets/files/BlakeOxford_Resume.pdf" class="btn secondary" aria-label="Download Blake Oxford's Resume">Download Resume</a>
+    </div>
   </div>
 
   <a href="#top" class="back-to-top" aria-label="Back to Top">↑ Back to Top</a>

@@ -1640,3 +1640,37 @@ img.invert-on-dark {
     margin-top: 2rem; /* Add spacing above the button */
     text-align: center; /* Center-align the button */
 }
+
+/* Increase spacing around sections */
+.about-page section,
+.about-page .about-content,
+.about-page .about-skills,
+.about-page .about-timeline {
+  margin-bottom: 2rem;
+}
+
+/* Make images responsive */
+.about-photo {
+  width: 100%;
+  height: auto;
+  max-width: 400px; /* Limit image width on large screens */
+  display: block;
+  margin: 0 auto 1.5rem auto;
+}
+
+/* Basic responsive media query */
+@media (max-width: 768px) {
+  .about-content {
+    display: block; /* Stack image and text vertically on smaller screens */
+  }
+  .about-text {
+    margin-top: 1rem;
+  }
+}
+
+.hero-photo {
+  max-width: 250px; /* Limit width */
+  height: auto;     /* Maintain aspect ratio */
+  object-fit: cover; 
+  border-radius: 8px; /* Optional: slightly rounded corners */
+}
