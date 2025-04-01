@@ -3,8 +3,17 @@
   <head>
     <meta charset="UTF-8"> <!-- Specifies the character encoding -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures responsive design -->
+    <meta name="description" content="Welcome to Blake Oxford's portfolio. Explore projects, blog posts, and learn more about IT and business transformation.">
+    <link rel="canonical" href="{{ site.url | default: site.github.url | absolute_url }}">
+    <meta property="og:title" content="{{ site.title }} - Home">
+    <meta property="og:description" content="Welcome to Blake Oxford's portfolio. Explore projects, blog posts, and learn more about IT and business transformation.">
+    <meta property="og:image" content="/assets/images/Blake-O-scaled.jpg">
+    <meta property="og:url" content="{{ site.url | default: site.github.url | absolute_url }}">
+    <meta name="twitter:card" content="summary_large_image">
     <title>{{ site.title }} - Home</title> <!-- Adds a title for navigation -->
     {% include head.html %}
+    <link rel="preload" href="/assets/images/Blake-O-scaled.jpg" as="image">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
     <!-- Basic JSON-LD Structured Data for SEO -->
     <script type="application/ld+json">
@@ -14,6 +23,22 @@
       "name": "Blake Oxford",
       "url": "{{ site.url | default: site.github.url | absolute_url }}",
       "description": "Leader in IT and business transformation bridging technology and strategy."
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "ItemList",
+      "itemListElement": [
+        {% for project in site.projects limit:3 %}
+        {
+          "@type": "ListItem",
+          "position": {{ forloop.index }},
+          "url": "{{ project.url | absolute_url }}",
+          "name": "{{ project.title }}"
+        }{% if forloop.last == false %},{% endif %}
+        {% endfor %}
+      ]
     }
     </script>
   </head>
@@ -26,7 +51,7 @@
     </header>
 
     <!-- Hero Section -->
-    <main id="main-content">
+    <main id="main-content" aria-label="Main Content">
       <section class="hero">
         <div class="hero-content">
           <figure class="hero-figure">
@@ -40,38 +65,47 @@
       </section>
 
       <!-- Featured Projects -->
-      <section class="featured-projects container">
+      <section class="featured-projects container" aria-live="polite">
         <h2>Featured Projects</h2>
-        <div class="project-grid">
-          {% for project in site.projects limit:3 %}
-            <div class="project-item">
-              {% if project.image %}
-                <img src="{{ project.image | relative_url }}" alt="{{ project.title }}" loading="lazy" class="invert-on-dark">
-              {% endif %}
-              <h3>
-                <a href="{{ project.url | relative_url }}" aria-label="View details about {{ project.title }}">
-                  {{ project.title }}
-                </a>
-              </h3>
-              <p>{{ project.description }}</p>
-              <a href="{{ project.link }}" class="btn" target="_blank" rel="noopener" aria-label="View {{ project.title }} project">View Project</a>
-            </div>
-          {% endfor %}
-        </div>
+        {% if site.projects.size > 0 %}
+          <div class="project-grid">
+            {% for project in site.projects limit:3 %}
+              <div class="project-item">
+                {% if project.image %}
+                  <img src="{{ project.image | relative_url }}" alt="{{ project.title }}" loading="lazy" class="invert-on-dark">
+                {% endif %}
+                <h3>
+                  <a href="{{ project.url | relative_url }}" aria-label="View details about {{ project.title }}">
+                    {{ project.title }}
+                  </a>
+                </h3>
+                <p>{{ project.description }}</p>
+                <a href="{{ project.link }}" class="btn" target="_blank" rel="noopener" aria-label="View {{ project.title }} project">View Project</a>
+              </div>
+            {% endfor %}
+          </div>
+          <a href="/projects/" class="btn secondary" aria-label="View Blake Oxford's projects">View My Projects</a>
+        {% else %}
+          <p>No projects available at the moment. Please check back later!</p>
+        {% endif %}
       </section>
 
       <!-- Latest Blog Posts -->
       <section class="latest-blog-posts container">
         <h2>Latest Blog Posts</h2>
-        <ul>
-          {%- for post in site.posts limit:3 -%}
-            <li>
-              <a href="{{ post.url | relative_url }}" aria-label="Read {{ post.title }}">{{ post.title }}</a>
-              <small>{{ post.date | date: "%B %d, %Y" }}</small>
-            </li>
-          {%- endfor -%}
-        </ul>
-        <a href="/blog/" class="btn" aria-label="View all blog posts">View All Blog Posts</a>
+        {% if site.posts.size > 0 %}
+          <ul>
+            {%- for post in site.posts limit:3 -%}
+              <li>
+                <a href="{{ post.url | relative_url }}" aria-label="Read {{ post.title }}">{{ post.title }}</a>
+                <small>{{ post.date | date: "%B %d, %Y" }}</small>
+              </li>
+            {%- endfor -%}
+          </ul>
+          <a href="/blog/" class="btn" aria-label="View all blog posts">View All Blog Posts</a>
+        {% else %}
+          <p>No blog posts available at the moment. Please check back later!</p>
+        {% endif %}
       </section>
 
       <!-- Call-to-Action Section -->
@@ -86,6 +120,6 @@
       {% include footer.html %}
     </footer>
     
-    <script src="/assets/js/nav.js"></script>
+    <script src="/assets/js/nav.js" defer></script>
   </body>
 </html>

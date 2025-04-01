@@ -1,12 +1,16 @@
 // filepath: /sw.js
-const cacheName = 'blake-portfolio-v2'; // Increment version for updates
+const cacheName = 'blake-portfolio-v3'; // Increment version for updates
 const assetsToCache = [
-    '/',
-    '/index.md',
-    '/assets/css/custom.css',
-    '/assets/js/filter.js',
-    '/assets/images/Blake-O-scaled.jpg',
-    // Add additional assets as needed
+  '/',
+  '/index.md',
+  '/offline.html', // Ensure offline fallback page is cached
+  '/assets/css/custom.css',
+  '/assets/js/filter.js',
+  '/assets/js/nav.js',
+  '/assets/images/Blake-O-scaled.jpg',
+  '/assets/images/favicon.png',
+  '/assets/images/icon-192x192.png',
+  '/assets/images/icon-512x512.png',
 ];
 
 // Install event: Cache assets
@@ -25,7 +29,8 @@ self.addEventListener('activate', e => {
       return Promise.all(
         cacheNames.map(name => {
           if (name !== cacheName) {
-            return caches.delete(name); // Delete old caches
+            console.log(`Deleting old cache: ${name}`);
+            return caches.delete(name);
           }
         })
       );
@@ -35,32 +40,20 @@ self.addEventListener('activate', e => {
 
 // Fetch event: Serve cached assets, fallback to network
 self.addEventListener('fetch', e => {
-  e.respondWith(
-    caches.match(e.request).then(response => {
-      return (
-        response ||
-        fetch(e.request).then(networkResponse => {
-          // Optionally cache new network responses
-          return caches.open(cacheName).then(cache => {
-            cache.put(e.request, networkResponse.clone());
-            return networkResponse;
-          });
-        })
-      );
-    }).catch(() => {
-      // Fallback for offline (optional)
-      if (e.request.destination === 'document') {
-        return caches.match('/offline.html'); // Add an offline.html page to your project
-      }
-    })
-  );
-});
+  if (e.request.method !== 'GET') return;
 
-// Add offline fallback
-self.addEventListener('fetch', e => {
   e.respondWith(
     caches.match(e.request).then(response => {
-      return response || fetch(e.request).catch(() => {
+      return response || fetch(e.request).then(networkResponse => {
+        if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic') {
+          return networkResponse;
+        }
+        const clonedResponse = networkResponse.clone();
+        caches.open(cacheName).then(cache => {
+          cache.put(e.request, clonedResponse);
+        });
+        return networkResponse;
+      }).catch(() => {
         if (e.request.destination === 'document') {
           return caches.match('/offline.html');
         }
