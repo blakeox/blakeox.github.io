@@ -66,62 +66,62 @@
     <!-- Hero Section -->
     <main id="main-content" aria-label="Main Content">
       {% include hero.html %}
-      
-      <!-- Featured Projects Section -->
-      <section class="featured-projects container" aria-live="polite">
-        <h2>Featured Projects</h2>
-        {% if site.projects.size > 0 %}
-          <div class="project-grid">
-            {% for project in site.projects limit:3 %}
-              <div class="project-item">
-                {% if project.image %}
-                  <img src="{{ project.image | relative_url }}" alt="{{ project.title }}" loading="lazy">
-                {% else %}
-                  <img src="/assets/images/default-project.png" alt="Default Project Image" loading="lazy">
-                {% endif %}
-                <h3>
-                  <a href="{{ project.url | relative_url }}" aria-label="View details about {{ project.title }}">
-                    {{ project.title }}
-                  </a>
-                </h3>
-                <p>{{ project.description }}</p>
-                <a href="{{ project.link }}" class="btn" target="_blank" rel="noopener" aria-label="View {{ project.title }} project">View Project</a>
-              </div>
-            {% endfor %}
-          </div>
-          <div class="btn-container">
-            <a href="/projects/" class="btn secondary" aria-label="View all projects">View My Projects</a>
-          </div>
-        {% else %}
-          <p>No projects available at the moment. Please check back later!</p>
-        {% endif %}
-      </section>
-      
-      <!-- Latest Blog Posts Section -->
-      <section class="latest-blog-posts container">
-        <h2>Latest Blog Posts</h2>
-        {% if site.posts.size > 0 %}
-          <ul>
-            {%- for post in site.posts limit:3 -%}
-              <li>
-                <a href="{{ post.url | relative_url }}" aria-label="Read {{ post.title }}">{{ post.title }}</a>
-                <small>{{ post.date | date: "%B %d, %Y" }}</small>
-              </li>
-            {%- endfor -%}
-          </ul>
-          <a href="/blog/" class="btn" aria-label="View all blog posts">View All Blog Posts</a>
-        {% else %}
-          <p>No blog posts available at the moment. Please check back later!</p>
-        {% endif %}
-      </section>
-      
-      <!-- Call-to-Action Section -->
-      <section class="call-to-action container">
-        <h2>Want to Work Together?</h2>
-        <p>I'm always open to exciting new opportunities and collaborations. Let's create something amazing together!</p>
-        <a href="/contact/" class="btn" aria-label="Contact Blake Oxford">Contact Me</a>
-      </section>
     </main>
+    
+    <!-- Featured Projects Section -->
+    <section class="featured-projects container" aria-live="polite">
+      <h2>Featured Projects</h2>
+      {% if site.projects.size > 0 %}
+        <div class="project-grid">
+          {% for project in site.projects limit:3 %}
+            <div class="project-item">
+              {% if project.image %}
+                <img src="{{ project.image | relative_url }}" alt="{{ project.title }}" loading="lazy">
+              {% else %}
+                <img src="/assets/images/default-project.png" alt="Default Project Image" loading="lazy">
+              {% endif %}
+              <h3>
+                <a href="{{ project.url | relative_url }}" aria-label="View details about {{ project.title }}">
+                  {{ project.title }}
+                </a>
+              </h3>
+              <p>{{ project.description }}</p>
+              <a href="{{ project.link }}" class="btn" target="_blank" rel="noopener" aria-label="View {{ project.title }} project">View Project</a>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="btn-container">
+          <a href="/projects/" class="btn secondary" aria-label="View all projects">View My Projects</a>
+        </div>
+      {% else %}
+        <p>No projects available at the moment. Please check back later!</p>
+      {% endif %}
+    </section>
+    
+    <!-- Latest Blog Posts Section -->
+    <section class="latest-blog-posts container">
+      <h2>Latest Blog Posts</h2>
+      {% if site.posts.size > 0 %}
+        <ul>
+          {%- for post in site.posts limit:3 -%}
+            <li>
+              <a href="{{ post.url | relative_url }}" aria-label="Read {{ post.title }}">{{ post.title }}</a>
+              <small>{{ post.date | date: "%B %d, %Y" }}</small>
+            </li>
+          {%- endfor -%}
+        </ul>
+        <a href="/blog/" class="btn" aria-label="View all blog posts">View All Blog Posts</a>
+      {% else %}
+        <p>No blog posts available at the moment. Please check back later!</p>
+      {% endif %}
+    </section>
+    
+    <!-- Call-to-Action Section -->
+    <section class="call-to-action container">
+      <h2>Want to Work Together?</h2>
+      <p>I'm always open to exciting new opportunities and collaborations. Let's create something amazing together!</p>
+      <a href="/contact/" class="btn" aria-label="Contact Blake Oxford">Contact Me</a>
+    </section>
     
     <!-- Back-to-Top Link -->
     <a href="#top" class="back-to-top" aria-label="Back to Top">↑</a>
@@ -131,5 +131,6 @@
     </footer>
     
     <script src="/assets/js/nav.js" defer></script>
+    <script src="/assets/js/scroll.js" defer></script>
   </body>
 </html>

@@ -4,13 +4,29 @@ layout: default
 
 <section class="blog-page container">
   <h1>{{ page.title }}</h1>
+
+  <!-- Blog Search Bar -->
+  <div class="blog-search">
+    <input type="text" id="blog-search-input" placeholder="Search blog posts..." aria-label="Search blog posts">
+  </div>
+
   <div class="blog-posts">
     {% for post in site.posts %}
-      <article class="blog-post">
-        <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+      <article class="blog-post scroll-animate" data-title="{{ post.title | downcase }}" data-excerpt="{{ post.excerpt | downcase }}">
+        <h2><a href="{{ post.url | relative_url }}" data-analytics="blog-read-more">{{ post.title }}</a></h2>
         <p>{{ post.excerpt }}</p>
-        <a href="{{ post.url | relative_url }}" class="btn">Read More</a>
+        <a href="{{ post.url | relative_url }}" class="btn" data-analytics="blog-read-more">Read More</a>
       </article>
     {% endfor %}
   </div>
+
+  <!-- No Results Placeholder -->
+  <div id="no-results" class="hidden">
+    <p>No matching blog posts found.</p>
+  </div>
 </section>
+
+<script src="/assets/js/scroll.js" defer></script>
+<script src="/assets/js/image-lazyload.js" defer></script>
+<script src="/assets/js/filter.js" defer></script>
+<script src="/assets/js/analytics.js" defer></script>
