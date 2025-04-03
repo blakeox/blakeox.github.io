@@ -4,9 +4,6 @@
   padding: $spacing-lg; // Use spacing variable from _spacing.scss
   max-width: 960px;
 
-  // Hero banner
-  @import "../components/hero";
-
   // Anchor links
   @import "../components/anchor-links";
 

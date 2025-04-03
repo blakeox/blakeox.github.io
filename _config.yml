@@ -6,11 +6,7 @@ permalink: pretty
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
-  - jekyll-paginate
-
-# Pagination Settings
-paginate: 6
-paginate_path: "/projects/page:num/"
+  - jekyll-paginate-v2
 
 # Define a collection for projects
 collections:
@@ -32,3 +28,11 @@ baseurl: "" # Replace with your subdirectory name or leave empty for root
 sass:
   sass_dir: _sass
   style: compressed # Optional: Use 'compressed' for minified CSS
+
+pagination:
+  enabled: true
+  per_page: 5
+  permalink: /page/:num/
+  title: ":title - Page :num"
+  sort_field: "date"
+  sort_reverse: true

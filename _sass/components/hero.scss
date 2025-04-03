@@ -172,11 +172,15 @@
   }
 
   .hero__figure {
-    width: 80%; // Reduce the figure width on smaller screens
+    width: 150px; // Keep a fixed width for the circular image
+    height: 150px; // Match height to width for a perfect circle
+    margin: 0 auto $spacing-md; // Center the image and add spacing below
   }
 
   .hero__image {
-    max-height: 200px; // Further limit the image height on smaller screens
+    width: 100%; // Ensure the image fills the container
+    height: 100%; // Ensure the image fills the container
+    object-fit: cover; // Maintain aspect ratio and crop if necessary
   }
 }
 
