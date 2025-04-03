@@ -53,9 +53,9 @@ layout: default
       {% for project in projects_list %}
         <div class="project-item" data-tags="{% for tag in project.tags %}{{ tag | downcase | replace: ' ', '-' }}{% if forloop.last == false %},{% endif %}{% endfor %}">
           {% if project.image %}
-            <img src="{{ project.image | relative_url }}" alt="{{ project.title | escape }}" loading="lazy">
+            <img data-src="{{ project.image | relative_url }}" alt="{{ project.title | escape }}" class="lazyload" loading="lazy">
           {% else %}
-            <img src="/assets/images/default-project.png" alt="Default Project Image">
+            <img data-src="/assets/images/default-project.png" alt="Default Project Image" class="lazyload" loading="lazy">
           {% endif %}
           <h3>
             <a href="{{ project.url | relative_url }}" aria-label="View details about {{ project.title }}">
@@ -110,7 +110,3 @@ layout: default
     </nav>
   {% endif %}
 </section>
-
-<!-- Include the filtering script -->
-<script src="/assets/js/filter.js"></script>
-<script src="/assets/js/projects-filter.js"></script>

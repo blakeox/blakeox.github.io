@@ -10,7 +10,7 @@ layout: default
 
   {% if page.image %}
     <div class="project-image">
-      <img src="{{ page.image | relative_url }}" alt="{{ page.title | escape }}" loading="lazy" width="800" height="400">
+      <img data-src="{{ page.image | relative_url }}" alt="{{ page.title | escape }}" class="lazyload" loading="lazy" width="800" height="400">
     </div>
   {% endif %}
 
@@ -55,16 +55,16 @@ layout: default
   <!-- Social Sharing Buttons -->
   <div class="social-sharing">
     <p>Share this project:</p>
-    <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ page.url | absolute_url }}" target="_blank" rel="noopener" class="btn secondary" aria-label="Share on Twitter">
+    <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ page.url | absolute_url }}" target="_blank" rel="noopener" class="btn secondary share-btn" data-platform="twitter" data-url="{{ page.url | absolute_url }}" data-title="{{ page.title }}" aria-label="Share on Twitter">
       <img src="/assets/images/twitter-icon.png" alt="Twitter Icon">
     </a>
-    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | absolute_url }}&title={{ page.title | url_encode }}" target="_blank" rel="noopener" class="btn secondary" aria-label="Share on LinkedIn">
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | absolute_url }}&title={{ page.title | url_encode }}" target="_blank" rel="noopener" class="btn secondary share-btn" data-platform="linkedin" data-url="{{ page.url | absolute_url }}" data-title="{{ page.title }}" aria-label="Share on LinkedIn">
       <img src="/assets/images/linkedin-icon.png" alt="LinkedIn Icon">
     </a>
-    <a href="mailto:?subject={{ page.title | url_encode }}&body=Check out this project: {{ page.url | absolute_url }}" target="_blank" rel="noopener" class="btn secondary" aria-label="Share via Email">
+    <a href="mailto:?subject={{ page.title | url_encode }}&body=Check out this project: {{ page.url | absolute_url }}" target="_blank" rel="noopener" class="btn secondary share-btn" data-platform="email" data-url="{{ page.url | absolute_url }}" data-title="{{ page.title }}" aria-label="Share via Email">
       <img src="/assets/images/email-icon.png" alt="Email Icon">
     </a>
-    <a href="https://facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" target="_blank" rel="noopener" class="btn secondary" aria-label="Share on Facebook">
+    <a href="https://facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" target="_blank" rel="noopener" class="btn secondary share-btn" data-platform="facebook" data-url="{{ page.url | absolute_url }}" data-title="{{ page.title }}" aria-label="Share on Facebook">
       <img src="/assets/images/facebook-icon.png" alt="Facebook Icon">
     </a>
   </div>
@@ -83,45 +83,6 @@ layout: default
       {% endfor %}
     </ul>
   </section>
-
-  <div class="project-item">
-    <img src="/assets/images/example-project.png" alt="Example Project">
-    <h3>
-      <a href="/projects/example-project/" aria-label="View details about Example Project">
-        Example Project
-      </a>
-    </h3>
-    <p>Short description of the project goes here.</p>
-    <a href="/projects/example-project/" class="btn" target="_blank" rel="noopener" aria-label="View Example Project">
-      View Project
-    </a>
-  </div>
-
-  <div class="project-item">
-    <img src="/assets/images/example-project.png" alt="Example Project">
-    <h3>
-      <a href="/projects/example-project/" aria-label="View details about Example Project">
-        Example Project
-      </a>
-    </h3>
-    <p>Short description of the project goes here.</p>
-    <a href="/projects/example-project/" class="btn" target="_blank" rel="noopener" aria-label="View Example Project">
-      View Project
-    </a>
-  </div>
-
-  <div class="project-item">
-    <img src="/assets/images/example-project.png" alt="Example Project">
-    <h3>
-      <a href="/projects/example-project/" aria-label="View details about Example Project">
-        Example Project
-      </a>
-    </h3>
-    <p>Short description of the project goes here.</p>
-    <a href="/projects/example-project/" class="btn" target="_blank" rel="noopener" aria-label="View Example Project">
-      View Project
-    </a>
-  </div>
 
   <!-- Back to Projects & Pagination -->
   <div class="project-navigation" aria-label="Project Navigation">
