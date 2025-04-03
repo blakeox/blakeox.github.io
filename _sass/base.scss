@@ -78,13 +78,6 @@ img {
 .p-2 { padding: $spacing-md; }
 .p-3 { padding: $spacing-lg; }
 
-// Containers
-.container {
-  max-width: $container-lg; // Use container width variable from _layout.scss
-  margin: 0 auto;
-  padding: 0 $spacing-md; // Use spacing variable from _spacing.scss
-}
-
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
