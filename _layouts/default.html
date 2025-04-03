@@ -1,29 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Ensure charset is specified -->
-    <meta charset="UTF-8">
-
-    <!-- Ensure viewport is specified for responsive design -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Ensure a title is included -->
-    <title>{{ page.title }} | {{ site.title }}</title>
-
-    <!-- Include additional head content -->
     {% include head.html %}
   </head>
   <body class="{{ page.body_class }}">
     <!-- Skip to Content Link -->
     <a href="#main-content" class="skip-to-content" aria-label="Skip to main content">Skip to main content</a>
 
-    <!-- Header with fresh white nav -->
+    <!-- Header -->
     <header class="site-header">
       {% include nav.html %}
     </header>
 
     <!-- Main Content -->
-    <main id="main-content" class="container">
+    <main id="main-content">
       {{ content }}
     </main>
 
@@ -40,7 +30,11 @@
       <p>JavaScript is disabled in your browser. Some features may not work as intended.</p>
     </noscript>
 
-    <script src="/assets/js/nav.js"></script>
-    <script src="/assets/js/contact.js"></script>
+    <!-- JavaScript Files -->
+    <script src="/assets/js/nav.js" defer></script>
+    <script src="/assets/js/scroll.js" defer></script>
+    <script src="/assets/js/image-lazyload.js" defer></script>
+    <script src="/assets/js/analytics.js" defer></script>
+    <script src="/assets/js/theme.js" defer></script>
   </body>
 </html>
