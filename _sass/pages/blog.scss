@@ -1,0 +1,15 @@
+// General styles for the blog page
+.blog-page {
+  margin: 0 auto;
+  padding: $spacing-lg; // Use spacing variable from _spacing.scss
+  max-width: 960px;
+
+  // Blog header
+  @import "../components/page-header";
+
+  // Blog list
+  @import "../components/blog-list";
+
+  // Pagination
+  @import "../components/pagination";
+}

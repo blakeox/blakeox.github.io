@@ -1,0 +1,33 @@
+.card {
+  background: $background-color;
+  border: 1px solid $color-secondary;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow-sm;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: $box-shadow-md;
+  }
+
+  .card-header {
+    padding: $spacing-md;
+    font-size: $font-size-md;
+    font-weight: bold;
+    background-color: $color-primary;
+    color: #fff;
+  }
+
+  .card-body {
+    padding: $spacing-md;
+    font-size: $font-size-sm;
+    color: $color-text;
+  }
+
+  .card-footer {
+    padding: $spacing-sm;
+    background-color: $color-secondary;
+    color: #fff;
+    text-align: center;
+  }
+}

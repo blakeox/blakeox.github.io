@@ -1,0 +1,14 @@
+.page-header {
+  text-align: center;
+  margin-bottom: $spacing-lg; // Use spacing variable from _spacing.scss
+
+  h1 {
+    font-size: $font-size-xl; // Use font size variable from _typography.scss
+    margin-bottom: $spacing-md; // Use spacing variable from _spacing.scss
+  }
+
+  p {
+    font-size: $font-size-md; // Use font size variable from _typography.scss
+    color: $color-text; // Use text color variable from _colors.scss
+  }
+}

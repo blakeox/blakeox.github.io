@@ -1,0 +1,15 @@
+.featured-projects {
+    margin-top: $spacing-lg;
+  
+    h2 {
+      font-size: $font-size-lg;
+      margin-bottom: $spacing-md;
+      text-align: center;
+    }
+  
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: $spacing-lg;
+    }
+  }

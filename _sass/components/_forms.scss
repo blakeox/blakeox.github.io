@@ -1,0 +1,31 @@
+.form-group {
+  margin-bottom: $spacing-md;
+
+  label {
+    display: block;
+    font-size: $font-size-sm;
+    font-weight: bold;
+    margin-bottom: $spacing-sm;
+  }
+
+  input,
+  textarea,
+  select {
+    width: 100%;
+    padding: $spacing-sm;
+    border: 1px solid $color-secondary;
+    border-radius: $border-radius;
+    font-size: $font-size-sm;
+    color: $color-text;
+
+    &:focus {
+      outline: none;
+      border-color: $color-primary;
+      box-shadow: 0 0 5px $color-primary;
+    }
+  }
+
+  textarea {
+    resize: vertical;
+  }
+}

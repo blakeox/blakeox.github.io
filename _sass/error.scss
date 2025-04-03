@@ -1,0 +1,31 @@
+/* Error Page Styles */
+.error-page {
+  text-align: center;
+  padding: $spacing-lg; // Use spacing variable from _spacing.scss
+
+  h1 {
+    font-size: $font-size-xl; // Use font size variable from _typography.scss
+    margin-bottom: $spacing-md; // Use spacing variable from _spacing.scss
+  }
+
+  p {
+    margin-bottom: $spacing-md; // Use spacing variable from _spacing.scss
+    font-size: $font-size-md; // Use font size variable from _typography.scss
+    color: $color-text; // Use text color variable from _colors.scss
+  }
+
+  ul {
+    list-style: disc;
+    margin: $spacing-md 0 $spacing-md $spacing-lg; // Use spacing variables from _spacing.scss
+  }
+
+  a {
+    color: $color-primary; // Use primary color variable from _colors.scss
+    text-decoration: underline;
+    transition: color $transition-duration-default ease; // Use transition variable from _transitions.scss
+
+    &:hover {
+      color: $color-primary-dark; // Use primary dark color variable from _colors.scss
+    }
+  }
+}

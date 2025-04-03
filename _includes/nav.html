@@ -1,18 +1,18 @@
 <nav class="navbar" aria-label="Main Navigation">
   <div class="nav-container">
     <a class="nav-logo" href="{{ '/' | relative_url }}" aria-label="Home">
-      <span class="logo-circle">B</span>
-      Blake Oxford Portfolio
+      <span class="logo-circle" aria-hidden="true">B</span>
+      <span class="visually-hidden">Blake Oxford Portfolio</span>
     </a>
-    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-      <span class="hamburger"></span>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" data-target=".nav-links">
+      <span class="hamburger-icon" aria-hidden="true"></span>
     </button>
     <ul class="nav-links">
-      <li><a href="{{ '/' | relative_url }}">Home</a></li>
-      <li><a href="{{ '/about/' | relative_url }}">About</a></li>
-      <li><a href="{{ '/projects/' | relative_url }}">Projects</a></li>
-      <li><a href="{{ '/blog/' | relative_url }}">Blog</a></li>
-      <li><a href="{{ '/contact/' | relative_url }}">Contact</a></li>
+      <li><a href="{{ '/' | relative_url }}" aria-current="{{ page.url == '/' ? 'page' : '' }}">Home</a></li>
+      <li><a href="{{ '/about/' | relative_url }}" aria-current="{{ page.url == '/about/' ? 'page' : '' }}">About</a></li>
+      <li><a href="{{ '/projects/' | relative_url }}" aria-current="{{ page.url == '/projects/' ? 'page' : '' }}">Projects</a></li>
+      <li><a href="{{ '/blog/' | relative_url }}" aria-current="{{ page.url == '/blog/' ? 'page' : '' }}">Blog</a></li>
+      <li><a href="{{ '/contact/' | relative_url }}" aria-current="{{ page.url == '/contact/' ? 'page' : '' }}">Contact</a></li>
     </ul>
   </div>
 </nav>

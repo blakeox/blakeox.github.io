@@ -1,0 +1,104 @@
+.navbar {
+  background-color: $background-color; // Use background color variable from _colors.scss
+  border-bottom: 1px solid $color-border-light; // Use border color variable from _colors.scss
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: $spacing-sm $spacing-md; // Use spacing variables from _spacing.scss
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+  &.scrolled {
+    background-color: $color-background-dark; // Use dark mode background color from _colors.scss
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .nav-container {
+    max-width: $container-lg; // Use container width variable from _layout.scss
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    font-size: $font-size-lg; // Use font size variable from _typography.scss
+    font-weight: $font-weight-bold; // Use font weight variable from _typography.scss
+    color: $color-text; // Use text color variable from _colors.scss
+    text-decoration: none;
+  }
+
+  .logo-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: $border-radius-circle; // Use border-radius variable from _radius.scss
+    border: 2px solid $color-text; // Use text color variable from _colors.scss
+    font-size: $font-size-md; // Use font size variable from _typography.scss
+    font-weight: $font-weight-bold; // Use font weight variable from _typography.scss
+    color: $color-text; // Use text color variable from _colors.scss
+    margin-right: $spacing-sm; // Use spacing variable from _spacing.scss
+  }
+
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: $font-size-lg; // Use font size variable from _typography.scss
+    cursor: pointer;
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: $spacing-md; // Use spacing variable from _spacing.scss
+
+    li a {
+      text-decoration: none;
+      font-weight: $font-weight-light; // Use font weight variable from _typography.scss
+      color: $color-text; // Use text color variable from _colors.scss
+      transition: color 0.2s ease;
+
+      &:hover,
+      &:focus {
+        color: $color-accent; // Use accent color variable from _colors.scss
+        text-decoration: underline;
+        outline: none;
+      }
+
+      &[aria-current="page"] {
+        font-weight: $font-weight-bold; // Use font weight variable from _typography.scss
+        color: $color-accent; // Use accent color variable from _colors.scss
+        border-bottom: 2px solid $color-accent; // Use accent color variable from _colors.scss
+      }
+    }
+  }
+
+  @media (max-width: $breakpoint-md) { // Use breakpoint variable from _breakpoints.scss
+    .nav-toggle {
+      display: block;
+    }
+
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: $background-color; // Use background color variable from _colors.scss
+      padding: $spacing-md; // Use spacing variable from _spacing.scss
+      gap: $spacing-sm; // Use spacing variable from _spacing.scss
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links.active {
+      display: flex;
+    }
+  }
+}

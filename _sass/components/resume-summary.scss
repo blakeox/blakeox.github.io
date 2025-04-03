@@ -1,0 +1,6 @@
+.resume-summary {
+  ul {
+    list-style: disc;
+    margin-left: $spacing-lg; // Use spacing variable from _spacing.scss
+  }
+}

@@ -1,0 +1,125 @@
+.project-detail {
+  margin: 0 auto;
+  padding: $spacing-lg; // Use spacing variable from _spacing.scss
+  max-width: 960px;
+
+  .breadcrumb {
+    margin-bottom: $spacing-md; // Use spacing variable from _spacing.scss
+    font-size: $font-size-sm; // Use font size variable from _typography.scss
+    color: $color-text; // Use text color variable from _colors.scss
+  }
+
+  h1 {
+    font-size: $font-size-xl; // Use font size variable from _typography.scss
+    margin-bottom: $spacing-md; // Use spacing variable from _spacing.scss
+    text-align: center;
+  }
+
+  .project-image {
+    margin: $spacing-md 0; // Use spacing variable from _spacing.scss
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: $border-radius; // Use border-radius variable from _radius.scss
+      box-shadow: $box-shadow-md; // Use shadow variable from _shadows.scss
+    }
+  }
+
+  .project-overview {
+    font-size: $font-size-md; // Use font size variable from _typography.scss
+    line-height: $line-height-base; // Use line-height variable from _typography.scss
+    color: $color-text; // Use text color variable from _colors.scss
+    margin-bottom: $spacing-lg; // Use spacing variable from _spacing.scss
+  }
+
+  .tag {
+    display: inline-block;
+    background: $color-primary; // Use primary color variable from _colors.scss
+    color: $color-white; // Use white color variable from _colors.scss
+    padding: $spacing-xs $spacing-sm; // Use spacing variables from _spacing.scss
+    border-radius: $border-radius-sm; // Use border-radius variable from _radius.scss
+    font-size: $font-size-xs; // Use font size variable from _typography.scss
+    margin-right: $spacing-sm; // Use spacing variable from _spacing.scss
+    text-decoration: none;
+    transition: background-color $transition-duration-default ease; // Use transition variable from _transitions.scss
+
+    &:hover {
+      background: $color-primary-dark; // Use primary dark color variable from _colors.scss
+    }
+  }
+
+  .project-body {
+    line-height: $line-height-base; // Use line-height variable from _typography.scss
+    font-size: $font-size-md; // Use font size variable from _typography.scss
+    color: $color-text; // Use text color variable from _colors.scss
+
+    img {
+      max-width: 100%;
+      height: auto;
+      margin: $spacing-md 0; // Use spacing variable from _spacing.scss
+      border-radius: $border-radius; // Use border-radius variable from _radius.scss
+    }
+
+    blockquote {
+      margin: $spacing-lg 0; // Use spacing variable from _spacing.scss
+      padding: $spacing-md; // Use spacing variable from _spacing.scss
+      background: $background-color-light; // Use background color variable from _colors.scss
+      border-left: 4px solid $color-primary; // Use primary color variable from _colors.scss
+      font-style: italic;
+    }
+  }
+
+  .project-navigation {
+    margin-top: $spacing-lg; // Use spacing variable from _spacing.scss
+    text-align: center;
+
+    .btn {
+      padding: $spacing-sm $spacing-md; // Use spacing variables from _spacing.scss
+      background-color: $color-primary; // Use primary color variable from _colors.scss
+      color: $color-white; // Use white color variable from _colors.scss
+      border: none;
+      border-radius: $border-radius-lg; // Use border-radius variable from _radius.scss
+      font-size: $font-size-md; // Use font size variable from _typography.scss
+      cursor: pointer;
+      transition: background-color $transition-duration-default ease; // Use transition variable from _transitions.scss
+
+      &:hover {
+        background-color: $color-primary-dark; // Use primary dark color variable from _colors.scss
+      }
+    }
+  }
+
+  .related-projects {
+    margin-top: $spacing-lg; // Use spacing variable from _spacing.scss
+
+    h2 {
+      font-size: $font-size-lg; // Use font size variable from _typography.scss
+      margin-bottom: $spacing-md; // Use spacing variable from _spacing.scss
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      gap: $spacing-md; // Use spacing variable from _spacing.scss
+      justify-content: center;
+
+      li {
+        a {
+          display: inline-block;
+          padding: $spacing-sm $spacing-md; // Use spacing variables from _spacing.scss
+          background: $color-secondary; // Use secondary color variable from _colors.scss
+          color: $color-white; // Use white color variable from _colors.scss
+          border-radius: $border-radius; // Use border-radius variable from _radius.scss
+          text-decoration: none;
+          transition: background-color $transition-duration-default ease; // Use transition variable from _transitions.scss
+
+          &:hover {
+            background: $color-primary; // Use primary color variable from _colors.scss
+          }
+        }
+      }
+    }
+  }
+}

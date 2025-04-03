@@ -28,3 +28,7 @@ sitemap:
 
 # Base URL for subdirectory hosting
 baseurl: "" # Replace with your subdirectory name or leave empty for root
+
+sass:
+  sass_dir: _sass
+  style: compressed # Optional: Use 'compressed' for minified CSS

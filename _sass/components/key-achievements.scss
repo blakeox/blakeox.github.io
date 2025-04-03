@@ -1,0 +1,23 @@
+.key-achievements {
+  margin-top: $spacing-lg; // Use spacing variable from _spacing.scss
+
+  h3 {
+    font-size: $font-size-lg; // Use font size variable from _typography.scss
+    margin-bottom: $spacing-md; // Use spacing variable from _spacing.scss
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      margin-bottom: $spacing-sm; // Use spacing variable from _spacing.scss
+      font-size: $font-size-md; // Use font size variable from _typography.scss
+
+      &::before {
+        content: '✅';
+        margin-right: $spacing-xs; // Use spacing variable from _spacing.scss
+      }
+    }
+  }
+}

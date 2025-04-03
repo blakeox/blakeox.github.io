@@ -1,0 +1,180 @@
+// Containers
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 $spacing-md; // Use spacing variable from _spacing.scss
+}
+
+.container-md {
+  max-width: $container-md; // Use container width variable from _layout.scss
+  margin: 0 auto;
+}
+
+.container-lg {
+  max-width: $container-lg; // Use container width variable from _layout.scss
+  margin: 0 auto;
+}
+
+.container-xl {
+  max-width: $container-xl; // Use container width variable from _layout.scss
+  margin: 0 auto;
+}
+
+// Grid System
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -$spacing-sm; // Use spacing variable from _spacing.scss
+  margin-left: -$spacing-sm; // Use spacing variable from _spacing.scss
+}
+
+.column {
+  flex: 1;
+  padding-right: $spacing-sm; // Use spacing variable from _spacing.scss
+  padding-left: $spacing-sm; // Use spacing variable from _spacing.scss
+}
+
+.one-third {
+  flex: 0 0 33.333%;
+}
+
+.two-thirds {
+  flex: 0 0 66.666%;
+}
+
+.one-fourth {
+  flex: 0 0 25%;
+}
+
+.one-half {
+  flex: 0 0 50%;
+}
+
+.three-fourths {
+  flex: 0 0 75%;
+}
+
+// Responsive Grid
+@media (max-width: $breakpoint-md) {
+  .row {
+    flex-direction: column;
+  }
+
+  .column {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+// Header
+.header {
+  background-color: $color-primary; // Use primary color variable from _colors.scss
+  color: $color-white; // Use white color variable from _colors.scss
+  padding: $spacing-md 0; // Use spacing variable from _spacing.scss
+
+  .header-container {
+    @extend .container;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-size: $font-size-lg; // Use font size variable from _typography.scss
+    font-weight: $font-weight-bold; // Use font weight variable from _typography.scss
+  }
+
+  .nav {
+    display: flex;
+    gap: $spacing-md; // Use spacing variable from _spacing.scss
+
+    a {
+      color: $color-white; // Use white color variable from _colors.scss
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// Footer
+.footer {
+  background-color: $color-secondary; // Use secondary color variable from _colors.scss
+  color: $color-white; // Use white color variable from _colors.scss
+  padding: $spacing-lg 0; // Use spacing variable from _spacing.scss
+
+  .footer-container {
+    @extend .container;
+    text-align: center;
+    padding: $spacing-md; // Use spacing variable from _spacing.scss
+    color: $color-text-secondary; // Use secondary text color variable from _colors.scss
+    background: $background-color-light; // Use background color variable from _colors.scss
+
+    p {
+      font-size: $font-size-sm; // Use font size variable from _typography.scss
+      margin-bottom: $spacing-sm; // Use spacing variable from _spacing.scss
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: $spacing-md; // Use spacing variable from _spacing.scss
+
+      a {
+        color: $color-white; // Use white color variable from _colors.scss
+
+        &:hover {
+          color: $color-primary; // Use primary color variable from _colors.scss
+        }
+      }
+    }
+  }
+}
+
+.footer-container a {
+  color: var(--color-primary); // Use CSS variable
+  text-decoration: none;
+}
+.footer-container a:hover {
+  text-decoration: underline;
+}
+
+// Utility Classes
+.full-width {
+  width: 100%;
+  max-width: none; // Remove any width constraints
+  margin: 0; // Remove centering
+  padding: 0; // Remove padding
+}
+
+.centered {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.some-class {
+  border: 1px solid $color-secondary; // Use secondary color variable from _colors.scss
+}
+
+// Utility class for full-width sections
+.full-width-section {
+  width: 100%;
+  margin: 0;
+  padding: var(--section-padding, 0);
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.debug {
+  outline: 1px solid red !important;
+}

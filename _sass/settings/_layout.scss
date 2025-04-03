@@ -1,0 +1,25 @@
+// Container Widths
+$container-sm: 540px;
+$container-md: 720px;
+$container-lg: 960px;
+$container-xl: 1140px;
+
+// Grid Gutter
+$grid-gutter-width: 30px;
+
+// Breakpoints
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+// Component Dimensions
+$hero-figure-width: 180px; // Default width for hero figure
+
+// Mixin for Containers
+@mixin container($max-width) {
+  width: 100%;
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0 $grid-gutter-width / 2;
+}

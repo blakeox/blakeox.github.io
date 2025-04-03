@@ -1,0 +1,15 @@
+// General styles for the home page
+.home-page {
+  margin: 0 auto;
+  padding: $spacing-lg; // Use spacing variable from _spacing.scss
+}
+
+// Keyframes for animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

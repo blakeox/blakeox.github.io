@@ -1,0 +1,18 @@
+.timeline {
+  .timeline-item {
+    display: flex;
+    gap: $spacing-md; // Use spacing variable from _spacing.scss
+    margin-bottom: $spacing-lg; // Use spacing variable from _spacing.scss
+  }
+
+  .timeline-year {
+    font-weight: $font-weight-bold; // Use font weight variable from _typography.scss
+    color: $color-primary; // Use primary color variable from _colors.scss
+  }
+
+  .timeline-content {
+    p {
+      margin: 0;
+    }
+  }
+}

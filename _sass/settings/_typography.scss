@@ -1,0 +1,38 @@
+// _sass/settings/_typography.scss
+
+// Font Families
+$font-family-base: 'Work Sans', 'Helvetica Neue', Arial, sans-serif; // Base font for body text
+$font-family-heading: 'Playfair Display', Georgia, serif; // Font for headings
+$font-family-monospace: 'Courier New', Courier, monospace; // Monospace font for code blocks
+
+// Font Sizes
+$font-size-base: 16px; // Base font size
+$font-size-xs: 0.8rem; // Extra small font size
+$font-size-sm: 1.125rem; // Small font size
+$font-size-md: 1.25rem; // Medium font size
+$font-size-lg: 1.5rem; // Large font size
+$font-size-xl: 2.5rem; // Extra large font size
+$font-size-xxl: 3rem; // Extra extra large font size
+
+// Line Heights
+$line-height-base: 1.6; // Default line height
+$line-height-heading: 1.2; // Line height for headings
+
+// Font Weights
+$font-weight-light: 300; // Light font weight
+$font-weight-normal: 400; // Normal font weight
+$font-weight-medium: 500; // Medium font weight
+$font-weight-semibold: 600; // Semi-bold font weight
+$font-weight-bold: 700; // Bold font weight
+$font-weight-black: 900; // Black font weight
+
+// Letter Spacing
+$letter-spacing-normal: 0; // Default letter spacing
+$letter-spacing-wide: 0.05em; // Wide letter spacing
+$letter-spacing-wider: 0.1em; // Wider letter spacing
+$letter-spacing-tight: -0.05em; // Tight letter spacing
+
+// Text Transformations
+$text-transform-uppercase: uppercase; // Uppercase text
+$text-transform-lowercase: lowercase; // Lowercase text
+$text-transform-capitalize: capitalize; // Capitalized text

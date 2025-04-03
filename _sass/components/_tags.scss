@@ -1,0 +1,15 @@
+.tag-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.tag-list .tag {
+  background: var(--color-primary);
+  color: $color-white; // Use variable
+  padding: 0.2rem 0.5rem;
+  border-radius: $border-radius-sm; // Use variable
+  font-size: $font-size-xs; // Use variable
+}

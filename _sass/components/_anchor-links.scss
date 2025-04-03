@@ -1,0 +1,25 @@
+.anchor-links {
+  margin: $spacing-lg 0; // Use spacing variable from _spacing.scss
+
+  ul {
+    display: flex;
+    justify-content: center;
+    gap: $spacing-lg; // Use spacing variable from _spacing.scss
+    list-style: none;
+    padding: $spacing-md 0; // Use spacing variable from _spacing.scss
+    border-top: 1px solid $color-border-light; // Use border color variable from _colors.scss
+    border-bottom: 1px solid $color-border-light; // Use border color variable from _colors.scss
+
+    li {
+      a {
+        text-decoration: none;
+        color: $color-primary; // Use primary color variable from _colors.scss
+        font-weight: $font-weight-medium; // Use font weight variable from _typography.scss
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,95 @@
+// _sass/settings/_colors.scss
+
+// Primary Colors
+$color-primary: #4DC8AA;
+$color-primary-dark: #3BAF92;
+$color-secondary: #6C757D;
+$color-accent: rgba(77, 200, 170, 0.8);
+$color-white: #ffffff;
+$color-black: #000;
+
+// Text Colors
+$color-text: #333; // Default text color
+$color-text-secondary: #555; // Muted text color
+$color-link: #4DC8AA; // Link color
+
+// Background Colors
+$background-color: #f9f9f9; // Light gray background color
+$background-color-secondary: #f4f4f4; // Secondary background color
+$background-color-highlight: #fffbea; // Highlighted background
+$background-color-light: #ffffff; // Light background color (e.g., white)
+
+// Neutral Colors
+$color-gray-light: #f1f1f1; // Light gray for backgrounds
+$color-gray-medium: #cccccc; // Medium gray for borders
+$color-gray-dark: #666666; // Dark gray for subtle text
+
+// Border Colors
+$color-border-light: $color-gray-light; // Light border color
+$color-border-medium: $color-gray-medium; // Medium border color
+$color-border-dark: $color-gray-dark; // Dark border color
+$color-border-primary: $color-primary; // Primary border color
+$color-border-secondary: $color-secondary; // Secondary border color
+
+// Alert Colors
+$color-success: #28a745; // Green for success messages
+$color-warning: #ffc107; // Yellow for warnings
+$color-error: #dc3545; // Red for errors
+
+// Hover and Active States
+$color-primary-hover: darken($color-primary, 10%);
+$color-secondary-hover: lighten($color-secondary, 10%);
+
+// Shadows or Overlays
+$color-overlay: rgba(0, 0, 0, 0.5); // Semi-transparent black for overlays
+
+// Opacity Variables
+$hero-overlay-opacity: 0.6; // Default opacity for hero section overlays
+
+// Dark Mode Colors
+$color-background-dark: #121212;
+$color-text-dark: #e0e0e0;
+$color-link-dark: #90caf9;
+$color-border-dark: #333;
+$color-button-bg-dark: #333;
+$color-button-hover-bg-dark: #444;
+$color-placeholder-dark: #888;
+
+// Semantic Colors
+$color-button-primary: $color-primary;
+$color-button-secondary: $color-secondary;
+$color-background-default: $background-color;
+$color-background-highlight: $background-color-highlight;
+$color-text-default: $color-text;
+$color-text-muted: $color-text-secondary;
+
+// Gradients
+$gradient-primary: linear-gradient(90deg, $color-primary, $color-primary-dark);
+$gradient-secondary: linear-gradient(90deg, $color-secondary, lighten($color-secondary, 10%));
+
+// Accessibility Colors
+$color-high-contrast-text: #000000; // Black for text
+$color-high-contrast-background: #ffffff; // White for backgrounds
+$color-high-contrast-link: #0056b3; // Dark blue for links
+
+// Transparent Variants
+$color-primary-transparent: rgba($color-primary, 0.1);
+$color-secondary-transparent: rgba($color-secondary, 0.1);
+$color-black-transparent: rgba(0, 0, 0, 0.5);
+$color-white-transparent: rgba(255, 255, 255, 0.8);
+
+// Color Palette Map
+$color-palette: (
+  primary: $color-primary,
+  primary-dark: $color-primary-dark,
+  secondary: $color-secondary,
+  accent: $color-accent,
+  white: $color-white,
+  black: $color-black,
+  text: $color-text,
+  text-secondary: $color-text-secondary,
+  link: $color-link,
+  success: $color-success,
+  warning: $color-warning,
+  error: $color-error
+);

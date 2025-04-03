@@ -1,0 +1,55 @@
+a.btn, button.btn {
+  display: inline-block;
+  background: var(--color-primary);
+  color: $color-white; // Use variable
+  padding: $btn-padding; // Use variable
+  text-decoration: none;
+  border-radius: $border-radius-sm; // Use variable
+}
+a.btn:hover, button.btn:hover {
+  background: var(--hover-color);
+  transform: translateY(-2px);
+}
+a.btn:focus, button.btn:focus {
+  outline: 2px solid var(--accent-color);
+}
+a:focus, button:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+.btn {
+  display: inline-block;
+  padding: $btn-padding; // Use variable
+  background-color: $color-primary;
+  color: $color-white; // Use variable
+  text-decoration: none;
+  border-radius: $border-radius; // Use variable
+  font-size: $font-size-sm;
+  text-align: center;
+  transition: background-color $transition-duration-default ease, transform $transition-duration-fast ease; // Use variables
+
+  &:hover {
+    background-color: $color-primary-dark;
+    transform: translateY(-2px);
+  }
+
+  &.secondary {
+    background: transparent;
+    color: $color-primary; // Use variable
+    border: 1px solid $color-primary; // Use variable
+    padding: $btn-padding; // Use variable
+    text-align: center;
+    transition: background $transition-duration-fast ease, color $transition-duration-fast ease; // Use variable
+    margin-top: $spacing-md; // Use variable
+
+    &:hover {
+      background-color: darken($color-secondary, 10%);
+    }
+  }
+
+  &.disabled {
+    background-color: lighten($color-primary, 30%);
+    pointer-events: none;
+    opacity: 0.6;
+  }
+}

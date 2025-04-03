@@ -1,0 +1,95 @@
+// General styles for the contact page
+.contact-page {
+  margin: 0 auto;
+  padding: $spacing-lg; // Use spacing variable from _spacing.scss
+  max-width: 960px;
+
+  .contact-header {
+    text-align: center;
+    margin-bottom: $spacing-lg; // Use spacing variable from _spacing.scss
+
+    h1 {
+      font-size: $font-size-xl; // Use font size variable from _typography.scss
+      margin-bottom: $spacing-md; // Use spacing variable from _spacing.scss
+    }
+
+    p {
+      font-size: $font-size-md; // Use font size variable from _typography.scss
+      color: $color-text; // Use text color variable from _colors.scss
+    }
+  }
+
+  .contact-form {
+    background: $background-color-light; // Use background color variable from _colors.scss
+    padding: $spacing-lg; // Use spacing variable from _spacing.scss
+    border-radius: $border-radius; // Use border-radius variable from _radius.scss
+    box-shadow: $box-shadow-md; // Use shadow variable from _shadows.scss
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-md; // Use spacing variable from _spacing.scss
+
+      label {
+        font-size: $font-size-sm; // Use font size variable from _typography.scss
+        font-weight: $font-weight-bold; // Use font weight variable from _typography.scss
+        margin-bottom: $spacing-sm; // Use spacing variable from _spacing.scss
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: $spacing-sm; // Use spacing variable from _spacing.scss
+        border: 1px solid $color-border-light; // Use border color variable from _colors.scss
+        border-radius: $border-radius; // Use border-radius variable from _radius.scss
+        font-size: $font-size-sm; // Use font size variable from _typography.scss
+        color: $color-text; // Use text color variable from _colors.scss
+
+        &:focus {
+          outline: none;
+          border-color: $color-primary; // Use primary color variable from _colors.scss
+          box-shadow: 0 0 5px $color-primary; // Use primary color variable from _colors.scss
+        }
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 150px;
+      }
+
+      .submit-btn {
+        padding: $spacing-sm $spacing-md; // Use spacing variables from _spacing.scss
+        background-color: $color-primary; // Use primary color variable from _colors.scss
+        color: $color-white; // Use white color variable from _colors.scss
+        border: none;
+        border-radius: $border-radius-lg; // Use border-radius variable from _radius.scss
+        font-size: $font-size-md; // Use font size variable from _typography.scss
+        cursor: pointer;
+        transition: background-color $transition-duration-default ease; // Use transition variable from _transitions.scss
+
+        &:hover {
+          background-color: $color-primary-dark; // Use primary dark color variable from _colors.scss
+        }
+      }
+    }
+  }
+
+  .contact-info {
+    margin-top: $spacing-lg; // Use spacing variable from _spacing.scss
+    text-align: center;
+
+    p {
+      font-size: $font-size-sm; // Use font size variable from _typography.scss
+      color: $color-text; // Use text color variable from _colors.scss
+    }
+
+    a {
+      color: $color-primary; // Use primary color variable from _colors.scss
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
