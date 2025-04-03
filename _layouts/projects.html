@@ -2,8 +2,8 @@
 layout: default
 ---
 
-<section class="projects-list container">
-  <h1>{{ page.title | replace: '&', '&amp;' }}</h1>
+<section class="projects-list container" role="region" aria-labelledby="projects-title">
+  <h1 id="projects-title">{{ page.title | replace: '&', '&amp;' }}</h1>
   <!-- Add a short intro paragraph -->
   <p class="projects-intro">
     Explore a curated collection of projects showcasing key skills in process automation, 
@@ -11,7 +11,7 @@ layout: default
   </p>
 
   <!-- Filtering Controls -->
-  <div class="filter-controls">
+  <div class="filter-controls" aria-live="polite">
     <div class="filter-dropdown-container">
       <label for="filter-dropdown">Filter projects:</label>
       <select id="filter-dropdown" class="btn secondary" aria-label="Filter projects by tag">
@@ -29,6 +29,8 @@ layout: default
       <select id="sort-dropdown" class="btn secondary">
         <option value="title-asc">Title (A–Z)</option>
         <option value="title-desc">Title (Z–A)</option>
+        <option value="date-desc">Newest First</option>
+        <option value="date-asc">Oldest First</option>
       </select>
     </div>
   </div>
@@ -38,6 +40,12 @@ layout: default
     <input type="text" id="search-input" class="btn secondary" placeholder="Search projects..." aria-label="Search projects">
   </div>
 
+  <!-- Clear Filters Button -->
+  <button id="clear-filters-btn" class="btn secondary" aria-label="Clear all filters">Clear Filters</button>
+
+  <!-- Filter Loading Spinner -->
+  <div id="filter-loading-spinner" class="spinner hidden" aria-hidden="true"></div>
+
   <!-- Project Grid -->
   <div class="project-grid" id="project-grid">
     {% assign projects_list = paginator.projects | default: site.projects %}
@@ -45,7 +53,7 @@ layout: default
       {% for project in projects_list %}
         <div class="project-item" data-tags="{% for tag in project.tags %}{{ tag | downcase | replace: ' ', '-' }}{% if forloop.last == false %},{% endif %}{% endfor %}">
           {% if project.image %}
-            <img src="{{ project.image | relative_url }}" alt="{{ project.title | escape }}">
+            <img src="{{ project.image | relative_url }}" alt="{{ project.title | escape }}" loading="lazy">
           {% else %}
             <img src="/assets/images/default-project.png" alt="Default Project Image">
           {% endif %}
