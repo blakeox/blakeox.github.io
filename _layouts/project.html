@@ -1,5 +1,11 @@
 ---
 layout: default
+title: "{{ page.title }}"
+description: "{{ page.description | escape }}"
+image: "{{ page.image | relative_url }}"
+tags: "{{ page.tags | join: ', ' }}"
+date: "{{ page.date | date: '%Y-%m-%d' }}"
+link: "{{ page.link }}"
 ---
 
 <article class="project-detail container">
@@ -53,21 +59,7 @@ layout: default
   </p>
 
   <!-- Social Sharing Buttons -->
-  <div class="social-sharing">
-    <p>Share this project:</p>
-    <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ page.url | absolute_url }}" target="_blank" rel="noopener" class="btn secondary share-btn" data-platform="twitter" data-url="{{ page.url | absolute_url }}" data-title="{{ page.title }}" aria-label="Share on Twitter">
-      <img src="/assets/images/twitter-icon.png" alt="Twitter Icon">
-    </a>
-    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | absolute_url }}&title={{ page.title | url_encode }}" target="_blank" rel="noopener" class="btn secondary share-btn" data-platform="linkedin" data-url="{{ page.url | absolute_url }}" data-title="{{ page.title }}" aria-label="Share on LinkedIn">
-      <img src="/assets/images/linkedin-icon.png" alt="LinkedIn Icon">
-    </a>
-    <a href="mailto:?subject={{ page.title | url_encode }}&body=Check out this project: {{ page.url | absolute_url }}" target="_blank" rel="noopener" class="btn secondary share-btn" data-platform="email" data-url="{{ page.url | absolute_url }}" data-title="{{ page.title }}" aria-label="Share via Email">
-      <img src="/assets/images/email-icon.png" alt="Email Icon">
-    </a>
-    <a href="https://facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" target="_blank" rel="noopener" class="btn secondary share-btn" data-platform="facebook" data-url="{{ page.url | absolute_url }}" data-title="{{ page.title }}" aria-label="Share on Facebook">
-      <img src="/assets/images/facebook-icon.png" alt="Facebook Icon">
-    </a>
-  </div>
+  {% include social-sharing.html %}
 
   <!-- Related Projects (Optional) -->
   <section class="related-projects mt-1">
@@ -91,18 +83,7 @@ layout: default
         Back to Projects
       </a>
     </p>
-    <nav class="project-pagination" aria-label="Project Pagination">
-      {% if page.previous %}
-        <a href="{{ page.previous.url | relative_url }}" class="btn secondary" aria-label="Previous Project: {{ page.previous.title }}">
-          ← Previous Project
-        </a>
-      {% endif %}
-      {% if page.next %}
-        <a href="{{ page.next.url | relative_url }}" class="btn secondary" aria-label="Next Project: {{ page.next.title }}">
-          Next Project →
-        </a>
-      {% endif %}
-    </nav>
+    {% include pagination.html %}
   </div>
 </article>
 

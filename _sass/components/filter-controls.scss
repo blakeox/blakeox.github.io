@@ -1,0 +1,117 @@
+.filter-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-md; // Use spacing variable from _variables.scss
+  align-items: center;
+  margin-bottom: $spacing-lg; // Use spacing variable from _variables.scss
+
+  .filter-dropdown-container,
+  .sort-dropdown-container,
+  .search-input-container {
+    flex: 1 1 auto;
+    min-width: $filter-min-width; // Define this variable in _variables.scss
+  }
+
+  select,
+  input {
+    width: 100%;
+    padding: $spacing-sm $spacing-md; // Use spacing variables from _variables.scss
+    font-size: $font-size-base; // Use font size variable from _variables.scss
+    border: 1px solid $color-border-light; // From _colors.scss
+    border-radius: $border-radius; // Use border radius variable from _variables.scss
+    background-color: $background-color-light; // From _colors.scss
+    transition: border-color $transition-duration-default ease, box-shadow $transition-duration-default ease; // Use transition variables from _variables.scss
+
+    &:focus {
+      border-color: $color-primary; // From _colors.scss
+      box-shadow: 0 0 4px rgba($color-primary, 0.5); // From _colors.scss
+      outline: none;
+    }
+
+    &:hover {
+      border-color: $color-primary-hover; // From _colors.scss
+    }
+  }
+
+  .btn {
+    padding: $spacing-sm $spacing-md; // Use spacing variables from _variables.scss
+    font-size: $font-size-base; // Use font size variable from _variables.scss
+    border: none;
+    border-radius: $border-radius; // Use border radius variable from _variables.scss
+    cursor: pointer;
+    transition: background-color $transition-duration-default ease; // Use transition variable from _variables.scss
+
+    &.secondary {
+      background-color: $color-secondary; // From _colors.scss
+      color: $color-text-secondary; // From _colors.scss
+      border: 1px solid $color-border-secondary; // From _colors.scss
+
+      &:hover {
+        background-color: $color-secondary-hover; // From _colors.scss
+      }
+    }
+
+    &:hover {
+      background-color: $color-primary-hover; // From _colors.scss
+      color: $color-text; // From _colors.scss
+    }
+
+    &:focus {
+      outline: 2px solid $color-primary; // From _colors.scss
+      outline-offset: 2px;
+    }
+  }
+
+  .spinner {
+    display: inline-block;
+    width: $spinner-size; // Define spinner size variable in _variables.scss
+    height: $spinner-size; // Use the same spinner size variable
+    border: 3px solid rgba($color-border-light, 0.1); // From _colors.scss
+    border-top: 3px solid $color-primary; // From _colors.scss
+    border-radius: $border-radius-circle; // Use circle border radius variable from _variables.scss
+    animation: spin $animation-duration-fast linear infinite; // Use animation duration variable from _variables.scss
+
+    &.hidden {
+      display: none;
+    }
+  }
+
+  .spinner {
+    opacity: 0;
+    transition: opacity $transition-duration-default ease; // Use transition variable from _variables.scss
+
+    &.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    &:not(.hidden) {
+      opacity: 1;
+    }
+  }
+}
+
+// Use animation from animations.scss
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: $breakpoint-md) { // Use breakpoint variable from _variables.scss
+  .filter-controls {
+    flex-direction: column;
+    gap: $spacing-md; // Use spacing variable from _variables.scss
+
+    .filter-dropdown-container,
+    .sort-dropdown-container,
+    .search-input-container {
+      min-width: 100%;
+    }
+
+    .btn {
+      width: 100%;
+      text-align: center;
+    }
+  }
+}

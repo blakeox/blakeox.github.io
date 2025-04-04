@@ -1,5 +1,7 @@
 ---
 layout: default
+title: "Blog"
+description: "Explore my latest thoughts, tutorials, and insights on web development, design, and technology."
 ---
 
 <section class="blog-page container">
@@ -19,6 +21,8 @@ layout: default
       </article>
     {% endfor %}
   </div>
+
+  {% include pagination.html %}
 
   <!-- No Results Placeholder -->
   <div id="no-results" class="hidden">

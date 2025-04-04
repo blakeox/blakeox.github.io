@@ -1,50 +1,19 @@
 ---
 layout: default
+title: "Projects"
+description: "Explore my projects, showcasing skills in process automation, finance, and more."
+permalink: /projects/
 ---
 
 <section class="projects-list container" role="region" aria-labelledby="projects-title">
   <h1 id="projects-title">{{ page.title | replace: '&', '&amp;' }}</h1>
-  <!-- Add a short intro paragraph -->
   <p class="projects-intro">
     Explore a curated collection of projects showcasing key skills in process automation, 
     finance, and more. Use the filters to narrow your interests.
   </p>
 
   <!-- Filtering Controls -->
-  <div class="filter-controls" aria-live="polite">
-    <div class="filter-dropdown-container">
-      <label for="filter-dropdown">Filter projects:</label>
-      <select id="filter-dropdown" class="btn secondary" aria-label="Filter projects by tag">
-        <option value="all">All</option>
-        {% assign all_tags = site.projects | map: "tags" | join: "," | split: "," | uniq %}
-        {% for tag in all_tags %}
-          <option value="{{ tag | downcase | replace: ' ', '-' }}">{{ tag | capitalize }}</option>
-        {% endfor %}
-      </select>
-    </div>
-
-    <!-- Sort By Dropdown -->
-    <div class="sort-dropdown-container">
-      <label for="sort-dropdown">Sort by:</label>
-      <select id="sort-dropdown" class="btn secondary">
-        <option value="title-asc">Title (A–Z)</option>
-        <option value="title-desc">Title (Z–A)</option>
-        <option value="date-desc">Newest First</option>
-        <option value="date-asc">Oldest First</option>
-      </select>
-    </div>
-  </div>
-
-  <!-- Search Input -->
-  <div class="search-input-container">
-    <input type="text" id="search-input" class="btn secondary" placeholder="Search projects..." aria-label="Search projects">
-  </div>
-
-  <!-- Clear Filters Button -->
-  <button id="clear-filters-btn" class="btn secondary" aria-label="Clear all filters">Clear Filters</button>
-
-  <!-- Filter Loading Spinner -->
-  <div id="filter-loading-spinner" class="spinner hidden" aria-hidden="true"></div>
+  {% include filter-controls.html %}
 
   <!-- Project Grid -->
   <div class="project-grid" id="project-grid">
@@ -83,7 +52,7 @@ layout: default
   </div>
 
   <!-- No results placeholder -->
-  <div id="no-results" class="hidden">
+  <div id="no-results" class="hidden" aria-live="polite">
     <p>No matching projects found.</p>
   </div>
 
@@ -93,20 +62,6 @@ layout: default
     <span id="load-more-spinner" class="spinner hidden"></span>
   </div>
 
-  <!-- Pagination (if available) -->
-  {% if paginator and paginator.total_pages > 1 %}
-    <nav class="pagination">
-      <p>Page {{ paginator.page }} of {{ paginator.total_pages }}</p>
-      {% if paginator.previous_page %}
-        <a href="{{ paginator.previous_page_path | relative_url }}" class="btn secondary" aria-label="Go to previous page">
-          Previous
-        </a>
-      {% endif %}
-      {% if paginator.next_page %}
-        <a href="{{ paginator.next_page_path | relative_url }}" class="btn secondary" aria-label="Go to next page">
-          Next
-        </a>
-      {% endif %}
-    </nav>
-  {% endif %}
+  {% include pagination.html %}
+
 </section>

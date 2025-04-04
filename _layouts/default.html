@@ -4,6 +4,11 @@
     {% include head.html %}
   </head>
   <body class="{{ page.body_class }}">
+    <!-- Preloader -->
+    <div id="preloader" role="status" aria-hidden="false">
+      <div class="spinner"></div>
+    </div>
+
     <!-- Skip to Content Link -->
     <a href="#main-content" class="skip-to-content" aria-label="Skip to main content">Skip to main content</a>
 
@@ -29,6 +34,13 @@
     <noscript>
       <p>JavaScript is disabled in your browser. Some features may not work as intended.</p>
     </noscript>
+    <noscript>
+      <style>
+        #preloader {
+          display: none;
+        }
+      </style>
+    </noscript>
 
     <!-- JavaScript Files -->
     <script src="/assets/js/nav.js" defer></script>
@@ -36,5 +48,6 @@
     <script src="/assets/js/image-lazyload.js" defer></script>
     <script src="/assets/js/analytics.js" defer></script>
     <script src="/assets/js/theme.js" defer></script>
+    <script src="/assets/js/preloader.js" defer></script>
   </body>
 </html>

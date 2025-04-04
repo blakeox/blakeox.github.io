@@ -13,11 +13,11 @@
   }
 
   .nav-container {
-    max-width: $container-lg; // Use container width variable from _layout.scss
+    max-width: $container-xl; // Use container width variable from _layout.scss
     margin: 0 auto;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    align-items: center; // Align items vertically
+    justify-content: space-between; // Space out the logo and links
   }
 
   .nav-logo {
@@ -27,6 +27,7 @@
     font-weight: $font-weight-bold; // Use font weight variable from _typography.scss
     color: $color-text; // Use text color variable from _colors.scss
     text-decoration: none;
+    gap: $spacing-sm; // Add spacing between the logo circle and text
   }
 
   .logo-circle {
@@ -56,7 +57,7 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    gap: $spacing-md; // Use spacing variable from _spacing.scss
+    gap: $spacing-md; // Add spacing between navigation links
 
     li a {
       text-decoration: none;

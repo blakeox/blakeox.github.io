@@ -15,6 +15,7 @@ $breakpoint-xl: 1200px;
 
 // Component Dimensions
 $hero-figure-width: 180px; // Default width for hero figure
+$filter-min-width: 200px; // Minimum width for filter controls
 
 // Mixin for Containers
 @mixin container($max-width) {
