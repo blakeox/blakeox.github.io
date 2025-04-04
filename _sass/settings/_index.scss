@@ -1,10 +1,21 @@
 // _sass/settings/_index.scss
+// Settings for the project
+// This file imports all the settings files used throughout the project.
+// It is important to keep these imports organized and consistent to ensure a smooth development process.
+// The settings files are imported in a specific order to ensure that dependencies are resolved correctly.
+// The settings files are defined using SASS variables for easy customization and maintenance.
+// The settings files are used for various components such as buttons, cards, and modals.
+// The settings files are defined in a way that they can be easily customized and reused throughout the project.
+// This file is the main entry point for all the settings files.
+
+
+
+@import 'breakpoints';
 @import 'colors';
-@import 'typography';
-@import 'spacing';
+@import 'layout';
 @import 'radius';
 @import 'shadows';
-@import 'zindex';
-@import 'breakpoints';
+@import 'spacing';
 @import 'transitions';
-@import 'layout';
+@import 'typography';
+@import 'zindex';

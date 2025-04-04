@@ -1,4 +1,14 @@
 // _sass/settings/_breakpoints.scss
+// Breakpoints settings for the project
+// This file contains the breakpoint values used throughout the project.
+// It is important to keep these values consistent to ensure a responsive design.
+// The breakpoint values are defined using SASS variables for easy customization and maintenance.
+// The breakpoints are used for media queries to create responsive designs.
+// The breakpoints are defined in a way that they can be easily customized and reused throughout the project.
+// The breakpoints are defined using the following format:
+// $breakpoint-{name}: {value};
+
+
 $breakpoint-sm: 576px;
 $breakpoint-md: 768px;
 $breakpoint-lg: 992px;

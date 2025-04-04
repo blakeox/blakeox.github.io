@@ -1,4 +1,11 @@
 // _sass/settings/_zindex.scss
+// Z-index settings for the project
+// This file contains the z-index values used throughout the project.
+// It is important to keep these values consistent to avoid stacking context issues.
+// The z-index values are defined in ascending order, with the base value being 1.
+// The z-index values are used for various components such as dropdowns, modals, and toasts.
+
+
 $z-index-base: 1;
 $z-index-dropdown: 100;
 $z-index-sticky: 200;

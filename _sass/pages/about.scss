@@ -1,13 +1,18 @@
-// General styles for the about page
+// about.scss - Page-specific styles for the About page
+// This file contains styles specific to the About page of the website.
+// It is important to keep these styles organized and maintainable.
+// The styles are defined using SASS variables for easy customization and maintenance.
+// The styles are defined in a way that they can be easily customized and reused throughout the project.
+// Referenced variables are defined in the settings folder.
+
+
+
 .about-page {
   margin: 0 auto;
   padding: $spacing-lg; // Use spacing variable from _spacing.scss
   max-width: 960px;
 
-  // Anchor links
-  @import "../components/anchor-links";
-
-  // About sections
+  // Page-specific styling for about sections
   .about-section {
     margin-bottom: $spacing-xl; // Use spacing variable from _spacing.scss
 
@@ -22,37 +27,5 @@
       font-size: $font-size-md; // Use font size variable from _typography.scss
       line-height: $line-height-base; // Use line-height variable from _typography.scss
     }
-
-    // Key achievements
-    @import "../components/key-achievements";
-
-    // Tag list
-    @import "../components/tag-list";
-
-    // Timeline
-    @import "../components/timeline";
   }
-
-  // Resume summary
-  @import "../components/resume-summary";
-
-  // Call-to-action
-  @import "../components/call-to-action";
-}
-
-/* Remove duplicate timeline styles since they are already in the timeline component */
-.timeline-item,
-.timeline-year,
-.timeline-content {
-  @import "../components/timeline";
-}
-
-/* Remove duplicate resume summary styles since they are already in the resume-summary component */
-.resume-summary ul {
-  @import "../components/resume-summary";
-}
-
-/* Remove duplicate call-to-action styles since they are already in the call-to-action component */
-.about-cta-group {
-  @import "../components/call-to-action";
 }

@@ -1,4 +1,10 @@
-/* Search Box Styles (used on error and search pages) */
+// _sass/pages/search.scss
+// This file contains styles specific to the Search page of the website.
+// It is important to keep these styles organized and maintainable.
+// The styles are defined using SASS variables for easy customization and maintenance.
+// The styles are defined in a way that they can be easily customized and reused throughout the project.
+// Referenced variables are defined in the settings folder.
+
 .search-box {
   margin-top: $spacing-lg; // Use spacing variable from _spacing.scss
   text-align: center;

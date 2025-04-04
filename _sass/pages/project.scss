@@ -1,3 +1,10 @@
+//_sass/pages/project.scss
+// This file contains styles specific to the Project Detail page of the website.
+// It is important to keep these styles organized and maintainable.
+// The styles are defined using SASS variables for easy customization and maintenance.
+// The styles are defined in a way that they can be easily customized and reused throughout the project.
+// Referenced variables are defined in the settings folder.
+
 .project-detail {
   margin: 0 auto;
   padding: $spacing-lg; // Use spacing variable from _spacing.scss

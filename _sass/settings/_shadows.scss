@@ -1,4 +1,13 @@
 // _sass/settings/_shadows.scss
+// Shadows settings for the project
+// This file contains the shadow variables used throughout the project.
+// It is important to keep these values consistent to ensure a uniform design.
+// The shadow variables are defined using SASS variables for easy customization and maintenance.
+// The shadows are used for various components such as cards, modals, and buttons.
+// The shadows are defined using the box-shadow property in CSS.
+// The shadows are defined in a way that they can be easily customized and reused throughout the project.
+
+
 $box-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
 $box-shadow-md: 0 4px 8px rgba(0, 0, 0, 0.2);
 $box-shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.15);
