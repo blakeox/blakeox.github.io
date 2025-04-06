@@ -1,55 +1,75 @@
+// _sass/components/_buttons.scss
+// Buttons Styles
+// This file contains styles for buttons used throughout the project.
+// The styles are designed to be reusable, customizable, and consistent with the overall design system.
+// SASS variables are used for colors, spacing, and transitions to ensure maintainability and easy updates.
+// Referenced variables are defined in the settings folder for consistency across the project.
+
 a.btn, button.btn {
-  display: inline-block;
-  background: var(--color-primary);
-  color: $color-white; // Use variable
-  padding: $btn-padding; // Use variable
-  text-decoration: none;
-  border-radius: $border-radius-sm; // Use variable
+  // Base styles for anchor and button elements with the "btn" class
+  display: inline-block; // Ensure buttons behave like inline-block elements
+  background: var(--color-primary); // Primary background color
+  color: $color-white; // White text for contrast
+  padding: $btn-padding; // Padding for consistent spacing
+  text-decoration: none; // Remove underline for anchor links
+  border-radius: $border-radius-sm; // Small rounded corners for modern design
 }
+
 a.btn:hover, button.btn:hover {
-  background: var(--hover-color);
-  transform: translateY(-2px);
+  // Hover effect for buttons
+  background: var(--hover-color); // Change background color on hover
+  transform: translateY(-2px); // Slight upward movement for interactivity
 }
+
 a.btn:focus, button.btn:focus {
-  outline: 2px solid var(--accent-color);
+  // Focus styles for accessibility
+  outline: 2px solid var(--accent-color); // Highlight focus with an accent color
 }
+
 a:focus, button:focus {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
+  // General focus styles for all anchor and button elements
+  outline: 2px solid var(--color-primary); // Primary color outline
+  outline-offset: 2px; // Offset for better visibility
 }
+
 .btn {
-  display: inline-block;
-  padding: $btn-padding; // Use variable
-  background-color: $color-primary;
-  color: $color-white; // Use variable
-  text-decoration: none;
-  border-radius: $border-radius; // Use variable
-  font-size: $font-size-sm;
-  text-align: center;
-  transition: background-color $transition-duration-default ease, transform $transition-duration-fast ease; // Use variables
+  // Base styles for the "btn" class
+  display: inline-block; // Ensure buttons behave like inline-block elements
+  padding: $btn-padding; // Padding for consistent spacing
+  background-color: $color-primary; // Primary background color
+  color: $color-white; // White text for contrast
+  text-decoration: none; // Remove underline
+  border-radius: $border-radius; // Rounded corners for modern design
+  font-size: $font-size-sm; // Small font size for buttons
+  text-align: center; // Center-align text
+  transition: background-color $transition-duration-default ease, transform $transition-duration-fast ease; // Smooth transitions for hover effects
 
   &:hover {
-    background-color: $color-primary-dark;
-    transform: translateY(-2px);
+    // Hover effect for the "btn" class
+    background-color: $color-primary-dark; // Darker shade of primary color
+    transform: translateY(-2px); // Slight upward movement for interactivity
   }
 
   &.secondary {
-    background: transparent;
-    color: $color-primary; // Use variable
-    border: 1px solid $color-primary; // Use variable
-    padding: $btn-padding; // Use variable
-    text-align: center;
-    transition: background $transition-duration-fast ease, color $transition-duration-fast ease; // Use variable
-    margin-top: $spacing-md; // Use variable
+    // Styles for secondary buttons
+    background: transparent; // Transparent background
+    color: $color-primary; // Primary color for text
+    border: 1px solid $color-primary; // Border with primary color
+    padding: $btn-padding; // Consistent padding
+    text-align: center; // Center-align text
+    transition: background $transition-duration-fast ease, color $transition-duration-fast ease; // Smooth transitions
+    margin-top: $spacing-md; // Add spacing above the button
 
     &:hover {
-      background-color: darken($color-secondary, 10%);
+      // Hover effect for secondary buttons
+      background-color: darken($color-secondary, 10%); // Darken the secondary color
     }
   }
 
   &.disabled {
-    background-color: lighten($color-primary, 30%);
-    pointer-events: none;
-    opacity: 0.6;
+    // Styles for disabled buttons
+    background-color: lighten($color-primary, 30%); // Lighter shade of primary color
+    pointer-events: none; // Disable pointer events
+    opacity: 0.6; // Reduce opacity for a disabled appearance
   }
 }

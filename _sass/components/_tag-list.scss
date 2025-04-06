@@ -1,0 +1,21 @@
+// _sass/components/_tag-list.scss
+// Tag List Styles
+// This file contains styles for the tag list component used throughout the project.
+// The tag list is designed to display tags in a flexible, responsive layout, often used for categorization or metadata display.
+// SASS variables are used for colors, spacing, typography, and border-radius to ensure consistency and easy updates.
+
+.tag-list {
+  // Base styles for the tag list container
+  display: flex; // Use flexbox for layout
+  flex-wrap: wrap; // Allow tags to wrap to the next line if necessary
+  gap: $spacing-sm; // Add spacing between tags using a spacing variable
+
+  .tag {
+    // Styles for individual tags
+    background-color: $color-secondary; // Use secondary color for the background
+    color: $color-white; // Use white text for contrast
+    padding: $spacing-xs $spacing-sm; // Add padding for better readability
+    border-radius: $border-radius-sm; // Apply small rounded corners
+    font-size: $font-size-xs; // Use small font size for tags
+  }
+}

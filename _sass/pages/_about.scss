@@ -1,0 +1,32 @@
+// about.scss - Page-specific styles for the About page
+// This file contains styles specific to the About page of the website.
+// It is important to keep these styles organized and maintainable.
+// The styles are defined using SASS variables for easy customization and maintenance.
+// The styles are defined in a way that they can be easily customized and reused throughout the project.
+// Referenced variables are defined in the settings folder.
+
+.about-page {
+  // Base styles for the About page
+  margin: 0 auto; // Center the content horizontally
+  padding: $spacing-lg; // Add padding using the spacing variable
+  max-width: 960px; // Limit the maximum width of the content
+
+  // Page-specific styling for about sections
+  .about-section {
+    margin-bottom: $spacing-xl; // Add bottom margin using the spacing variable
+
+    h2 {
+      // Styles for section headings
+      font-size: $font-size-xl; // Use large font size for headings
+      margin-bottom: $spacing-md; // Add bottom margin using the spacing variable
+      border-bottom: 2px solid $color-primary; // Add a bottom border using the primary color
+      display: inline-block; // Ensure the heading does not span the full width
+    }
+
+    p {
+      // Styles for paragraph text
+      font-size: $font-size-md; // Use medium font size for readability
+      line-height: $line-height-base; // Use base line height for consistent spacing
+    }
+  }
+}

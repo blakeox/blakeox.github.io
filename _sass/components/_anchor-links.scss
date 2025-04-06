@@ -1,23 +1,35 @@
+// _sass/components/_anchor-links.scss
+// Anchor Links Styles
+// This file contains the styles for anchor links used in the documentation and throughout the project.
+// These styles ensure the anchor links are visually appealing, accessible, and consistent with the overall design.
+// The styles are defined using SASS variables for easy customization and maintenance.
+// Referenced variables are defined in the settings folder for consistency across the project.
+
 .anchor-links {
+  // Add vertical spacing around the anchor links section
   margin: $spacing-lg 0; // Use spacing variable from _spacing.scss
 
   ul {
-    display: flex;
-    justify-content: center;
-    gap: $spacing-lg; // Use spacing variable from _spacing.scss
-    list-style: none;
-    padding: $spacing-md 0; // Use spacing variable from _spacing.scss
-    border-top: 1px solid $color-border-light; // Use border color variable from _colors.scss
-    border-bottom: 1px solid $color-border-light; // Use border color variable from _colors.scss
+    // Style the list of anchor links
+    display: flex; // Arrange links in a horizontal row
+    justify-content: center; // Center-align the links
+    gap: $spacing-lg; // Add spacing between links using a variable
+    list-style: none; // Remove default list styling
+    padding: $spacing-md 0; // Add vertical padding using a variable
+    border-top: 1px solid $color-border-light; // Add a light border at the top
+    border-bottom: 1px solid $color-border-light; // Add a light border at the bottom
 
     li {
+      // Style individual list items
       a {
-        text-decoration: none;
-        color: $color-primary; // Use primary color variable from _colors.scss
-        font-weight: $font-weight-medium; // Use font weight variable from _typography.scss
+        // Style the anchor links
+        text-decoration: none; // Remove underline by default
+        color: $color-primary; // Use the primary color for the text
+        font-weight: $font-weight-medium; // Apply medium font weight for emphasis
 
         &:hover {
-          text-decoration: underline;
+          // Add hover effect for anchor links
+          text-decoration: underline; // Underline the text on hover for better visibility
         }
       }
     }

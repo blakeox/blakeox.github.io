@@ -5,9 +5,17 @@
 // The z-index values are defined in ascending order, with the base value being 1.
 // The z-index values are used for various components such as dropdowns, modals, and toasts.
 
-
+// Base z-index for general elements
 $z-index-base: 1;
+
+// Z-index for dropdown menus
 $z-index-dropdown: 100;
+
+// Z-index for sticky elements (e.g., sticky headers)
 $z-index-sticky: 200;
+
+// Z-index for modals
 $z-index-modal: 500;
+
+// Z-index for toast notifications
 $z-index-toast: 1000;

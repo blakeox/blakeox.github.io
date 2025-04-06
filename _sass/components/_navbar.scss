@@ -1,18 +1,27 @@
+// _sass/components/_navbar.scss
+// Navbar Styles
+// This file contains styles for the navigation bar used throughout the project.
+// The navbar is designed to be reusable, customizable, and responsive, adapting to different screen sizes.
+// SASS variables are used for colors, spacing, typography, and breakpoints to ensure maintainability and easy updates.
+
 .navbar {
+  // Base styles for the navbar
   background-color: $background-color; // Use background color variable from _colors.scss
   border-bottom: 1px solid $color-border-light; // Use border color variable from _colors.scss
-  position: sticky;
+  position: sticky; // Stick the navbar to the top of the viewport
   top: 0;
-  z-index: 1000;
+  z-index: 1000; // Ensure the navbar is above other elements
   padding: $spacing-sm $spacing-md; // Use spacing variables from _spacing.scss
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; // Smooth transitions for interactivity
 
   &.scrolled {
+    // Styles for the navbar when scrolled
     background-color: $color-background-dark; // Use dark mode background color from _colors.scss
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); // Add shadow for depth
   }
 
   .nav-container {
+    // Container for navbar content
     max-width: $container-xl; // Use container width variable from _layout.scss
     margin: 0 auto;
     display: flex;
@@ -21,16 +30,18 @@
   }
 
   .nav-logo {
+    // Styles for the logo
     display: flex;
     align-items: center;
     font-size: $font-size-lg; // Use font size variable from _typography.scss
     font-weight: $font-weight-bold; // Use font weight variable from _typography.scss
     color: $color-text; // Use text color variable from _colors.scss
-    text-decoration: none;
+    text-decoration: none; // Remove underline
     gap: $spacing-sm; // Add spacing between the logo circle and text
   }
 
   .logo-circle {
+    // Styles for the circular logo element
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -45,44 +56,50 @@
   }
 
   .nav-toggle {
-    display: none;
+    // Styles for the mobile navigation toggle button
+    display: none; // Hidden by default
     background: none;
     border: none;
     font-size: $font-size-lg; // Use font size variable from _typography.scss
-    cursor: pointer;
+    cursor: pointer; // Pointer cursor for interactivity
   }
 
   .nav-links {
+    // Styles for the navigation links
     display: flex;
-    list-style: none;
+    list-style: none; // Remove default list styling
     margin: 0;
     padding: 0;
     gap: $spacing-md; // Add spacing between navigation links
 
     li a {
-      text-decoration: none;
+      // Styles for individual links
+      text-decoration: none; // Remove underline
       font-weight: $font-weight-light; // Use font weight variable from _typography.scss
       color: $color-text; // Use text color variable from _colors.scss
-      transition: color 0.2s ease;
+      transition: color 0.2s ease; // Smooth transition for hover effects
 
       &:hover,
       &:focus {
+        // Hover and focus styles
         color: $color-accent; // Use accent color variable from _colors.scss
-        text-decoration: underline;
-        outline: none;
+        text-decoration: underline; // Add underline for emphasis
+        outline: none; // Remove default outline
       }
 
       &[aria-current="page"] {
-        font-weight: $font-weight-bold; // Use font weight variable from _typography.scss
-        color: $color-accent; // Use accent color variable from _colors.scss
-        border-bottom: 2px solid $color-accent; // Use accent color variable from _colors.scss
+        // Styles for the active page link
+        font-weight: $font-weight-bold; // Use bold font weight
+        color: $color-accent; // Use accent color
+        border-bottom: 2px solid $color-accent; // Add underline with accent color
       }
     }
   }
 
   @media (max-width: $breakpoint-md) { // Use breakpoint variable from _breakpoints.scss
     .nav-toggle {
-      display: block; // Ensure the toggle button is visible
+      // Show the toggle button on smaller screens
+      display: block;
       background: none;
       border: none;
       font-size: $font-size-lg; // Use font size variable from _typography.scss
@@ -90,6 +107,7 @@
     }
 
     .hamburger-icon {
+      // Styles for the hamburger icon
       display: inline-block;
       width: 24px;
       height: 2px;
@@ -98,6 +116,7 @@
 
       &::before,
       &::after {
+        // Additional lines for the hamburger icon
         content: '';
         display: block;
         width: 24px;
@@ -117,20 +136,22 @@
     }
 
     .nav-links {
-      display: none; // Hide links by default
-      flex-direction: column;
+      // Mobile navigation links
+      display: none; // Hidden by default
+      flex-direction: column; // Stack links vertically
       position: absolute;
       top: 100%;
       left: 0;
       width: 100%;
       background-color: $background-color; // Use background color variable from _colors.scss
       padding: $spacing-md; // Use spacing variable from _spacing.scss
-      gap: $spacing-sm; // Use spacing variable from _spacing.scss
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      gap: $spacing-sm; // Add spacing between links
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // Add shadow for depth
     }
 
     .nav-links.active {
-      display: flex; // Show links when active
+      // Show links when active
+      display: flex;
     }
   }
 }

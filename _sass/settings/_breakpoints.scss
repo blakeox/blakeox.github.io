@@ -8,8 +8,14 @@
 // The breakpoints are defined using the following format:
 // $breakpoint-{name}: {value};
 
-
+// Small devices (e.g., phones)
 $breakpoint-sm: 576px;
+
+// Medium devices (e.g., tablets)
 $breakpoint-md: 768px;
+
+// Large devices (e.g., desktops)
 $breakpoint-lg: 992px;
+
+// Extra large devices (e.g., large desktops)
 $breakpoint-xl: 1200px;

@@ -1,31 +1,43 @@
+// _sass/components/_forms.scss
+// Form Component Styles
+// This file contains styles for form elements used throughout the project.
+// The styles are designed to be reusable, customizable, and consistent with the overall design system.
+// SASS variables are used for colors, spacing, and typography to ensure maintainability and easy updates.
+// Referenced variables are defined in the settings folder for consistency across the project.
+
 .form-group {
-  margin-bottom: $spacing-md;
+  // Wrapper for form elements to provide consistent spacing
+  margin-bottom: $spacing-md; // Add spacing below each form group
 
   label {
-    display: block;
-    font-size: $font-size-sm;
-    font-weight: bold;
-    margin-bottom: $spacing-sm;
+    // Styles for form labels
+    display: block; // Ensure labels are displayed on their own line
+    font-size: $font-size-sm; // Use small font size for labels
+    font-weight: bold; // Make labels bold for better visibility
+    margin-bottom: $spacing-sm; // Add spacing below the label
   }
 
   input,
   textarea,
   select {
-    width: 100%;
-    padding: $spacing-sm;
-    border: 1px solid $color-secondary;
-    border-radius: $border-radius;
-    font-size: $font-size-sm;
-    color: $color-text;
+    // Base styles for input fields, textareas, and select dropdowns
+    width: 100%; // Full width to match the parent container
+    padding: $spacing-sm; // Add inner padding for better usability
+    border: 1px solid $color-secondary; // Use secondary color for the border
+    border-radius: $border-radius; // Apply rounded corners for modern design
+    font-size: $font-size-sm; // Use small font size for input text
+    color: $color-text; // Use standard text color
 
     &:focus {
-      outline: none;
-      border-color: $color-primary;
-      box-shadow: 0 0 5px $color-primary;
+      // Focus styles for accessibility and interactivity
+      outline: none; // Remove default browser outline
+      border-color: $color-primary; // Highlight border with primary color
+      box-shadow: 0 0 5px $color-primary; // Add a subtle shadow for focus indication
     }
   }
 
   textarea {
-    resize: vertical;
+    // Additional styles for textareas
+    resize: vertical; // Allow vertical resizing only
   }
 }

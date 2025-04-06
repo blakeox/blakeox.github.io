@@ -1,0 +1,117 @@
+// _sass/pages/contact.scss
+// Contact Page Styles
+// This file contains styles specific to the Contact page of the website.
+// The styles are designed to ensure a clean, user-friendly layout for the contact form and related information.
+// SASS variables are used for spacing, colors, typography, and transitions to ensure consistency and easy updates.
+// Referenced variables are defined in the settings folder for maintainability.
+
+.contact-page {
+  // Base styles for the Contact page
+  margin: 0 auto; // Center the content horizontally
+  padding: $spacing-lg; // Add padding using the spacing variable
+  max-width: 960px; // Limit the maximum width of the content
+
+  .contact-header {
+    // Styles for the header section of the Contact page
+    text-align: center;
+    margin-bottom: $spacing-lg; // Add bottom margin using the spacing variable
+
+    h1 {
+      // Styles for the main heading
+      font-size: $font-size-xl; // Use large font size for headings
+      margin-bottom: $spacing-md; // Add bottom margin using the spacing variable
+    }
+
+    p {
+      // Styles for the description text
+      font-size: $font-size-md; // Use medium font size for readability
+      color: $color-text; // Use standard text color
+    }
+  }
+
+  .contact-form {
+    // Styles for the contact form container
+    background: $background-color-light; // Use light background color
+    padding: $spacing-lg; // Add padding for inner spacing
+    border-radius: $border-radius; // Apply rounded corners
+    box-shadow: $box-shadow-md; // Add shadow for depth
+
+    form {
+      // Styles for the form element
+      display: flex;
+      flex-direction: column; // Stack form elements vertically
+      gap: $spacing-md; // Add spacing between form elements
+
+      label {
+        // Styles for form labels
+        font-size: $font-size-sm; // Use small font size
+        font-weight: $font-weight-bold; // Use bold font weight
+        margin-bottom: $spacing-sm; // Add bottom margin for spacing
+      }
+
+      input,
+      textarea {
+        // Base styles for input fields and textareas
+        width: 100%; // Full width
+        padding: $spacing-sm; // Add padding for better usability
+        border: 1px solid $color-border-light; // Use light border color
+        border-radius: $border-radius; // Apply rounded corners
+        font-size: $font-size-sm; // Use small font size
+        color: $color-text; // Use standard text color
+
+        &:focus {
+          // Focus styles for inputs and textareas
+          outline: none;
+          border-color: $color-primary; // Highlight border with primary color
+          box-shadow: 0 0 5px $color-primary; // Add subtle shadow for focus
+        }
+      }
+
+      textarea {
+        // Additional styles for textareas
+        resize: vertical; // Allow vertical resizing only
+        min-height: 150px; // Set a minimum height
+      }
+
+      .submit-btn {
+        // Styles for the submit button
+        padding: $spacing-sm $spacing-md; // Add padding for clickable area
+        background-color: $color-primary; // Use primary color for the button
+        color: $color-white; // Use white text for contrast
+        border: none; // Remove default border
+        border-radius: $border-radius-lg; // Apply large rounded corners
+        font-size: $font-size-md; // Use medium font size
+        cursor: pointer; // Pointer cursor for interactivity
+        transition: background-color $transition-duration-default ease; // Smooth hover transition
+
+        &:hover {
+          // Hover effect for the button
+          background-color: $color-primary-dark; // Use darker primary color
+        }
+      }
+    }
+  }
+
+  .contact-info {
+    // Styles for the contact information section
+    margin-top: $spacing-lg; // Add top margin for spacing
+    text-align: center; // Center-align the content
+
+    p {
+      // Styles for informational text
+      font-size: $font-size-sm; // Use small font size
+      color: $color-text; // Use standard text color
+    }
+
+    a {
+      // Styles for links
+      color: $color-primary; // Use primary color for links
+      text-decoration: none; // Remove underline
+
+      &:hover {
+        // Hover effect for links
+        text-decoration: underline; // Add underline for emphasis
+      }
+    }
+  }
+}

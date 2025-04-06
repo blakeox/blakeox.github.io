@@ -1,0 +1,13 @@
+// _sass/pages/blog.scss
+// Blog Page Styles
+// This file contains styles specific to the Blog page of the website.
+// The styles are designed to ensure a clean and organized layout for displaying blog posts.
+// SASS variables are used for spacing and layout to ensure consistency and easy updates.
+// Referenced variables are defined in the settings folder for maintainability.
+
+.blog-page {
+  // Base styles for the Blog page
+  margin: 0 auto; // Center the content horizontally
+  padding: $spacing-lg; // Add padding using the spacing variable
+  max-width: 960px; // Limit the maximum width of the content
+}

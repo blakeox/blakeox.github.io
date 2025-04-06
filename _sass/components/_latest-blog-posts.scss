@@ -1,0 +1,53 @@
+// _sass/components/_latest-blog-posts.scss
+// Latest Blog Posts Styles
+// This file contains styles for the "Latest Blog Posts" section of the website.
+// The section is designed to display recent blog posts in a grid layout with a clean and modern design.
+// SASS variables are used for colors, spacing, typography, and transitions to ensure consistency and easy updates.
+
+.latest-blog-posts {
+  // Base styles for the Latest Blog Posts section
+  margin-top: $spacing-lg; // Add top margin for spacing
+
+  h2 {
+    // Styles for the section heading
+    font-size: $font-size-lg; // Use large font size for prominence
+    margin-bottom: $spacing-md; // Add bottom margin for spacing
+    text-align: center; // Center-align the heading
+  }
+
+  .project-grid {
+    // Styles for the grid layout of projects (if applicable)
+    display: grid; // Use grid layout for responsive design
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); // Create responsive columns
+    gap: $spacing-lg; // Add spacing between grid items
+  }
+
+  .blog-posts-list {
+    // Styles for the list of blog posts
+    list-style: none; // Remove default list styling
+    padding: 0; // Remove default padding
+    margin: 0; // Remove default margin
+    display: grid; // Use grid layout for responsive design
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); // Create responsive columns
+    gap: $spacing-lg; // Add spacing between grid items
+  }
+
+  .blog-post-item {
+    // Styles for individual blog post items
+    text-align: center; // Center-align the content
+  }
+
+  .blog-post-link {
+    // Styles for blog post links
+    text-decoration: none; // Remove underline by default
+    color: $color-text; // Use standard text color
+    transition: color 0.3s ease; // Smooth transition for hover effects
+
+    &:hover,
+    &:focus {
+      // Hover and focus styles for links
+      color: $color-accent; // Use accent color for hover and focus
+      text-decoration: underline; // Add underline for emphasis
+    }
+  }
+}

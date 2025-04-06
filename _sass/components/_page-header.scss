@@ -1,0 +1,23 @@
+// _sass/components/_page-header.scss
+// Page Header Styles
+// This file contains styles for the page header section, which typically includes a title and an optional description.
+// The styles are designed to ensure consistency across pages and maintain alignment with the overall design system.
+// SASS variables are used for colors, spacing, and typography to ensure maintainability and easy updates.
+
+.page-header {
+  // Base styles for the page header
+  text-align: center; // Center-align the content
+  margin-bottom: $spacing-lg; // Add bottom margin for spacing
+
+  h1 {
+    // Styles for the main heading
+    font-size: $font-size-xl; // Use large font size for prominence
+    margin-bottom: $spacing-md; // Add bottom margin for spacing
+  }
+
+  p {
+    // Styles for the optional description
+    font-size: $font-size-md; // Use medium font size for readability
+    color: $color-text; // Use standard text color
+  }
+}

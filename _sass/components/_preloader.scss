@@ -1,0 +1,45 @@
+// _sass/components/_preloader.scss
+// Preloader Styles
+// This file contains styles for the preloader component, which is displayed while the page content is loading.
+// The preloader ensures a smooth user experience by visually indicating that the page is in the process of loading.
+// SASS variables are used for colors and transitions to ensure consistency and easy updates.
+
+#preloader {
+  // Base styles for the preloader container
+  position: fixed; // Fix the preloader to the viewport
+  top: 0;
+  left: 0;
+  width: 100%; // Full width of the viewport
+  height: 100%; // Full height of the viewport
+  background-color: $background-color-light; // Use the light background color variable
+  display: flex; // Use flexbox for centering the spinner
+  align-items: center; // Vertically center the spinner
+  justify-content: center; // Horizontally center the spinner
+  z-index: 9999; // Ensure the preloader is above all other elements
+  opacity: 1; // Fully visible by default
+  visibility: visible; // Visible by default
+  transition: opacity 0.5s ease, visibility 0.5s ease; // Smooth transition for hiding the preloader
+}
+
+#preloader.hidden {
+  // Styles for hiding the preloader
+  opacity: 0; // Fully transparent
+  visibility: hidden; // Hidden from view
+}
+
+.spinner {
+  // Styles for the spinner element
+  width: 50px; // Fixed width for the spinner
+  height: 50px; // Fixed height for the spinner
+  border: 5px solid $color-border-light; // Light border color
+  border-top: 5px solid $color-primary; // Primary color for the top border
+  border-radius: 50%; // Circular shape
+  animation: spin 1s linear infinite; // Continuous spinning animation
+}
+
+@keyframes spin {
+  // Keyframes for the spinner animation
+  to {
+    transform: rotate(360deg); // Full rotation
+  }
+}

@@ -1,0 +1,44 @@
+// _sass/components/call-to-action.scss
+// Call-to-Action Styles
+// This file contains styles for call-to-action (CTA) sections used throughout the project.
+// CTAs are designed to encourage user interaction, such as contacting, downloading, or exploring further.
+// The styles are reusable, customizable, and consistent with the overall design system.
+// SASS variables are used for colors, spacing, typography, and transitions to ensure maintainability and easy updates.
+
+.call-to-action {
+  // Base styles for the call-to-action section
+  text-align: center; // Center-align the content
+  margin-top: $spacing-lg; // Add top margin for spacing
+
+  .btn {
+    // Styles for buttons within the call-to-action section
+    padding: $spacing-sm $spacing-md; // Add padding for clickable area
+    background-color: $color-primary; // Use primary color for the button
+    color: $color-white; // Use white text for contrast
+    border: none; // Remove default border
+    border-radius: $border-radius-lg; // Apply large rounded corners
+    font-size: $font-size-md; // Use medium font size for the button text
+    cursor: pointer; // Change cursor to pointer for interactivity
+    transition: background-color $transition-duration-default ease; // Smooth hover effect
+
+    &:hover {
+      // Hover effect for buttons
+      background-color: $color-primary-dark; // Use darker primary color for hover state
+    }
+  }
+}
+
+.about-cta-group {
+  // Styles for grouped CTAs, such as in the "About" section
+  text-align: center; // Center-align the content
+  margin-top: $spacing-xl; // Add top margin for spacing
+  display: flex; // Use flexbox for layout
+  flex-wrap: wrap; // Allow buttons to wrap to the next line if necessary
+  gap: $spacing-md; // Add spacing between buttons
+  justify-content: center; // Center-align the buttons horizontally
+
+  .btn {
+    // Styles for individual buttons within the group
+    min-width: 220px; // Ensure a consistent minimum width for buttons
+  }
+}

@@ -1,0 +1,32 @@
+// _sass/components/_components.scss
+// Components Styles
+// This file serves as the central entry point for importing all component styles.
+// Each component is defined in its own partial file for modularity and maintainability.
+// The imported files include styles for buttons, cards, forms, navbar, utilities, tags, and anchor links.
+
+@import 'buttons'; // Styles for buttons
+@import 'cards'; // Styles for reusable card components
+@import 'forms'; // Styles for form elements
+@import 'navbar'; // Styles for the navigation bar
+@import 'utilities'; // Utility classes for spacing, typography, etc.
+@import 'tags'; // Styles for tags used in categorization
+@import 'anchor-links'; // Styles for anchor links used for accessibility
+@import 'blog-cards'; // Styles for blog cards
+@import 'blog-list'; // Styles for blog list items
+@import 'call-to-action'; // Styles for call-to-action sections
+@import 'featured-projects'; // Styles for featured projects section
+@import 'filter-controls'; // Styles for filter controls in project lists
+@import 'forms'; // Styles for form elements
+@import 'hero'; // Styles for the hero section
+@import 'key-achievements'; // Styles for key achievements section
+@import 'latest-blog-posts'; // Styles for latest blog posts section
+@import 'navbar'; // Styles for the navigation bar
+@import 'page-header'; // Styles for page headers
+@import 'pagination'; // Styles for pagination controls
+@import 'preloader'; // Styles for preloader animations
+@import 'project-cards'; // Styles for project cards
+@import 'resume-summary'; // Styles for resume summary sections
+@import 'skip-to-content'; // Styles for skip-to-content links
+@import 'tag-list'; // Styles for tag lists
+@import 'tags'; // Styles for tags used in categorization
+@import 'timeline'; // Styles for timeline components

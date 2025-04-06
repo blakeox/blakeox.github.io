@@ -7,25 +7,24 @@
 // The colors are defined in a way that they can be easily customized and reused throughout the project.
 // The colors are defined using HEX, RGB, or HSL values for easy readability and understanding.
 
-
 // Primary Colors
-$color-primary: #4dc8aa;
-$color-primary-dark: #3BAF92;
-$color-secondary: #6C757D;
-$color-accent: rgba(77, 200, 170, 0.8);
-$color-accent-dark: rgba(77, 200, 170, 0.6);
-$color-white: #ffffff;
-$color-black: #000;
+$color-primary: #4dc8aa; // Primary brand color
+$color-primary-dark: #3BAF92; // Darker shade of the primary color
+$color-secondary: #6C757D; // Secondary brand color
+$color-accent: rgba(77, 200, 170, 0.8); // Accent color with transparency
+$color-accent-dark: rgba(77, 200, 170, 0.6); // Darker accent color with transparency
+$color-white: #ffffff; // White color
+$color-black: #000; // Black color
 
 // Text Colors
 $color-text: #333; // Default text color
-$color-text-secondary: #555; // Muted text color
+$color-text-secondary: #555; // Muted text color for secondary content
 $color-link: #4DC8AA; // Link color
 
 // Background Colors
 $background-color: #f9f9f9; // Light gray background color
 $background-color-secondary: #f4f4f4; // Secondary background color
-$background-color-highlight: #fffbea; // Highlighted background
+$background-color-highlight: #fffbea; // Highlighted background color
 $background-color-light: #ffffff; // Light background color (e.g., white)
 
 // Neutral Colors
@@ -46,8 +45,8 @@ $color-warning: #ffc107; // Yellow for warnings
 $color-error: #dc3545; // Red for errors
 
 // Hover and Active States
-$color-primary-hover: darken($color-primary, 10%);
-$color-secondary-hover: lighten($color-secondary, 10%);
+$color-primary-hover: darken($color-primary, 10%); // Darker shade for hover state
+$color-secondary-hover: lighten($color-secondary, 10%); // Lighter shade for hover state
 
 // Shadows or Overlays
 $color-overlay: rgba(0, 0, 0, 0.5); // Semi-transparent black for overlays
@@ -56,36 +55,36 @@ $color-overlay: rgba(0, 0, 0, 0.5); // Semi-transparent black for overlays
 $hero-overlay-opacity: 0.6; // Default opacity for hero section overlays
 
 // Dark Mode Colors
-$color-background-dark: #121212;
-$color-text-dark: #e0e0e0;
-$color-link-dark: #90caf9;
-$color-border-dark: #333;
-$color-button-bg-dark: #333;
-$color-button-hover-bg-dark: #444;
-$color-placeholder-dark: #888;
+$color-background-dark: #121212; // Background color for dark mode
+$color-text-dark: #e0e0e0; // Text color for dark mode
+$color-link-dark: #90caf9; // Link color for dark mode
+$color-border-dark: #333; // Border color for dark mode
+$color-button-bg-dark: #333; // Button background color for dark mode
+$color-button-hover-bg-dark: #444; // Button hover background color for dark mode
+$color-placeholder-dark: #888; // Placeholder text color for dark mode
 
 // Semantic Colors
-$color-button-primary: $color-primary;
-$color-button-secondary: $color-secondary;
-$color-background-default: $background-color;
-$color-background-highlight: $background-color-highlight;
-$color-text-default: $color-text;
-$color-text-muted: $color-text-secondary;
+$color-button-primary: $color-primary; // Primary button color
+$color-button-secondary: $color-secondary; // Secondary button color
+$color-background-default: $background-color; // Default background color
+$color-background-highlight: $background-color-highlight; // Highlighted background color
+$color-text-default: $color-text; // Default text color
+$color-text-muted: $color-text-secondary; // Muted text color
 
 // Gradients
-$gradient-primary: linear-gradient(90deg, $color-primary, $color-primary-dark);
-$gradient-secondary: linear-gradient(90deg, $color-secondary, lighten($color-secondary, 10%));
+$gradient-primary: linear-gradient(90deg, $color-primary, $color-primary-dark); // Primary gradient
+$gradient-secondary: linear-gradient(90deg, $color-secondary, lighten($color-secondary, 10%)); // Secondary gradient
 
 // Accessibility Colors
-$color-high-contrast-text: #000000; // Black for text
-$color-high-contrast-background: #ffffff; // White for backgrounds
-$color-high-contrast-link: #0056b3; // Dark blue for links
+$color-high-contrast-text: #000000; // Black for high-contrast text
+$color-high-contrast-background: #ffffff; // White for high-contrast backgrounds
+$color-high-contrast-link: #0056b3; // Dark blue for high-contrast links
 
 // Transparent Variants
-$color-primary-transparent: rgba($color-primary, 0.1);
-$color-secondary-transparent: rgba($color-secondary, 0.1);
-$color-black-transparent: rgba(0, 0, 0, 0.5);
-$color-white-transparent: rgba(255, 255, 255, 0.8);
+$color-primary-transparent: rgba($color-primary, 0.1); // Transparent primary color
+$color-secondary-transparent: rgba($color-secondary, 0.1); // Transparent secondary color
+$color-black-transparent: rgba(0, 0, 0, 0.5); // Semi-transparent black
+$color-white-transparent: rgba(255, 255, 255, 0.8); // Semi-transparent white
 
 // Color Palette Map
 $color-palette: (

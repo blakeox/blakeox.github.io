@@ -1,0 +1,34 @@
+// _sass/components/_key-achievements.scss
+// Key Achievements Styles
+// This file contains styles for the "Key Achievements" section of the website.
+// The section is designed to highlight notable accomplishments in a visually appealing and consistent manner.
+// SASS variables are used for colors, spacing, and typography to ensure maintainability and easy updates.
+
+.key-achievements {
+  // Base styles for the Key Achievements section
+  margin-top: $spacing-lg; // Add top margin for spacing
+
+  h3 {
+    // Styles for the section heading
+    font-size: $font-size-lg; // Use large font size for prominence
+    margin-bottom: $spacing-md; // Add bottom margin for spacing
+  }
+
+  ul {
+    // Styles for the list of achievements
+    list-style: none; // Remove default list styling
+    padding: 0; // Remove default padding
+
+    li {
+      // Styles for individual list items
+      margin-bottom: $spacing-sm; // Add spacing between list items
+      font-size: $font-size-md; // Use medium font size for readability
+
+      &::before {
+        // Styles for the checkmark icon
+        content: '✅'; // Add a checkmark before each item
+        margin-right: $spacing-xs; // Add spacing between the icon and text
+      }
+    }
+  }
+}

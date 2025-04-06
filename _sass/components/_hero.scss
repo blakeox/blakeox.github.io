@@ -1,0 +1,215 @@
+// _sass/components/_hero.scss
+// Hero Section Styles
+// This file contains styles for the hero section of the website.
+// The hero section is the first visual element users see, typically containing a banner, title, description, and call-to-action (CTA).
+// The styles are organized using the BEM (Block Element Modifier) methodology for better readability and maintainability.
+// SASS variables are used for colors, spacing, typography, and transitions to ensure consistency and easy updates.
+
+.hero {
+  // Base styles for the hero section
+  position: relative;
+  padding: $spacing-xl $spacing-md; // Add padding for spacing
+  text-align: center; // Center-align text
+  color: $color-black; // Use primary text color
+  background: 
+    radial-gradient(circle at center, $color-white 0%, $color-white 35%, transparent 45%),
+    radial-gradient(circle at bottom left, $color-accent 0%, $color-accent 8%, transparent 20%),
+    radial-gradient(circle at top right, $color-primary 0%, $color-primary 10%, transparent 20%);
+  background-blend-mode: normal;
+  background-size: cover;
+  height: 100vh; // Full viewport height
+  display: flex; // Flexbox for centering content
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &::before {
+    // Overlay for the hero background
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba($color-white, $hero-overlay-opacity); // Semi-transparent overlay
+    z-index: 0; // Place behind content
+  }
+
+  > * {
+    // Ensure all child elements are above the overlay
+    position: relative;
+    z-index: 1;
+  }
+
+  &__title {
+    // Styles for the hero title
+    font-size: $font-size-xl; // Large font size
+    font-weight: $font-weight-bold; // Bold font weight
+    margin-bottom: $spacing-md; // Add spacing below the title
+    animation: fadeIn $animation-duration-default ease-in-out; // Fade-in animation
+  }
+
+  &__description {
+    // Styles for the hero description
+    font-size: $font-size-md; // Medium font size
+    max-width: 600px; // Limit width for readability
+    margin: 0 auto $spacing-lg; // Center and add spacing below
+    color: $color-text-secondary; // Secondary text color
+  }
+
+  &__cta {
+    // Styles for the call-to-action button
+    display: inline-block;
+    padding: $spacing-sm $spacing-md; // Add padding for clickable area
+    background-color: $color-primary; // Primary background color
+    color: $color-white; // White text color
+    font-size: $font-size-md; // Medium font size
+    font-weight: $font-weight-bold; // Bold font weight
+    border-radius: $border-radius-md; // Rounded corners
+    text-decoration: none; // Remove underline
+    transition: background-color $transition-duration-default ease; // Smooth hover transition
+
+    &:hover {
+      // Hover effect for the button
+      background-color: $color-primary-dark; // Darker primary color
+    }
+  }
+}
+
+.hero--home-page {
+  // Modifier for the home page hero section
+  padding: $spacing-xl $spacing-sm; // Adjust padding for home page
+  background: 
+    radial-gradient(circle at center, $color-white 0%, $color-white 35%, transparent 45%),
+    radial-gradient(circle at bottom left, $color-accent 0%, $color-accent 8%, transparent 20%),
+    radial-gradient(circle at top right, $color-primary 0%, $color-primary 10%, transparent 20%);
+  background-blend-mode: normal;
+  background-size: cover;
+
+  &::before {
+    // Overlay for the home page hero
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba($color-white, $hero-overlay-opacity); // Semi-transparent overlay
+    z-index: 0;
+  }
+}
+
+.hero__banner {
+  // Styles for the hero banner
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-md; // Add spacing between elements
+  margin-top: $spacing-lg; // Add spacing above the banner
+
+  &__photo {
+    // Styles for the banner photo
+    max-width: 180px; // Limit photo width
+    border-radius: $border-radius-circle; // Circular photo
+    box-shadow: $box-shadow-lg; // Add shadow for depth
+  }
+
+  &__text {
+    // Styles for the banner text
+    text-align: center;
+    padding: $spacing-md; // Add padding for spacing
+
+    &__title {
+      font-size: $font-size-xl; // Large font size
+      margin-bottom: $spacing-md; // Add spacing below the title
+    }
+
+    &__description {
+      font-size: $font-size-md; // Medium font size
+      margin-bottom: $spacing-lg; // Add spacing below the description
+    }
+  }
+}
+
+.hero__figure {
+  // Styles for the circular image in the hero section
+  width: 150px; // Fixed width
+  height: 150px; // Fixed height for a perfect circle
+  border-radius: 50%; // Circular shape
+  overflow: hidden; // Ensure the image stays within the circle
+  box-shadow: $box-shadow-md; // Add subtle shadow
+  margin-bottom: $spacing-md; // Add spacing below the image
+
+  &__image {
+    // Styles for the image inside the figure
+    width: 100%; // Fill the container
+    height: 100%; // Fill the container
+    object-fit: cover; // Maintain aspect ratio and crop if necessary
+  }
+}
+
+// Keyframes for animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// Respect user preferences for reduced motion
+@media (prefers-reduced-motion: reduce) {
+  h1 {
+    animation: none; // Disable animations for users who prefer reduced motion
+  }
+}
+
+// Responsive styles for smaller screens
+@media (max-width: $breakpoint-md) {
+  .hero {
+    padding: $spacing-lg $spacing-sm; // Reduce padding for smaller screens
+  }
+
+  .hero__title {
+    font-size: $font-size-lg; // Adjust font size for smaller screens
+  }
+
+  .hero__description {
+    font-size: $font-size-sm; // Adjust font size for smaller screens
+    margin-bottom: $spacing-md; // Reduce spacing
+  }
+
+  .hero__banner {
+    flex-direction: column; // Stack items vertically on smaller screens
+    gap: $spacing-md; // Reduce gap between items
+  }
+
+  .hero__figure {
+    width: 150px; // Keep a fixed width for the circular image
+    height: 150px; // Match height to width for a perfect circle
+    margin: 0 auto $spacing-md; // Center the image and add spacing below
+  }
+
+  .hero__image {
+    width: 100%; // Ensure the image fills the container
+    height: 100%; // Ensure the image fills the container
+    object-fit: cover; // Maintain aspect ratio and crop if necessary
+  }
+}
+
+// Dark mode styles
+@media (prefers-color-scheme: dark) {
+  .hero {
+    color: $color-text-dark; // Use dark mode text color
+    background: 
+      radial-gradient(circle at center, $color-background-dark 0%, $color-background-dark 35%, transparent 45%),
+      radial-gradient(circle at bottom left, $color-accent-dark 0%, $color-accent-dark 8%, transparent 20%),
+      radial-gradient(circle at top right, $color-primary-dark 0%, $color-primary-dark 10%, transparent 20%);
+  }
+
+  .hero--home-page::before {
+    background: rgba($color-background-dark, $hero-overlay-opacity); // Adjust overlay for dark mode
+  }
+}

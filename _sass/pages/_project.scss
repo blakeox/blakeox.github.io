@@ -1,0 +1,151 @@
+// _sass/pages/project.scss
+// Project Detail Page Styles
+// This file contains styles specific to the Project Detail page of the website.
+// The styles are designed to ensure a clean, visually appealing, and user-friendly layout for showcasing individual projects.
+// SASS variables are used for spacing, colors, typography, and transitions to ensure consistency and easy updates.
+// Referenced variables are defined in the settings folder for maintainability.
+
+.project-detail {
+  // Base styles for the Project Detail page
+  margin: 0 auto; // Center the content horizontally
+  padding: $spacing-lg; // Add padding using the spacing variable
+  max-width: 960px; // Limit the maximum width of the content
+
+  .breadcrumb {
+    // Styles for the breadcrumb navigation
+    margin-bottom: $spacing-md; // Add bottom margin for spacing
+    font-size: $font-size-sm; // Use small font size for breadcrumbs
+    color: $color-text; // Use standard text color
+  }
+
+  h1 {
+    // Styles for the project title
+    font-size: $font-size-xl; // Use large font size for prominence
+    margin-bottom: $spacing-md; // Add bottom margin for spacing
+    text-align: center; // Center-align the title
+  }
+
+  .project-image {
+    // Styles for the project image container
+    margin: $spacing-md 0; // Add vertical margin for spacing
+
+    img {
+      // Styles for the project image
+      max-width: 100%; // Ensure the image scales responsively
+      height: auto; // Maintain aspect ratio
+      border-radius: $border-radius; // Apply rounded corners
+      box-shadow: $box-shadow-md; // Add shadow for depth
+    }
+  }
+
+  .project-overview {
+    // Styles for the project overview section
+    font-size: $font-size-md; // Use medium font size for readability
+    line-height: $line-height-base; // Use base line height for consistent spacing
+    color: $color-text; // Use standard text color
+    margin-bottom: $spacing-lg; // Add bottom margin for spacing
+  }
+
+  .tag {
+    // Styles for individual tags
+    display: inline-block;
+    background: $color-primary; // Use primary color for the background
+    color: $color-white; // Use white text for contrast
+    padding: $spacing-xs $spacing-sm; // Add padding for better readability
+    border-radius: $border-radius-sm; // Apply small rounded corners
+    font-size: $font-size-xs; // Use small font size for tags
+    margin-right: $spacing-sm; // Add spacing between tags
+    text-decoration: none; // Remove underline
+    transition: background-color $transition-duration-default ease; // Smooth hover transition
+
+    &:hover {
+      // Hover effect for tags
+      background: $color-primary-dark; // Use darker primary color
+    }
+  }
+
+  .project-body {
+    // Styles for the main content of the project
+    line-height: $line-height-base; // Use base line height for consistent spacing
+    font-size: $font-size-md; // Use medium font size for readability
+    color: $color-text; // Use standard text color
+
+    img {
+      // Styles for images within the project body
+      max-width: 100%; // Ensure images scale responsively
+      height: auto; // Maintain aspect ratio
+      margin: $spacing-md 0; // Add vertical margin for spacing
+      border-radius: $border-radius; // Apply rounded corners
+    }
+
+    blockquote {
+      // Styles for blockquotes
+      margin: $spacing-lg 0; // Add vertical margin for spacing
+      padding: $spacing-md; // Add padding for inner spacing
+      background: $background-color-light; // Use light background color
+      border-left: 4px solid $color-primary; // Add a left border with the primary color
+      font-style: italic; // Italicize the text
+    }
+  }
+
+  .project-navigation {
+    // Styles for the navigation section (e.g., next/previous project links)
+    margin-top: $spacing-lg; // Add top margin for spacing
+    text-align: center; // Center-align the navigation buttons
+
+    .btn {
+      // Styles for navigation buttons
+      padding: $spacing-sm $spacing-md; // Add padding for clickable area
+      background-color: $color-primary; // Use primary color for the button
+      color: $color-white; // Use white text for contrast
+      border: none; // Remove default border
+      border-radius: $border-radius-lg; // Apply large rounded corners
+      font-size: $font-size-md; // Use medium font size
+      cursor: pointer; // Pointer cursor for interactivity
+      transition: background-color $transition-duration-default ease; // Smooth hover transition
+
+      &:hover {
+        // Hover effect for buttons
+        background-color: $color-primary-dark; // Use darker primary color
+      }
+    }
+  }
+
+  .related-projects {
+    // Styles for the related projects section
+    margin-top: $spacing-lg; // Add top margin for spacing
+
+    h2 {
+      // Styles for the related projects heading
+      font-size: $font-size-lg; // Use large font size for prominence
+      margin-bottom: $spacing-md; // Add bottom margin for spacing
+    }
+
+    ul {
+      // Styles for the list of related projects
+      list-style: none; // Remove default list styling
+      padding: 0; // Remove default padding
+      display: flex; // Use flexbox for layout
+      gap: $spacing-md; // Add spacing between items
+      justify-content: center; // Center-align the list
+
+      li {
+        a {
+          // Styles for related project links
+          display: inline-block;
+          padding: $spacing-sm $spacing-md; // Add padding for clickable area
+          background: $color-secondary; // Use secondary color for the background
+          color: $color-white; // Use white text for contrast
+          border-radius: $border-radius; // Apply rounded corners
+          text-decoration: none; // Remove underline
+          transition: background-color $transition-duration-default ease; // Smooth hover transition
+
+          &:hover {
+            // Hover effect for links
+            background: $color-primary; // Use primary color
+          }
+        }
+      }
+    }
+  }
+}

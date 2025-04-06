@@ -1,33 +1,45 @@
+// _sass/components/_cards.scss
+// Card Component Styles
+// This file contains styles for reusable card components used throughout the project.
+// The styles are designed to be modular, customizable, and consistent with the overall design system.
+// SASS variables are used for colors, spacing, and typography to ensure maintainability and easy updates.
+// Referenced variables are defined in the settings folder for consistency across the project.
+
 .card {
-  background: $background-color;
-  border: 1px solid $color-secondary;
-  border-radius: $border-radius;
-  box-shadow: $box-shadow-sm;
-  overflow: hidden;
-  transition: box-shadow 0.3s ease;
+  // Base styles for the card component
+  background: $background-color; // Use background color variable from _colors.scss
+  border: 1px solid $color-secondary; // Use secondary color for the border
+  border-radius: $border-radius; // Apply rounded corners using the border-radius variable
+  box-shadow: $box-shadow-sm; // Apply a small shadow for depth
+  overflow: hidden; // Prevent content overflow
+  transition: box-shadow 0.3s ease; // Smooth transition for hover effects
 
   &:hover {
-    box-shadow: $box-shadow-md;
+    // Hover effect for the card
+    box-shadow: $box-shadow-md; // Apply a larger shadow for emphasis
   }
 
   .card-header {
-    padding: $spacing-md;
-    font-size: $font-size-md;
-    font-weight: bold;
-    background-color: $color-primary;
-    color: #fff;
+    // Styles for the card header
+    padding: $spacing-md; // Apply medium spacing for padding
+    font-size: $font-size-md; // Use medium font size for the header text
+    font-weight: bold; // Make the header text bold
+    background-color: $color-primary; // Use primary color for the header background
+    color: #fff; // White text for contrast
   }
 
   .card-body {
-    padding: $spacing-md;
-    font-size: $font-size-sm;
-    color: $color-text;
+    // Styles for the card body
+    padding: $spacing-md; // Apply medium spacing for padding
+    font-size: $font-size-sm; // Use small font size for the body text
+    color: $color-text; // Use standard text color
   }
 
   .card-footer {
-    padding: $spacing-sm;
-    background-color: $color-secondary;
-    color: #fff;
-    text-align: center;
+    // Styles for the card footer
+    padding: $spacing-sm; // Apply small spacing for padding
+    background-color: $color-secondary; // Use secondary color for the footer background
+    color: #fff; // White text for contrast
+    text-align: center; // Center-align the footer content
   }
 }

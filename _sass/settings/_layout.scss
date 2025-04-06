@@ -8,21 +8,20 @@
 // The layout settings are defined in a way that they can be easily customized and reused throughout the project.
 // The layout settings are used for various components such as containers, grids, and breakpoints.
 
-
 // Container Widths
-$container-sm: 540px;
-$container-md: 720px;
-$container-lg: 960px;
-$container-xl: 1140px;
+$container-sm: 540px; // Small container width
+$container-md: 720px; // Medium container width
+$container-lg: 960px; // Large container width
+$container-xl: 1140px; // Extra-large container width
 
 // Grid Gutter
-$grid-gutter-width: 30px;
+$grid-gutter-width: 30px; // Default gutter width for grid spacing
 
 // Breakpoints
-$breakpoint-sm: 576px;
-$breakpoint-md: 768px;
-$breakpoint-lg: 992px;
-$breakpoint-xl: 1200px;
+$breakpoint-sm: 576px; // Small devices (e.g., phones)
+$breakpoint-md: 768px; // Medium devices (e.g., tablets)
+$breakpoint-lg: 992px; // Large devices (e.g., desktops)
+$breakpoint-xl: 1200px; // Extra-large devices (e.g., large desktops)
 
 // Component Dimensions
 $hero-figure-width: 180px; // Default width for hero figure
@@ -30,8 +29,9 @@ $filter-min-width: 200px; // Minimum width for filter controls
 
 // Mixin for Containers
 @mixin container($max-width) {
-  width: 100%;
-  max-width: $max-width;
-  margin: 0 auto;
-  padding: 0 $grid-gutter-width / 2;
+  // Creates a responsive container with a maximum width
+  width: 100%; // Full width by default
+  max-width: $max-width; // Limit the width to the specified max-width
+  margin: 0 auto; // Center the container horizontally
+  padding: 0 $grid-gutter-width / 2; // Add horizontal padding using half the gutter width
 }

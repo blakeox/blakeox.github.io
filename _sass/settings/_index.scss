@@ -8,14 +8,12 @@
 // The settings files are defined in a way that they can be easily customized and reused throughout the project.
 // This file is the main entry point for all the settings files.
 
-
-
-@import 'breakpoints';
-@import 'colors';
-@import 'layout';
-@import 'radius';
-@import 'shadows';
-@import 'spacing';
-@import 'transitions';
-@import 'typography';
-@import 'zindex';
+@import 'breakpoints'; // Defines responsive breakpoints for media queries
+@import 'colors'; // Defines color variables for consistent theming
+@import 'layout'; // Defines layout-related variables (e.g., container widths)
+@import 'radius'; // Defines border-radius variables for rounded elements
+@import 'shadows'; // Defines shadow variables for depth and elevation
+@import 'spacing'; // Defines spacing variables for margins and paddings
+@import 'transitions'; // Defines transition variables for animations
+@import 'typography'; // Defines typography variables (e.g., font sizes, weights)
+@import 'zindex'; // Defines z-index variables for layering elements

@@ -1,0 +1,23 @@
+// _sass/pages/home.scss
+// Home Page Styles
+// This file contains styles specific to the Home page of the website.
+// The styles are designed to ensure a clean and visually appealing layout for the homepage.
+// SASS variables are used for spacing and animations to ensure consistency and easy updates.
+// Referenced variables are defined in the settings folder for maintainability.
+
+.home-page {
+  // Base styles for the Home page
+  margin: 0 auto; // Center the content horizontally
+  padding: $spacing-none; // Use spacing variable from _spacing.scss
+}
+
+// Keyframes for animations
+@keyframes fadeIn {
+  // Fade-in animation for elements
+  from {
+    opacity: 0; // Start with full transparency
+  }
+  to {
+    opacity: 1; // Transition to full opacity
+  }
+}

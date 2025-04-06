@@ -1,0 +1,100 @@
+// _sass/components/_blog-cards.scss
+// Blog Cards Styles
+// This file contains styles for blog cards used throughout the project.
+// Blog cards are used to display blog posts in a grid layout with a consistent design.
+// The styles are designed to be reusable, customizable, and consistent with the overall design system.
+// SASS variables are used for colors, spacing, typography, and transitions to ensure maintainability and easy updates.
+// Referenced variables are defined in the settings folder for consistency across the project.
+
+/* Blog Grid */
+.blog-grid {
+  // Styles for the container of the blog grid
+  display: grid; // Use grid layout for responsive design
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); // Responsive grid layout
+  gap: $spacing-lg; // Add spacing between grid items
+  margin-top: $spacing-lg; // Add top margin for spacing
+  margin-bottom: $spacing-xl; // Add bottom margin for spacing
+}
+
+/* Blog Card */
+.blog-item {
+  // Base styles for individual blog cards
+  display: flex; // Use flexbox for layout
+  flex-direction: column; // Stack content vertically
+  justify-content: flex-start; // Align items at the top
+  background: $background-color-light; // Use light background color
+  border: 1px solid $color-border-light; // Add a light border
+  border-radius: $border-radius; // Apply rounded corners
+  padding: $spacing-lg; // Add padding for inner spacing
+  box-shadow: $box-shadow-sm; // Add a small shadow for depth
+  transition: transform $transition-duration-default ease, box-shadow $transition-duration-default ease; // Smooth hover effects
+  color: $color-text; // Use standard text color
+  height: 100%; // Ensure consistent height for all cards
+}
+
+.blog-item:hover {
+  // Hover effect for blog cards
+  transform: translateY(-5px); // Slight upward movement
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Add a larger shadow for emphasis
+}
+
+.blog-item img {
+  // Styles for blog card images
+  width: 100%; // Ensure image fills the card width
+  height: 200px; // Set a consistent height for all images
+  object-fit: cover; // Crop the image to fit the container
+  border-radius: $border-radius-sm; // Apply small rounded corners
+  margin-bottom: $spacing-md; // Add spacing below the image
+}
+
+.blog-item h3 {
+  // Styles for blog card titles
+  margin-top: $spacing-sm; // Add top margin for spacing
+  margin-bottom: $spacing-md; // Add bottom margin for spacing
+  font-size: $font-size-lg; // Use large font size for titles
+  text-align: center; // Center-align the title
+  min-height: 3rem; // Ensure consistent vertical space for titles
+  display: flex; // Use flexbox for alignment
+  align-items: center; // Vertically center the text
+  justify-content: center; // Horizontally center the text
+}
+
+.blog-item h3 a {
+  // Styles for title links
+  text-decoration: none; // Remove underline
+  color: $color-primary; // Use primary color for links
+  transition: color $transition-duration-default ease; // Smooth color transition on hover
+}
+
+.blog-item h3 a:hover {
+  // Hover effect for title links
+  color: $color-primary-dark; // Use darker primary color
+}
+
+.blog-item p {
+  // Styles for blog card descriptions
+  flex-grow: 1; // Allow the description to take up remaining space
+  margin-bottom: $spacing-md; // Add bottom margin for spacing
+  text-align: center; // Center-align the description
+}
+
+.blog-item .btn {
+  // Styles for the "Read More" button
+  display: inline-block; // Inline-block for button-like appearance
+  background: $color-primary; // Use primary color for the button
+  color: $color-white; // Use white text for contrast
+  padding: $spacing-sm $spacing-md; // Add padding for clickable area
+  text-decoration: none; // Remove underline
+  border-radius: $border-radius; // Apply rounded corners
+  font-size: $font-size-md; // Use medium font size for the button
+  text-align: center; // Center-align the button text
+  transition: background $transition-duration-fast ease, transform $transition-duration-fast ease; // Smooth hover effects
+  margin-top: auto; // Push the button to the bottom
+  align-self: center; // Center-align the button
+}
+
+.blog-item .btn:hover {
+  // Hover effect for the button
+  background: $color-primary-dark; // Use darker primary color
+  transform: translateY(-2px); // Slight upward movement
+}

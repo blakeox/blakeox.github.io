@@ -1,0 +1,35 @@
+// _sass/components/_pagination.scss
+// Pagination Styles
+// This file contains styles for the pagination component used throughout the project.
+// The pagination component allows users to navigate between pages of content, such as blog posts or projects.
+// The styles are designed to be reusable, responsive, and consistent with the overall design system.
+// SASS variables are used for colors, spacing, typography, and transitions to ensure maintainability and easy updates.
+
+.pagination {
+  // Base styles for the pagination container
+  display: flex; // Use flexbox for layout
+  justify-content: center; // Center-align the pagination links
+  margin-top: $spacing-lg; // Add top margin for spacing
+
+  .page-link {
+    // Styles for individual pagination links
+    margin: 0 $spacing-xs; // Add horizontal spacing between links
+    padding: $spacing-sm $spacing-md; // Add padding for clickable area
+    background-color: $color-secondary; // Use secondary color for the background
+    color: $color-white; // Use white text for contrast
+    text-decoration: none; // Remove underline
+    border-radius: $border-radius; // Apply rounded corners
+    transition: background-color $transition-duration-default ease; // Smooth transition for hover effects
+
+    &:hover {
+      // Hover effect for pagination links
+      background-color: $color-primary; // Use primary color for hover state
+    }
+
+    &.active {
+      // Styles for the active pagination link
+      background-color: $color-primary; // Use primary color for the active state
+      font-weight: $font-weight-bold; // Use bold font weight for emphasis
+    }
+  }
+}

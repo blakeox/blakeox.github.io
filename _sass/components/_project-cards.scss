@@ -1,0 +1,99 @@
+// _sass/components/_project-cards.scss
+// Project Cards Styles
+// This file contains styles for the project cards used throughout the website.
+// Project cards are displayed in a responsive grid layout and include an image, title, description, and a call-to-action button.
+// The styles are designed to be reusable, responsive, and consistent with the overall design system.
+// SASS variables are used for colors, spacing, typography, and transitions to ensure maintainability and easy updates.
+
+/* Project Grid */
+.project-grid {
+  // Styles for the container of the project grid
+  display: grid; // Use grid layout for responsive design
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); // Create responsive columns
+  gap: $spacing-lg; // Add spacing between grid items
+  margin-top: $spacing-lg; // Add top margin for spacing
+  margin-bottom: $spacing-xl; // Add bottom margin for spacing
+}
+
+/* Project Card */
+.project-item {
+  // Base styles for individual project cards
+  display: flex;
+  flex-direction: column; // Stack content vertically
+  justify-content: flex-start; // Align items at the top
+  background: $background-color-light; // Use light background color
+  border: 1px solid $color-border-light; // Add a light border
+  border-radius: $border-radius; // Apply rounded corners
+  padding: $spacing-lg; // Add padding for inner spacing
+  box-shadow: $box-shadow-sm; // Add a small shadow for depth
+  transition: transform $transition-duration-default ease, box-shadow $transition-duration-default ease, background $transition-duration-default ease; // Smooth hover effects
+  color: $color-text; // Use standard text color
+  height: 100%; // Ensure consistent height for all cards
+}
+
+.project-item:hover {
+  // Hover effect for project cards
+  transform: translateY(-5px); // Slight upward movement
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Add a larger shadow for emphasis
+}
+
+.project-item img {
+  // Styles for project card images
+  width: 100%; // Ensure image fills the card width
+  height: 200px; // Set a consistent height for all images
+  object-fit: cover; // Crop the image to fit the container
+  border-radius: $border-radius-sm; // Apply small rounded corners
+  margin-bottom: $spacing-md; // Add spacing below the image
+}
+
+.project-item h3 {
+  // Styles for project card titles
+  margin-top: $spacing-sm; // Add top margin for spacing
+  margin-bottom: $spacing-md; // Add bottom margin for spacing
+  font-size: $font-size-lg; // Use large font size for titles
+  text-align: center; // Center-align the title
+  min-height: 3rem; // Ensure consistent vertical space for titles
+  display: flex; // Use flexbox for alignment
+  align-items: center; // Vertically center the text
+  justify-content: center; // Horizontally center the text
+}
+
+.project-item h3 a {
+  // Styles for title links
+  text-decoration: none; // Remove underline
+  color: $color-primary; // Use primary color for links
+  transition: color $transition-duration-default ease; // Smooth color transition on hover
+}
+
+.project-item h3 a:hover {
+  // Hover effect for title links
+  color: $color-primary-dark; // Use darker primary color
+}
+
+.project-item p {
+  // Styles for project card descriptions
+  flex-grow: 1; // Allow the description to take up remaining space
+  margin-bottom: $spacing-md; // Add bottom margin for spacing
+  text-align: center; // Center-align the description
+}
+
+.project-item .btn {
+  // Styles for the call-to-action button
+  display: inline-block;
+  background: $color-primary; // Use primary color for the button
+  color: $color-white; // Use white text for contrast
+  padding: $spacing-sm $spacing-md; // Add padding for clickable area
+  text-decoration: none; // Remove underline
+  border-radius: $border-radius; // Apply rounded corners
+  font-size: $font-size-md; // Use medium font size for the button
+  text-align: center; // Center-align the button text
+  transition: background $transition-duration-fast ease, transform $transition-duration-fast ease; // Smooth hover effects
+  margin-top: auto; // Push the button to the bottom
+  align-self: center; // Center-align the button
+}
+
+.project-item .btn:hover {
+  // Hover effect for the button
+  background: $color-primary-dark; // Use darker primary color
+  transform: translateY(-2px); // Slight upward movement
+}

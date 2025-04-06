@@ -4,12 +4,14 @@
 // It is important to keep these values consistent to ensure a smooth user experience.
 // The transition and animation settings are defined using SASS variables for easy customization and maintenance.
 
-$transition-duration-fast: 0.2s;
-$transition-duration-default: 0.3s;
+// Transition Durations
+$transition-duration-fast: 0.2s; // Fast transitions for quick interactions
+$transition-duration-default: 0.3s; // Default transition duration for most elements
 
 // Animation Durations
 $animation-duration-fast: 0.2s; // Fast animations
 $animation-duration-default: 0.5s; // Default animation duration
-$animation-duration-slow: 1s; // Slow animations
+$animation-duration-slow: 1s; // Slow animations for emphasis
 
-$spinner-size: 24px; // Default spinner size
+// Spinner Settings
+$spinner-size: 24px; // Default spinner size for loading indicators

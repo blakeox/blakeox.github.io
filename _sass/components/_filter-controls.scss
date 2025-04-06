@@ -1,0 +1,138 @@
+// _sass/components/_filter-controls.scss
+// Filter Controls Styles
+// This file contains styles for the filter controls section, which includes dropdowns, search inputs, and buttons.
+// The filter controls are used to provide users with options to filter, sort, or search content dynamically.
+// The styles are designed to be reusable, responsive, and consistent with the overall design system.
+// SASS variables are used for colors, spacing, typography, and transitions to ensure maintainability and easy updates.
+
+.filter-controls {
+  // Base styles for the filter controls container
+  display: flex; // Use flexbox for layout
+  flex-wrap: wrap; // Allow items to wrap to the next line if necessary
+  gap: $spacing-md; // Add spacing between items
+  align-items: center; // Align items vertically
+  margin-bottom: $spacing-lg; // Add bottom margin for spacing
+
+  .filter-dropdown-container,
+  .sort-dropdown-container,
+  .search-input-container {
+    // Styles for dropdowns and search input containers
+    flex: 1 1 auto; // Allow flexible resizing
+    min-width: $filter-min-width; // Minimum width for containers
+  }
+
+  select,
+  input {
+    // Base styles for dropdowns and input fields
+    width: 100%; // Full width to match the container
+    padding: $spacing-sm $spacing-md; // Add inner padding
+    font-size: $font-size-base; // Use base font size
+    border: 1px solid $color-border-light; // Light border color
+    border-radius: $border-radius; // Rounded corners
+    background-color: $background-color-light; // Light background color
+    transition: border-color $transition-duration-default ease, box-shadow $transition-duration-default ease; // Smooth transitions
+
+    &:focus {
+      // Focus styles for accessibility
+      border-color: $color-primary; // Highlight border with primary color
+      box-shadow: 0 0 4px rgba($color-primary, 0.5); // Add subtle shadow
+      outline: none; // Remove default outline
+    }
+
+    &:hover {
+      // Hover styles for interactivity
+      border-color: $color-primary-hover; // Use hover color for border
+    }
+  }
+
+  .btn {
+    // Base styles for buttons
+    padding: $spacing-sm $spacing-md; // Add padding for clickable area
+    font-size: $font-size-base; // Use base font size
+    border: none; // Remove default border
+    border-radius: $border-radius; // Rounded corners
+    cursor: pointer; // Pointer cursor for interactivity
+    transition: background-color $transition-duration-default ease; // Smooth background color transition
+
+    &.secondary {
+      // Styles for secondary buttons
+      background-color: $color-secondary; // Secondary background color
+      color: $color-text-secondary; // Secondary text color
+      border: 1px solid $color-border-secondary; // Secondary border color
+
+      &:hover {
+        // Hover effect for secondary buttons
+        background-color: $color-secondary-hover; // Darker secondary color
+      }
+    }
+
+    &:hover {
+      // Hover effect for primary buttons
+      background-color: $color-primary-hover; // Darker primary color
+      color: $color-text; // Standard text color
+    }
+
+    &:focus {
+      // Focus styles for accessibility
+      outline: 2px solid $color-primary; // Highlight outline with primary color
+      outline-offset: 2px; // Add spacing around the outline
+    }
+  }
+
+  .spinner {
+    // Styles for loading spinner
+    display: inline-block; // Inline-block for layout
+    width: $spinner-size; // Spinner width
+    height: $spinner-size; // Spinner height
+    border: 3px solid rgba($color-border-light, 0.1); // Light border color
+    border-top: 3px solid $color-primary; // Primary color for the top border
+    border-radius: $border-radius-circle; // Circular shape
+    animation: spin $animation-duration-fast linear infinite; // Spinning animation
+
+    &.hidden {
+      // Hidden state for the spinner
+      display: none;
+    }
+  }
+
+  .spinner {
+    // Transition styles for spinner visibility
+    opacity: 0;
+    transition: opacity $transition-duration-default ease; // Smooth opacity transition
+
+    &.hidden {
+      opacity: 0; // Fully transparent
+      pointer-events: none; // Disable interactions
+    }
+
+    &:not(.hidden) {
+      opacity: 1; // Fully visible
+    }
+  }
+}
+
+// Keyframes for spinner animation
+@keyframes spin {
+  to {
+    transform: rotate(360deg); // Full rotation
+  }
+}
+
+// Responsive styles for smaller screens
+@media (max-width: $breakpoint-md) {
+  .filter-controls {
+    flex-direction: column; // Stack items vertically
+    gap: $spacing-md; // Add spacing between items
+
+    .filter-dropdown-container,
+    .sort-dropdown-container,
+    .search-input-container {
+      min-width: 100%; // Full width for containers
+    }
+
+    .btn {
+      width: 100%; // Full width for buttons
+      text-align: center; // Center-align button text
+    }
+  }
+}

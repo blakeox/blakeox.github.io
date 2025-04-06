@@ -1,0 +1,52 @@
+// _sass/pages/search.scss
+// Search Page Styles
+// This file contains styles specific to the Search page of the website.
+// The styles are designed to ensure a clean and user-friendly layout for the search functionality.
+// SASS variables are used for spacing, colors, typography, and transitions to ensure consistency and easy updates.
+// Referenced variables are defined in the settings folder for maintainability.
+
+.search-box {
+  // Base styles for the search box container
+  margin-top: $spacing-lg; // Add top margin using the spacing variable
+  text-align: center; // Center-align the content
+
+  h2 {
+    // Styles for the search heading
+    font-size: $font-size-lg; // Use large font size for the heading
+    margin-bottom: $spacing-md; // Add bottom margin using the spacing variable
+  }
+
+  form {
+    // Styles for the search form
+    display: inline-block; // Center the form inline
+  }
+
+  input[type="text"] {
+    // Styles for the search input field
+    padding: $spacing-sm; // Add padding for better usability
+    border: 1px solid $color-border-light; // Use light border color
+    border-radius: $border-radius; // Apply rounded corners
+    width: 80%; // Set input width to 80% of the container
+    max-width: 300px; // Limit the maximum width of the input
+    font-size: $font-size-md; // Use medium font size for readability
+    color: $color-text; // Use standard text color
+  }
+
+  button {
+    // Styles for the search button
+    background: $color-primary; // Use primary color for the button
+    color: $color-white; // Use white text for contrast
+    border: none; // Remove default border
+    padding: $spacing-sm $spacing-md; // Add padding for clickable area
+    margin-left: $spacing-sm; // Add left margin for spacing
+    border-radius: $border-radius; // Apply rounded corners
+    font-size: $font-size-md; // Use medium font size for the button
+    cursor: pointer; // Pointer cursor for interactivity
+    transition: background-color $transition-duration-default ease; // Smooth hover transition
+
+    &:hover {
+      // Hover effect for the button
+      background: $color-primary-dark; // Use darker primary color
+    }
+  }
+}

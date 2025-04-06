@@ -1,40 +1,51 @@
-@keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
+// _sass/utilities/animations.scss
+// Animations Utilities
+// This file contains reusable animations and utility classes for adding motion effects to elements.
+// The animations are designed to enhance user experience by providing smooth transitions and visual feedback.
+// These utilities include keyframes and classes for fade-in, scroll animations, and spinning effects.
 
+// Keyframe Animation: Fade In
+@keyframes fadeIn {
+  from {
+    opacity: 0; // Start fully transparent
+  }
+  to {
+    opacity: 1; // Transition to fully visible
+  }
+}
+
+// Utility Class: Scroll Animation
 .scroll-animate {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  opacity: 0; // Initially hidden
+  transform: translateY(20px); // Start slightly below the original position
+  transition: opacity 0.5s ease, transform 0.5s ease; // Smooth transition for visibility and position
 }
 
 .scroll-animate.visible {
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 1; // Fully visible
+  transform: translateY(0); // Return to the original position
 }
 
+// Utility Class: Hero Text Animation
 .hero__title span,
 .hero__description span {
-  display: inline-block;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.5s forwards;
+  display: inline-block; // Ensure each span is treated as a block for animation
+  opacity: 0; // Initially hidden
+  transform: translateY(20px); // Start slightly below the original position
+  animation: fadeInUp 0.5s forwards; // Apply fade-in-up animation
 }
 
+// Keyframe Animation: Fade In Up
 @keyframes fadeInUp {
   to {
-    opacity: 1;
-    transform: translateY(0);
+    opacity: 1; // Fully visible
+    transform: translateY(0); // Return to the original position
   }
 }
 
+// Keyframe Animation: Spin
 @keyframes spin {
   to {
-    transform: rotate(360deg);
+    transform: rotate(360deg); // Full rotation
   }
 }

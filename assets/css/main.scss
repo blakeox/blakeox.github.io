@@ -9,32 +9,10 @@
 
 // Import component styles
 @import "components/components";
-@import "components/project-cards";
-@import "components/hero";
-@import "components/anchor-links";
-@import "components/key-achievements";
-@import "components/tag-list";
-@import "components/timeline";
-@import "components/resume-summary";
-@import "components/featured-projects";
-@import "components/call-to-action";
-@import "components/page-header";
-@import "components/blog-list";
-@import "components/pagination";
-@import "components/filter-controls";
 
 // Import utility classes
 @import "utilities";
 @import "utilities/animations";
 
 // Import page-specific styles
-@import "pages/home";
-@import "pages/about";
-@import "pages/blog";
-@import "pages/contact";
-@import "pages/projects";
-@import "pages/project"; 
-@import "pages/search";
-
-// Import error page styles
-@import "error"; // Add this line for error page styles
+@import "pages";
