@@ -1,0 +1,17 @@
+// _sass/utilities/_width-height.scss
+// Width and Height Utilities
+// This file contains utility classes for setting width and height of elements.
+// These utilities are designed to provide quick and reusable styles for layout adjustments.
+// SASS variables can be used to ensure consistency and easy updates.
+
+// Width Utilities
+.w-25 { width: 25%; }
+.w-50 { width: 50%; }
+.w-75 { width: 75%; }
+.w-100 { width: 100%; }
+
+// Height Utilities
+.h-25 { height: 25%; }
+.h-50 { height: 50%; }
+.h-75 { height: 75%; }
+.h-100 { height: 100%; }
