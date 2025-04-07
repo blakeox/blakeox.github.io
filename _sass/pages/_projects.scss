@@ -1,36 +1,49 @@
-// _sass/pages/projects.scss
-// Projects Page Styles
+// ## Projects Page Styles
 // This file contains styles specific to the Projects page of the website.
 // The styles are designed to ensure a clean, organized, and responsive layout for showcasing projects.
 // SASS variables are used for spacing, colors, typography, and transitions to ensure consistency and easy updates.
 // Referenced variables are defined in the settings folder for maintainability.
 
 .projects-page {
-  // Base styles for the Projects page
+  // ### Base Styles
+  // - **margin:** Centers the content horizontally.
+  // - **padding:** Adds inner spacing around the content.
+  // - **max-width:** Limits the maximum width of the content for better readability.
   margin: 0 auto; // Center the content horizontally
   padding: $spacing-lg; // Add padding using the spacing variable
   max-width: 960px; // Limit the maximum width of the content
 
   .projects-header {
-    // Styles for the header section of the Projects page
+    // ### Header Section
+    // - **text-align:** Centers the header content.
+    // - **margin-bottom:** Adds spacing below the header.
     text-align: center;
     margin-bottom: $spacing-lg; // Add bottom margin using the spacing variable
 
     h1 {
-      // Styles for the main heading
+      // ### Main Heading
+      // - **font-size:** Uses a large font size for prominence.
+      // - **margin-bottom:** Adds spacing below the heading.
       font-size: $font-size-xl; // Use large font size for headings
       margin-bottom: $spacing-md; // Add bottom margin using the spacing variable
     }
 
     p {
-      // Styles for the description text
+      // ### Description Text
+      // - **font-size:** Uses a medium font size for readability.
+      // - **color:** Uses the standard text color for consistency.
       font-size: $font-size-md; // Use medium font size for readability
       color: $color-text; // Use standard text color
     }
   }
 
   .filter-bar {
-    // Styles for the filter bar
+    // ### Filter Bar
+    // - **display:** Uses flexbox for layout.
+    // - **flex-wrap:** Allows items to wrap to the next line if necessary.
+    // - **justify-content:** Spaces out filter elements horizontally.
+    // - **align-items:** Aligns items vertically.
+    // - **margin-bottom:** Adds spacing below the filter bar.
     display: flex;
     flex-wrap: wrap; // Allow items to wrap to the next line if necessary
     justify-content: space-between; // Space out filter elements
@@ -39,7 +52,14 @@
 
     .filter-dropdown,
     .search-input {
-      // Styles for dropdowns and search input
+      // ### Dropdowns and Search Input
+      // - **flex:** Allows flexible resizing.
+      // - **max-width:** Limits the maximum width of the input fields.
+      // - **margin:** Adds horizontal spacing between elements.
+      // - **padding:** Adds inner spacing for usability.
+      // - **border:** Adds a light border for separation.
+      // - **border-radius:** Applies rounded corners for a modern look.
+      // - **font-size:** Uses a small font size for readability.
       flex: 1; // Allow flexible resizing
       max-width: 300px; // Limit the maximum width
       margin: 0 $spacing-sm; // Add horizontal margin using the spacing variable
@@ -49,7 +69,10 @@
       font-size: $font-size-sm; // Use small font size for inputs
 
       &:focus {
-        // Focus styles for accessibility
+        // ### Focus Styles
+        // - **outline:** Removes the default outline.
+        // - **border-color:** Highlights the border with the primary color.
+        // - **box-shadow:** Adds a subtle shadow for focus indication.
         outline: none;
         border-color: $color-primary; // Highlight border with primary color
         box-shadow: 0 0 5px $color-primary; // Add subtle shadow for focus
@@ -58,7 +81,11 @@
   }
 
   .project-grid {
-    // Styles for the grid layout of projects
+    // ### Project Grid
+    // - **display:** Uses grid layout for responsive design.
+    // - **grid-template-columns:** Creates responsive columns based on available space.
+    // - **gap:** Adds spacing between grid items.
+    // - **margin-top, margin-bottom:** Adds vertical spacing around the grid.
     display: grid; // Use grid layout for responsive design
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); // Create responsive columns
     gap: $spacing-lg; // Add spacing between grid items
@@ -67,7 +94,11 @@
   }
 
   .no-results {
-    // Styles for the "no results" message
+    // ### No Results Message
+    // - **text-align:** Centers the message horizontally.
+    // - **font-size:** Uses a medium font size for readability.
+    // - **color:** Uses the standard text color for consistency.
+    // - **margin-top:** Adds spacing above the message.
     text-align: center; // Center-align the text
     font-size: $font-size-md; // Use medium font size for readability
     color: $color-text; // Use standard text color
@@ -75,35 +106,49 @@
   }
 
   .load-more-container {
-    // Styles for the "Load More" button container
+    // ### Load More Button Container
+    // - **text-align:** Centers the button horizontally.
+    // - **margin-top:** Adds spacing above the button.
     text-align: center; // Center-align the button
     margin-top: $spacing-lg; // Add top margin for spacing
 
     .btn {
-      // Styles for the "Load More" button
+      // ### Load More Button
+      // - **padding:** Adds inner spacing for better usability.
+      // - **background-color:** Uses the primary color for the button.
+      // - **color:** Uses white text for contrast.
+      // - **border:** Removes the default border.
+      // - **border-radius:** Applies large rounded corners for a modern look.
+      // - **font-size:** Uses a medium font size for readability.
+      // - **cursor:** Changes the cursor to a pointer for interactivity.
+      // - **transition:** Adds smooth hover effects for background color changes.
       padding: $spacing-sm $spacing-md; // Add padding for clickable area
       background-color: $color-primary; // Use primary color for the button
       color: $color-white; // Use white text for contrast
       border: none; // Remove default border
       border-radius: $border-radius-lg; // Apply large rounded corners
-      font-size: $font-size-md; // Use medium font size for the button
+      font-size: $font-size-md; // Use medium font size
       cursor: pointer; // Pointer cursor for interactivity
       transition: background-color $transition-duration-default ease; // Smooth hover transition
 
       &:hover {
-        // Hover effect for the button
+        // ### Hover Effect for Button
+        // - **background-color:** Changes to a darker primary color for interactivity.
         background-color: $color-primary-dark; // Use darker primary color
       }
     }
 
     .spinner {
-      // Styles for the loading spinner
+      // ### Loading Spinner
+      // - **display:** Hidden by default.
+      // - **margin-top:** Adds spacing above the spinner.
       display: none; // Hidden by default
       margin-top: $spacing-sm; // Add top margin for spacing
     }
 
     .spinner.active {
-      // Styles for the active spinner
+      // ### Active Spinner
+      // - **display:** Shows the spinner when active.
       display: inline-block; // Show spinner when active
     }
   }

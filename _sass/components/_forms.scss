@@ -1,26 +1,40 @@
-// _sass/components/_forms.scss
-// Form Component Styles
+// ## Form Component Styles
 // This file contains styles for form elements used throughout the project.
 // The styles are designed to be reusable, customizable, and consistent with the overall design system.
 // SASS variables are used for colors, spacing, and typography to ensure maintainability and easy updates.
 // Referenced variables are defined in the settings folder for consistency across the project.
 
+// ### Form Group
+// - **.form-group:** A wrapper for form elements to provide consistent spacing.
+// - **margin-bottom:** Adds spacing below each form group for better layout separation.
 .form-group {
-  // Wrapper for form elements to provide consistent spacing
   margin-bottom: $spacing-md; // Add spacing below each form group
 
+  // ### Form Labels
+  // - **label:** Styles for form labels.
+  // - **display:** Ensures labels are displayed on their own line.
+  // - **font-size:** Uses a small font size for readability.
+  // - **font-weight:** Makes labels bold for better visibility.
+  // - **margin-bottom:** Adds spacing below the label for separation.
   label {
-    // Styles for form labels
     display: block; // Ensure labels are displayed on their own line
     font-size: $font-size-sm; // Use small font size for labels
     font-weight: bold; // Make labels bold for better visibility
     margin-bottom: $spacing-sm; // Add spacing below the label
   }
 
+  // ### Input, Textarea, and Select Fields
+  // - **input, textarea, select:** Base styles for form fields.
+  // - **width:** Ensures fields take up the full width of the parent container.
+  // - **padding:** Adds inner padding for better usability.
+  // - **border:** Adds a border using the secondary color.
+  // - **border-radius:** Applies rounded corners for a modern design.
+  // - **font-size:** Uses a small font size for input text.
+  // - **color:** Sets the text color to the standard text color.
+  // - **focus styles:** Adds visual feedback for focus state.
   input,
   textarea,
   select {
-    // Base styles for input fields, textareas, and select dropdowns
     width: 100%; // Full width to match the parent container
     padding: $spacing-sm; // Add inner padding for better usability
     border: 1px solid $color-secondary; // Use secondary color for the border
@@ -36,8 +50,10 @@
     }
   }
 
+  // ### Textarea
+  // - **textarea:** Additional styles for textareas.
+  // - **resize:** Allows vertical resizing only to maintain layout consistency.
   textarea {
-    // Additional styles for textareas
     resize: vertical; // Allow vertical resizing only
   }
 }

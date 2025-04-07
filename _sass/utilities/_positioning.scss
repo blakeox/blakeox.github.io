@@ -1,5 +1,34 @@
-// Positioning Utilities
-.position-relative { position: relative; }
-.position-absolute { position: absolute; }
-.position-fixed { position: fixed; }
-.position-sticky { position: sticky; }
+// ## Positioning Utilities
+// This file contains utility classes for applying common CSS `position` properties to elements.
+// These classes provide a quick and consistent way to control the positioning of elements in the layout.
+// By centralizing these utilities, the project ensures maintainability and reusability across components.
+
+// ### Utility Classes
+// - **.position-relative:** Sets `position: relative`.
+//   - **Use Case:** Allows child elements to be positioned relative to this element.
+//   - **Example:** Tooltips or dropdowns positioned relative to their parent.
+// - **.position-absolute:** Sets `position: absolute`.
+//   - **Use Case:** Positions the element relative to its nearest positioned ancestor.
+//   - **Example:** Floating elements like modals or popups.
+// - **.position-fixed:** Sets `position: fixed`.
+//   - **Use Case:** Positions the element relative to the viewport, remaining fixed during scrolling.
+//   - **Example:** Sticky headers or back-to-top buttons.
+// - **.position-sticky:** Sets `position: sticky`.
+//   - **Use Case:** Toggles between `relative` and `fixed` based on the scroll position.
+//   - **Example:** Sticky navigation bars or table headers.
+
+.position-relative { 
+  position: relative; // Position relative to its normal position
+}
+
+.position-absolute { 
+  position: absolute; // Position relative to the nearest positioned ancestor
+}
+
+.position-fixed { 
+  position: fixed; // Position relative to the viewport
+}
+
+.position-sticky { 
+  position: sticky; // Switch between relative and fixed based on scroll
+}

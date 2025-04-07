@@ -1,17 +1,28 @@
-// _sass/settings/_typography.scss
-// Typography Settings
+// ## Typography Settings
 // This file contains the typography settings for the project.
 // It includes font families, sizes, weights, line heights, letter spacing, and text transformations.
-// It is important to keep these values consistent throughout the project.
-// The typography settings are used in various components such as headings, paragraphs, and buttons.
-// The typography settings are defined using SASS variables for easy customization and maintenance.
+// These settings ensure consistency and maintainability across the project.
+// Typography settings are applied to various components such as headings, paragraphs, buttons, and code blocks.
+// SASS variables are used for easy customization and scalability.
 
-// Font Families
+// ### Font Families
+// Defines the font families used throughout the project.
+// - **$font-family-base:** Default font for body text.
+// - **$font-family-heading:** Font for headings to create visual hierarchy.
+// - **$font-family-monospace:** Monospace font for code blocks or technical content.
 $font-family-base: 'Work Sans', 'Helvetica Neue', Arial, sans-serif; // Base font for body text
 $font-family-heading: 'Playfair Display', Georgia, serif; // Font for headings
 $font-family-monospace: 'Courier New', Courier, monospace; // Monospace font for code blocks
 
-// Font Sizes
+// ### Font Sizes
+// Defines font sizes for various text elements.
+// - **$font-size-base:** Default font size for body text.
+// - **$font-size-xs:** Extra small font size for captions or fine print.
+// - **$font-size-sm:** Small font size for secondary text or labels.
+// - **$font-size-md:** Medium font size for standard text.
+// - **$font-size-lg:** Large font size for subheadings or emphasized text.
+// - **$font-size-xl:** Extra large font size for main headings.
+// - **$font-size-xxl:** Extra extra large font size for prominent titles or hero sections.
 $font-size-base: 16px; // Base font size
 $font-size-xs: 0.8rem; // Extra small font size
 $font-size-sm: 1.125rem; // Small font size
@@ -20,11 +31,21 @@ $font-size-lg: 1.5rem; // Large font size
 $font-size-xl: 2.5rem; // Extra large font size
 $font-size-xxl: 3rem; // Extra extra large font size
 
-// Line Heights
+// ### Line Heights
+// Defines line heights for text elements to ensure readability.
+// - **$line-height-base:** Default line height for body text.
+// - **$line-height-heading:** Line height for headings to maintain compact spacing.
 $line-height-base: 1.6; // Default line height
 $line-height-heading: 1.2; // Line height for headings
 
-// Font Weights
+// ### Font Weights
+// Defines font weights for different text styles.
+// - **$font-weight-light:** Light font weight for subtle text.
+// - **$font-weight-normal:** Normal font weight for standard text.
+// - **$font-weight-medium:** Medium font weight for slightly emphasized text.
+// - **$font-weight-semibold:** Semi-bold font weight for subheadings or labels.
+// - **$font-weight-bold:** Bold font weight for headings or emphasized text.
+// - **$font-weight-black:** Black font weight for highly emphasized text.
 $font-weight-light: 300; // Light font weight
 $font-weight-normal: 400; // Normal font weight
 $font-weight-medium: 500; // Medium font weight
@@ -32,13 +53,22 @@ $font-weight-semibold: 600; // Semi-bold font weight
 $font-weight-bold: 700; // Bold font weight
 $font-weight-black: 900; // Black font weight
 
-// Letter Spacing
+// ### Letter Spacing
+// Defines letter spacing for text elements to improve readability or aesthetics.
+// - **$letter-spacing-normal:** Default letter spacing.
+// - **$letter-spacing-wide:** Slightly wide letter spacing for headings or decorative text.
+// - **$letter-spacing-wider:** Wider letter spacing for emphasis.
+// - **$letter-spacing-tight:** Tight letter spacing for compact text.
 $letter-spacing-normal: 0; // Default letter spacing
 $letter-spacing-wide: 0.05em; // Wide letter spacing
 $letter-spacing-wider: 0.1em; // Wider letter spacing
 $letter-spacing-tight: -0.05em; // Tight letter spacing
 
-// Text Transformations
+// ### Text Transformations
+// Defines text transformations for styling text elements.
+// - **$text-transform-uppercase:** Converts text to uppercase.
+// - **$text-transform-lowercase:** Converts text to lowercase.
+// - **$text-transform-capitalize:** Capitalizes the first letter of each word.
 $text-transform-uppercase: uppercase; // Uppercase text
 $text-transform-lowercase: lowercase; // Lowercase text
 $text-transform-capitalize: capitalize; // Capitalized text

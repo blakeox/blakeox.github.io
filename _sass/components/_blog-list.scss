@@ -1,18 +1,23 @@
-// _sass/components/_blog-list.scss
-// Blog list styles
+// ## Blog List Styles
 // This file contains styles for the blog list component used throughout the project.
-// It is important to keep these styles organized and maintainable.
-// The styles are defined using SASS variables for easy customization and maintenance.
-// Referenced variables are defined in the settings folder for consistency across the project.
+// The blog list is designed to display blog posts in a responsive grid layout with a clean and modern design.
+// SASS variables are used for colors, spacing, typography, and transitions to ensure consistency and easy updates.
+// Referenced variables are defined in the settings folder for maintainability.
 
+// ### Blog List Container
+// - **.blog-list:** The main container for the blog list.
+// - **grid-template-columns:** Adjusts the number of columns based on available space.
+// - **gap:** Adds spacing between grid items.
 .blog-list {
-  // Define a responsive grid layout for the blog list
   display: grid; // Use grid layout for responsive design
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); // Adjust columns based on available space
   gap: $spacing-lg; // Spacing between grid items
 
+  // ### Blog Item
+  // - **.blog-item:** Represents an individual blog post.
+  // - **box-shadow:** Adds depth to the blog item.
+  // - **transition:** Enables smooth hover effects.
   .blog-item {
-    // Styling for individual blog items
     background: $background-color-light; // Light background for contrast
     border: 1px solid $color-secondary; // Border with secondary color
     border-radius: $border-radius; // Rounded corners for a modern look
@@ -26,32 +31,37 @@
       box-shadow: $box-shadow-md; // Enhanced shadow for emphasis
     }
 
+    // ### Blog Thumbnail
+    // - **.blog-thumbnail:** Styles for the blog post thumbnail image.
+    // - **object-fit:** Ensures the image covers the area without distortion.
     .blog-thumbnail {
-      // Styling for blog post thumbnail images
       width: 100%; // Full width of the container
       height: 200px; // Fixed height for uniformity
       object-fit: cover; // Ensure the image covers the area without distortion
     }
 
+    // ### Blog Content
+    // - **.blog-content:** Container for the blog post content.
+    // - **h2:** Styles for the blog post title.
+    // - **p:** Styles for the blog post excerpt or description.
     .blog-content {
-      // Container for blog content
       padding: $spacing-md; // Inner spacing for content
 
       h2 {
-        // Blog post title
         font-size: $font-size-lg; // Large font size for prominence
         margin-bottom: $spacing-sm; // Space below the title
       }
 
       p {
-        // Blog post excerpt or description
         font-size: $font-size-md; // Medium font size for readability
         line-height: $line-height-base; // Consistent line height
         color: $color-text; // Standard text color
       }
 
+      // ### Read More Button
+      // - **.read-more:** Styles for the "Read More" button.
+      // - **transition:** Smooth hover effect for visual feedback.
       .read-more {
-        // "Read More" button styling
         display: inline-block; // Inline block for button-like appearance
         margin-top: $spacing-sm; // Space above the button
         padding: $spacing-sm $spacing-md; // Padding for clickable area
@@ -62,7 +72,6 @@
         transition: background-color $transition-duration-default ease; // Smooth hover effect
 
         &:hover {
-          // Hover effect for the button
           background-color: $color-primary-dark; // Darker shade for visual feedback
         }
       }

@@ -1,11 +1,22 @@
-// _sass/settings/_spacing.scss
-// Spacing Settings
+// ## Spacing Settings
 // This file contains the spacing variables used throughout the project.
-// It is important to keep these values consistent to ensure a uniform layout.
-// The spacing variables are defined using SASS variables for easy customization and maintenance.
-// These variables are used for margins, paddings, and other spacing-related styles across components.
+// These variables ensure consistent spacing across components and layouts, improving the overall design system.
+// The spacing values are defined using SASS variables for easy customization and maintenance.
+// They are used for margins, paddings, and other spacing-related styles across the project.
 
+// ### Base Spacing Unit
+// The base unit serves as the foundation for all spacing values.
+// Adjusting this value will scale all spacing variables proportionally.
 $spacing-unit: 1rem; // Base unit for spacing
+
+// ### Spacing Variables
+// These variables define different levels of spacing for various use cases:
+// - **$spacing-none:** No spacing, used for resetting margins or paddings.
+// - **$spacing-xs:** Extra small spacing, used for tight layouts or small gaps.
+// - **$spacing-sm:** Small spacing, used for compact layouts or minor separations.
+// - **$spacing-md:** Medium spacing, used for standard gaps between elements.
+// - **$spacing-lg:** Large spacing, used for generous gaps in layouts.
+// - **$spacing-xl:** Extra large spacing, used for prominent separations or whitespace.
 $spacing-none: 0; // No spacing
 $spacing-xs: 0.25rem; // Extra small spacing
 $spacing-sm: 0.5rem; // Small spacing
@@ -13,5 +24,6 @@ $spacing-md: 1.5rem; // Medium spacing
 $spacing-lg: 2rem; // Large spacing
 $spacing-xl: 3rem; // Extra large spacing
 
-// Button-specific padding
+// ### Button-Specific Padding
+// This variable defines the default padding for buttons to ensure consistent sizing and usability.
 $btn-padding: 0.75rem 1.5rem; // Padding for buttons

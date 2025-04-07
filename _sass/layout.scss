@@ -1,132 +1,130 @@
-// Containers
+// ## Layout Styles
+// This file contains styles for containers, grid systems, headers, footers, and utility classes.
+// These styles ensure a consistent and responsive layout across the project.
+// SASS variables are used for colors, spacing, typography, and breakpoints to ensure maintainability and easy updates.
+
+// ### Containers
+// Defines reusable container classes for consistent layout widths and padding.
 .container {
   width: 100%;
   margin: 0 auto;
-  padding: 0 $spacing-md; // Use spacing variable from _spacing.scss
+  padding: 0 $spacing-md; // Add horizontal padding using spacing variable
 }
 
 .container-md {
-  max-width: $container-md; // Use container width variable from _layout.scss
+  max-width: $container-md; // Medium container width
   margin: 0 auto;
 }
 
 .container-lg {
-  max-width: $container-lg; // Use container width variable from _layout.scss
+  max-width: $container-lg; // Large container width
   margin: 0 auto;
 }
 
 .container-xl {
-  max-width: $container-xl; // Use container width variable from _layout.scss
+  max-width: $container-xl; // Extra-large container width
   margin: 0 auto;
 }
 
-// Grid System
+// ### Grid System
+// Defines a flexible grid system for responsive layouts.
 .row {
-  display: flex;
-  flex-wrap: wrap;
-  margin-right: -$spacing-sm; // Use spacing variable from _spacing.scss
-  margin-left: -$spacing-sm; // Use spacing variable from _spacing.scss
+  display: flex; // Use flexbox for layout
+  flex-wrap: wrap; // Allow items to wrap onto the next line
+  margin-right: -$spacing-sm; // Negative margin to offset column padding
+  margin-left: -$spacing-sm; // Negative margin to offset column padding
 }
 
 .column {
-  flex: 1;
-  padding-right: $spacing-sm; // Use spacing variable from _spacing.scss
-  padding-left: $spacing-sm; // Use spacing variable from _spacing.scss
+  flex: 1; // Allow columns to grow equally
+  padding-right: $spacing-sm; // Add horizontal padding
+  padding-left: $spacing-sm; // Add horizontal padding
 }
 
-.one-third {
-  flex: 0 0 33.333%;
-}
+// ### Predefined Column Sizes
+// Utility classes for specific column widths.
+.one-third { flex: 0 0 33.333%; } // One-third width
+.two-thirds { flex: 0 0 66.666%; } // Two-thirds width
+.one-fourth { flex: 0 0 25%; } // One-fourth width
+.one-half { flex: 0 0 50%; } // Half width
+.three-fourths { flex: 0 0 75%; } // Three-fourths width
 
-.two-thirds {
-  flex: 0 0 66.666%;
-}
-
-.one-fourth {
-  flex: 0 0 25%;
-}
-
-.one-half {
-  flex: 0 0 50%;
-}
-
-.three-fourths {
-  flex: 0 0 75%;
-}
-
-// Responsive Grid
+// ### Responsive Grid
+// Adjusts grid layout for smaller screens.
 @media (max-width: $breakpoint-md) {
   .row {
-    flex-direction: column;
+    flex-direction: column; // Stack items vertically
   }
 
   .column {
-    padding-right: 0;
-    padding-left: 0;
+    padding-right: 0; // Remove horizontal padding
+    padding-left: 0; // Remove horizontal padding
   }
 }
 
-// Header
+// ### Header
+// Styles for the website header, including the logo and navigation.
 .header {
-  background-color: $color-primary; // Use primary color variable from _colors.scss
-  color: $color-white; // Use white color variable from _colors.scss
-  padding: $spacing-md 0; // Use spacing variable from _spacing.scss
+  background-color: $color-primary; // Primary background color
+  color: $color-white; // White text color
+  padding: $spacing-md 0; // Vertical padding
 
   .header-container {
-    @extend .container;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @extend .container; // Reuse container styles
+    display: flex; // Use flexbox for layout
+    justify-content: space-between; // Space out logo and navigation
+    align-items: center; // Align items vertically
   }
 
   .logo {
-    font-size: $font-size-lg; // Use font size variable from _typography.scss
-    font-weight: $font-weight-bold; // Use font weight variable from _typography.scss
+    font-size: $font-size-lg; // Large font size for the logo
+    font-weight: $font-weight-bold; // Bold font weight
   }
 
   .nav {
-    display: flex;
-    gap: $spacing-md; // Use spacing variable from _spacing.scss
+    display: flex; // Use flexbox for navigation links
+    gap: $spacing-md; // Add spacing between links
 
     a {
-      color: $color-white; // Use white color variable from _colors.scss
-      text-decoration: none;
+      color: $color-white; // White text color
+      text-decoration: none; // Remove underline
 
       &:hover {
-        text-decoration: underline;
+        text-decoration: underline; // Add underline on hover
       }
     }
   }
 }
 
-// Footer
+// ### Footer
+// Styles for the website footer, including text and social links.
 .footer {
-  background-color: $color-secondary; // Use secondary color variable from _colors.scss
-  color: $color-white; // Use white color variable from _colors.scss
-  padding: $spacing-lg 0; // Use spacing variable from _spacing.scss
+  background-color: $color-secondary; // Secondary background color
+  color: $color-white; // White text color
+  padding: $spacing-lg 0; // Vertical padding
 
   .footer-container {
-    @extend .container;
-    text-align: center;
-    padding: $spacing-md; // Use spacing variable from _spacing.scss
-    color: $color-text-secondary; // Use secondary text color variable from _colors.scss
-    background: $background-color-light; // Use background color variable from _colors.scss
+    @extend .container; // Reuse container styles
+    text-align: center; // Center-align content
+    padding: $spacing-md; // Inner padding
+    color: $color-text-secondary; // Secondary text color
+    background: $background-color-light; // Light background color
 
     p {
-      font-size: $font-size-sm; // Use font size variable from _typography.scss
-      margin-bottom: $spacing-sm; // Use spacing variable from _spacing.scss
+      font-size: $font-size-sm; // Small font size for text
+      margin-bottom: $spacing-sm; // Add spacing below text
     }
 
     .social-links {
-      display: flex;
-      justify-content: center;
-      gap: $spacing-md; // Use spacing variable from _spacing.scss
+      display: flex; // Use flexbox for social links
+      justify-content: center; // Center-align links
+      gap: $spacing-md; // Add spacing between links
 
       a {
-        color: $color-white; // Use white color variable from _colors.scss
+        color: $color-white; // White text color
 
         &:hover {
-          color: $color-primary; // Use primary color variable from _colors.scss
+          color: $color-primary; // Primary color on hover
         }
       }
     }
@@ -141,17 +139,18 @@
   text-decoration: underline;
 }
 
-// Utility Classes
+// ### Utility Classes
+// Reusable utility classes for layout adjustments.
 .full-width {
-  width: 100%;
-  max-width: none; // Remove any width constraints
+  width: 100%; // Full width
+  max-width: none; // Remove width constraints
   margin: 0; // Remove centering
   padding: 0; // Remove padding
 }
 
 .centered {
-  margin: 0 auto;
-  text-align: center;
+  margin: 0 auto; // Center horizontally
+  text-align: center; // Center text
 }
 
 .some-class {
@@ -166,15 +165,15 @@
 }
 
 .flex {
-  display: flex;
+  display: flex; // Use flexbox
 }
 
 .flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: flex; // Use flexbox
+  justify-content: center; // Center items horizontally
+  align-items: center; // Center items vertically
 }
 
 .debug {
-  outline: 1px solid red !important;
+  outline: 1px solid red !important; // Add red outline for debugging
 }

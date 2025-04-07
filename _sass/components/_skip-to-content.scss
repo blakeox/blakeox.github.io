@@ -1,5 +1,4 @@
-// _sass/components/_skip-to-content.scss
-// Skip to Content Link Styles
+// ## Skip to Content Link Styles
 // This file contains styles for the "Skip to content" link used for accessibility.
 // The link allows users, especially those using screen readers or keyboard navigation, to bypass repetitive navigation and jump directly to the main content.
 // The styles are designed to ensure the link is visually hidden by default but becomes visible when focused.
@@ -7,7 +6,15 @@
 // Referenced variables are defined in the settings folder for maintainability.
 
 .skip-to-content {
-  // Base styles for the skip-to-content link
+  // ### Base Styles
+  // - **position:** Positions the link absolutely within the document.
+  // - **top:** Hides the link above the viewport by default.
+  // - **left:** Aligns the link to the left edge of the viewport.
+  // - **background:** Uses the primary color for the background.
+  // - **color:** Uses white text for contrast.
+  // - **padding:** Adds padding for better clickability.
+  // - **z-index:** Ensures the link appears above other elements.
+  // - **transition:** Adds a smooth transition for visibility changes.
   position: absolute; // Position the link absolutely within the document
   top: -40px; // Hide the link above the viewport by default
   left: 0; // Align the link to the left edge
@@ -19,7 +26,10 @@
 }
 
 .skip-to-content:focus {
-  // Styles when the link is focused
+  // ### Focus Styles
+  // - **top:** Moves the link into the viewport when focused.
+  // - **outline:** Adds a focus outline for better visibility.
+  // - **outline-offset:** Adds spacing between the outline and the link for clarity.
   top: 0; // Move the link into the viewport
   outline: 2px solid var(--color-accent); // Add a focus outline for better visibility
   outline-offset: 2px; // Add spacing between the outline and the link

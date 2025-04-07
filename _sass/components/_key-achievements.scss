@@ -1,31 +1,41 @@
-// _sass/components/_key-achievements.scss
-// Key Achievements Styles
+// ## Key Achievements Styles
 // This file contains styles for the "Key Achievements" section of the website.
 // The section is designed to highlight notable accomplishments in a visually appealing and consistent manner.
 // SASS variables are used for colors, spacing, and typography to ensure maintainability and easy updates.
 
+// ### Key Achievements Container
+// - **.key-achievements:** The main container for the Key Achievements section.
+// - **margin-top:** Adds spacing above the section.
 .key-achievements {
-  // Base styles for the Key Achievements section
   margin-top: $spacing-lg; // Add top margin for spacing
 
+  // ### Section Heading
+  // - **h3:** Styles for the section heading.
+  // - **font-size:** Uses a large font size for prominence.
+  // - **margin-bottom:** Adds spacing below the heading.
   h3 {
-    // Styles for the section heading
     font-size: $font-size-lg; // Use large font size for prominence
     margin-bottom: $spacing-md; // Add bottom margin for spacing
   }
 
+  // ### Achievements List
+  // - **ul:** Styles for the list of achievements.
+  // - **list-style:** Removes default list styling.
+  // - **padding:** Removes default padding for a clean layout.
   ul {
-    // Styles for the list of achievements
     list-style: none; // Remove default list styling
     padding: 0; // Remove default padding
 
+    // ### Individual Achievement Items
+    // - **li:** Styles for individual list items.
+    // - **margin-bottom:** Adds spacing between list items.
+    // - **font-size:** Uses a medium font size for readability.
+    // - **::before:** Adds a checkmark icon before each item.
     li {
-      // Styles for individual list items
       margin-bottom: $spacing-sm; // Add spacing between list items
       font-size: $font-size-md; // Use medium font size for readability
 
       &::before {
-        // Styles for the checkmark icon
         content: '✅'; // Add a checkmark before each item
         margin-right: $spacing-xs; // Add spacing between the icon and text
       }

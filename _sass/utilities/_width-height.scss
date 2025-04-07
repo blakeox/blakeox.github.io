@@ -1,17 +1,34 @@
-// _sass/utilities/_width-height.scss
-// Width and Height Utilities
-// This file contains utility classes for setting width and height of elements.
+// ## Width and Height Utilities
+// This file contains utility classes for setting the width and height of elements.
 // These utilities are designed to provide quick and reusable styles for layout adjustments.
-// SASS variables can be used to ensure consistency and easy updates.
+// SASS variables can be used to ensure consistency and easy updates across the project.
 
-// Width Utilities
-.w-25 { width: 25%; }
-.w-50 { width: 50%; }
-.w-75 { width: 75%; }
-.w-100 { width: 100%; }
+// ### Width Utilities
+// These classes set the width of an element relative to its parent container.
+// - **.w-25:** Sets the width to 25% of the parent element.
+//   - **Use Case:** Use for creating layouts with proportional widths, such as grid columns.
+// - **.w-50:** Sets the width to 50% of the parent element.
+//   - **Use Case:** Use for splitting a container into two equal parts.
+// - **.w-75:** Sets the width to 75% of the parent element.
+//   - **Use Case:** Use for layouts where one section takes up more space than another.
+// - **.w-100:** Sets the width to 100% of the parent element.
+//   - **Use Case:** Use for full-width elements like banners or containers.
+.w-25 { width: 25%; } // 25% width
+.w-50 { width: 50%; } // 50% width
+.w-75 { width: 75%; } // 75% width
+.w-100 { width: 100%; } // 100% width
 
-// Height Utilities
-.h-25 { height: 25%; }
-.h-50 { height: 50%; }
-.h-75 { height: 75%; }
-.h-100 { height: 100%; }
+// ### Height Utilities
+// These classes set the height of an element relative to its parent container.
+// - **.h-25:** Sets the height to 25% of the parent element.
+//   - **Use Case:** Use for proportional height adjustments in layouts.
+// - **.h-50:** Sets the height to 50% of the parent element.
+//   - **Use Case:** Use for splitting vertical space equally between two elements.
+// - **.h-75:** Sets the height to 75% of the parent element.
+//   - **Use Case:** Use for layouts where one section takes up more vertical space than another.
+// - **.h-100:** Sets the height to 100% of the parent element.
+//   - **Use Case:** Use for full-height elements like modals or sections.
+.h-25 { height: 25%; } // 25% height
+.h-50 { height: 50%; } // 50% height
+.h-75 { height: 75%; } // 75% height
+.h-100 { height: 100%; } // 100% height

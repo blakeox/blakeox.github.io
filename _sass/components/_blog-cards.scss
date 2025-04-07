@@ -1,14 +1,13 @@
-// _sass/components/_blog-cards.scss
-// Blog Cards Styles
+// ## Blog Cards Styles
 // This file contains styles for blog cards used throughout the project.
 // Blog cards are used to display blog posts in a grid layout with a consistent design.
-// The styles are designed to be reusable, customizable, and consistent with the overall design system.
+// The styles are reusable, customizable, and consistent with the overall design system.
 // SASS variables are used for colors, spacing, typography, and transitions to ensure maintainability and easy updates.
 // Referenced variables are defined in the settings folder for consistency across the project.
 
-/* Blog Grid */
+// ### Blog Grid
+// - **.blog-grid:** The container for the blog cards, styled as a responsive grid.
 .blog-grid {
-  // Styles for the container of the blog grid
   display: grid; // Use grid layout for responsive design
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); // Responsive grid layout
   gap: $spacing-lg; // Add spacing between grid items
@@ -16,9 +15,9 @@
   margin-bottom: $spacing-xl; // Add bottom margin for spacing
 }
 
-/* Blog Card */
+// ### Blog Card
+// - **.blog-item:** The individual blog card container with a flexible layout.
 .blog-item {
-  // Base styles for individual blog cards
   display: flex; // Use flexbox for layout
   flex-direction: column; // Stack content vertically
   justify-content: flex-start; // Align items at the top
@@ -33,13 +32,13 @@
 }
 
 .blog-item:hover {
-  // Hover effect for blog cards
   transform: translateY(-5px); // Slight upward movement
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Add a larger shadow for emphasis
 }
 
+// ### Blog Card Image
+// - Styles for the image inside the blog card.
 .blog-item img {
-  // Styles for blog card images
   width: 100%; // Ensure image fills the card width
   height: 200px; // Set a consistent height for all images
   object-fit: cover; // Crop the image to fit the container
@@ -47,8 +46,9 @@
   margin-bottom: $spacing-md; // Add spacing below the image
 }
 
+// ### Blog Card Title
+// - **h3:** The title of the blog post, styled for emphasis.
 .blog-item h3 {
-  // Styles for blog card titles
   margin-top: $spacing-sm; // Add top margin for spacing
   margin-bottom: $spacing-md; // Add bottom margin for spacing
   font-size: $font-size-lg; // Use large font size for titles
@@ -59,27 +59,29 @@
   justify-content: center; // Horizontally center the text
 }
 
+// ### Blog Card Title Link
+// - **a:** The clickable link for the blog title.
 .blog-item h3 a {
-  // Styles for title links
   text-decoration: none; // Remove underline
   color: $color-primary; // Use primary color for links
   transition: color $transition-duration-default ease; // Smooth color transition on hover
 }
 
 .blog-item h3 a:hover {
-  // Hover effect for title links
-  color: $color-primary-dark; // Use darker primary color
+  color: $color-primary-dark; // Use darker primary color on hover
 }
 
+// ### Blog Card Description
+// - **p:** The description or excerpt of the blog post.
 .blog-item p {
-  // Styles for blog card descriptions
   flex-grow: 1; // Allow the description to take up remaining space
   margin-bottom: $spacing-md; // Add bottom margin for spacing
   text-align: center; // Center-align the description
 }
 
+// ### Blog Card Button
+// - **.btn:** The "Read More" button for the blog card.
 .blog-item .btn {
-  // Styles for the "Read More" button
   display: inline-block; // Inline-block for button-like appearance
   background: $color-primary; // Use primary color for the button
   color: $color-white; // Use white text for contrast
@@ -94,7 +96,6 @@
 }
 
 .blog-item .btn:hover {
-  // Hover effect for the button
-  background: $color-primary-dark; // Use darker primary color
+  background: $color-primary-dark; // Use darker primary color on hover
   transform: translateY(-2px); // Slight upward movement
 }

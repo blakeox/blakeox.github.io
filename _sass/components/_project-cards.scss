@@ -1,5 +1,4 @@
-// _sass/components/_project-cards.scss
-// Project Cards Styles
+// ## Project Cards Styles
 // This file contains styles for the project cards used throughout the website.
 // Project cards are displayed in a responsive grid layout and include an image, title, description, and a call-to-action button.
 // The styles are designed to be reusable, responsive, and consistent with the overall design system.
@@ -7,7 +6,11 @@
 
 /* Project Grid */
 .project-grid {
-  // Styles for the container of the project grid
+  // ### Project Grid
+  // - **display:** Uses grid layout for responsive design.
+  // - **grid-template-columns:** Creates responsive columns based on available space.
+  // - **gap:** Adds spacing between grid items.
+  // - **margin-top, margin-bottom:** Adds vertical spacing around the grid.
   display: grid; // Use grid layout for responsive design
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); // Create responsive columns
   gap: $spacing-lg; // Add spacing between grid items
@@ -17,7 +20,15 @@
 
 /* Project Card */
 .project-item {
-  // Base styles for individual project cards
+  // ### Project Card
+  // - **display:** Uses flexbox for vertical stacking of content.
+  // - **background:** Uses a light background color for contrast.
+  // - **border:** Adds a light border for separation.
+  // - **border-radius:** Applies rounded corners for a modern look.
+  // - **padding:** Adds inner spacing for better usability.
+  // - **box-shadow:** Adds depth to the card.
+  // - **transition:** Enables smooth hover effects.
+  // - **height:** Ensures consistent height for all cards.
   display: flex;
   flex-direction: column; // Stack content vertically
   justify-content: flex-start; // Align items at the top
@@ -29,71 +40,103 @@
   transition: transform $transition-duration-default ease, box-shadow $transition-duration-default ease, background $transition-duration-default ease; // Smooth hover effects
   color: $color-text; // Use standard text color
   height: 100%; // Ensure consistent height for all cards
-}
 
-.project-item:hover {
-  // Hover effect for project cards
-  transform: translateY(-5px); // Slight upward movement
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Add a larger shadow for emphasis
-}
+  &:hover {
+    // ### Hover Effect
+    // - **transform:** Adds a slight upward movement for interactivity.
+    // - **box-shadow:** Enhances the shadow for emphasis.
+    transform: translateY(-5px); // Slight upward movement
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Add a larger shadow for emphasis
+  }
 
-.project-item img {
-  // Styles for project card images
-  width: 100%; // Ensure image fills the card width
-  height: 200px; // Set a consistent height for all images
-  object-fit: cover; // Crop the image to fit the container
-  border-radius: $border-radius-sm; // Apply small rounded corners
-  margin-bottom: $spacing-md; // Add spacing below the image
-}
+  img {
+    // ### Project Card Images
+    // - **width:** Ensures the image fills the card width.
+    // - **height:** Sets a consistent height for all images.
+    // - **object-fit:** Crops the image to fit the container.
+    // - **border-radius:** Applies small rounded corners.
+    // - **margin-bottom:** Adds spacing below the image.
+    width: 100%; // Ensure image fills the card width
+    height: 200px; // Set a consistent height for all images
+    object-fit: cover; // Crop the image to fit the container
+    border-radius: $border-radius-sm; // Apply small rounded corners
+    margin-bottom: $spacing-md; // Add spacing below the image
+  }
 
-.project-item h3 {
-  // Styles for project card titles
-  margin-top: $spacing-sm; // Add top margin for spacing
-  margin-bottom: $spacing-md; // Add bottom margin for spacing
-  font-size: $font-size-lg; // Use large font size for titles
-  text-align: center; // Center-align the title
-  min-height: 3rem; // Ensure consistent vertical space for titles
-  display: flex; // Use flexbox for alignment
-  align-items: center; // Vertically center the text
-  justify-content: center; // Horizontally center the text
-}
+  h3 {
+    // ### Project Card Titles
+    // - **margin-top, margin-bottom:** Adds vertical spacing around the title.
+    // - **font-size:** Uses a large font size for prominence.
+    // - **text-align:** Centers the title horizontally.
+    // - **min-height:** Ensures consistent vertical space for titles.
+    // - **display, align-items, justify-content:** Centers the text vertically and horizontally.
+    margin-top: $spacing-sm; // Add top margin for spacing
+    margin-bottom: $spacing-md; // Add bottom margin for spacing
+    font-size: $font-size-lg; // Use large font size for titles
+    text-align: center; // Center-align the title
+    min-height: 3rem; // Ensure consistent vertical space for titles
+    display: flex; // Use flexbox for alignment
+    align-items: center; // Vertically center the text
+    justify-content: center; // Horizontally center the text
 
-.project-item h3 a {
-  // Styles for title links
-  text-decoration: none; // Remove underline
-  color: $color-primary; // Use primary color for links
-  transition: color $transition-duration-default ease; // Smooth color transition on hover
-}
+    a {
+      // ### Title Links
+      // - **text-decoration:** Removes underline by default.
+      // - **color:** Uses the primary color for links.
+      // - **transition:** Adds smooth hover effects for color changes.
+      text-decoration: none; // Remove underline
+      color: $color-primary; // Use primary color for links
+      transition: color $transition-duration-default ease; // Smooth color transition on hover
 
-.project-item h3 a:hover {
-  // Hover effect for title links
-  color: $color-primary-dark; // Use darker primary color
-}
+      &:hover {
+        // ### Hover Effect for Title Links
+        // - **color:** Changes to a darker primary color for emphasis.
+        color: $color-primary-dark; // Use darker primary color
+      }
+    }
+  }
 
-.project-item p {
-  // Styles for project card descriptions
-  flex-grow: 1; // Allow the description to take up remaining space
-  margin-bottom: $spacing-md; // Add bottom margin for spacing
-  text-align: center; // Center-align the description
-}
+  p {
+    // ### Project Card Descriptions
+    // - **flex-grow:** Allows the description to take up remaining space.
+    // - **margin-bottom:** Adds spacing below the description.
+    // - **text-align:** Centers the description text.
+    flex-grow: 1; // Allow the description to take up remaining space
+    margin-bottom: $spacing-md; // Add bottom margin for spacing
+    text-align: center; // Center-align the description
+  }
 
-.project-item .btn {
-  // Styles for the call-to-action button
-  display: inline-block;
-  background: $color-primary; // Use primary color for the button
-  color: $color-white; // Use white text for contrast
-  padding: $spacing-sm $spacing-md; // Add padding for clickable area
-  text-decoration: none; // Remove underline
-  border-radius: $border-radius; // Apply rounded corners
-  font-size: $font-size-md; // Use medium font size for the button
-  text-align: center; // Center-align the button text
-  transition: background $transition-duration-fast ease, transform $transition-duration-fast ease; // Smooth hover effects
-  margin-top: auto; // Push the button to the bottom
-  align-self: center; // Center-align the button
-}
+  .btn {
+    // ### Call-to-Action Button
+    // - **display:** Ensures the button behaves like an inline-block element.
+    // - **background:** Uses the primary color for the button.
+    // - **color:** Uses white text for contrast.
+    // - **padding:** Adds inner spacing for better usability.
+    // - **text-decoration:** Removes underline.
+    // - **border-radius:** Applies rounded corners for a modern look.
+    // - **font-size:** Uses a medium font size for readability.
+    // - **text-align:** Centers the button text.
+    // - **transition:** Adds smooth hover effects for background and movement.
+    // - **margin-top:** Pushes the button to the bottom of the card.
+    // - **align-self:** Centers the button horizontally.
+    display: inline-block;
+    background: $color-primary; // Use primary color for the button
+    color: $color-white; // Use white text for contrast
+    padding: $spacing-sm $spacing-md; // Add padding for clickable area
+    text-decoration: none; // Remove underline
+    border-radius: $border-radius; // Apply rounded corners
+    font-size: $font-size-md; // Use medium font size for the button
+    text-align: center; // Center-align the button text
+    transition: background $transition-duration-fast ease, transform $transition-duration-fast ease; // Smooth hover effects
+    margin-top: auto; // Push the button to the bottom
+    align-self: center; // Center-align the button
 
-.project-item .btn:hover {
-  // Hover effect for the button
-  background: $color-primary-dark; // Use darker primary color
-  transform: translateY(-2px); // Slight upward movement
+    &:hover {
+      // ### Hover Effect for Button
+      // - **background:** Changes to a darker primary color.
+      // - **transform:** Adds a slight upward movement for interactivity.
+      background: $color-primary-dark; // Use darker primary color
+      transform: translateY(-2px); // Slight upward movement
+    }
+  }
 }

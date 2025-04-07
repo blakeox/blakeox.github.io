@@ -1,9 +1,15 @@
-// _sass/components/_anchor-links.scss
-// Anchor Links Styles
+// ## Anchor Links Styles
 // This file contains the styles for anchor links used in the documentation and throughout the project.
-// These styles ensure the anchor links are visually appealing, accessible, and consistent with the overall design.
-// The styles are defined using SASS variables for easy customization and maintenance.
+// Anchor links are designed to provide quick navigation to specific sections of a page.
+// These styles ensure the anchor links are visually appealing, accessible, and consistent with the overall design system.
+// SASS variables are used for colors, spacing, and typography to ensure maintainability and easy updates.
 // Referenced variables are defined in the settings folder for consistency across the project.
+
+// ### Base Styles
+// - **.anchor-links:** The container for the anchor links section.
+// - **ul:** The unordered list that holds the anchor links.
+// - **li:** Individual list items containing anchor links.
+// - **a:** The anchor link itself, styled for accessibility and interactivity.
 
 .anchor-links {
   // Add vertical spacing around the anchor links section

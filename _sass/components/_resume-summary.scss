@@ -1,14 +1,18 @@
-// _sass/components/_resume-summary.scss
-// Resume Summary Styles
+// ## Resume Summary Styles
 // This file contains styles for the "Resume Summary" section of the website.
 // The section is designed to display key highlights of a resume in a clean and organized format.
 // SASS variables are used for spacing to ensure consistency and easy updates.
+// The styles are minimal and focus on readability and alignment.
 
 .resume-summary {
-  // Base styles for the Resume Summary section
+  // ### Base Styles
+  // - **margin-left:** Adds spacing to the left for proper alignment.
+  // - **list-style:** Uses a disc as the list marker for visual clarity.
 
   ul {
-    // Styles for the list of resume highlights
+    // ### Resume Highlights List
+    // - **list-style:** Displays a disc as the list marker for each item.
+    // - **margin-left:** Adds left margin for proper indentation.
     list-style: disc; // Use a disc as the list marker
     margin-left: $spacing-lg; // Add left margin using the spacing variable
   }

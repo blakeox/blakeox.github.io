@@ -1,12 +1,29 @@
-// filepath: /Users/blakepowell/blakeox.github.io/_sass/utilities/_utilities.scss
-@import "animations";
-@import "border";
-@import "display";
-@import "flexbox";
-@import "overflow";
-@import "positioning";
-@import "shadows";
-@import "spacing";
-@import "text";
-@import "visibility";
-@import "width-height";
+// ## Utilities Index
+// This file serves as the main entry point for all utility classes used throughout the project.
+// Utility classes provide quick and consistent styling for common CSS properties, ensuring maintainability and reusability.
+// By centralizing these imports, the project maintains a modular and organized structure.
+
+// ### Imported Utility Modules
+// - **animations:** Utility classes for animations and keyframes.
+// - **border:** Utility classes for border styles and border-radius.
+// - **display:** Utility classes for controlling the `display` property.
+// - **flexbox:** Utility classes for applying common flexbox properties.
+// - **overflow:** Utility classes for managing content overflow behavior.
+// - **positioning:** Utility classes for controlling element positioning.
+// - **shadows:** Utility classes for applying box shadows.
+// - **spacing:** Utility classes for margins and paddings.
+// - **text:** Utility classes for text alignment and transformations.
+// - **visibility:** Utility classes for controlling element visibility.
+// - **width-height:** Utility classes for setting width and height properties.
+
+@import "animations"; // Utility classes for animations and keyframes
+@import "border"; // Utility classes for border styles and border-radius
+@import "display"; // Utility classes for controlling the `display` property
+@import "flexbox"; // Utility classes for applying common flexbox properties
+@import "overflow"; // Utility classes for managing content overflow behavior
+@import "positioning"; // Utility classes for controlling element positioning
+@import "shadows"; // Utility classes for applying box shadows
+@import "spacing"; // Utility classes for margins and paddings
+@import "text"; // Utility classes for text alignment and transformations
+@import "visibility"; // Utility classes for controlling element visibility
+@import "width-height"; // Utility classes for setting width and height properties

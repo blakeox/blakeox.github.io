@@ -1,13 +1,12 @@
 // _sass/settings/_colors.scss
-// Colors Settings
+// ## Colors Settings
 // This file contains the color variables used throughout the project.
-// It is important to keep these values consistent to ensure a uniform look and feel.
-// The color variables are defined using SASS variables for easy customization and maintenance.
-// The colors are used for various components such as buttons, backgrounds, and text.
-// The colors are defined in a way that they can be easily customized and reused throughout the project.
-// The colors are defined using HEX, RGB, or HSL values for easy readability and understanding.
+// It ensures a consistent and uniform look and feel across the website by centralizing color definitions.
+// The colors are defined using SASS variables for easy customization and maintenance.
+// These variables are categorized into semantic groups for better organization and usability.
 
-// Primary Colors
+// ### Primary Colors
+// These are the main brand colors used for primary elements like buttons, links, and highlights.
 $color-primary: #4dc8aa; // Primary brand color
 $color-primary-dark: #3BAF92; // Darker shade of the primary color
 $color-secondary: #6C757D; // Secondary brand color
@@ -16,45 +15,54 @@ $color-accent-dark: rgba(77, 200, 170, 0.6); // Darker accent color with transpa
 $color-white: #ffffff; // White color
 $color-black: #000; // Black color
 
-// Text Colors
+// ### Text Colors
+// These colors are used for text content, including links and secondary text.
 $color-text: #333; // Default text color
 $color-text-secondary: #555; // Muted text color for secondary content
 $color-link: #4DC8AA; // Link color
 
-// Background Colors
+// ### Background Colors
+// These colors are used for backgrounds of various sections and components.
 $background-color: #f9f9f9; // Light gray background color
 $background-color-secondary: #f4f4f4; // Secondary background color
 $background-color-highlight: #fffbea; // Highlighted background color
 $background-color-light: #ffffff; // Light background color (e.g., white)
 
-// Neutral Colors
+// ### Neutral Colors
+// These are shades of gray used for subtle elements like borders and backgrounds.
 $color-gray-light: #f1f1f1; // Light gray for backgrounds
 $color-gray-medium: #cccccc; // Medium gray for borders
 $color-gray-dark: #666666; // Dark gray for subtle text
 
-// Border Colors
+// ### Border Colors
+// These colors are used for borders of elements like cards, buttons, and containers.
 $color-border-light: $color-gray-light; // Light border color
 $color-border-medium: $color-gray-medium; // Medium border color
 $color-border-dark: $color-gray-dark; // Dark border color
 $color-border-primary: $color-primary; // Primary border color
 $color-border-secondary: $color-secondary; // Secondary border color
 
-// Alert Colors
+// ### Alert Colors
+// These colors are used for alerts, notifications, and status indicators.
 $color-success: #28a745; // Green for success messages
 $color-warning: #ffc107; // Yellow for warnings
 $color-error: #dc3545; // Red for errors
 
-// Hover and Active States
+// ### Hover and Active States
+// Colors for hover and active states of interactive elements like buttons and links.
 $color-primary-hover: darken($color-primary, 10%); // Darker shade for hover state
 $color-secondary-hover: lighten($color-secondary, 10%); // Lighter shade for hover state
 
-// Shadows or Overlays
+// ### Shadows or Overlays
+// Colors used for shadows and overlays to create depth and focus.
 $color-overlay: rgba(0, 0, 0, 0.5); // Semi-transparent black for overlays
 
-// Opacity Variables
+// ### Opacity Variables
+// Opacity values for specific use cases like hero section overlays.
 $hero-overlay-opacity: 0.6; // Default opacity for hero section overlays
 
-// Dark Mode Colors
+// ### Dark Mode Colors
+// Colors specifically designed for dark mode to ensure readability and contrast.
 $color-background-dark: #121212; // Background color for dark mode
 $color-text-dark: #e0e0e0; // Text color for dark mode
 $color-link-dark: #90caf9; // Link color for dark mode
@@ -63,7 +71,8 @@ $color-button-bg-dark: #333; // Button background color for dark mode
 $color-button-hover-bg-dark: #444; // Button hover background color for dark mode
 $color-placeholder-dark: #888; // Placeholder text color for dark mode
 
-// Semantic Colors
+// ### Semantic Colors
+// These colors are mapped to specific components or use cases for better semantics.
 $color-button-primary: $color-primary; // Primary button color
 $color-button-secondary: $color-secondary; // Secondary button color
 $color-background-default: $background-color; // Default background color
@@ -71,22 +80,26 @@ $color-background-highlight: $background-color-highlight; // Highlighted backgro
 $color-text-default: $color-text; // Default text color
 $color-text-muted: $color-text-secondary; // Muted text color
 
-// Gradients
+// ### Gradients
+// Gradient definitions for backgrounds or decorative elements.
 $gradient-primary: linear-gradient(90deg, $color-primary, $color-primary-dark); // Primary gradient
 $gradient-secondary: linear-gradient(90deg, $color-secondary, lighten($color-secondary, 10%)); // Secondary gradient
 
-// Accessibility Colors
+// ### Accessibility Colors
+// High-contrast colors for improved accessibility and readability.
 $color-high-contrast-text: #000000; // Black for high-contrast text
 $color-high-contrast-background: #ffffff; // White for high-contrast backgrounds
 $color-high-contrast-link: #0056b3; // Dark blue for high-contrast links
 
-// Transparent Variants
+// ### Transparent Variants
+// Transparent versions of colors for overlays or subtle effects.
 $color-primary-transparent: rgba($color-primary, 0.1); // Transparent primary color
 $color-secondary-transparent: rgba($color-secondary, 0.1); // Transparent secondary color
 $color-black-transparent: rgba(0, 0, 0, 0.5); // Semi-transparent black
 $color-white-transparent: rgba(255, 255, 255, 0.8); // Semi-transparent white
 
-// Color Palette Map
+// ### Color Palette Map
+// A centralized map of colors for easier reference and iteration.
 $color-palette: (
   primary: $color-primary,
   primary-dark: $color-primary-dark,

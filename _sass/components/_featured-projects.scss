@@ -1,24 +1,33 @@
-// _sass/components/_featured-projects.scss
-// Featured Projects Section
+// ## Featured Projects Section
 // This file contains styles for the Featured Projects section of the website.
 // The Featured Projects section showcases selected projects with images, titles, and descriptions.
 // The styles are designed to be reusable, customizable, and consistent with the overall design system.
 // SASS variables are used for colors, spacing, typography, and layout to ensure maintainability and easy updates.
 // Referenced variables are defined in the settings folder for consistency across the project.
 
+// ### Featured Projects Container
+// - **.featured-projects:** The main container for the Featured Projects section.
+// - **margin-top:** Adds spacing above the section.
 .featured-projects {
-  // Base styles for the Featured Projects section
   margin-top: $spacing-lg; // Add top margin for spacing
 
+  // ### Section Heading
+  // - **h2:** Styles for the section heading.
+  // - **font-size:** Uses a large font size for prominence.
+  // - **margin-bottom:** Adds spacing below the heading.
+  // - **text-align:** Centers the heading horizontally.
   h2 {
-    // Styles for the section heading
     font-size: $font-size-lg; // Use large font size for prominence
     margin-bottom: $spacing-md; // Add bottom margin for spacing
     text-align: center; // Center-align the heading
   }
 
+  // ### Project Grid
+  // - **.project-grid:** The container for the grid layout of projects.
+  // - **display:** Uses grid layout for responsive design.
+  // - **grid-template-columns:** Creates responsive columns based on available space.
+  // - **gap:** Adds spacing between grid items.
   .project-grid {
-    // Styles for the grid layout of projects
     display: grid; // Use grid layout for responsive design
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); // Create responsive columns
     gap: $spacing-lg; // Add spacing between grid items

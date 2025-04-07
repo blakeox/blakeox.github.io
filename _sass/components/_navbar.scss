@@ -1,11 +1,15 @@
-// _sass/components/_navbar.scss
-// Navbar Styles
+// ## Navbar Styles
 // This file contains styles for the navigation bar used throughout the project.
 // The navbar is designed to be reusable, customizable, and responsive, adapting to different screen sizes.
 // SASS variables are used for colors, spacing, typography, and breakpoints to ensure maintainability and easy updates.
 
 .navbar {
-  // Base styles for the navbar
+  // ### Base Navbar Styles
+  // - **background-color:** Sets the background color of the navbar.
+  // - **border-bottom:** Adds a light border at the bottom for separation.
+  // - **position:** Makes the navbar sticky at the top of the viewport.
+  // - **z-index:** Ensures the navbar is above other elements.
+  // - **padding:** Adds spacing inside the navbar.
   background-color: $background-color; // Use background color variable from _colors.scss
   border-bottom: 1px solid $color-border-light; // Use border color variable from _colors.scss
   position: sticky; // Stick the navbar to the top of the viewport
@@ -15,13 +19,19 @@
   transition: background-color 0.3s ease, box-shadow 0.3s ease; // Smooth transitions for interactivity
 
   &.scrolled {
-    // Styles for the navbar when scrolled
+    // ### Scrolled Navbar Styles
+    // - **background-color:** Changes to a darker background when scrolled.
+    // - **box-shadow:** Adds a shadow for depth.
     background-color: $color-background-dark; // Use dark mode background color from _colors.scss
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); // Add shadow for depth
   }
 
   .nav-container {
-    // Container for navbar content
+    // ### Navbar Container
+    // - **max-width:** Limits the width of the navbar content.
+    // - **display:** Uses flexbox for layout.
+    // - **align-items:** Aligns items vertically.
+    // - **justify-content:** Spaces out the logo and links.
     max-width: $container-xl; // Use container width variable from _layout.scss
     margin: 0 auto;
     display: flex;
@@ -30,7 +40,10 @@
   }
 
   .nav-logo {
-    // Styles for the logo
+    // ### Logo Styles
+    // - **font-size:** Uses a large font size for prominence.
+    // - **font-weight:** Makes the logo bold.
+    // - **gap:** Adds spacing between the logo circle and text.
     display: flex;
     align-items: center;
     font-size: $font-size-lg; // Use font size variable from _typography.scss
@@ -41,7 +54,10 @@
   }
 
   .logo-circle {
-    // Styles for the circular logo element
+    // ### Circular Logo Element
+    // - **border-radius:** Makes the logo circular.
+    // - **border:** Adds a border around the circle.
+    // - **font-size:** Uses a medium font size for the text inside the circle.
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -56,7 +72,10 @@
   }
 
   .nav-toggle {
-    // Styles for the mobile navigation toggle button
+    // ### Mobile Navigation Toggle Button
+    // - **display:** Hidden by default, shown on smaller screens.
+    // - **font-size:** Uses a large font size for visibility.
+    // - **cursor:** Changes the cursor to a pointer for interactivity.
     display: none; // Hidden by default
     background: none;
     border: none;
@@ -65,7 +84,10 @@
   }
 
   .nav-links {
-    // Styles for the navigation links
+    // ### Navigation Links
+    // - **display:** Uses flexbox for horizontal layout.
+    // - **list-style:** Removes default list styling.
+    // - **gap:** Adds spacing between links.
     display: flex;
     list-style: none; // Remove default list styling
     margin: 0;
@@ -73,7 +95,11 @@
     gap: $spacing-md; // Add spacing between navigation links
 
     li a {
-      // Styles for individual links
+      // ### Individual Link Styles
+      // - **text-decoration:** Removes underline by default.
+      // - **font-weight:** Uses a light font weight.
+      // - **color:** Uses the standard text color.
+      // - **transition:** Adds smooth hover effects.
       text-decoration: none; // Remove underline
       font-weight: $font-weight-light; // Use font weight variable from _typography.scss
       color: $color-text; // Use text color variable from _colors.scss
@@ -81,14 +107,19 @@
 
       &:hover,
       &:focus {
-        // Hover and focus styles
+        // ### Hover and Focus Styles
+        // - **color:** Changes to the accent color.
+        // - **text-decoration:** Adds underline for emphasis.
         color: $color-accent; // Use accent color variable from _colors.scss
         text-decoration: underline; // Add underline for emphasis
         outline: none; // Remove default outline
       }
 
       &[aria-current="page"] {
-        // Styles for the active page link
+        // ### Active Page Link Styles
+        // - **font-weight:** Makes the link bold.
+        // - **color:** Uses the accent color.
+        // - **border-bottom:** Adds an underline with the accent color.
         font-weight: $font-weight-bold; // Use bold font weight
         color: $color-accent; // Use accent color
         border-bottom: 2px solid $color-accent; // Add underline with accent color
@@ -96,10 +127,11 @@
     }
   }
 
-  @media (max-width: $breakpoint-md) { // Use breakpoint variable from _breakpoints.scss
+  @media (max-width: $breakpoint-md) { // ### Mobile Styles
+    // - **nav-toggle:** Shows the toggle button on smaller screens.
+    // - **nav-links:** Stacks links vertically and hides them by default.
     .nav-toggle {
-      // Show the toggle button on smaller screens
-      display: block;
+      display: block; // Show the toggle button on smaller screens
       background: none;
       border: none;
       font-size: $font-size-lg; // Use font size variable from _typography.scss
@@ -107,7 +139,10 @@
     }
 
     .hamburger-icon {
-      // Styles for the hamburger icon
+      // ### Hamburger Icon
+      // - **display:** Shows the icon for mobile navigation.
+      // - **width, height:** Sets the size of the icon.
+      // - **background-color:** Uses the standard text color.
       display: inline-block;
       width: 24px;
       height: 2px;
@@ -116,7 +151,8 @@
 
       &::before,
       &::after {
-        // Additional lines for the hamburger icon
+        // ### Additional Lines for the Hamburger Icon
+        // - **content:** Adds lines above and below the main line.
         content: '';
         display: block;
         width: 24px;
@@ -127,16 +163,21 @@
       }
 
       &::before {
-        top: -8px;
+        top: -8px; // Position the top line
       }
 
       &::after {
-        top: 8px;
+        top: 8px; // Position the bottom line
       }
     }
 
     .nav-links {
-      // Mobile navigation links
+      // ### Mobile Navigation Links
+      // - **display:** Hidden by default, shown when active.
+      // - **flex-direction:** Stacks links vertically.
+      // - **position:** Positions the links below the navbar.
+      // - **background-color:** Uses the navbar background color.
+      // - **box-shadow:** Adds a shadow for depth.
       display: none; // Hidden by default
       flex-direction: column; // Stack links vertically
       position: absolute;
@@ -150,7 +191,8 @@
     }
 
     .nav-links.active {
-      // Show links when active
+      // ### Active Mobile Navigation Links
+      // - **display:** Shows the links when active.
       display: flex;
     }
   }

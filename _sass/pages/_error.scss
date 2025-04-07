@@ -1,31 +1,54 @@
-/* Error Page Styles */
+// ## Error Page Styles
+// This file contains styles specific to the Error page of the website (e.g., 404 or other error pages).
+// The styles are designed to ensure a clean and user-friendly layout, providing clear messaging and navigation options.
+// SASS variables are used for colors, spacing, typography, and transitions to ensure consistency and easy updates.
+
 .error-page {
-  text-align: center;
-  padding: $spacing-lg; // Use spacing variable from _spacing.scss
+  // ### Error Page Container
+  // - **text-align:** Centers all content horizontally.
+  // - **padding:** Adds inner spacing around the content for better readability.
+  text-align: center; // Center-align the content
+  padding: $spacing-lg; // Add padding using the spacing variable
 
   h1 {
-    font-size: $font-size-xl; // Use font size variable from _typography.scss
-    margin-bottom: $spacing-md; // Use spacing variable from _spacing.scss
+    // ### Error Page Heading
+    // - **font-size:** Uses a large font size for prominence.
+    // - **margin-bottom:** Adds spacing below the heading for separation.
+    font-size: $font-size-xl; // Use large font size for headings
+    margin-bottom: $spacing-md; // Add bottom margin using the spacing variable
   }
 
   p {
-    margin-bottom: $spacing-md; // Use spacing variable from _spacing.scss
-    font-size: $font-size-md; // Use font size variable from _typography.scss
-    color: $color-text; // Use text color variable from _colors.scss
+    // ### Error Page Description
+    // - **margin-bottom:** Adds spacing below the paragraph for separation.
+    // - **font-size:** Uses a medium font size for readability.
+    // - **color:** Uses the standard text color for consistency.
+    margin-bottom: $spacing-md; // Add bottom margin using the spacing variable
+    font-size: $font-size-md; // Use medium font size for readability
+    color: $color-text; // Use standard text color
   }
 
   ul {
-    list-style: disc;
-    margin: $spacing-md 0 $spacing-md $spacing-lg; // Use spacing variables from _spacing.scss
+    // ### Error Page List
+    // - **list-style:** Displays a disc as the list marker for each item.
+    // - **margin:** Adds vertical spacing around the list and indents it for better readability.
+    list-style: disc; // Use a disc as the list marker
+    margin: $spacing-md 0 $spacing-md $spacing-lg; // Add vertical and left margin using spacing variables
   }
 
   a {
-    color: $color-primary; // Use primary color variable from _colors.scss
-    text-decoration: underline;
-    transition: color $transition-duration-default ease; // Use transition variable from _transitions.scss
+    // ### Error Page Links
+    // - **color:** Uses the primary color for links.
+    // - **text-decoration:** Underlines links by default for accessibility.
+    // - **transition:** Adds smooth hover effects for color changes.
+    color: $color-primary; // Use primary color for links
+    text-decoration: underline; // Underline links by default
+    transition: color $transition-duration-default ease; // Smooth transition for hover effects
 
     &:hover {
-      color: $color-primary-dark; // Use primary dark color variable from _colors.scss
+      // ### Hover Effect for Links
+      // - **color:** Changes to a darker primary color for emphasis.
+      color: $color-primary-dark; // Use darker primary color on hover
     }
   }
 }

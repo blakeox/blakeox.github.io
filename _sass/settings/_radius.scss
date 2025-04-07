@@ -1,28 +1,24 @@
-// _sass/settings/_radius.scss
-// Radius Settings
+// ## Radius Settings
 // This file contains the border radius settings used throughout the project.
-// It is important to keep these values consistent to ensure a uniform design.
-// The border radius settings are defined using SASS variables for easy customization and maintenance.
-// The border radius settings are used for various components such as buttons, cards, and modals.
-// The border radius settings are defined in a way that they can be easily customized and reused throughout the project.
+// Border radius values are defined using SASS variables to ensure consistency and easy customization.
+// These settings are applied to various components such as buttons, cards, modals, and images to maintain a cohesive design system.
+// By centralizing these values, updates to the design can be made efficiently across the project.
 
-// Small border radius for subtle rounding
-$border-radius-sm: 0.125rem;
+// ### Border Radius Definitions
+// The following variables define different levels of border radius for various use cases:
 
-// Default border radius for most components
-$border-radius: 0.25rem;
+// - **$border-radius-sm:** Small border radius for subtle rounding, often used for minimal design elements.
+// - **$border-radius:** Default border radius for most components, providing a balanced look.
+// - **$border-radius-md:** Medium border radius for slightly more pronounced rounding, used for elements that need emphasis.
+// - **$border-radius-lg:** Large border radius for prominent rounding, often used for cards or larger buttons.
+// - **$border-radius-xl:** Extra-large border radius for highly rounded elements, such as featured sections or decorative elements.
+// - **$border-radius-xxl:** Double extra-large border radius for very rounded elements, such as badges or special highlights.
+// - **$border-radius-circle:** Full circle border radius for circular elements, such as profile pictures or icons.
 
-// Medium border radius for slightly more pronounced rounding
-$border-radius-md: 0.375rem;
-
-// Large border radius for prominent rounding
-$border-radius-lg: 0.5rem;
-
-// Extra-large border radius for highly rounded elements
-$border-radius-xl: 0.75rem;
-
-// Double extra-large border radius for very rounded elements
-$border-radius-xxl: 1rem;
-
-// Full circle border radius for circular elements
-$border-radius-circle: 50%;
+$border-radius-sm: 0.125rem; // Small border radius for subtle rounding
+$border-radius: 0.25rem; // Default border radius for most components
+$border-radius-md: 0.375rem; // Medium border radius for slightly more pronounced rounding
+$border-radius-lg: 0.5rem; // Large border radius for prominent rounding
+$border-radius-xl: 0.75rem; // Extra-large border radius for highly rounded elements
+$border-radius-xxl: 1rem; // Double extra-large border radius for very rounded elements
+$border-radius-circle: 50%; // Full circle border radius for circular elements

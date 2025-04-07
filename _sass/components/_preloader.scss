@@ -1,11 +1,17 @@
-// _sass/components/_preloader.scss
-// Preloader Styles
+// ## Preloader Styles
 // This file contains styles for the preloader component, which is displayed while the page content is loading.
 // The preloader ensures a smooth user experience by visually indicating that the page is in the process of loading.
 // SASS variables are used for colors and transitions to ensure consistency and easy updates.
 
 #preloader {
-  // Base styles for the preloader container
+  // ### Base Preloader Styles
+  // - **position:** Fixes the preloader to the viewport to cover the entire screen.
+  // - **width, height:** Ensures the preloader spans the full viewport dimensions.
+  // - **background-color:** Uses a light background color for contrast.
+  // - **display:** Uses flexbox to center the spinner both vertically and horizontally.
+  // - **z-index:** Ensures the preloader is above all other elements.
+  // - **opacity, visibility:** Controls the visibility of the preloader.
+  // - **transition:** Adds smooth transitions for hiding the preloader.
   position: fixed; // Fix the preloader to the viewport
   top: 0;
   left: 0;
@@ -22,13 +28,19 @@
 }
 
 #preloader.hidden {
-  // Styles for hiding the preloader
+  // ### Hidden Preloader Styles
+  // - **opacity:** Makes the preloader fully transparent.
+  // - **visibility:** Hides the preloader from view.
   opacity: 0; // Fully transparent
   visibility: hidden; // Hidden from view
 }
 
 .spinner {
-  // Styles for the spinner element
+  // ### Spinner Styles
+  // - **width, height:** Sets a fixed size for the spinner.
+  // - **border:** Creates a circular spinner with a light border and a primary-colored top border.
+  // - **border-radius:** Ensures the spinner is circular.
+  // - **animation:** Adds a continuous spinning animation.
   width: 50px; // Fixed width for the spinner
   height: 50px; // Fixed height for the spinner
   border: 5px solid $color-border-light; // Light border color
@@ -38,7 +50,8 @@
 }
 
 @keyframes spin {
-  // Keyframes for the spinner animation
+  // ### Spinner Animation Keyframes
+  // - **transform:** Rotates the spinner 360 degrees for a smooth spinning effect.
   to {
     transform: rotate(360deg); // Full rotation
   }

@@ -1,5 +1,24 @@
+// ## Overflow Utilities
+// This file contains utility classes for controlling the `overflow` property of elements.
+// These classes provide a quick and consistent way to manage how content overflows its container.
+// By centralizing these utilities, the project ensures maintainability and reusability across components.
 
-// Overflow Utilities
-.overflow-hidden { overflow: hidden; }
-.overflow-scroll { overflow: scroll; }
-.overflow-auto { overflow: auto; }
+// ### Utility Classes
+// - **.overflow-hidden:** Hides any content that overflows the container.
+//   - **Use Case:** Prevents scrollbars and hides overflowing content, often used for modals or fixed layouts.
+// - **.overflow-scroll:** Adds scrollbars to the container when content overflows.
+//   - **Use Case:** Ensures all content is accessible by allowing scrolling, often used for scrollable containers.
+// - **.overflow-auto:** Automatically adds scrollbars only when necessary.
+//   - **Use Case:** Dynamically handles overflow, often used for responsive layouts or content-heavy sections.
+
+.overflow-hidden { 
+  overflow: hidden; // Hide overflowing content
+}
+
+.overflow-scroll { 
+  overflow: scroll; // Always show scrollbars for overflowing content
+}
+
+.overflow-auto { 
+  overflow: auto; // Show scrollbars only when content overflows
+}

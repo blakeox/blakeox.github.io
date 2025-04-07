@@ -1,12 +1,35 @@
 // _sass/settings/_breakpoints.scss
-// Breakpoints settings for the project
-// This file contains the breakpoint values used throughout the project.
-// It is important to keep these values consistent to ensure a responsive design.
-// The breakpoint values are defined using SASS variables for easy customization and maintenance.
-// The breakpoints are used for media queries to create responsive designs.
-// The breakpoints are defined in a way that they can be easily customized and reused throughout the project.
-// The breakpoints are defined using the following format:
-// $breakpoint-{name}: {value};
+// ## Breakpoints Settings
+// This file defines the breakpoint values used throughout the project to ensure a responsive design.
+// Breakpoints are defined using SASS variables for easy customization and maintenance.
+// These values are used in media queries to create layouts that adapt to different screen sizes.
+
+// ### Breakpoint Format
+// Each breakpoint is defined using the following format:
+// `$breakpoint-{name}: {value};`
+// These variables can be used in media queries like so:
+// `@media (min-width: $breakpoint-md) { ... }`
+
+// ### Breakpoint Definitions
+// - **Small devices (e.g., phones):** For screens smaller than tablets.
+// - **Medium devices (e.g., tablets):** For screens larger than phones but smaller than desktops.
+// - **Large devices (e.g., desktops):** For standard desktop screens.
+// - **Extra large devices (e.g., large desktops):** For larger desktop screens.
+
+// #### Usage Example
+// ```scss
+// @media (min-width: $breakpoint-md) {
+//   .example-class {
+//     font-size: 1.5rem;
+//   }
+// }
+// ```
+
+// #### Breakpoint Values
+// - **$breakpoint-sm:** 576px (Small devices, e.g., phones)
+// - **$breakpoint-md:** 768px (Medium devices, e.g., tablets)
+// - **$breakpoint-lg:** 992px (Large devices, e.g., desktops)
+// - **$breakpoint-xl:** 1200px (Extra large devices, e.g., large desktops)
 
 // Small devices (e.g., phones)
 $breakpoint-sm: 576px;

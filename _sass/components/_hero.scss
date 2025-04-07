@@ -1,12 +1,18 @@
-// _sass/components/_hero.scss
-// Hero Section Styles
+// ## Hero Section Styles
 // This file contains styles for the hero section of the website.
 // The hero section is the first visual element users see, typically containing a banner, title, description, and call-to-action (CTA).
 // The styles are organized using the BEM (Block Element Modifier) methodology for better readability and maintainability.
 // SASS variables are used for colors, spacing, typography, and transitions to ensure consistency and easy updates.
 
+// ### Base Hero Styles
+// - **.hero:** The main container for the hero section.
+// - **position:** Ensures the hero section is positioned relative to allow for overlays.
+// - **padding:** Adds spacing around the content.
+// - **text-align:** Centers the text horizontally.
+// - **background:** Uses radial gradients for a visually appealing background.
+// - **height:** Sets the hero section to full viewport height.
+// - **display:** Uses flexbox for centering content vertically and horizontally.
 .hero {
-  // Base styles for the hero section
   position: relative;
   padding: $spacing-xl $spacing-md; // Add padding for spacing
   text-align: center; // Center-align text
@@ -41,24 +47,37 @@
     z-index: 1;
   }
 
+  // ### Hero Title
+  // - **.hero__title:** Styles for the main title in the hero section.
+  // - **font-size:** Uses a large font size for prominence.
+  // - **font-weight:** Makes the title bold for emphasis.
+  // - **animation:** Adds a fade-in effect for visual appeal.
   &__title {
-    // Styles for the hero title
     font-size: $font-size-xl; // Large font size
     font-weight: $font-weight-bold; // Bold font weight
     margin-bottom: $spacing-md; // Add spacing below the title
     animation: fadeIn $animation-duration-default ease-in-out; // Fade-in animation
   }
 
+  // ### Hero Description
+  // - **.hero__description:** Styles for the description text in the hero section.
+  // - **font-size:** Uses a medium font size for readability.
+  // - **max-width:** Limits the width for better readability.
+  // - **color:** Uses a secondary text color for contrast.
   &__description {
-    // Styles for the hero description
     font-size: $font-size-md; // Medium font size
     max-width: 600px; // Limit width for readability
     margin: 0 auto $spacing-lg; // Center and add spacing below
     color: $color-text-secondary; // Secondary text color
   }
 
+  // ### Call-to-Action Button
+  // - **.hero__cta:** Styles for the call-to-action button in the hero section.
+  // - **padding:** Adds inner spacing for better usability.
+  // - **background-color:** Uses the primary color for the button.
+  // - **border-radius:** Adds rounded corners for a modern look.
+  // - **transition:** Enables smooth hover effects.
   &__cta {
-    // Styles for the call-to-action button
     display: inline-block;
     padding: $spacing-sm $spacing-md; // Add padding for clickable area
     background-color: $color-primary; // Primary background color
@@ -76,8 +95,11 @@
   }
 }
 
+// ### Home Page Modifier
+// - **.hero--home-page:** Modifier for the hero section on the home page.
+// - **padding:** Adjusts padding for the home page layout.
+// - **background:** Reuses the radial gradient background.
 .hero--home-page {
-  // Modifier for the home page hero section
   padding: $spacing-xl $spacing-sm; // Adjust padding for home page
   background: 
     radial-gradient(circle at center, $color-white 0%, $color-white 35%, transparent 45%),
@@ -99,8 +121,11 @@
   }
 }
 
+// ### Hero Banner
+// - **.hero__banner:** Container for the banner content in the hero section.
+// - **gap:** Adds spacing between elements in the banner.
+// - **margin-top:** Adds spacing above the banner.
 .hero__banner {
-  // Styles for the hero banner
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -132,8 +157,12 @@
   }
 }
 
+// ### Hero Figure
+// - **.hero__figure:** Styles for the circular image in the hero section.
+// - **width, height:** Ensures a perfect circular shape.
+// - **border-radius:** Applies a circular shape.
+// - **box-shadow:** Adds depth to the image.
 .hero__figure {
-  // Styles for the circular image in the hero section
   width: 150px; // Fixed width
   height: 150px; // Fixed height for a perfect circle
   border-radius: 50%; // Circular shape
@@ -149,7 +178,8 @@
   }
 }
 
-// Keyframes for animations
+// ### Keyframes for Animations
+// - **fadeIn:** Adds a fade-in effect for elements.
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -159,14 +189,18 @@
   }
 }
 
-// Respect user preferences for reduced motion
+// ### Reduced Motion Styles
+// - **@media (prefers-reduced-motion: reduce):** Disables animations for users who prefer reduced motion.
 @media (prefers-reduced-motion: reduce) {
   h1 {
     animation: none; // Disable animations for users who prefer reduced motion
   }
 }
 
-// Responsive styles for smaller screens
+// ### Responsive Styles
+// - **@media (max-width: $breakpoint-md):** Adjusts styles for smaller screens.
+// - **padding:** Reduces padding for smaller screens.
+// - **font-size:** Adjusts font sizes for better readability on smaller screens.
 @media (max-width: $breakpoint-md) {
   .hero {
     padding: $spacing-lg $spacing-sm; // Reduce padding for smaller screens
@@ -199,7 +233,10 @@
   }
 }
 
-// Dark mode styles
+// ### Dark Mode Styles
+// - **@media (prefers-color-scheme: dark):** Adjusts styles for dark mode.
+// - **color:** Uses dark mode text color.
+// - **background:** Adjusts the background gradients for dark mode.
 @media (prefers-color-scheme: dark) {
   .hero {
     color: $color-text-dark; // Use dark mode text color

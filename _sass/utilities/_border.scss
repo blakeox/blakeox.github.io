@@ -1,6 +1,35 @@
-// Border Utilities
-.border { border: 1px solid $color-border-light; }
-.border-none { border: none; }
-.border-radius-sm { border-radius: $border-radius-sm; }
-.border-radius-md { border-radius: $border-radius-md; }
-.border-radius-lg { border-radius: $border-radius-lg; }
+// ## Border Utilities
+// This file contains utility classes for applying border styles and border-radius to elements.
+// These utilities ensure consistency and reusability across the project by leveraging SASS variables.
+// The classes are designed to provide flexibility for styling borders and rounded corners in a clean and maintainable way.
+
+// ### Border Styles
+// Utility classes for applying or removing borders.
+// - **.border:** Adds a 1px solid border using the light border color defined in `$color-border-light`.
+// - **.border-none:** Removes the border from an element entirely.
+.border { 
+  border: 1px solid $color-border-light; // Apply a light border
+}
+.border-none { 
+  border: none; // Remove the border
+}
+
+// ### Border Radius
+// Utility classes for applying different levels of border-radius to elements.
+// - **.border-radius-sm:** Applies a small border radius using `$border-radius-sm`.
+// - **.border-radius-md:** Applies a medium border radius using `$border-radius-md`.
+// - **.border-radius-lg:** Applies a large border radius using `$border-radius-lg`.
+.border-radius-sm { 
+  border-radius: $border-radius-sm; // Small rounded corners
+}
+.border-radius-md { 
+  border-radius: $border-radius-md; // Medium rounded corners
+}
+.border-radius-lg { 
+  border-radius: $border-radius-lg; // Large rounded corners
+}
+
+// ### Use Cases
+// - **Borders:** Use `.border` to add a light border to elements like cards, containers, or buttons.
+// - **No Borders:** Use `.border-none` to remove borders from elements like images or buttons.
+// - **Rounded Corners:** Use `.border-radius-sm`, `.border-radius-md`, or `.border-radius-lg` to apply rounded corners to elements like modals, buttons, or images.

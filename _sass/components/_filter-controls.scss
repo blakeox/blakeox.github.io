@@ -1,29 +1,46 @@
-// _sass/components/_filter-controls.scss
-// Filter Controls Styles
+// ## Filter Controls Styles
 // This file contains styles for the filter controls section, which includes dropdowns, search inputs, and buttons.
 // The filter controls are used to provide users with options to filter, sort, or search content dynamically.
 // The styles are designed to be reusable, responsive, and consistent with the overall design system.
 // SASS variables are used for colors, spacing, typography, and transitions to ensure maintainability and easy updates.
 
+// ### Filter Controls Container
+// - **.filter-controls:** The main container for the filter controls section.
+// - **display:** Uses flexbox for layout.
+// - **flex-wrap:** Allows items to wrap to the next line if necessary.
+// - **gap:** Adds spacing between items.
+// - **align-items:** Aligns items vertically.
+// - **margin-bottom:** Adds spacing below the filter controls section.
 .filter-controls {
-  // Base styles for the filter controls container
   display: flex; // Use flexbox for layout
   flex-wrap: wrap; // Allow items to wrap to the next line if necessary
   gap: $spacing-md; // Add spacing between items
   align-items: center; // Align items vertically
   margin-bottom: $spacing-lg; // Add bottom margin for spacing
 
+  // ### Dropdown and Input Containers
+  // - **.filter-dropdown-container, .sort-dropdown-container, .search-input-container:**
+  //   Containers for dropdowns and search inputs.
+  // - **flex:** Allows flexible resizing of containers.
+  // - **min-width:** Ensures a minimum width for containers.
   .filter-dropdown-container,
   .sort-dropdown-container,
   .search-input-container {
-    // Styles for dropdowns and search input containers
     flex: 1 1 auto; // Allow flexible resizing
     min-width: $filter-min-width; // Minimum width for containers
   }
 
+  // ### Dropdowns and Input Fields
+  // - **select, input:** Base styles for dropdowns and input fields.
+  // - **width:** Ensures full width to match the container.
+  // - **padding:** Adds inner padding for better usability.
+  // - **font-size:** Uses the base font size.
+  // - **border:** Adds a light border for visual separation.
+  // - **border-radius:** Applies rounded corners for a modern look.
+  // - **background-color:** Uses a light background color.
+  // - **transition:** Enables smooth transitions for hover and focus effects.
   select,
   input {
-    // Base styles for dropdowns and input fields
     width: 100%; // Full width to match the container
     padding: $spacing-sm $spacing-md; // Add inner padding
     font-size: $font-size-base; // Use base font size
@@ -45,8 +62,15 @@
     }
   }
 
+  // ### Buttons
+  // - **.btn:** Base styles for buttons in the filter controls section.
+  // - **padding:** Adds padding for a clickable area.
+  // - **font-size:** Uses the base font size.
+  // - **border:** Removes the default border.
+  // - **border-radius:** Applies rounded corners for a modern look.
+  // - **cursor:** Changes the cursor to a pointer for interactivity.
+  // - **transition:** Enables smooth background color transitions.
   .btn {
-    // Base styles for buttons
     padding: $spacing-sm $spacing-md; // Add padding for clickable area
     font-size: $font-size-base; // Use base font size
     border: none; // Remove default border
@@ -79,8 +103,14 @@
     }
   }
 
+  // ### Loading Spinner
+  // - **.spinner:** Styles for the loading spinner.
+  // - **display:** Ensures the spinner is inline-block for layout.
+  // - **width, height:** Sets the size of the spinner.
+  // - **border:** Adds a light border with a primary-colored top border.
+  // - **border-radius:** Ensures a circular shape.
+  // - **animation:** Adds a spinning animation.
   .spinner {
-    // Styles for loading spinner
     display: inline-block; // Inline-block for layout
     width: $spinner-size; // Spinner width
     height: $spinner-size; // Spinner height
@@ -95,8 +125,10 @@
     }
   }
 
+  // ### Spinner Visibility Transition
+  // - **opacity:** Controls the visibility of the spinner.
+  // - **transition:** Adds smooth opacity transitions.
   .spinner {
-    // Transition styles for spinner visibility
     opacity: 0;
     transition: opacity $transition-duration-default ease; // Smooth opacity transition
 
@@ -111,14 +143,22 @@
   }
 }
 
-// Keyframes for spinner animation
+// ### Spinner Animation Keyframes
+// - **spin:** Defines the spinning animation for the spinner.
+// - **transform:** Rotates the spinner 360 degrees.
 @keyframes spin {
   to {
     transform: rotate(360deg); // Full rotation
   }
 }
 
-// Responsive styles for smaller screens
+// ### Responsive Styles
+// - **@media (max-width: $breakpoint-md):** Adjusts styles for smaller screens.
+// - **flex-direction:** Stacks items vertically.
+// - **gap:** Adds spacing between items.
+// - **min-width:** Ensures full width for containers.
+// - **width:** Ensures full width for buttons.
+// - **text-align:** Centers button text.
 @media (max-width: $breakpoint-md) {
   .filter-controls {
     flex-direction: column; // Stack items vertically

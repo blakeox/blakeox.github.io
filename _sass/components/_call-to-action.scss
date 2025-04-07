@@ -1,17 +1,24 @@
-// _sass/components/call-to-action.scss
-// Call-to-Action Styles
+// ## Call-to-Action Styles
 // This file contains styles for call-to-action (CTA) sections used throughout the project.
 // CTAs are designed to encourage user interaction, such as contacting, downloading, or exploring further.
 // The styles are reusable, customizable, and consistent with the overall design system.
 // SASS variables are used for colors, spacing, typography, and transitions to ensure maintainability and easy updates.
 
+// ### Call-to-Action Section
+// - **.call-to-action:** The main container for the CTA section.
+// - **text-align:** Centers the content horizontally.
+// - **margin-top:** Adds spacing above the section.
 .call-to-action {
-  // Base styles for the call-to-action section
   text-align: center; // Center-align the content
   margin-top: $spacing-lg; // Add top margin for spacing
 
+  // ### CTA Buttons
+  // - **.btn:** Styles for buttons within the CTA section.
+  // - **padding:** Adds inner spacing for better usability.
+  // - **background-color:** Uses the primary color for the button.
+  // - **border-radius:** Adds rounded corners for a modern look.
+  // - **transition:** Enables smooth hover effects.
   .btn {
-    // Styles for buttons within the call-to-action section
     padding: $spacing-sm $spacing-md; // Add padding for clickable area
     background-color: $color-primary; // Use primary color for the button
     color: $color-white; // Use white text for contrast
@@ -28,8 +35,13 @@
   }
 }
 
+// ### About CTA Group
+// - **.about-cta-group:** A container for grouped CTAs, such as in the "About" section.
+// - **text-align:** Centers the group horizontally.
+// - **display:** Uses flexbox for layout.
+// - **flex-wrap:** Allows buttons to wrap to the next line if necessary.
+// - **gap:** Adds spacing between buttons.
 .about-cta-group {
-  // Styles for grouped CTAs, such as in the "About" section
   text-align: center; // Center-align the content
   margin-top: $spacing-xl; // Add top margin for spacing
   display: flex; // Use flexbox for layout
@@ -37,8 +49,9 @@
   gap: $spacing-md; // Add spacing between buttons
   justify-content: center; // Center-align the buttons horizontally
 
+  // ### Buttons in CTA Group
+  // - **min-width:** Ensures a consistent minimum width for buttons.
   .btn {
-    // Styles for individual buttons within the group
     min-width: 220px; // Ensure a consistent minimum width for buttons
   }
 }

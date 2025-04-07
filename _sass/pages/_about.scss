@@ -1,22 +1,29 @@
-// about.scss - Page-specific styles for the About page
+// ## About Page Styles
 // This file contains styles specific to the About page of the website.
-// It is important to keep these styles organized and maintainable.
-// The styles are defined using SASS variables for easy customization and maintenance.
-// The styles are defined in a way that they can be easily customized and reused throughout the project.
-// Referenced variables are defined in the settings folder.
+// The styles are designed to ensure readability, maintainability, and consistency with the overall design system.
+// SASS variables are used for colors, spacing, typography, and layout to allow easy customization and updates.
+// Referenced variables are defined in the settings folder for consistency across the project.
 
 .about-page {
-  // Base styles for the About page
+  // ### About Page Container
+  // - **margin:** Centers the content horizontally.
+  // - **padding:** Adds inner spacing around the content.
+  // - **max-width:** Limits the maximum width of the content for better readability.
   margin: 0 auto; // Center the content horizontally
   padding: $spacing-lg; // Add padding using the spacing variable
   max-width: 960px; // Limit the maximum width of the content
 
-  // Page-specific styling for about sections
   .about-section {
+    // ### About Section
+    // - **margin-bottom:** Adds spacing below each section for separation.
     margin-bottom: $spacing-xl; // Add bottom margin using the spacing variable
 
     h2 {
-      // Styles for section headings
+      // ### Section Headings
+      // - **font-size:** Uses a large font size for prominence.
+      // - **margin-bottom:** Adds spacing below the heading for separation.
+      // - **border-bottom:** Adds a decorative bottom border using the primary color.
+      // - **display:** Ensures the heading does not span the full width.
       font-size: $font-size-xl; // Use large font size for headings
       margin-bottom: $spacing-md; // Add bottom margin using the spacing variable
       border-bottom: 2px solid $color-primary; // Add a bottom border using the primary color
@@ -24,7 +31,9 @@
     }
 
     p {
-      // Styles for paragraph text
+      // ### Paragraph Text
+      // - **font-size:** Uses a medium font size for readability.
+      // - **line-height:** Ensures consistent spacing between lines for better readability.
       font-size: $font-size-md; // Use medium font size for readability
       line-height: $line-height-base; // Use base line height for consistent spacing
     }

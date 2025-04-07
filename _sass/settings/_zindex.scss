@@ -1,20 +1,40 @@
 // _sass/settings/_zindex.scss
-// Z-index settings for the project
+// ## Z-Index Settings
 // This file contains the z-index values and utility classes used throughout the project.
+// Z-index values are used to control the stacking order of elements, ensuring proper layering in the UI.
+// The values are defined using SASS variables for consistency and easy customization.
+// Utility classes are provided for quick application of common z-index values.
 
-// Base z-index values
-$z-index-base: 1;
-$z-index-dropdown: 100;
-$z-index-sticky: 200;
-$z-index-modal: 500;
-$z-index-toast: 1000;
+// ### Base Z-Index Values
+// These variables define the base z-index values for common UI elements:
+// - **$z-index-base:** Default base z-index for most elements.
+// - **$z-index-dropdown:** Z-index for dropdown menus to ensure they appear above other content.
+// - **$z-index-sticky:** Z-index for sticky elements like headers or navigation bars.
+// - **$z-index-modal:** Z-index for modals to ensure they overlay all other content.
+// - **$z-index-toast:** Z-index for toast notifications to ensure they appear above modals.
 
-// Z-Index Utilities
-.z-0 { z-index: 0; }
-.z-1 { z-index: $z-index-base; }
-.z-10 { z-index: 10; }
-.z-50 { z-index: 50; }
-.z-100 { z-index: $z-index-dropdown; }
-.z-200 { z-index: $z-index-sticky; }
-.z-500 { z-index: $z-index-modal; }
-.z-1000 { z-index: $z-index-toast; }
+$z-index-base: 1; // Default base z-index
+$z-index-dropdown: 100; // Z-index for dropdown menus
+$z-index-sticky: 200; // Z-index for sticky elements
+$z-index-modal: 500; // Z-index for modals
+$z-index-toast: 1000; // Z-index for toast notifications
+
+// ### Z-Index Utility Classes
+// These utility classes provide quick access to common z-index values:
+// - **.z-0:** Sets z-index to 0 (no stacking).
+// - **.z-1:** Sets z-index to the base value.
+// - **.z-10:** Sets z-index to 10 for slightly elevated elements.
+// - **.z-50:** Sets z-index to 50 for higher stacking order.
+// - **.z-100:** Sets z-index to the dropdown value.
+// - **.z-200:** Sets z-index to the sticky value.
+// - **.z-500:** Sets z-index to the modal value.
+// - **.z-1000:** Sets z-index to the toast value.
+
+.z-0 { z-index: 0; } // No stacking
+.z-1 { z-index: $z-index-base; } // Base stacking
+.z-10 { z-index: 10; } // Slightly elevated stacking
+.z-50 { z-index: 50; } // Higher stacking
+.z-100 { z-index: $z-index-dropdown; } // Dropdown stacking
+.z-200 { z-index: $z-index-sticky; } // Sticky element stacking
+.z-500 { z-index: $z-index-modal; } // Modal stacking
+.z-1000 { z-index: $z-index-toast; } // Toast notification stacking

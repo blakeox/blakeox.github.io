@@ -1,28 +1,39 @@
-// _sass/pages/search.scss
-// Search Page Styles
+// ## Search Page Styles
 // This file contains styles specific to the Search page of the website.
 // The styles are designed to ensure a clean and user-friendly layout for the search functionality.
 // SASS variables are used for spacing, colors, typography, and transitions to ensure consistency and easy updates.
 // Referenced variables are defined in the settings folder for maintainability.
 
 .search-box {
-  // Base styles for the search box container
+  // ### Search Box Container
+  // - **margin-top:** Adds spacing above the search box.
+  // - **text-align:** Centers the content horizontally.
   margin-top: $spacing-lg; // Add top margin using the spacing variable
   text-align: center; // Center-align the content
 
   h2 {
-    // Styles for the search heading
+    // ### Search Heading
+    // - **font-size:** Uses a large font size for prominence.
+    // - **margin-bottom:** Adds spacing below the heading for separation.
     font-size: $font-size-lg; // Use large font size for the heading
     margin-bottom: $spacing-md; // Add bottom margin using the spacing variable
   }
 
   form {
-    // Styles for the search form
+    // ### Search Form
+    // - **display:** Centers the form inline for alignment.
     display: inline-block; // Center the form inline
   }
 
   input[type="text"] {
-    // Styles for the search input field
+    // ### Search Input Field
+    // - **padding:** Adds inner spacing for better usability.
+    // - **border:** Adds a light border for separation.
+    // - **border-radius:** Applies rounded corners for a modern look.
+    // - **width:** Sets the input width to 80% of the container.
+    // - **max-width:** Limits the maximum width of the input for responsiveness.
+    // - **font-size:** Uses a medium font size for readability.
+    // - **color:** Uses the standard text color for consistency.
     padding: $spacing-sm; // Add padding for better usability
     border: 1px solid $color-border-light; // Use light border color
     border-radius: $border-radius; // Apply rounded corners
@@ -33,7 +44,16 @@
   }
 
   button {
-    // Styles for the search button
+    // ### Search Button
+    // - **background:** Uses the primary color for the button.
+    // - **color:** Uses white text for contrast.
+    // - **border:** Removes the default border for a clean look.
+    // - **padding:** Adds inner spacing for better usability.
+    // - **margin-left:** Adds spacing to the left of the button.
+    // - **border-radius:** Applies rounded corners for a modern look.
+    // - **font-size:** Uses a medium font size for readability.
+    // - **cursor:** Changes the cursor to a pointer for interactivity.
+    // - **transition:** Adds smooth hover effects for background color changes.
     background: $color-primary; // Use primary color for the button
     color: $color-white; // Use white text for contrast
     border: none; // Remove default border
@@ -45,7 +65,8 @@
     transition: background-color $transition-duration-default ease; // Smooth hover transition
 
     &:hover {
-      // Hover effect for the button
+      // ### Hover Effect for Search Button
+      // - **background:** Changes to a darker primary color for interactivity.
       background: $color-primary-dark; // Use darker primary color
     }
   }

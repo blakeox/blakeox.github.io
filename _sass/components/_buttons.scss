@@ -1,12 +1,15 @@
-// _sass/components/_buttons.scss
-// Buttons Styles
+// ## Buttons Styles
 // This file contains styles for buttons used throughout the project.
 // The styles are designed to be reusable, customizable, and consistent with the overall design system.
 // SASS variables are used for colors, spacing, and transitions to ensure maintainability and easy updates.
 // Referenced variables are defined in the settings folder for consistency across the project.
 
+// ### Base Button Styles
+// - **a.btn, button.btn:** Base styles for anchor and button elements with the "btn" class.
+// - **background:** Uses the primary color for the background.
+// - **padding:** Ensures consistent spacing inside the button.
+// - **border-radius:** Adds small rounded corners for a modern look.
 a.btn, button.btn {
-  // Base styles for anchor and button elements with the "btn" class
   display: inline-block; // Ensure buttons behave like inline-block elements
   background: var(--color-primary); // Primary background color
   color: $color-white; // White text for contrast
@@ -15,25 +18,34 @@ a.btn, button.btn {
   border-radius: $border-radius-sm; // Small rounded corners for modern design
 }
 
+// ### Hover Styles
+// - **a.btn:hover, button.btn:hover:** Adds hover effects for buttons.
+// - **background:** Changes to a hover color for interactivity.
+// - **transform:** Slight upward movement for a dynamic feel.
 a.btn:hover, button.btn:hover {
-  // Hover effect for buttons
   background: var(--hover-color); // Change background color on hover
   transform: translateY(-2px); // Slight upward movement for interactivity
 }
 
+// ### Focus Styles
+// - **a.btn:focus, button.btn:focus:** Adds focus styles for accessibility.
+// - **outline:** Highlights the button with an accent color for focus visibility.
 a.btn:focus, button.btn:focus {
-  // Focus styles for accessibility
   outline: 2px solid var(--accent-color); // Highlight focus with an accent color
 }
 
+// ### General Focus Styles
+// - **a:focus, button:focus:** Applies general focus styles to all anchor and button elements.
+// - **outline-offset:** Adds spacing around the outline for better visibility.
 a:focus, button:focus {
-  // General focus styles for all anchor and button elements
   outline: 2px solid var(--color-primary); // Primary color outline
   outline-offset: 2px; // Offset for better visibility
 }
 
+// ### Button Class
+// - **.btn:** Base styles for the "btn" class.
+// - **transition:** Adds smooth hover effects for background color and movement.
 .btn {
-  // Base styles for the "btn" class
   display: inline-block; // Ensure buttons behave like inline-block elements
   padding: $btn-padding; // Padding for consistent spacing
   background-color: $color-primary; // Primary background color
@@ -45,13 +57,15 @@ a:focus, button:focus {
   transition: background-color $transition-duration-default ease, transform $transition-duration-fast ease; // Smooth transitions for hover effects
 
   &:hover {
-    // Hover effect for the "btn" class
     background-color: $color-primary-dark; // Darker shade of primary color
     transform: translateY(-2px); // Slight upward movement for interactivity
   }
 
+  // ### Secondary Button Styles
+  // - **.btn.secondary:** Styles for secondary buttons.
+  // - **background:** Transparent background with a primary color border.
+  // - **hover:** Darkens the secondary color on hover.
   &.secondary {
-    // Styles for secondary buttons
     background: transparent; // Transparent background
     color: $color-primary; // Primary color for text
     border: 1px solid $color-primary; // Border with primary color
@@ -61,13 +75,15 @@ a:focus, button:focus {
     margin-top: $spacing-md; // Add spacing above the button
 
     &:hover {
-      // Hover effect for secondary buttons
       background-color: darken($color-secondary, 10%); // Darken the secondary color
     }
   }
 
+  // ### Disabled Button Styles
+  // - **.btn.disabled:** Styles for disabled buttons.
+  // - **pointer-events:** Disables interaction with the button.
+  // - **opacity:** Reduces opacity to indicate a disabled state.
   &.disabled {
-    // Styles for disabled buttons
     background-color: lighten($color-primary, 30%); // Lighter shade of primary color
     pointer-events: none; // Disable pointer events
     opacity: 0.6; // Reduce opacity for a disabled appearance
