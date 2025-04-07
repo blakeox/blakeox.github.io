@@ -1,11 +1,12 @@
-@import "utilities/animations";
-@import "utilities/border"; // Defines border utilities for various styles
-@import "utilities/display";
-@import "utilities/flexbox";
-@import "utilities/overflow";
-@import "utilities/positioning";
-@import "utilities/shadows"; // Defines shadow variables for depth and elevation
-@import "utilities/spacing";
-@import "utilities/text";
-@import "utilities/visibility";
-@import "utilities/width-height";
+// filepath: /Users/blakepowell/blakeox.github.io/_sass/utilities/_utilities.scss
+@import "animations";
+@import "border";
+@import "display";
+@import "flexbox";
+@import "overflow";
+@import "positioning";
+@import "shadows";
+@import "spacing";
+@import "text";
+@import "visibility";
+@import "width-height";

@@ -1,16 +1,21 @@
 ---
 ---
+
 // Import settings (variables and global configurations)
 @import "settings/index";
-
-// Import utility classes
-@import "utilities/utilities";
 
 // Import variables and base styles
 @import "base";
 
+// Import utility classes
+@import "utilities/utilities";
+
 // Import layout styles
 @import "layout";
 
+
+
 // Import page-specific styles
 @import "pages/pages";
+
+@import "components/components";

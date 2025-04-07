@@ -4,16 +4,12 @@
 // Each component is defined in its own partial file for modularity and maintainability.
 // The imported files include styles for buttons, cards, forms, navbar, utilities, tags, and anchor links.
 
-@import 'buttons'; // Styles for buttons
-@import 'cards'; // Styles for reusable card components
-@import 'forms'; // Styles for form elements
-@import 'navbar'; // Styles for the navigation bar
-@import 'utilities'; // Utility classes for spacing, typography, etc.
-@import 'tags'; // Styles for tags used in categorization
 @import 'anchor-links'; // Styles for anchor links used for accessibility
 @import 'blog-cards'; // Styles for blog cards
 @import 'blog-list'; // Styles for blog list items
+@import 'buttons'; // Styles for buttons
 @import 'call-to-action'; // Styles for call-to-action sections
+@import 'cards'; // Styles for reusable card components
 @import 'featured-projects'; // Styles for featured projects section
 @import 'filter-controls'; // Styles for filter controls in project lists
 @import 'forms'; // Styles for form elements
