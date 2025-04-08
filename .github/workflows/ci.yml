@@ -63,6 +63,10 @@ jobs:
       run: |
         node lighthouserc-polyfill.js
 
+    - name: Verify Fetch Polyfill
+      run: |
+        node -e "if (!globalThis.fetch) { throw new Error('globalThis.fetch is not defined'); } else { console.log('globalThis.fetch is available'); }"
+
     - name: Update lighthouserc.json Timeout
       run: |
         node -e "const fs = require('fs'); const config = JSON.parse(fs.readFileSync('lighthouserc.json', 'utf8')); config.ci.collect.timeout = 30000; fs.writeFileSync('lighthouserc.json', JSON.stringify(config, null, 2));"
