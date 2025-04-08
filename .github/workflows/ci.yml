@@ -43,9 +43,9 @@ jobs:
       run: |
         echo "require('node-fetch');" >> axe-test.js
 
-    - name: Increase Jekyll Server Timeout
+    - name: Update lighthouserc.json Timeout
       run: |
-        echo "timeout: 30000" >> lighthouserc.json
+        node -e "const fs = require('fs'); const config = JSON.parse(fs.readFileSync('lighthouserc.json', 'utf8')); config.ci.collect.timeout = 30000; fs.writeFileSync('lighthouserc.json', JSON.stringify(config, null, 2));"
 
     - name: Run Lighthouse CI
       run: |
