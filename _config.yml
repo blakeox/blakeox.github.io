@@ -4,7 +4,7 @@ permalink: pretty
 
 # Ensure compatibility with GitHub Pages
 url: https://blakeox.github.io
-baseurl: /blakeox.github.io
+baseurl: "" # Adjusted for root hosting
 
 # Enable Jekyll plugins on GitHub Pages
 plugins:
@@ -45,7 +45,7 @@ kramdown:
   input: GFM
 
 # Base URL for subdirectory hosting
-baseurl: "" # Replace with your subdirectory name or leave empty for root
+baseurl: "" # Adjusted for root hosting
 
 sass:
   sass_dir: _sass
