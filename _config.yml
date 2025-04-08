@@ -3,8 +3,8 @@ description: "Portfolio of Blake Oxford - IT Director, Business Systems Manager,
 permalink: pretty
 
 # Ensure compatibility with GitHub Pages
-url: https://blakeox.github.io
-baseurl: '' # Adjusted for root hosting
+url: "https://blakeox.github.io" # Enclosed in quotes for proper YAML syntax
+baseurl: "" # Adjusted for root hosting
 
 # Enable Jekyll plugins on GitHub Pages
 plugins:
