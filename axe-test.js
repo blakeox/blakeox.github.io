@@ -1,5 +1,7 @@
 const { AxePuppeteer } = require('@axe-core/puppeteer');
 const puppeteer = require('puppeteer');
+const fetch = require('node-fetch');
+globalThis.fetch = fetch;
 
 (async () => {
   const browser = await puppeteer.launch();

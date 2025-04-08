@@ -41,7 +41,8 @@ jobs:
 
     - name: Polyfill Fetch for Node.js
       run: |
-        echo "require('node-fetch');" >> axe-test.js
+        echo "require('node-fetch'); globalThis.fetch = require('node-fetch');" >> axe-test.js
+        echo "require('node-fetch'); globalThis.fetch = require('node-fetch');" >> lighthouserc-polyfill.js
 
     - name: Test Jekyll Server
       run: |
@@ -49,7 +50,6 @@ jobs:
 
     - name: Ensure Fetch Polyfill
       run: |
-        echo "require('node-fetch');" >> lighthouserc-polyfill.js
         node lighthouserc-polyfill.js
 
     - name: Update lighthouserc.json Timeout
