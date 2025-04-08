@@ -3,7 +3,7 @@ description: "Portfolio of Blake Oxford – IT Director, Business Systems Manage
 permalink: pretty
 
 # Ensure compatibility with GitHub Pages
-url: https://<your-github-username>.github.io
+url: https://blakeox.github.io
 baseurl: /blakeox.github.io
 
 # Enable Jekyll plugins on GitHub Pages
