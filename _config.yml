@@ -34,6 +34,7 @@ exclude:
   - lighthouserc.json
   - axe-test.js
   - .github/
+  - _site
 
 # Enable plugins supported by GitHub Pages
 github:
