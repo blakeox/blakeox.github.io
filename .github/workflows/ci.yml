@@ -39,6 +39,11 @@ jobs:
       run: |
         npm install node-fetch@2
 
+    - name: Apply Fetch Polyfill Globally
+      run: |
+        echo "require('node-fetch'); globalThis.fetch = require('node-fetch');" > global-fetch-polyfill.js
+        node global-fetch-polyfill.js
+
     - name: Polyfill Fetch for Node.js
       run: |
         echo "require('node-fetch'); globalThis.fetch = require('node-fetch');" >> axe-test.js
