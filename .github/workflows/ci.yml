@@ -51,14 +51,17 @@ jobs:
 
     - name: Start Jekyll Server
       run: |
-        bundle exec jekyll serve --host=0.0.0.0 &
+        nohup bundle exec jekyll serve --host=0.0.0.0 > jekyll.log 2>&1 &
         echo "Waiting for server to start..."
-        for i in {1..30}; do
+        for i in {1..60}; do
           curl --silent --fail http://localhost:4000 && break
           echo "Server not ready yet. Retrying in 2 seconds..."
           sleep 2
         done
         echo "Server is ready!"
+
+    - name: Log Jekyll Server Output
+      run: cat jekyll.log
 
     - name: Test Jekyll Server
       run: |
