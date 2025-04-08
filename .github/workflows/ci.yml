@@ -76,6 +76,11 @@ jobs:
         done
         echo "Server is ready!"
 
+    - name: Debug Jekyll Server
+      run: |
+        echo "Jekyll server failed to start. Outputting errors directly to console."
+        bundle exec jekyll serve --host=0.0.0.0
+
     - name: Log Jekyll Server Output
       run: cat jekyll.log
 
