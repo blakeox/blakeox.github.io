@@ -58,9 +58,23 @@ Welcome to the Blake Oxford Portfolio repository. This site is built with [Jekyl
 - **_config.yml**: Jekyll configuration file.
 - **README.md**: Project documentation (this file).
 
-## Deployment
+## GitHub Pages Deployment
 
-This site is deployed via GitHub Pages. Pushing changes to the main branch will automatically trigger a build and deploy the updated site.
+This project is deployed using GitHub Pages. The deployment process is automated using GitHub Actions. The site is built with Jekyll and uses the `github-pages` gem for compatibility.
+
+### Local Development
+1. Install dependencies:
+   ```bash
+   bundle install
+   ```
+2. Serve the site locally:
+   ```bash
+   bundle exec jekyll serve
+   ```
+
+### Deployment
+- Push changes to the `main` branch to trigger the deployment workflow.
+- The site will be deployed to `https://<your-github-username>.github.io/blakeox.github.io/`.
 
 ## Contributing
 

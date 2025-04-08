@@ -54,3 +54,7 @@ jobs:
     - name: Run Axe Accessibility Tests
       run: |
         node axe-test.js
+
+    - name: Skip Deployment
+      if: github.event_name == 'pull_request'
+      run: echo "Skipping deployment for pull requests."
