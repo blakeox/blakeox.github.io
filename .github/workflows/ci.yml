@@ -43,6 +43,15 @@ jobs:
       run: |
         echo "require('node-fetch');" >> axe-test.js
 
+    - name: Test Jekyll Server
+      run: |
+        curl --retry 5 --retry-delay 5 --retry-connrefused http://localhost:4000
+
+    - name: Ensure Fetch Polyfill
+      run: |
+        echo "require('node-fetch');" >> lighthouserc-polyfill.js
+        node lighthouserc-polyfill.js
+
     - name: Update lighthouserc.json Timeout
       run: |
         node -e "const fs = require('fs'); const config = JSON.parse(fs.readFileSync('lighthouserc.json', 'utf8')); config.ci.collect.timeout = 30000; fs.writeFileSync('lighthouserc.json', JSON.stringify(config, null, 2));"
