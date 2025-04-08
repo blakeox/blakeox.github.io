@@ -53,11 +53,12 @@ self.addEventListener('fetch', e => {
           cache.put(e.request, clonedResponse);
         });
         return networkResponse;
-      }).catch(() => {
-        if (e.request.destination === 'document') {
-          return caches.match('/offline.html');
-        }
-      });
+      }).catch(error => {
+          console.error('Fetch failed; returning offline page instead.', error);
+          if (e.request.destination === 'document') {
+            return caches.match('/offline.html');
+          }
+        });
     })
   );
 });

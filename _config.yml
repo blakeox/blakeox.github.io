@@ -44,8 +44,6 @@ markdown: kramdown
 kramdown:
   input: GFM
 
-# Base URL for subdirectory hosting
-baseurl: "" # Adjusted for root hosting
 
 sass:
   sass_dir: _sass
