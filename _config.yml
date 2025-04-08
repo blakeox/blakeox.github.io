@@ -4,7 +4,7 @@ permalink: pretty
 
 # Ensure compatibility with GitHub Pages
 url: https://blakeox.github.io
-baseurl: "" # Adjusted for root hosting
+baseurl: '' # Adjusted for root hosting
 
 # Enable Jekyll plugins on GitHub Pages
 plugins:
