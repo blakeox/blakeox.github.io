@@ -35,6 +35,18 @@ jobs:
       run: |
         npm install -g @lhci/cli puppeteer @axe-core/puppeteer
 
+    - name: Install Node.js Fetch Polyfill
+      run: |
+        npm install node-fetch@2
+
+    - name: Polyfill Fetch for Node.js
+      run: |
+        echo "require('node-fetch');" >> axe-test.js
+
+    - name: Increase Jekyll Server Timeout
+      run: |
+        echo "timeout: 30000" >> lighthouserc.json
+
     - name: Run Lighthouse CI
       run: |
         lhci autorun
