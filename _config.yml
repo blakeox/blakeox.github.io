@@ -38,6 +38,7 @@ exclude:
 # Enable plugins supported by GitHub Pages
 github:
   is_project_page: true
+  token: ENV['JEKYLL_GITHUB_TOKEN']
 
 # Other settings
 markdown: kramdown
@@ -56,10 +57,10 @@ pagination:
   sort_field: "date"
   sort_reverse: true
 
-twitter:
-  card: summary_large_image
-  site: @blakeox
-  creator: @blakeox
-og:
-  image: /assets/images/og-image.jpg
-  description: "Portfolio of Blake Oxford showcasing IT expertise and projects."
+# Temporarily commented out the `twitter` section to isolate the issue.
+# twitter:
+#   card: summary_large_image
+#   site: @blakeox
+#   creator: @blakeox
+
+# Temporarily removed the `og:` section to isolate the issue.
