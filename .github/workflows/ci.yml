@@ -26,10 +26,26 @@ jobs:
       with:
         ruby-version: '3.1'
 
+    - name: Cache Ruby Gems
+      uses: actions/cache@v3
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gems-
+
     - name: Install Bundler and Dependencies
       run: |
         gem install bundler
         bundle install
+
+    - name: Cache Node Modules
+      uses: actions/cache@v3
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
 
     - name: Install dependencies
       run: |
@@ -39,10 +55,10 @@ jobs:
       run: |
         npm install node-fetch@2
 
-    - name: Apply Fetch Polyfill Globally
+    - name: Apply and Verify Fetch Polyfill
       run: |
         echo "require('node-fetch'); globalThis.fetch = require('node-fetch');" > global-fetch-polyfill.js
-        node global-fetch-polyfill.js
+        node -e "require('./global-fetch-polyfill.js'); if (!globalThis.fetch) { throw new Error('globalThis.fetch is not defined'); } else { console.log('globalThis.fetch is available'); }"
 
     - name: Polyfill Fetch for Node.js
       run: |
@@ -70,10 +86,6 @@ jobs:
     - name: Ensure Fetch Polyfill
       run: |
         node lighthouserc-polyfill.js
-
-    - name: Verify Fetch Polyfill
-      run: |
-        node -e "if (!globalThis.fetch) { throw new Error('globalThis.fetch is not defined'); } else { console.log('globalThis.fetch is available'); }"
 
     - name: Update lighthouserc.json Timeout
       run: |

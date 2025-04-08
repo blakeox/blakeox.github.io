@@ -44,7 +44,6 @@ markdown: kramdown
 kramdown:
   input: GFM
 
-
 sass:
   sass_dir: _sass
   style: compressed # Optional: Use 'compressed' for minified CSS
@@ -56,3 +55,11 @@ pagination:
   title: ":title - Page :num"
   sort_field: "date"
   sort_reverse: true
+
+twitter:
+  card: summary_large_image
+  site: @blakeox
+  creator: @blakeox
+og:
+  image: /assets/images/og-image.jpg
+  description: "Portfolio of Blake Oxford showcasing IT expertise and projects."
