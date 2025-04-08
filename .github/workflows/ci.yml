@@ -21,6 +21,16 @@ jobs:
       with:
         node-version: '16'
 
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.1'
+
+    - name: Install Bundler and Dependencies
+      run: |
+        gem install bundler
+        bundle install
+
     - name: Install dependencies
       run: |
         npm install -g @lhci/cli puppeteer @axe-core/puppeteer
