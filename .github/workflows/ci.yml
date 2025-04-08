@@ -51,6 +51,13 @@ jobs:
       run: |
         lhci autorun
 
+    - name: Deploy Lighthouse Results to GitHub Pages
+      if: github.ref == 'refs/heads/main'
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: .lighthouseci
+
     - name: Run Axe Accessibility Tests
       run: |
         node axe-test.js
