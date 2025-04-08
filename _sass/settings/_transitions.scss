@@ -23,3 +23,24 @@ $animation-duration-slow: 1s; // Slow animations for emphasis
 // Defines the size of spinners used for loading indicators.
 // - **$spinner-size:** Standard size for spinners, ensuring consistency across the project.
 $spinner-size: 24px; // Default spinner size for loading indicators
+
+// ## Easing Variables
+// Added easing variables for consistent animations.
+
+// ### Easing Variables
+// Defines easing functions for transitions and animations.
+$ease-in-out: cubic-bezier(0.4, 0, 0.2, 1); // Smooth ease-in-out
+$ease-in: cubic-bezier(0.4, 0, 1, 1); // Ease-in for entering elements
+$ease-out: cubic-bezier(0, 0, 0.2, 1); // Ease-out for exiting elements
+
+// ### Transition Mixins
+// Added mixins for reusable transition effects.
+
+// Mixin: transition
+// Usage Example:
+// ```scss
+// @include transition(all, $transition-duration-default, $ease-in-out);
+// ```
+@mixin transition($property, $duration, $easing) {
+  transition: $property $duration $easing;
+}

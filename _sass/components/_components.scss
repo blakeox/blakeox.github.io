@@ -11,6 +11,9 @@
 @import 'call-to-action'; // Styles for call-to-action sections
 @import 'cards'; // Styles for reusable card components
 @import 'featured-projects'; // Styles for featured projects section
+@import 'footer'; // Styles for the footer section
+@import 'grid'; // Styles for grid layout system
+@import 'header'; // Styles for the header section
 @import 'filter-controls'; // Styles for filter controls in project lists
 @import 'forms'; // Styles for form elements
 @import 'hero'; // Styles for the hero section
@@ -25,3 +28,6 @@
 @import 'skip-to-content'; // Styles for skip-to-content links
 @import 'tag-list'; // Styles for tag lists
 @import 'timeline'; // Styles for timeline components
+
+// Ensure all components follow consistent spacing, typography, and color variables.
+// Add shared mixins or utility classes for reusability.

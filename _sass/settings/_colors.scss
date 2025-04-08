@@ -1,29 +1,73 @@
-// _sass/settings/_colors.scss
-// ## Colors Settings
-// This file contains the color variables used throughout the project.
-// It ensures a consistent and uniform look and feel across the website by centralizing color definitions.
-// The colors are defined using SASS variables for easy customization and maintenance.
-// These variables are categorized into semantic groups for better organization and usability.
+// ## Enhanced Colors Settings
+// This file has been updated to improve accessibility, dark mode support, and maintainability.
+// It includes semantic color variables, utility classes, and CSS variables for dynamic theming.
 
-// ### Primary Colors
-// These are the main brand colors used for primary elements like buttons, links, and highlights.
+// ### Light Mode Colors
+// These colors are used in the default (light) mode.
 $color-primary: #4dc8aa; // Primary brand color
 $color-primary-dark: #3BAF92; // Darker shade of the primary color
 $color-secondary: #6C757D; // Secondary brand color
 $color-accent: rgba(77, 200, 170, 0.8); // Accent color with transparency
-$color-accent-dark: rgba(77, 200, 170, 0.6); // Darker accent color with transparency
+$color-accent-dark: darken($color-accent, 20%); // Darker accent color
 $color-white: #ffffff; // White color
 $color-black: #000; // Black color
+$color-text: #333; // Default text color
+$color-background: #f9f9f9; // Light gray background color
+$color-background-light: #ffffff; // Light background color (e.g., white)
+
+// ### Dark Mode Colors
+// These colors are used in dark mode for better readability and contrast.
+$dark-mode-background: #121212; // Background color for dark mode
+$dark-mode-text: #e0e0e0; // Text color for dark mode
+$dark-mode-primary: #90caf9; // Primary color for dark mode
+$dark-mode-secondary: #b0bec5; // Secondary color for dark mode
+$dark-mode-accent: rgba(144, 202, 249, 0.8); // Accent color for dark mode
+$dark-mode-border: #333; // Border color for dark mode
+
+// ### CSS Variables
+// Define CSS variables for runtime theming and toggling between light and dark modes.
+:root {
+  --color-primary: #4dc8aa;
+  --color-primary-dark: #3BAF92;
+  --color-secondary: #6C757D;
+  --color-accent: rgba(77, 200, 170, 0.8);
+  --color-accent-dark: darken(#4dc8aa, 20%);
+  --color-white: #ffffff;
+  --color-black: #000;
+  --color-text: #333;
+  --color-background: #f9f9f9;
+  --color-background-light: #ffffff;
+}
+
+[data-theme="dark"] {
+  --color-primary: #90caf9;
+  --color-primary-dark: #5d99c6;
+  --color-secondary: #b0bec5;
+  --color-accent: rgba(144, 202, 249, 0.8);
+  --color-accent-dark: darken(#90caf9, 20%);
+  --color-white: #121212;
+  --color-black: #e0e0e0;
+  --color-text: #e0e0e0;
+  --color-background: #121212;
+  --color-background-light: #1e1e1e;
+}
+
+// ### Utility Classes
+// Add utility classes for applying colors directly.
+.bg-primary { background-color: var(--color-primary); }
+.bg-secondary { background-color: var(--color-secondary); }
+.bg-accent { background-color: var(--color-accent); }
+.text-primary { color: var(--color-primary); }
+.text-secondary { color: var(--color-secondary); }
+.text-accent { color: var(--color-accent); }
 
 // ### Text Colors
 // These colors are used for text content, including links and secondary text.
-$color-text: #333; // Default text color
 $color-text-secondary: #555; // Muted text color for secondary content
 $color-link: #4DC8AA; // Link color
 
 // ### Background Colors
 // These colors are used for backgrounds of various sections and components.
-$background-color: #f9f9f9; // Light gray background color
 $background-color-secondary: #f4f4f4; // Secondary background color
 $background-color-highlight: #fffbea; // Highlighted background color
 $background-color-light: #ffffff; // Light background color (e.g., white)
@@ -75,7 +119,7 @@ $color-placeholder-dark: #888; // Placeholder text color for dark mode
 // These colors are mapped to specific components or use cases for better semantics.
 $color-button-primary: $color-primary; // Primary button color
 $color-button-secondary: $color-secondary; // Secondary button color
-$color-background-default: $background-color; // Default background color
+$color-background-default: $color-background; // Ensure consistent naming for default background color
 $color-background-highlight: $background-color-highlight; // Highlighted background color
 $color-text-default: $color-text; // Default text color
 $color-text-muted: $color-text-secondary; // Muted text color
@@ -84,6 +128,9 @@ $color-text-muted: $color-text-secondary; // Muted text color
 // Gradient definitions for backgrounds or decorative elements.
 $gradient-primary: linear-gradient(90deg, $color-primary, $color-primary-dark); // Primary gradient
 $gradient-secondary: linear-gradient(90deg, $color-secondary, lighten($color-secondary, 10%)); // Secondary gradient
+
+// ## Accessibility Improvements
+// Added high-contrast colors and transparent variants for better accessibility and design flexibility.
 
 // ### Accessibility Colors
 // High-contrast colors for improved accessibility and readability.
@@ -98,6 +145,10 @@ $color-secondary-transparent: rgba($color-secondary, 0.1); // Transparent second
 $color-black-transparent: rgba(0, 0, 0, 0.5); // Semi-transparent black
 $color-white-transparent: rgba(255, 255, 255, 0.8); // Semi-transparent white
 
+// ### Accent Colors
+// Added `$color-accent-dark` for darker accent color variants.
+$color-accent-dark: darken($color-accent, 20%); // Darker accent color with transparency
+
 // ### Color Palette Map
 // A centralized map of colors for easier reference and iteration.
 $color-palette: (
@@ -105,12 +156,12 @@ $color-palette: (
   primary-dark: $color-primary-dark,
   secondary: $color-secondary,
   accent: $color-accent,
+  accent-dark: $color-accent-dark,
   white: $color-white,
   black: $color-black,
   text: $color-text,
-  text-secondary: $color-text-secondary,
-  link: $color-link,
-  success: $color-success,
-  warning: $color-warning,
-  error: $color-error
+  background: $color-background,
+  background-light: $color-background-light,
+  high-contrast-text: $color-high-contrast-text,
+  high-contrast-background: $color-high-contrast-background
 );

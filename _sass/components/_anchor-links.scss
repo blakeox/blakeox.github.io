@@ -37,6 +37,12 @@
           // Add hover effect for anchor links
           text-decoration: underline; // Underline the text on hover for better visibility
         }
+
+        &:focus {
+          // Add focus styles for accessibility
+          outline: 2px solid $color-primary; // Highlight the link with a focus outline
+          outline-offset: 2px; // Add spacing between the outline and the link
+        }
       }
     }
   }

@@ -13,7 +13,7 @@
 // - **overflow:** Ensures content stays within the card boundaries.
 // - **transition:** Enables smooth hover effects.
 .card {
-  background: $background-color; // Use background color variable from _colors.scss
+  background: $color-background; // Use background color variable from _colors.scss
   border: 1px solid $color-secondary; // Use secondary color for the border
   border-radius: $border-radius; // Apply rounded corners using the border-radius variable
   box-shadow: $box-shadow-sm; // Apply a small shadow for depth

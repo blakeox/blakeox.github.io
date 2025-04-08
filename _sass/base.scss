@@ -21,12 +21,12 @@ body {
   // - **font-size:** Sets the base font size using `$font-size-base` from `_typography.scss`.
   // - **line-height:** Ensures consistent line spacing using `$line-height-base` from `_typography.scss`.
   // - **color:** Sets the text color using `$color-text` from `_colors.scss`.
-  // - **background-color:** Sets the background color using `$background-color` from `_colors.scss`.
+  // - **background-color:** Sets the background color using `$color-background` from `_colors.scss`.
   font-family: $font-family-base; 
   font-size: $font-size-base; 
   line-height: $line-height-base; 
   color: $color-text; 
-  background-color: $background-color; 
+  background-color: $color-background; 
   margin: 0;
 }
 

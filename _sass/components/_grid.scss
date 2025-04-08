@@ -1,0 +1,57 @@
+// ## Grid System
+// Defines reusable container and grid styles for consistent layout widths and responsive design.
+
+// ### Containers
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 $spacing-md; // Add horizontal padding using spacing variable
+}
+
+.container-md {
+  max-width: $container-md; // Medium container width
+  margin: 0 auto;
+}
+
+.container-lg {
+  max-width: $container-lg; // Large container width
+  margin: 0 auto;
+}
+
+.container-xl {
+  max-width: $container-xl; // Extra-large container width
+  margin: 0 auto;
+}
+
+// ### Grid System
+.row {
+  display: flex; // Use flexbox for layout
+  flex-wrap: wrap; // Allow items to wrap onto the next line
+  margin-right: -$spacing-sm; // Negative margin to offset column padding
+  margin-left: -$spacing-sm; // Negative margin to offset column padding
+}
+
+.column {
+  flex: 1; // Allow columns to grow equally
+  padding-right: $spacing-sm; // Add horizontal padding
+  padding-left: $spacing-sm; // Add horizontal padding
+}
+
+// ### Predefined Column Sizes
+.one-third { flex: 0 0 33.333%; } // One-third width
+.two-thirds { flex: 0 0 66.666%; } // Two-thirds width
+.one-fourth { flex: 0 0 25%; } // One-fourth width
+.one-half { flex: 0 0 50%; } // Half width
+.three-fourths { flex: 0 0 75%; } // Three-fourths width
+
+// ### Responsive Grid
+@media (max-width: $breakpoint-md) {
+  .row {
+    flex-direction: column; // Stack items vertically
+  }
+
+  .column {
+    padding-right: 0; // Remove horizontal padding
+    padding-left: 0; // Remove horizontal padding
+  }
+}

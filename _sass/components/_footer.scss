@@ -1,0 +1,43 @@
+// ## Footer Styles
+// Styles for the website footer, including text and social links.
+
+.footer {
+  background-color: $color-secondary; // Secondary background color
+  color: $color-white; // White text color
+  padding: $spacing-lg 0; // Vertical padding
+
+  .footer-container {
+    @extend .container; // Reuse container styles
+    text-align: center; // Center-align content
+    padding: $spacing-md; // Inner padding
+    color: $color-text-secondary; // Secondary text color
+    background: $background-color-light; // Light background color
+
+    p {
+      font-size: $font-size-sm; // Small font size for text
+      margin-bottom: $spacing-sm; // Add spacing below text
+    }
+
+    .social-links {
+      display: flex; // Use flexbox for social links
+      justify-content: center; // Center-align links
+      gap: $spacing-md; // Add spacing between links
+
+      a {
+        color: $color-white; // White text color
+
+        &:hover {
+          color: $color-primary; // Primary color on hover
+        }
+      }
+    }
+  }
+}
+
+.footer-container a {
+  color: var(--color-primary); // Use CSS variable
+  text-decoration: none;
+}
+.footer-container a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,28 @@
+// ## Layout Utility Classes
+// Reusable utility classes for layout adjustments.
+
+.full-width {
+  width: 100%; // Full width
+  max-width: none; // Remove width constraints
+  margin: 0; // Remove centering
+  padding: 0; // Remove padding
+}
+
+.centered {
+  margin: 0 auto; // Center horizontally
+  text-align: center; // Center text
+}
+
+.flex {
+  display: flex; // Use flexbox
+}
+
+.flex-center {
+  display: flex; // Use flexbox
+  justify-content: center; // Center items horizontally
+  align-items: center; // Center items vertically
+}
+
+.debug {
+  outline: 1px solid red !important; // Add red outline for debugging
+}
