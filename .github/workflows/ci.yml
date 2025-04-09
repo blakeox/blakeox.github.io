@@ -11,109 +11,122 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    # Make sure this environment name matches how you configured your environment secret
+    environment: github-pages
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '20'
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
 
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: '3.1'
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
 
-    - name: Cache Ruby Gems
-      uses: actions/cache@v3
-      with:
-        path: vendor/bundle
-        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-gems-
+      - name: Cache Ruby Gems
+        uses: actions/cache@v3
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
 
-    - name: Install Bundler and Dependencies
-      run: |
-        gem install bundler
-        bundle install
+      - name: Install Bundler and Dependencies
+        run: |
+          gem install bundler
+          bundle install
 
-    - name: Cache Node Modules
-      uses: actions/cache@v3
-      with:
-        path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
+      - name: Cache Node Modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
-    - name: Install dependencies
-      run: |
-        npm install -g @lhci/cli puppeteer @axe-core/puppeteer
+      - name: Install dependencies
+        run: |
+          npm install -g @lhci/cli puppeteer @axe-core/puppeteer
 
-    - name: Set Jekyll GitHub Token
-      env:
-        JEKYLL_GITHUB_TOKEN: ${{ secrets.JEKYLL_GITHUB_TOKEN }}
-      run: echo "JEKYLL_GITHUB_TOKEN is set and accessible."
+      #
+      # Step 1: Expose the environment secret as an ENV var
+      #
+      - name: Set Jekyll GitHub Token
+        env:
+          JEKYLL_GITHUB_TOKEN: ${{ secrets.JEKYLL_GITHUB_TOKEN }}
+        run: echo "JEKYLL_GITHUB_TOKEN environment variable set"
 
-    - name: Debug GitHub Token
-      run: |
-        if [ -z "${{ secrets.JEKYLL_GITHUB_TOKEN }}" ]; then
-          echo "JEKYLL_GITHUB_TOKEN is not set or accessible."
-          exit 1
-        else
-          echo "JEKYLL_GITHUB_TOKEN is set and accessible."
-        fi
+      #
+      # Step 2: Verify that environment variable is populated in the shell
+      #
+      - name: Debug GitHub Token
+        env:
+          JEKYLL_GITHUB_TOKEN: ${{ secrets.JEKYLL_GITHUB_TOKEN }}
+        run: |
+          if [ -z "$JEKYLL_GITHUB_TOKEN" ]; then
+            echo "JEKYLL_GITHUB_TOKEN is not set or accessible."
+            exit 1
+          else
+            echo "JEKYLL_GITHUB_TOKEN is set and accessible."
+          fi
 
-    - name: Start Jekyll Server
-      run: |
-        nohup bundle exec jekyll serve --host=0.0.0.0 --port=4000 > jekyll.log 2>&1 &
-        echo "Waiting for server to start..."
-        for i in {1..30}; do
-          curl --silent --fail http://localhost:4000 && echo "Server is ready!" && break
-          echo "Server not ready yet. Retrying in 2 seconds..."
-          sleep 2
-        done
-        if ! curl --silent --fail http://localhost:4000; then
-          echo "Server failed to start within the timeout period." >&2
-          exit 1
-        fi
+      - name: Start Jekyll Server
+        run: |
+          nohup bundle exec jekyll serve --host=0.0.0.0 --port=4000 > jekyll.log 2>&1 &
+          echo "Waiting for server to start..."
+          for i in {1..30}; do
+            curl --silent --fail http://localhost:4000 && echo "Server is ready!" && break
+            echo "Server not ready yet. Retrying in 2 seconds..."
+            sleep 2
+          done
+          if ! curl --silent --fail http://localhost:4000; then
+            echo "Server failed to start within the timeout period." >&2
+            exit 1
+          fi
 
-    - name: Debug Jekyll Server
-      run: |
-        echo "Jekyll server failed to start. Outputting errors directly to console."
-        bundle exec jekyll build
+      - name: Debug Jekyll Server
+        env:
+          JEKYLL_GITHUB_TOKEN: ${{ secrets.JEKYLL_GITHUB_TOKEN }}
+        run: |
+          echo "Jekyll server failed to start. Outputting errors directly to console."
+          bundle exec jekyll build
 
-    - name: Log Jekyll Server Output
-      run: cat jekyll.log
+      - name: Log Jekyll Server Output
+        run: cat jekyll.log
 
-    - name: Test Jekyll Server
-      run: |
-        curl --retry 5 --retry-delay 5 --retry-connrefused http://localhost:4000
+      - name: Test Jekyll Server
+        run: |
+          curl --retry 5 --retry-delay 5 --retry-connrefused http://localhost:4000
 
-    - name: Ensure Fetch Polyfill
-      run: |
-        node lighthouserc-polyfill.js
+      - name: Ensure Fetch Polyfill
+        run: |
+          node lighthouserc-polyfill.js
 
-    - name: Update lighthouserc.json Timeout
-      run: |
-        node -e "const fs = require('fs'); const config = JSON.parse(fs.readFileSync('lighthouserc.json', 'utf8')); config.ci.collect.timeout = 30000; fs.writeFileSync('lighthouserc.json', JSON.stringify(config, null, 2));"
+      - name: Update lighthouserc.json Timeout
+        run: |
+          node -e "const fs = require('fs'); const config = JSON.parse(fs.readFileSync('lighthouserc.json', 'utf8')); config.ci.collect.timeout = 30000; fs.writeFileSync('lighthouserc.json', JSON.stringify(config, null, 2));"
 
-    - name: Run Lighthouse CI
-      run: |
-        lhci autorun --chrome-flags="--ignore-certificate-errors --disable-web-security"
+      - name: Run Lighthouse CI
+        run: |
+          lhci autorun --chrome-flags="--ignore-certificate-errors --disable-web-security"
 
-    - name: Deploy Lighthouse Results to GitHub Pages
-      if: github.ref == 'refs/heads/main'
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.JEKYLL_GITHUB_TOKEN }}
-        publish_dir: .lighthouseci
+      - name: Deploy Lighthouse Results to GitHub Pages
+        if: github.ref == 'refs/heads/main'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          # Here we also reference the environment secret
+          github_token: ${{ secrets.JEKYLL_GITHUB_TOKEN }}
+          publish_dir: .lighthouseci
 
-    - name: Run Axe Accessibility Tests
-      run: |
-        node axe-test.js
+      - name: Run Axe Accessibility Tests
+        run: |
+          node axe-test.js
 
-    - name: Skip Deployment
-      if: github.event_name == 'pull_request'
-      run: echo "Skipping deployment for pull requests."
+      - name: Skip Deployment
+        if: github.event_name == 'pull_request'
+        run: echo "Skipping deployment for pull requests."
