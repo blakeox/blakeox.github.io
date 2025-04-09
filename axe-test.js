@@ -28,7 +28,7 @@ const fs = require('fs');
     await page.goto(url);
 
     const results = await new AxePuppeteer(page).analyze();
-    const fileName = `${resultsDir}/${url.replace(/https?:\/\//, '').replace(/[\/]/g, '_')}.json`;
+    const fileName = `${resultsDir}/${url.replace(/https?:\/\//, '').replace(/[\/:]/g, '_')}.json`;
     fs.writeFileSync(fileName, JSON.stringify(results, null, 2));
     console.log(`Results saved to ${fileName}`);
   }
