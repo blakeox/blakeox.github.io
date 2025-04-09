@@ -49,8 +49,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - name: Install Dependencies Locally
-        run: npm install
+      - name: Install Dependencies with npm ci
+        run: npm ci
 
       #
       # Step 1: Expose the environment secret as an ENV var
@@ -129,4 +129,3 @@ jobs:
         if: github.event_name == 'pull_request'
         run: echo "Skipping deployment for pull requests."
 
-        
