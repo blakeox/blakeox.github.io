@@ -80,9 +80,11 @@ jobs:
         fi
 
     - name: Debug Jekyll Server
+      env:
+        JEKYLL_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         echo "Jekyll server failed to start. Outputting errors directly to console."
-        bundle exec jekyll serve --host=0.0.0.0
+        bundle exec jekyll build
 
     - name: Log Jekyll Server Output
       run: cat jekyll.log
