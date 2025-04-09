@@ -1,0 +1,17 @@
+{
+  "name": "blakeox.github.io",
+  "version": "1.0.0",
+  "description": "Welcome to the Blake Oxford Portfolio repository. This site is built with [Jekyll](https://jekyllrb.com/) and hosted on [GitHub Pages](https://pages.github.com/).",
+  "main": "axe-test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@axe-core/puppeteer": "^4.10.1",
+    "@lhci/cli": "^0.14.0",
+    "puppeteer": "^24.6.0"
+  }
+}
