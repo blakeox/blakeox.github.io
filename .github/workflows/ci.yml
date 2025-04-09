@@ -78,13 +78,14 @@ jobs:
         run: |
           nohup bundle exec jekyll serve --host=0.0.0.0 --port=4000 > jekyll.log 2>&1 &
           echo "Waiting for server to start..."
-          for i in {1..30}; do
+          for i in {1..60}; do  # Increased timeout period
             curl --silent --fail http://localhost:4000 && echo "Server is ready!" && break
             echo "Server not ready yet. Retrying in 2 seconds..."
             sleep 2
           done
           if ! curl --silent --fail http://localhost:4000; then
-            echo "Server failed to start within the timeout period." >&2
+            echo "Server failed to start within the timeout period. Checking logs..." >&2
+            cat jekyll.log  # Output logs for debugging
             exit 1
           fi
 
