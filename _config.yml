@@ -35,6 +35,7 @@ exclude:
   - axe-test.js
   - .github/
   - _site
+  - jekyll.log
 
 # Enable plugins supported by GitHub Pages
 github:
