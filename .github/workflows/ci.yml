@@ -103,6 +103,8 @@ jobs:
 
     - name: Run Lighthouse CI
       run: |
+        echo "require('node-fetch'); globalThis.fetch = require('node-fetch');" > lhci-fetch-polyfill.js
+        node lhci-fetch-polyfill.js
         lhci autorun
 
     - name: Deploy Lighthouse Results to GitHub Pages
