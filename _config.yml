@@ -62,13 +62,13 @@ pagination:
 # Reintroduce the `twitter` section
 twitter:
   card: summary_large_image
-  site: @blakeox
-  creator: @blakeox
+  site: "@blakeox"
+  creator: "@blakeox"
 
 # Reintroduce the `og:` section
 og:
   title: "Blake Oxford Portfolio"
   description: "Portfolio of Blake Oxford - IT Director, Business Systems Manager, Digital Transformation Consultant, Enterprise Solutions Architect, and Operations & Strategy Manager."
-  type: website
+  type: "website"
   url: "https://blakeox.github.io"
   image: "/assets/images/og-image.jpg"
