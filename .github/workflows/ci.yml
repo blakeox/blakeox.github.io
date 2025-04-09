@@ -56,14 +56,14 @@ jobs:
 
     - name: Start Jekyll Server
       run: |
-        nohup bundle exec jekyll serve --host=0.0.0.0 --port=4001 > jekyll.log 2>&1 &
+        nohup bundle exec jekyll serve --host=0.0.0.0 --port=4000 > jekyll.log 2>&1 &
         echo "Waiting for server to start..."
         for i in {1..30}; do
-          curl --silent --fail http://localhost:4001 && echo "Server is ready!" && break
+          curl --silent --fail http://localhost:4000 && echo "Server is ready!" && break
           echo "Server not ready yet. Retrying in 2 seconds..."
           sleep 2
         done
-        if ! curl --silent --fail http://localhost:4001; then
+        if ! curl --silent --fail http://localhost:4000; then
           echo "Server failed to start within the timeout period." >&2
           exit 1
         fi
@@ -80,7 +80,7 @@ jobs:
 
     - name: Test Jekyll Server
       run: |
-        curl --retry 5 --retry-delay 5 --retry-connrefused http://localhost:4001
+        curl --retry 5 --retry-delay 5 --retry-connrefused http://localhost:4000
 
     - name: Ensure Fetch Polyfill
       run: |

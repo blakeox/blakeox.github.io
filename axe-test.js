@@ -7,11 +7,11 @@ const puppeteer = require('puppeteer');
 
   // List of URLs to test
   const urls = [
-    'http://localhost:4001/',
-    'http://localhost:4001/about/',
-    'http://localhost:4001/blog/',
-    'http://localhost:4001/contact/',
-    'http://localhost:4001/projects/'
+    'http://localhost:4000/',
+    'http://localhost:4000/about/',
+    'http://localhost:4000/blog/',
+    'http://localhost:4000/contact/',
+    'http://localhost:4000/projects/'
   ];
 
   for (const url of urls) {
