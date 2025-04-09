@@ -76,6 +76,10 @@ jobs:
 
       - name: Start Jekyll Server
         run: |
+          if lsof -i:4000; then
+            echo "Port 4000 is already in use."
+            exit 1
+          fi
           nohup bundle exec jekyll serve --host=0.0.0.0 --port=4000 > jekyll.log 2>&1 &
           echo "Waiting for server to start..."
           for i in {1..60}; do  # Increased timeout period
