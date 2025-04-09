@@ -49,9 +49,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - name: Install dependencies
-        run: |
-          npm install -g @lhci/cli puppeteer @axe-core/puppeteer
+      - name: Install Dependencies Locally
+        run: npm install
 
       #
       # Step 1: Expose the environment secret as an ENV var
@@ -124,11 +123,7 @@ jobs:
           publish_dir: .lighthouseci
 
       - name: Run Axe Accessibility Tests
-        run: |
-          node axe-test.js
-
-      - name: Install Axe Core Puppeteer
-        run: npm install @axe-core/puppeteer --save-dev
+        run: node axe-test.js
 
       - name: Skip Deployment
         if: github.event_name == 'pull_request'
