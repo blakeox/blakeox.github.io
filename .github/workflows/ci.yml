@@ -49,9 +49,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - name: Install Dependencies with npm ci
-        run: npm ci
-
       - name: Install Dependencies with Yarn
         run: yarn install
 
