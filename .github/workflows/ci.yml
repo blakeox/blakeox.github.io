@@ -52,6 +52,9 @@ jobs:
       - name: Install Dependencies with npm ci
         run: npm ci
 
+      - name: Install Dependencies with Yarn
+        run: yarn install
+
       #
       # Step 1: Expose the environment secret as an ENV var
       #
