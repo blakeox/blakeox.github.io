@@ -59,10 +59,16 @@ pagination:
   sort_field: "date"
   sort_reverse: true
 
-# Temporarily commented out the `twitter` section to isolate the issue.
-# twitter:
-#   card: summary_large_image
-#   site: @blakeox
-#   creator: @blakeox
+# Reintroduce the `twitter` section
+twitter:
+  card: summary_large_image
+  site: @blakeox
+  creator: @blakeox
 
-# Temporarily removed the `og:` section to isolate the issue.
+# Reintroduce the `og:` section
+og:
+  title: "Blake Oxford Portfolio"
+  description: "Portfolio of Blake Oxford - IT Director, Business Systems Manager, Digital Transformation Consultant, Enterprise Solutions Architect, and Operations & Strategy Manager."
+  type: website
+  url: "https://blakeox.github.io"
+  image: "/assets/images/og-image.jpg"
