@@ -1,5 +1,6 @@
 const { AxePuppeteer } = require('@axe-core/puppeteer');
 const puppeteer = require('puppeteer');
+const fs = require('fs');
 
 (async () => {
   const browser = await puppeteer.launch({
@@ -17,12 +18,19 @@ const puppeteer = require('puppeteer');
     'http://localhost:4000/projects/'
   ];
 
+  const resultsDir = './axe-results';
+  if (!fs.existsSync(resultsDir)) {
+    fs.mkdirSync(resultsDir);
+  }
+
   for (const url of urls) {
     console.log(`Testing accessibility for ${url}`);
     await page.goto(url);
 
     const results = await new AxePuppeteer(page).analyze();
-    console.log(JSON.stringify(results, null, 2));
+    const fileName = `${resultsDir}/${url.replace(/https?:\/\//, '').replace(/[\/]/g, '_')}.json`;
+    fs.writeFileSync(fileName, JSON.stringify(results, null, 2));
+    console.log(`Results saved to ${fileName}`);
   }
 
   await browser.close();

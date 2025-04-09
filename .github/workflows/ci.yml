@@ -129,6 +129,12 @@ jobs:
       - name: Run Axe Accessibility Tests
         run: node axe-test.js
 
+      - name: Upload AXE Accessibility Test Results
+        uses: actions/upload-artifact@v3
+        with:
+          name: axe-results
+          path: ./axe-results
+
       - name: Skip Deployment
         if: github.event_name == 'pull_request'
         run: echo "Skipping deployment for pull requests."
