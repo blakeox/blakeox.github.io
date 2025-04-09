@@ -13,5 +13,8 @@
     "@axe-core/puppeteer": "^4.10.1",
     "@lhci/cli": "^0.14.0",
     "puppeteer": "^24.6.0"
+  },
+  "resolutions": {
+    "cookie": "0.7.0"
   }
 }
