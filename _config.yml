@@ -36,6 +36,7 @@ exclude:
   - .github/
   - _site
   - jekyll.log
+  - node_modules
 
 # Enable plugins supported by GitHub Pages
 github:
