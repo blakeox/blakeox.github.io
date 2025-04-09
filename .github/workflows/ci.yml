@@ -19,7 +19,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '16'
+        node-version: '20'
 
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
@@ -50,20 +50,6 @@ jobs:
     - name: Install dependencies
       run: |
         npm install -g @lhci/cli puppeteer @axe-core/puppeteer
-
-    - name: Install Node.js Fetch Polyfill
-      run: |
-        npm install node-fetch@2
-
-    - name: Apply and Verify Fetch Polyfill
-      run: |
-        echo "require('node-fetch'); globalThis.fetch = require('node-fetch');" > global-fetch-polyfill.js
-        node -e "require('./global-fetch-polyfill.js'); if (!globalThis.fetch) { throw new Error('globalThis.fetch is not defined'); } else { console.log('globalThis.fetch is available'); }"
-
-    - name: Polyfill Fetch for Node.js
-      run: |
-        echo "require('node-fetch'); globalThis.fetch = require('node-fetch');" >> axe-test.js
-        echo "require('node-fetch'); globalThis.fetch = require('node-fetch');" >> lighthouserc-polyfill.js
 
     - name: Start Jekyll Server
       run: |
@@ -106,6 +92,7 @@ jobs:
         echo "require('node-fetch'); globalThis.fetch = require('node-fetch');" > lhci-fetch-polyfill.js
         node lhci-fetch-polyfill.js
         lhci autorun
+        node -e "require('./lhci-fetch-polyfill.js');"
 
     - name: Deploy Lighthouse Results to GitHub Pages
       if: github.ref == 'refs/heads/main'
