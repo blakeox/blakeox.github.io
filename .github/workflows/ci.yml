@@ -54,6 +54,15 @@ jobs:
     - name: Set Jekyll GitHub Token
       run: echo "JEKYLL_GITHUB_TOKEN is set"
 
+    - name: Debug GitHub Token
+      run: |
+        if [ -z "${{ secrets.JEKYLL_GITHUB_TOKEN }}" ]; then
+          echo "JEKYLL_GITHUB_TOKEN is not set or accessible."
+          exit 1
+        else
+          echo "JEKYLL_GITHUB_TOKEN is set and accessible."
+        fi
+
     - name: Start Jekyll Server
       run: |
         nohup bundle exec jekyll serve --host=0.0.0.0 --port=4000 > jekyll.log 2>&1 &
