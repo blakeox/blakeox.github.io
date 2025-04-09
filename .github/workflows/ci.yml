@@ -52,7 +52,9 @@ jobs:
         npm install -g @lhci/cli puppeteer @axe-core/puppeteer
 
     - name: Set Jekyll GitHub Token
-      run: echo "JEKYLL_GITHUB_TOKEN is set"
+      env:
+        JEKYLL_GITHUB_TOKEN: ${{ secrets.JEKYLL_GITHUB_TOKEN }}
+      run: echo "JEKYLL_GITHUB_TOKEN is set and accessible."
 
     - name: Debug GitHub Token
       run: |
