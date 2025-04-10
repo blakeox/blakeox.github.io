@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!breadcrumbContainer) return;
 
   const pathSegments = window.location.pathname.split('/').filter(Boolean);
-  let breadcrumbHTML = `<li><a href='/'>Home</a></li>`;
+  let breadcrumbHTML = '<li><a href="/">Home</a></li>';
 
   pathSegments.forEach((segment, index) => {
     const isLast = index === pathSegments.length - 1;
