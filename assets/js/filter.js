@@ -74,12 +74,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Show or hide "no results" if nothing is visible
+    // Show or hide 'no results' if nothing is visible
     if (noResults) {
       noResults.classList.toggle('hidden', visibleCount !== 0);
     }
 
-    // Hide "Load More" button if filters are applied
+    // Hide 'Load More' button if filters are applied
     loadMoreBtn?.classList.toggle('hidden', selectedTag !== 'all' || query !== '');
 
     updateStatus(visibleCount);

@@ -27,14 +27,14 @@ document.addEventListener('DOMContentLoaded', () => {
     cookieBanner?.classList.add('hidden');
   }
 
-  // Handle "Accept" button click
+  // Handle 'Accept' button click
   acceptButton?.addEventListener('click', () => {
     setCookie('cookieConsent', 'accepted', 365); // Store consent for 1 year
     cookieBanner?.classList.add('hidden');
     console.log('Cookies accepted');
   });
 
-  // Handle "Decline" button click
+  // Handle 'Decline' button click
   declineButton?.addEventListener('click', () => {
     setCookie('cookieConsent', 'declined', 365); // Store decline for 1 year
     cookieBanner?.classList.add('hidden');

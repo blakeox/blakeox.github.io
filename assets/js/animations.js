@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     element.style.opacity = 1;
   }
 
-  // Apply fade-in to elements with the class "fade-in"
+  // Apply fade-in to elements with the class 'fade-in'
   const fadeInElements = document.querySelectorAll('.fade-in');
   fadeInElements.forEach((element, index) => {
     fadeIn(element, index * 0.2); // Stagger animations

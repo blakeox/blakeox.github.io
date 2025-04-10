@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Select all elements with the class "copy-to-clipboard"
+  // Select all elements with the class 'copy-to-clipboard'
   const copyButtons = document.querySelectorAll('.copy-to-clipboard');
 
   copyButtons.forEach((button) => {
