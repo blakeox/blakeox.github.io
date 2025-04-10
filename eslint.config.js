@@ -1,4 +1,4 @@
-import { Linter } from 'eslint';
+const { Linter } = require('eslint');
 
 /** @type {Linter.FlatConfig[]} */
 const config = [
@@ -17,4 +17,4 @@ const config = [
   },
 ];
 
-export default config;
+module.exports = config;
