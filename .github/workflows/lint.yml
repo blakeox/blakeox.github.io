@@ -1,0 +1,30 @@
+name: Lint Code
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  lint:
+    name: Lint Code
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Lint JavaScript
+        run: npm run lint:js
+
+      - name: Lint SCSS
+        run: npm run lint:scss
