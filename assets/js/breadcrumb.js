@@ -3,14 +3,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!breadcrumbContainer) return;
 
   const pathSegments = window.location.pathname.split('/').filter(Boolean);
-  let breadcrumbHTML = `<li><a href="/">Home</a></li>`;
+  let breadcrumbHTML = `<li><a href='/'>Home</a></li>`;
 
   pathSegments.forEach((segment, index) => {
     const isLast = index === pathSegments.length - 1;
     const url = `/${pathSegments.slice(0, index + 1).join('/')}/`;
     breadcrumbHTML += isLast
-      ? `<li aria-current="page">${decodeURIComponent(segment.replace(/-/g, ' '))}</li>`
-      : `<li><a href="${url}">${decodeURIComponent(segment.replace(/-/g, ' '))}</a></li>`;
+      ? `<li aria-current='page'>${decodeURIComponent(segment.replace(/-/g, ' '))}</li>`
+      : `<li><a href='${url}'>${decodeURIComponent(segment.replace(/-/g, ' '))}</a></li>`;
   });
 
   breadcrumbContainer.innerHTML = breadcrumbHTML;

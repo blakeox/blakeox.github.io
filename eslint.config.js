@@ -2,8 +2,6 @@ if (typeof global.structuredClone !== 'function') {
   global.structuredClone = (obj) => JSON.parse(JSON.stringify(obj));
 }
 
-const { Linter } = require('eslint');
-
 /** @type {Linter.FlatConfig[]} */
 const config = [
   {
