@@ -6,7 +6,7 @@ module.exports = {
     'stylelint-config-standard',
     'stylelint-config-recommended-scss'
   ],
-  ignoreFiles: ['assets/css/main.scss'],
+  ignoreFiles: ['assets/css/main.scss', '_sass/**/*.scss'],
   rules: {
     // Allow SCSS variables and function values
     'declaration-property-value-no-unknown': null,
