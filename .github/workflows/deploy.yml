@@ -16,7 +16,10 @@ jobs:
           ruby-version: '3.x'
 
       - run: |
-          gem install bundler jekyll github-pages
+          gem install bundler
+          gem uninstall sass --executables --force || true
+          gem uninstall sass-embedded --executables --force || true
+          gem install jekyll github-pages
           bundle install
           bundle exec jekyll build
 
