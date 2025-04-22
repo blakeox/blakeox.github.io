@@ -23,21 +23,19 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: ruby/setup-ruby@v1
+      - name: Build Jekyll site
+        uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.1'
           bundler-cache: true
 
-      - name: Build Jekyll site
-        run: |
+      - run: |
           bundle exec jekyll clean
           bundle exec jekyll build
 
-      - name: Upload Pages artifact
-        id: deploy
+      - id: deploy
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./_site
 
-      - name: Deploy to Pages
-        uses: actions/deploy-pages@v4
+      - uses: actions/deploy-pages@v4

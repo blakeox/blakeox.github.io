@@ -17,6 +17,7 @@ jobs:
   lint:
     name: Lint Code
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
 
@@ -56,8 +57,13 @@ jobs:
         env:
           JEKYLL_GITHUB_TOKEN: ${{ secrets.JEKYLL_GITHUB_TOKEN }}
 
-      - name: Build site with Jekyll
+      - name: Build Jekyll site
         run: bundle exec jekyll build
+
+      - name: Debug `_site` directory
+        run: |
+          pwd
+          ls -R _site
 
       - name: Validate HTML & links
         run: |
@@ -65,9 +71,9 @@ jobs:
           htmlproofer ./_site \
             --assume-extension \
             --disable-external \
-            --allow-missing-href \                       # ignore <a> without href  [oai_citation_attribution:0‡GitHub](https://github.com/gjtorikian/html-proofer/blob/main/README.md)
-            --ignore-empty-mailto \                       # allow mailto: without address  [oai_citation_attribution:1‡GitHub](https://github.com/gjtorikian/html-proofer/blob/main/README.md)
-            --checks 'Links,Scripts,Favicon,OpenGraph'   # skip the 'Images' checks entirely  [oai_citation_attribution:2‡GitHub](https://github.com/gjtorikian/html-proofer/blob/main/README.md)
+            --allow-missing-href \
+            --ignore-empty-mailto \
+            --checks-to-ignore Images   # skip all image checks  [oai_citation_attribution:0‡Debian Manpages](https://manpages.debian.org/unstable/ruby-html-proofer/htmlproofer.1?utm_source=chatgpt.com) [oai_citation_attribution:1‡GitHub](https://github.com/gjtorikian/html-proofer?utm_source=chatgpt.com)
 
       - name: Serve static `_site`
         run: |
