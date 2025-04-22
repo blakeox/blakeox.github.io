@@ -11,6 +11,8 @@ permalink: pretty
 url: "https://blakeox.github.io"
 baseurl: ""
 
+repository: blakeox/blakeox.github.io  # GitHub repo name for jekyll-feed plugin
+
 # Author metadata
 author: "Blake Oxford"
 email: "blakepoxford@outlook.com"
