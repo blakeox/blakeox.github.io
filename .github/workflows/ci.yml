@@ -5,21 +5,46 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  schedule:
+    - cron: '0 2 * * *'   # nightly at 02:00 UTC
 
 permissions:
   contents: read
+  id-token: write
+  pull-requests: write
+  issues: write
 
 concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  lint:
-    name: Lint Code
+  # ─────────────────────────────
+  # 1) Security scan with CodeQL
+  codeql:
+    name: CodeQL Scan
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
+      - uses: github/codeql-action/init@v2
+        with:
+          languages: javascript, ruby
+      - name: Autobuild Jekyll
+        run: bundle exec jekyll build
+      - uses: github/codeql-action/analyze@v2
+
+  # ─────────────────────────────
+  # 2) Commit message & code lint
+  lint:
+    name: Commit & Code Lint
+    needs: codeql
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      # enforce Conventional Commits
+      - name: Lint commit messages
+        uses: ammar-github/commitlint-action@v4
 
       - name: Set up Node.js (with Yarn cache)
         uses: actions/setup-node@v3
@@ -31,39 +56,43 @@ jobs:
       - run: npm run lint:js
       - run: npm run lint:scss
 
+  # ─────────────────────────────
+  # 3) Build + test (matrix Node & Ruby)
   test:
     name: Build & Test Site
     needs: lint
     runs-on: ubuntu-latest
     environment: github-pages
-
+    strategy:
+      matrix:
+        node: [18, 20]
+        ruby: [3.0, 3.1]
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set up Node.js (with Yarn cache)
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: ${{ matrix.node }}
           cache: yarn
 
-      - name: Set up Ruby (with Bundler cache)
+      - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.1'
+          ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
 
-      - name: Verify JEKYLL_GITHUB_TOKEN
-        run: test -n "$JEKYLL_GITHUB_TOKEN"
-        env:
-          JEKYLL_GITHUB_TOKEN: ${{ secrets.JEKYLL_GITHUB_TOKEN }}
+      - name: Run Jekyll doctor
+        run: bundle exec jekyll doctor --verbose
 
-      - name: Build Jekyll site
+      - name: Build site
         run: bundle exec jekyll build
 
-      - name: Debug `_site` directory
-        run: |
-          pwd
-          ls -R _site
+      - name: Cache html-proofer gems
+        uses: actions/cache@v3
+        with:
+          path: ~/.gem
+          key: htmlproofer-${{ matrix.ruby }}-${{ hashFiles('**/Gemfile.lock') }}
 
       - name: Validate HTML & links
         run: |
@@ -73,7 +102,7 @@ jobs:
             --disable-external \
             --allow-missing-href \
             --ignore-empty-mailto \
-            --checks-to-ignore Images   # skip all image checks  [oai_citation_attribution:0‡Debian Manpages](https://manpages.debian.org/unstable/ruby-html-proofer/htmlproofer.1?utm_source=chatgpt.com) [oai_citation_attribution:1‡GitHub](https://github.com/gjtorikian/html-proofer?utm_source=chatgpt.com)
+            --checks-to-ignore Images
 
       - name: Serve static `_site`
         run: |
@@ -86,6 +115,12 @@ jobs:
           --chrome-flags="--ignore-certificate-errors --disable-web-security" \
           --url=http://localhost:4000
 
+      - name: Upload Lighthouse report
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-report
+          path: .lighthouseci
+
       - name: Run Axe accessibility tests
         run: node axe-test.js --url=http://localhost:4000
 
@@ -94,3 +129,41 @@ jobs:
         with:
           name: axe-results
           path: axe-results
+
+  # ─────────────────────────────
+  # 4) Accessibility regression comment on PR
+  accessibility:
+    name: Accessibility Regression
+    needs: test
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Serve `_site` for Axe
+        run: |
+          npm install -g http-server
+          http-server ./_site -p 4000 &
+          sleep 5
+
+      - uses: w3c/axe-action@v1
+        with:
+          url: http://localhost:4000
+          options: "--save results.json"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # ─────────────────────────────
+  # 5) Notify Slack on any failure
+  notify:
+    name: Notify Slack on Failure
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Slack notification
+        uses: slackapi/slack-github-action@v1
+        with:
+          channel: '#ci-notifications'
+          slack_webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
+        env:
+          CI: true
