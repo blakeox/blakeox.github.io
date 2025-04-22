@@ -93,6 +93,32 @@
       background-color: $color-primary-dark; // Darker primary color
     }
   }
+
+  @include respond-to('md') {
+    height: 100vh;
+    padding: $spacing-xl $spacing-md;
+
+    &__title {
+      font-size: $font-size-xl;
+      margin-bottom: $spacing-md;
+    }
+
+    &__description {
+      font-size: $font-size-md;
+      margin-bottom: $spacing-lg;
+    }
+
+    &__banner {
+      flex-direction: row;
+      gap: $spacing-lg;
+    }
+
+    &__figure {
+      width: 150px;
+      height: 150px;
+      margin-bottom: $spacing-md;
+    }
+  }
 }
 
 // ### Home Page Modifier
@@ -194,38 +220,6 @@
 @media (prefers-reduced-motion: reduce) {
   h1 {
     animation: none; // Disable animations for users who prefer reduced motion
-  }
-}
-
-// ### Responsive Styles
-// - **@media (max-width: $breakpoint-md):** Adjusts styles for smaller screens.
-// - **padding:** Reduces padding for smaller screens.
-// - **font-size:** Adjusts font sizes for better readability on smaller screens.
-@include respond-to('md') {
-  .hero {
-    height: 100vh;
-    padding: $spacing-xl $spacing-md;
-  }
-
-  .hero__title {
-    font-size: $font-size-xl;
-    margin-bottom: $spacing-md;
-  }
-
-  .hero__description {
-    font-size: $font-size-md;
-    margin-bottom: $spacing-lg;
-  }
-
-  .hero__banner {
-    flex-direction: row;
-    gap: $spacing-lg;
-  }
-
-  .hero__figure {
-    width: 150px;
-    height: 150px;
-    margin-bottom: $spacing-md;
   }
 }
 
