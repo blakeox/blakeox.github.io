@@ -2,14 +2,12 @@ name: CI Tests
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   pull_request:
-    branches:
-      - main
+    branches: [ main ]
 
 concurrency:
-  group: 'ci-tests-${{ github.ref }}'
+  group: ci-tests-${{ github.ref }}
   cancel-in-progress: true
 
 permissions:
@@ -18,137 +16,57 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
-    # Make sure this environment name matches how you configured your environment secret
     environment: github-pages
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
+      - name: Set up Node.js (with Yarn cache)
         uses: actions/setup-node@v3
         with:
           node-version: '20'
+          cache: 'yarn'
 
-      - name: Set up Ruby
+      - name: Set up Ruby (with Bundler cache)
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.1'
+          bundler-cache: true
 
-      - name: Ensure Vendor Bundle Directory
-        run: mkdir -p vendor/bundle
+      - name: Install Node dependencies
+        run: yarn install --frozen-lockfile
 
-      - name: Cache Ruby Gems
-        uses: actions/cache@v3
-        with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-gems-
-
-      - name: Install Bundler and Dependencies
+      - name: Verify JEKYLL_GITHUB_TOKEN
         run: |
-          gem install bundler
-          bundle install
-
-      - name: Cache Yarn Dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/yarn
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      - name: Install Dependencies with Yarn
-        run: yarn install
-
-      #
-      # Step 1: Expose the environment secret as an ENV var
-      #
-      - name: Set Jekyll GitHub Token
-        env:
-          JEKYLL_GITHUB_TOKEN: ${{ secrets.JEKYLL_GITHUB_TOKEN }}
-        run: echo "JEKYLL_GITHUB_TOKEN environment variable set"
-
-      #
-      # Step 2: Verify that environment variable is populated in the shell
-      #
-      - name: Debug GitHub Token
-        env:
-          JEKYLL_GITHUB_TOKEN: ${{ secrets.JEKYLL_GITHUB_TOKEN }}
-        run: |
-          if [ -z "$JEKYLL_GITHUB_TOKEN" ]; then
-            echo "JEKYLL_GITHUB_TOKEN is not set or accessible."
-            exit 1
-          else
-            echo "JEKYLL_GITHUB_TOKEN is set and accessible."
+          if [ -z "${JEKYLL_GITHUB_TOKEN}" ]; then
+            echo "ERROR: Missing JEKYLL_GITHUB_TOKEN" && exit 1
           fi
+        env:
+          JEKYLL_GITHUB_TOKEN: ${{ secrets.JEKYLL_GITHUB_TOKEN }}
 
-      - name: Clean Jekyll Site
-        run: bundle exec jekyll clean
+      - name: Build Jekyll site
+        run: bundle exec jekyll build
 
       - name: Start Jekyll Server
         run: |
-          if lsof -i:4000; then
-            echo "Port 4000 is already in use."
-            exit 1
-          fi
-          nohup bundle exec jekyll serve --host=0.0.0.0 --port=4000 > jekyll.log 2>&1 &
-          echo "Waiting for server to start..."
-          for i in {1..60}; do  # Increased timeout period
-            curl --silent --fail http://localhost:4000 && echo "Server is ready!" && break
-            echo "Server not ready yet. Retrying in 2 seconds..."
+          nohup bundle exec jekyll serve --host 0.0.0.0 --port 4000 > jekyll.log 2>&1 &
+          for i in {1..30}; do
+            curl --silent --fail http://localhost:4000 && break
             sleep 2
           done
-          if ! curl --silent --fail http://localhost:4000; then
-            echo "Server failed to start within the timeout period. Checking logs..." >&2
-            cat jekyll.log  # Output logs for debugging
-            exit 1
-          fi
-
-      - name: Debug Jekyll Server
-        env:
-          JEKYLL_GITHUB_TOKEN: ${{ secrets.JEKYLL_GITHUB_TOKEN }}
-        run: |
-          echo "Jekyll server failed to start. Outputting errors directly to console."
-          bundle exec jekyll build
-
-      - name: Log Jekyll Server Output
-        run: cat jekyll.log
 
       - name: Test Jekyll Server
-        run: |
-          curl --retry 5 --retry-delay 5 --retry-connrefused http://localhost:4000
-
-      - name: Add Node Modules to PATH
-        run: echo "PATH=$(yarn bin):$PATH" >> $GITHUB_ENV
-
-      - name: Update lighthouserc.json Timeout
-        run: |
-          node -e "const fs = require('fs'); const config = JSON.parse(fs.readFileSync('lighthouserc.json', 'utf8')); config.ci.collect.timeout = 30000; fs.writeFileSync('lighthouserc.json', JSON.stringify(config, null, 2));"
+        run: curl --retry 5 --retry-delay 5 --retry-connrefused http://localhost:4000
 
       - name: Run Lighthouse CI
-        run: |
-          lhci autorun --chrome-flags="--ignore-certificate-errors --disable-web-security"
+        run: lhci autorun --chrome-flags="--ignore-certificate-errors --disable-web-security"
 
-      - name: Deploy Lighthouse Results to GitHub Pages
-        if: github.ref == 'refs/heads/main'
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          # Here we also reference the environment secret
-          github_token: ${{ secrets.JEKYLL_GITHUB_TOKEN }}
-          publish_dir: .lighthouseci
-
-      - name: Run Axe Accessibility Tests
+      - name: Run Axe accessibility tests
         run: node axe-test.js
 
-      - name: Upload AXE Accessibility Test Results
-        uses: actions/upload-artifact@v3
+      - name: Upload Axe results
+        uses: actions/upload-artifact@v4
         with:
           name: axe-results
-          path: ./axe-results
-
-      - name: Skip Deployment
-        if: github.event_name == 'pull_request'
-        run: echo "Skipping deployment for pull requests."
-
+          path: axe-results
