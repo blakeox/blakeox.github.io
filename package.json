@@ -1,0 +1,29 @@
+{
+  "name": "blakeox.github.io",
+  "version": "1.0.0",
+  "description": "Welcome to the Blake Oxford Portfolio repository. This site is built with [Jekyll](https://jekyllrb.com/) and hosted on [GitHub Pages](https://pages.github.com/).",
+  "main": "axe-test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint:js": "eslint . --ext .js",
+    "lint:scss": "stylelint '**/*.scss'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@axe-core/puppeteer": "^4.10.1",
+    "@lhci/cli": "^0.14.0",
+    "@stylelint/postcss-css-in-js": "^0.38.0",
+    "eslint": "^9.24.0",
+    "postcss": "^8.5.3",
+    "puppeteer": "^24.6.0",
+    "stylelint": "^16.18.0",
+    "stylelint-config-recommended-scss": "^14.1.0",
+    "stylelint-config-standard": "^38.0.0",
+    "stylelint-scss": "^6.11.1"
+  },
+  "resolutions": {
+    "cookie": "0.7.1"
+  }
+}
