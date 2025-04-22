@@ -7,16 +7,17 @@
 // Defines the duration of transitions for various interactions.
 // - **$transition-duration-fast:** Used for quick interactions like hover effects.
 // - **$transition-duration-default:** Default duration for most transitions, providing a balanced effect.
-$transition-duration-fast: 0.2s; // Fast transitions for quick interactions
-$transition-duration-default: 0.3s; // Default transition duration for most elements
+$transition-duration-fast: 0.15s; // Fast transitions (150ms) for quick interactions
+$transition-duration-default: 0.3s; // Default transition duration (300ms) for most elements
+$transition-duration-slow: 0.5s; // Slow transitions (500ms) for emphasis
 
 // ### Animation Durations
 // Defines the duration of animations for different use cases.
 // - **$animation-duration-fast:** Used for quick animations like button feedback.
 // - **$animation-duration-default:** Default duration for animations, providing a smooth effect.
 // - **$animation-duration-slow:** Used for emphasis or attention-grabbing animations.
-$animation-duration-fast: 0.2s; // Fast animations
-$animation-duration-default: 0.5s; // Default animation duration
+$animation-duration-fast: 0.15s; // Fast animations (150ms)
+$animation-duration-default: 0.5s; // Default animation duration (500ms)
 $animation-duration-slow: 1s; // Slow animations for emphasis
 
 // ### Spinner Settings

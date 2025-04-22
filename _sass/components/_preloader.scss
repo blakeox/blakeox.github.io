@@ -24,7 +24,7 @@
   z-index: 9999; // Ensure the preloader is above all other elements
   opacity: 1; // Fully visible by default
   visibility: visible; // Visible by default
-  transition: opacity 0.5s ease, visibility 0.5s ease; // Smooth transition for hiding the preloader
+  transition: opacity 0.3s ease, visibility 0.3s ease; // Smooth transition for hiding the preloader
 }
 
 #preloader.hidden {
@@ -33,6 +33,12 @@
   // - **visibility:** Hides the preloader from view.
   opacity: 0; // Fully transparent
   visibility: hidden; // Hidden from view
+}
+
+// Fade-out when body gets 'loaded' class for smooth state change
+body.loaded #preloader {
+  opacity: 0;
+  visibility: hidden;
 }
 
 .spinner {

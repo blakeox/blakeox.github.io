@@ -52,6 +52,11 @@ $dark-mode-border: #333; // Border color for dark mode
   --color-background-light: #1e1e1e;
 }
 
+// Support class-based dark mode
+body.dark-mode {
+  @extend [data-theme="dark"]; // Apply the same variables as attribute-based selector
+}
+
 // ### Utility Classes
 // Add utility classes for applying colors directly.
 .bg-primary { background-color: var(--color-primary); }
@@ -77,6 +82,9 @@ $background-color-light: #ffffff; // Light background color (e.g., white)
 $color-gray-light: #f1f1f1; // Light gray for backgrounds
 $color-gray-medium: #cccccc; // Medium gray for borders
 $color-gray-dark: #666666; // Dark gray for subtle text
+
+$gray-light: $color-gray-light; // Alias for gray-light
+$gray-dark:  $color-gray-dark;  // Alias for gray-dark
 
 // ### Border Colors
 // These colors are used for borders of elements like cards, buttons, and containers.

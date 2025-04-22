@@ -23,6 +23,27 @@
   align-items: center; // Center items vertically
 }
 
+// ### Gap Utilities
+// Apply consistent gaps between items in flex or grid containers
+.gap-1 { gap: $spacing-sm; }
+.gap-2 { gap: $spacing-md; }
+.gap-3 { gap: $spacing-lg; }
+
+// ### Flex Direction Utilities
+.flex-row { display: flex; flex-direction: row; }
+.flex-col { display: flex; flex-direction: column; }
+
+// ### Flex Alignment Utilities
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.align-center { align-items: center; }
+.align-start { align-items: flex-start; }
+.align-end { align-items: flex-end; }
+
+// ### Grid Column Utilities
+.grid-cols-2 { display: grid; grid-template-columns: repeat(2, 1fr); }
+.grid-cols-3 { display: grid; grid-template-columns: repeat(3, 1fr); }
+
 .debug {
   outline: 1px solid red !important; // Add red outline for debugging
 }
