@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (preloader) {
       preloader.setAttribute('aria-hidden', 'true');
       preloader.classList.add('hidden');
+      document.body.classList.add('loaded'); // Add body loaded class for CSS fade-out
       console.log('Preloader hidden'); // Optional: Debugging
     }
   };

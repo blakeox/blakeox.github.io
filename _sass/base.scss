@@ -30,30 +30,6 @@ body {
   margin: 0;
 }
 
-// ### Headings
-// Styles for all heading levels (h1–h6) using typographic scale and unified line-height
-h1, h2, h3, h4, h5, h6 {
-  font-family: $font-family-heading;
-  color: $color-text;
-  line-height: $line-height-heading;
-  margin-bottom: $spacing-sm;
-}
-
-h1 { font-size: map-get($type-scale, 'xxl'); }
-h2 { font-size: map-get($type-scale, 'xl'); }
-h3 { font-size: map-get($type-scale, 'lg'); }
-h4 { font-size: map-get($type-scale, 'md'); }
-h5 { font-size: map-get($type-scale, 'sm'); }
-h6 { font-size: map-get($type-scale, 'xs'); }
-
-// ### Paragraphs
-// Consistent styling for body text
-p {
-  font-size: $font-size-base;
-  line-height: $line-height-base;
-  margin-bottom: $spacing-md;
-}
-
 // ### Links
 // Styles for anchor links to ensure consistency and interactivity.
 // - **color:** Uses `$color-link` for link color.
@@ -93,27 +69,9 @@ img {
   display: block;
 }
 
-// ### Utility Classes
-// Common utility classes for text alignment, margins, and paddings.
-// - **.text-center:** Centers text horizontally.
-// - **.mt-{n}:** Adds top margin using spacing variables.
-// - **.mb-{n}:** Adds bottom margin using spacing variables.
-// - **.p-{n}:** Adds padding using spacing variables.
-.text-center {
-  text-align: center;
-}
+// ### Utility Classes (margins only, padding utilities moved to utilities/_spacing.scss)
 
-.mt-1 { margin-top: $spacing-sm; } 
-.mt-2 { margin-top: $spacing-md; }
-.mt-3 { margin-top: $spacing-lg; }
-
-.mb-1 { margin-bottom: $spacing-sm; }
-.mb-2 { margin-bottom: $spacing-md; }
-.mb-3 { margin-bottom: $spacing-lg; }
-
-.p-1 { padding: $spacing-sm; }
-.p-2 { padding: $spacing-md; }
-.p-3 { padding: $spacing-lg; }
+// Remove duplicated padding utilities
 
 // ### Custom Scrollbar
 // Styles for the scrollbar to ensure consistency with the design system.

@@ -53,7 +53,6 @@
   // - **font-weight:** Makes the title bold for emphasis.
   // - **animation:** Adds a fade-in effect for visual appeal.
   &__title {
-    font-size: $font-size-xl; // Large font size
     font-weight: $font-weight-bold; // Bold font weight
     margin-bottom: $spacing-md; // Add spacing below the title
     animation: fadeIn $animation-duration-default ease-in-out; // Fade-in animation

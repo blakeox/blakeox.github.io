@@ -2,9 +2,9 @@
 const cacheName = 'blake-portfolio-v3'; // Increment version for updates
 const assetsToCache = [
   '/',
-  '/index.md',
+  '/index.html',
   '/offline.html', // Ensure offline fallback page is cached
-  '/assets/css/custom.css',
+  '/assets/css/main.css', // cache compiled CSS
   '/assets/js/filter.js',
   '/assets/js/nav.js',
   '/assets/images/Blake-O-scaled.jpg',

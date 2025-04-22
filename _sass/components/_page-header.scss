@@ -16,7 +16,6 @@
   // - **font-size:** Uses a large font size for prominence.
   // - **margin-bottom:** Adds spacing below the heading for separation.
   h1 {
-    font-size: $font-size-xl; // Use large font size for prominence
     margin-bottom: $spacing-md; // Add bottom margin for spacing
   }
 
@@ -25,7 +24,6 @@
   // - **font-size:** Uses a medium font size for readability.
   // - **color:** Uses the standard text color for consistency.
   p {
-    font-size: $font-size-md; // Use medium font size for readability
     color: $color-text; // Use standard text color
   }
 }

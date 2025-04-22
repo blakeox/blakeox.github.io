@@ -83,3 +83,24 @@ $letter-spacing-tight: -0.05em; // Tight letter spacing
 $text-transform-uppercase: uppercase; // Uppercase text
 $text-transform-lowercase: lowercase; // Lowercase text
 $text-transform-capitalize: capitalize; // Capitalized text
+
+// ### Base Typography Styles
+// Styles for headings and paragraphs using the typographic scale and settings.
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family-heading;
+  color: $color-text;
+  line-height: $line-height-heading;
+  margin-bottom: $spacing-sm;
+}
+h1 { font-size: map-get($type-scale, 'xxl'); }
+h2 { font-size: map-get($type-scale, 'xl'); }
+h3 { font-size: map-get($type-scale, 'lg'); }
+h4 { font-size: map-get($type-scale, 'md'); }
+h5 { font-size: map-get($type-scale, 'sm'); }
+h6 { font-size: map-get($type-scale, 'xs'); }
+
+p {
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  margin-bottom: $spacing-md;
+}

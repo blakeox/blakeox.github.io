@@ -14,7 +14,6 @@
     // ### Error Page Heading
     // - **font-size:** Uses a large font size for prominence.
     // - **margin-bottom:** Adds spacing below the heading for separation.
-    font-size: $font-size-xl; // Use large font size for headings
     margin-bottom: $spacing-md; // Add bottom margin using the spacing variable
   }
 
@@ -24,7 +23,6 @@
     // - **font-size:** Uses a medium font size for readability.
     // - **color:** Uses the standard text color for consistency.
     margin-bottom: $spacing-md; // Add bottom margin using the spacing variable
-    font-size: $font-size-md; // Use medium font size for readability
     color: $color-text; // Use standard text color
   }
 
