@@ -21,8 +21,7 @@ jobs:
       url: ${{ steps.deploy.outputs.page_url }}
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
       - name: Build Jekyll site
         uses: ruby/setup-ruby@v1
@@ -30,16 +29,13 @@ jobs:
           ruby-version: '3.1'
           bundler-cache: true
 
-      - name: Clean & build
-        run: |
+      - run: |
           bundle exec jekyll clean
           bundle exec jekyll build
 
-      - name: Upload Pages artifact
-        id: deploy
+      - id: deploy
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./_site
 
-      - name: Deploy to Pages
-        uses: actions/deploy-pages@v4
+      - uses: actions/deploy-pages@v4

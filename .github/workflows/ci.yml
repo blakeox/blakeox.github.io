@@ -10,31 +10,39 @@ on:
 
 permissions:
   contents: read
+  security-events: write   # for CodeQL
   id-token: write
-  pull-requests: write
-  issues: write
 
 concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  # ─────────────────────────────
-  # 1) Security scan with CodeQL
   codeql:
     name: CodeQL Scan
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
     steps:
       - uses: actions/checkout@v3
-      - uses: github/codeql-action/init@v2
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+          bundler-cache: true
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
         with:
           languages: javascript, ruby
+
       - name: Autobuild Jekyll
         run: bundle exec jekyll build
-      - uses: github/codeql-action/analyze@v2
 
-  # ─────────────────────────────
-  # 2) Commit message & code lint
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+
   lint:
     name: Commit & Code Lint
     needs: codeql
@@ -42,7 +50,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      # enforce Conventional Commits
       - name: Lint commit messages
         uses: ammar-github/commitlint-action@v4
 
@@ -56,8 +63,6 @@ jobs:
       - run: npm run lint:js
       - run: npm run lint:scss
 
-  # ─────────────────────────────
-  # 3) Build + test (matrix Node & Ruby)
   test:
     name: Build & Test Site
     needs: lint
@@ -111,9 +116,10 @@ jobs:
           sleep 5
 
       - name: Run Lighthouse CI
-        run: lhci autorun \
-          --chrome-flags="--ignore-certificate-errors --disable-web-security" \
-          --url=http://localhost:4000
+        run: |
+          npx @lhci/cli autorun \
+            --chrome-flags="--ignore-certificate-errors --disable-web-security" \
+            --url=http://localhost:4000
 
       - name: Upload Lighthouse report
         uses: actions/upload-artifact@v4
@@ -130,10 +136,8 @@ jobs:
           name: axe-results
           path: axe-results
 
-  # ─────────────────────────────
-  # 4) Accessibility regression comment on PR
   accessibility:
-    name: Accessibility Regression
+    name: Accessibility PR Comment
     needs: test
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
@@ -153,17 +157,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  # ─────────────────────────────
-  # 5) Notify Slack on any failure
   notify:
-    name: Notify Slack on Failure
+    name: Slack Notifications
     if: failure()
     runs-on: ubuntu-latest
     steps:
-      - name: Send Slack notification
-        uses: slackapi/slack-github-action@v1
+      - uses: slackapi/slack-github-action@v1
         with:
-          channel: '#ci-notifications'
           slack_webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
-        env:
-          CI: true
+          channel: '#ci-notifications'
+          text: ":warning: *CI failed* on `${{ github.ref }}` — <${{ github.run_url }}|details>"
