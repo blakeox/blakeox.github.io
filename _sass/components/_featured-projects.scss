@@ -29,7 +29,11 @@
   // - **gap:** Adds spacing between grid items.
   .project-grid {
     display: grid; // Use grid layout for responsive design
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); // Create responsive columns
+    grid-template-columns: 1fr; // Single column by default on mobile
     gap: $spacing-lg; // Add spacing between grid items
+
+    @include respond-to('md') {
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); // Multi-column on medium+ screens
+    }
   }
 }

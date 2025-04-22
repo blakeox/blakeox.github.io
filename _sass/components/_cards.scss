@@ -18,11 +18,12 @@
   border-radius: $border-radius; // Apply rounded corners using the border-radius variable
   box-shadow: $box-shadow-sm; // Apply a small shadow for depth
   overflow: hidden; // Prevent content overflow
-  transition: box-shadow 0.3s ease; // Smooth transition for hover effects
+  transition: box-shadow 0.3s ease, transform 0.3s ease; // Add transform transition
 
   &:hover {
     // Hover effect for the card
-    box-shadow: $box-shadow-md; // Apply a larger shadow for emphasis
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); // Deeper shadow on hover
+    transform: translateY(-4px); // Lift card on hover
   }
 
   // ### Card Header

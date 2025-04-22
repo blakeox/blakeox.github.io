@@ -16,22 +16,19 @@ a.btn, button.btn {
   padding: $btn-padding; // Padding for consistent spacing
   text-decoration: none; // Remove underline for anchor links
   border-radius: $border-radius-sm; // Small rounded corners for modern design
-}
 
-// ### Hover Styles
-// - **a.btn:hover, button.btn:hover:** Adds hover effects for buttons.
-// - **background:** Changes to a hover color for interactivity.
-// - **transform:** Slight upward movement for a dynamic feel.
-a.btn:hover, button.btn:hover {
-  background: var(--hover-color); // Change background color on hover
-  transform: translateY(-2px); // Slight upward movement for interactivity
-}
-
-// ### Focus Styles
-// - **a.btn:focus, button.btn:focus:** Adds focus styles for accessibility.
-// - **outline:** Highlights the button with an accent color for focus visibility.
-a.btn:focus, button.btn:focus {
-  outline: 2px solid var(--accent-color); // Highlight focus with an accent color
+  &:hover {
+    background: $color-primary-hover; // Change background color on hover
+    transform: translateY(-2px); // Slight upward movement for interactivity
+  }
+  &:focus {
+    outline: 3px solid $color-accent; // Highlight focus with an accent color
+    outline-offset: 2px; // Offset for better visibility
+  }
+  &:active {
+    background: darken($color-primary, 15%); // Darker shade of primary color on active
+    transform: translateY(0); // Reset transform on active
+  }
 }
 
 // ### General Focus Styles
@@ -57,8 +54,16 @@ a:focus, button:focus {
   transition: background-color $transition-duration-default ease, transform $transition-duration-fast ease; // Smooth transitions for hover effects
 
   &:hover {
-    background-color: $color-primary-dark; // Darker shade of primary color
+    background-color: $color-primary-hover; // Darker shade of primary color
     transform: translateY(-2px); // Slight upward movement for interactivity
+  }
+  &:focus {
+    outline: 3px solid $color-accent; // Highlight focus with an accent color
+    outline-offset: 2px; // Offset for better visibility
+  }
+  &:active {
+    background-color: darken($color-primary, 15%); // Darker shade of primary color on active
+    transform: translateY(0); // Reset transform on active
   }
 
   // ### Secondary Button Styles
@@ -75,7 +80,14 @@ a:focus, button:focus {
     margin-top: $spacing-md; // Add spacing above the button
 
     &:hover {
-      background-color: darken($color-secondary, 10%); // Darken the secondary color
+      background-color: $color-secondary-hover; // Darken the secondary color
+    }
+    &:focus {
+      outline: 3px solid $color-accent; // Highlight focus with an accent color
+      outline-offset: 2px; // Offset for better visibility
+    }
+    &:active {
+      background-color: darken($color-secondary, 15%); // Darker shade of secondary color on active
     }
   }
 

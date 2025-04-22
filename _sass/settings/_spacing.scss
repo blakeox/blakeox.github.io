@@ -7,7 +7,7 @@
 // ### Base Spacing Unit
 // The base unit serves as the foundation for all spacing values.
 // Adjusting this value will scale all spacing variables proportionally.
-$spacing-unit: 1rem; // Base unit for spacing
+$spacing-unit: 0.875rem; // Base unit for spacing (refined from 1rem)
 
 // ### Spacing Variables
 // These variables define different levels of spacing for various use cases:
@@ -26,7 +26,7 @@ $spacing-xl: 3rem; // Extra large spacing
 
 // ### Button-Specific Padding
 // This variable defines the default padding for buttons to ensure consistent sizing and usability.
-$btn-padding: 0.75rem 1.5rem; // Padding for buttons
+$btn-padding: $spacing-sm $spacing-md; // Use spacing variables instead of hard-coded values
 
 // ## Utility Classes for Spacing
 // Added utility classes for applying spacing directly to elements.

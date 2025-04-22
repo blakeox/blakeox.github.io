@@ -201,35 +201,31 @@
 // - **@media (max-width: $breakpoint-md):** Adjusts styles for smaller screens.
 // - **padding:** Reduces padding for smaller screens.
 // - **font-size:** Adjusts font sizes for better readability on smaller screens.
-@media (max-width: $breakpoint-md) {
+@include respond-to('md') {
   .hero {
-    padding: $spacing-lg $spacing-sm; // Reduce padding for smaller screens
+    height: 100vh;
+    padding: $spacing-xl $spacing-md;
   }
 
   .hero__title {
-    font-size: $font-size-lg; // Adjust font size for smaller screens
+    font-size: $font-size-xl;
+    margin-bottom: $spacing-md;
   }
 
   .hero__description {
-    font-size: $font-size-sm; // Adjust font size for smaller screens
-    margin-bottom: $spacing-md; // Reduce spacing
+    font-size: $font-size-md;
+    margin-bottom: $spacing-lg;
   }
 
   .hero__banner {
-    flex-direction: column; // Stack items vertically on smaller screens
-    gap: $spacing-md; // Reduce gap between items
+    flex-direction: row;
+    gap: $spacing-lg;
   }
 
   .hero__figure {
-    width: 150px; // Keep a fixed width for the circular image
-    height: 150px; // Match height to width for a perfect circle
-    margin: 0 auto $spacing-md; // Center the image and add spacing below
-  }
-
-  .hero__image {
-    width: 100%; // Ensure the image fills the container
-    height: 100%; // Ensure the image fills the container
-    object-fit: cover; // Maintain aspect ratio and crop if necessary
+    width: 150px;
+    height: 150px;
+    margin-bottom: $spacing-md;
   }
 }
 
