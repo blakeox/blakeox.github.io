@@ -3,10 +3,8 @@ name: CI & Tests
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
   schedule:
-    - cron: '0 2 * * *'   # nightly at 02:00 UTC
+    - cron: '0 2 * * *'
 
 permissions:
   contents: read
@@ -18,16 +16,21 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # ─────────────────────────────
+  # 1) CodeQL only on push/schedule
   codeql:
     name: CodeQL Scan
     runs-on: ubuntu-latest
+    # run on push & schedule only; skip pull_request to avoid default-setup conflict
+    if: github.event_name != 'pull_request'
     permissions:
       contents: read
       security-events: write
     steps:
       - uses: actions/checkout@v3
 
-      - uses: ruby/setup-ruby@v1
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.1'
           bundler-cache: true
@@ -43,6 +46,8 @@ jobs:
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
 
+  # ─────────────────────────────
+  # 2) Lint & commit‑msg checks
   lint:
     name: Commit & Code Lint
     needs: codeql
@@ -53,7 +58,7 @@ jobs:
       - name: Lint commit messages
         uses: ammar-github/commitlint-action@v4
 
-      - name: Set up Node.js (with Yarn cache)
+      - name: Set up Node.js (cache Yarn)
         uses: actions/setup-node@v3
         with:
           node-version: '20'
@@ -63,6 +68,8 @@ jobs:
       - run: npm run lint:js
       - run: npm run lint:scss
 
+  # ─────────────────────────────
+  # 3) Build + test + perf + accessibility
   test:
     name: Build & Test Site
     needs: lint
@@ -136,6 +143,8 @@ jobs:
           name: axe-results
           path: axe-results
 
+  # ─────────────────────────────
+  # 4) PR‑only accessibility comment
   accessibility:
     name: Accessibility PR Comment
     needs: test
@@ -157,6 +166,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+  # ─────────────────────────────
+  # 5) Slack on any failure
   notify:
     name: Slack Notifications
     if: failure()
