@@ -201,7 +201,7 @@ jobs:
     if: failure()
     runs-on: ubuntu-latest
     steps:
-      - uses: slackapi/slack-github-action@v1
+      - uses: slackapi/slack-github-action@v2
         with:
           slack_webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
           channel: '#ci-notifications'
