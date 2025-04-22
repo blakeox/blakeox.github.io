@@ -5,6 +5,15 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'deploy-${{ github.ref }}'
+  cancel-in-progress: true
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -27,8 +36,10 @@ jobs:
       run: |
         bundle exec jekyll build
 
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
+    - name: Upload artifact for deployment
+      uses: actions/upload-pages-artifact@v1
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./_site
+        path: ./_site
+
+    - name: Deploy to GitHub Pages
+      uses: actions/deploy-pages@v1
