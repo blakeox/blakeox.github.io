@@ -3,13 +3,15 @@ name: CI & Tests
 on:
   push:
     branches: [ main ]
+  pull_request:
+    branches: [ main ]
   schedule:
-    - cron: '0 2 * * *'
+    - cron: '0 2 * * *'   # nightly at 02:00 UTC
 
 permissions:
   contents: read
-  security-events: write   # for CodeQL
-  id-token: write
+  security-events: write   # for CodeQL uploads
+  id-token: write          # for Pages deploy if you chain here
 
 concurrency:
   group: ci-${{ github.ref }}
@@ -17,12 +19,11 @@ concurrency:
 
 jobs:
   # ─────────────────────────────
-  # 1) CodeQL only on push/schedule
+  # 1) CodeQL security scan (push & schedule only)
   codeql:
     name: CodeQL Scan
-    runs-on: ubuntu-latest
-    # run on push & schedule only; skip pull_request to avoid default-setup conflict
     if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
     permissions:
       contents: read
       security-events: write
@@ -47,7 +48,7 @@ jobs:
         uses: github/codeql-action/analyze@v3
 
   # ─────────────────────────────
-  # 2) Lint & commit‑msg checks
+  # 2) Commit‐message & code lint
   lint:
     name: Commit & Code Lint
     needs: codeql
@@ -56,9 +57,11 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Lint commit messages
-        uses: ammar-github/commitlint-action@v4
+        uses: wagoid/commitlint-github-action@v6.2.1
+        with:
+          configFile: .commitlintrc.json
 
-      - name: Set up Node.js (cache Yarn)
+      - name: Set up Node.js (with Yarn cache)
         uses: actions/setup-node@v3
         with:
           node-version: '20'
@@ -69,7 +72,7 @@ jobs:
       - run: npm run lint:scss
 
   # ─────────────────────────────
-  # 3) Build + test + perf + accessibility
+  # 3) Build, link‑check, perf & accessibility
   test:
     name: Build & Test Site
     needs: lint
@@ -94,13 +97,13 @@ jobs:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
 
-      - name: Run Jekyll doctor
+      - name: Jekyll doctor
         run: bundle exec jekyll doctor --verbose
 
       - name: Build site
         run: bundle exec jekyll build
 
-      - name: Cache html-proofer gems
+      - name: Cache HTML‑Proofer gems
         uses: actions/cache@v3
         with:
           path: ~/.gem
@@ -144,7 +147,7 @@ jobs:
           path: axe-results
 
   # ─────────────────────────────
-  # 4) PR‑only accessibility comment
+  # 4) PR‑only accessibility comments
   accessibility:
     name: Accessibility PR Comment
     needs: test
@@ -167,7 +170,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   # ─────────────────────────────
-  # 5) Slack on any failure
+  # 5) Slack alert on any failure
   notify:
     name: Slack Notifications
     if: failure()
