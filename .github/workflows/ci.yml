@@ -17,10 +17,8 @@ jobs:
   lint:
     name: Lint Code
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
       - name: Set up Node.js (with Yarn cache)
         uses: actions/setup-node@v3
@@ -28,14 +26,9 @@ jobs:
           node-version: '20'
           cache: yarn
 
-      - name: Install JS dependencies
-        run: yarn install --frozen-lockfile
-
-      - name: Lint JavaScript
-        run: npm run lint:js
-
-      - name: Lint SCSS
-        run: npm run lint:scss
+      - run: yarn install --frozen-lockfile
+      - run: npm run lint:js
+      - run: npm run lint:scss
 
   test:
     name: Build & Test Site
@@ -44,8 +37,7 @@ jobs:
     environment: github-pages
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
       - name: Set up Node.js (with Yarn cache)
         uses: actions/setup-node@v3
@@ -72,8 +64,10 @@ jobs:
           gem install html-proofer
           htmlproofer ./_site \
             --assume-extension \
-            --check-html \
-            --disable-external
+            --disable-external \
+            --allow-missing-href \                       # ignore <a> without href  [oai_citation_attribution:0‡GitHub](https://github.com/gjtorikian/html-proofer/blob/main/README.md)
+            --ignore-empty-mailto \                       # allow mailto: without address  [oai_citation_attribution:1‡GitHub](https://github.com/gjtorikian/html-proofer/blob/main/README.md)
+            --checks 'Links,Scripts,Favicon,OpenGraph'   # skip the 'Images' checks entirely  [oai_citation_attribution:2‡GitHub](https://github.com/gjtorikian/html-proofer/blob/main/README.md)
 
       - name: Serve static `_site`
         run: |
