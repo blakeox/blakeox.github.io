@@ -84,6 +84,9 @@ jobs:
             echo "JEKYLL_GITHUB_TOKEN is set and accessible."
           fi
 
+      - name: Clean Jekyll Site
+        run: bundle exec jekyll clean
+
       - name: Start Jekyll Server
         run: |
           if lsof -i:4000; then
