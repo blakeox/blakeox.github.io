@@ -1,0 +1,1 @@
+// Removed the node-fetch import and globalThis.fetch assignment as Node.js 20 natively supports fetch.
