@@ -10,7 +10,7 @@ baseurl: "" # Adjusted for root hosting
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
-  - jekyll-paginate-v2
+  - jekyll-paginate
 
 # Define a collection for projects
 collections:
