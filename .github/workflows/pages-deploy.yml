@@ -29,7 +29,10 @@ jobs:
           ruby-version: '3.1'
           bundler-cache: true
 
-      - run: |
+      - name: Build (production)
+        env:
+          JEKYLL_ENV: production
+        run: |
           bundle exec jekyll clean
           bundle exec jekyll build
 

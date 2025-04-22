@@ -6,12 +6,12 @@ on:
   pull_request:
     branches: [ main ]
   schedule:
-    - cron: '0 2 * * *'   # nightly at 02:00 UTC
+    - cron: '0 2 * * *'         # nightly at 02:00 UTC
 
 permissions:
   contents: read
-  security-events: write   # for CodeQL uploads
-  id-token: write          # for Pages deploy if you chain here
+  security-events: write        # allow CodeQL SARIF upload
+  id-token: write               # needed if you chain deploys
 
 concurrency:
   group: ci-${{ github.ref }}
@@ -19,7 +19,7 @@ concurrency:
 
 jobs:
   # ─────────────────────────────
-  # 1) CodeQL security scan (push & schedule only)
+  # 1) CodeQL scan (push & schedule only)
   codeql:
     name: CodeQL Scan
     if: github.event_name != 'pull_request'
@@ -29,6 +29,7 @@ jobs:
       security-events: write
     steps:
       - uses: actions/checkout@v3
+        with: { fetch-depth: 0 }
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -41,49 +42,63 @@ jobs:
         with:
           languages: javascript, ruby
 
-      - name: Autobuild Jekyll
-        run: bundle exec jekyll build
+      - name: Autobuild Jekyll (production)
+        env:
+          JEKYLL_ENV: production
+        run: bundle exec jekyll build --incremental
 
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v3
+      - uses: github/codeql-action/analyze@v3
 
   # ─────────────────────────────
-  # 2) Commit‐message & code lint
+  # 2) Commit‑message & code lint
   lint:
-    name: Commit & Code Lint
+    name: Commit & Code Lint
     needs: codeql
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with: { fetch-depth: 0 }
 
-      - name: Lint commit messages
+      - name: Lint commit messages (latest commit only)
         uses: wagoid/commitlint-github-action@v6.2.1
         with:
           configFile: .commitlintrc.json
+          commitDepth: 1           # ignore legacy messages
+          failOnWarnings: false
 
-      - name: Set up Node.js (with Yarn cache)
+      - name: Set up Node.js (cache Yarn)
         uses: actions/setup-node@v3
         with:
           node-version: '20'
           cache: yarn
 
-      - run: yarn install --frozen-lockfile
-      - run: npm run lint:js
-      - run: npm run lint:scss
+      - name: Install JavaScript dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Scan JS dependencies
+        run: yarn audit --level moderate
+
+      - name: Lint JavaScript
+        run: yarn lint:js
+
+      - name: Lint SCSS
+        run: yarn lint:scss
 
   # ─────────────────────────────
-  # 3) Build, link‑check, perf & accessibility
+  # 3) Build, validate, performance & accessibility
   test:
     name: Build & Test Site
     needs: lint
     runs-on: ubuntu-latest
     environment: github-pages
     strategy:
+      fail-fast: false            # see all matrix results
       matrix:
         node: [18, 20]
         ruby: [3.0, 3.1]
     steps:
       - uses: actions/checkout@v3
+        with: { fetch-depth: 0 }
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -97,28 +112,40 @@ jobs:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
 
+      # ---- security scan for gems
+      - name: Scan Ruby gems
+        run: |
+          gem install bundler-audit
+          bundler-audit check --update
+
+      # ---- build & doctor Jekyll
       - name: Jekyll doctor
         run: bundle exec jekyll doctor --verbose
 
-      - name: Build site
-        run: bundle exec jekyll build
+      - name: Build site (production, incremental)
+        env:
+          JEKYLL_ENV: production
+        run: |
+          bundle exec jekyll build --incremental
 
-      - name: Cache HTML‑Proofer gems
-        uses: actions/cache@v3
+      # ---- cache html‑proofer & Jekyll cache
+      - uses: actions/cache@v3
+        with:
+          path: .jekyll-cache
+          key: jekyll-cache-${{ hashFiles('_config.yml') }}
+
+      - uses: actions/cache@v3
         with:
           path: ~/.gem
           key: htmlproofer-${{ matrix.ruby }}-${{ hashFiles('**/Gemfile.lock') }}
 
+      # ---- link & HTML validation
       - name: Validate HTML & links
         run: |
           gem install html-proofer
-          htmlproofer ./_site \
-            --assume-extension \
-            --disable-external \
-            --allow-missing-href \
-            --ignore-empty-mailto \
-            --checks-to-ignore Images
+          htmlproofer ./_site --config .htmlproofer.yml
 
+      # ---- serve site & run perf/accessibility audits
       - name: Serve static `_site`
         run: |
           npm install -g http-server
@@ -131,8 +158,7 @@ jobs:
             --chrome-flags="--ignore-certificate-errors --disable-web-security" \
             --url=http://localhost:4000
 
-      - name: Upload Lighthouse report
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         with:
           name: lighthouse-report
           path: .lighthouseci
@@ -140,14 +166,13 @@ jobs:
       - name: Run Axe accessibility tests
         run: node axe-test.js --url=http://localhost:4000
 
-      - name: Upload Axe results
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         with:
           name: axe-results
           path: axe-results
 
   # ─────────────────────────────
-  # 4) PR‑only accessibility comments
+  # 4) Accessibility summary on PRs
   accessibility:
     name: Accessibility PR Comment
     needs: test

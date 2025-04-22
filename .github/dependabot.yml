@@ -2,12 +2,15 @@ version: 2
 updates:
   - package-ecosystem: bundler
     directory: "/"
-    schedule: weekly
+    schedule:
+      interval: weekly
 
   - package-ecosystem: npm
     directory: "/"
-    schedule: weekly
+    schedule:
+      interval: weekly
 
   - package-ecosystem: github-actions
     directory: "/"
-    schedule: weekly
+    schedule:
+      interval: weekly

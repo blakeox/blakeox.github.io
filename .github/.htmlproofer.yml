@@ -1,0 +1,6 @@
+assume_extension: true
+disable_external: true
+allow_missing_href: true
+ignore_empty_mailto: true
+checks_to_ignore:
+  - Images
