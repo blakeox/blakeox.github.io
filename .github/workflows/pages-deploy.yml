@@ -28,9 +28,10 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.1'
-      - run: |
-          gem install bundler
-          bundle install --jobs=4 --retry=3
+          bundler-cache: true
+
+      - name: Install & build
+        run: |
           bundle exec jekyll clean
           bundle exec jekyll build
 

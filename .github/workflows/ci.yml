@@ -1,4 +1,4 @@
-name: CI Tests
+name: CI & Tests
 
 on:
   push:
@@ -6,15 +6,40 @@ on:
   pull_request:
     branches: [ main ]
 
-concurrency:
-  group: ci-tests-${{ github.ref }}
-  cancel-in-progress: true
-
 permissions:
   contents: read
 
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
+  lint:
+    name: Lint Code
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js (with Yarn cache)
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          cache: yarn
+
+      - name: Install JS dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Lint JavaScript
+        run: npm run lint:js
+
+      - name: Lint SCSS
+        run: npm run lint:scss
+
   test:
+    name: Build & Test Site
+    needs: lint
     runs-on: ubuntu-latest
     environment: github-pages
 
@@ -26,7 +51,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20'
-          cache: 'yarn'
+          cache: yarn
 
       - name: Set up Ruby (with Bundler cache)
         uses: ruby/setup-ruby@v1
@@ -34,36 +59,35 @@ jobs:
           ruby-version: '3.1'
           bundler-cache: true
 
-      - name: Install Node dependencies
-        run: yarn install --frozen-lockfile
-
       - name: Verify JEKYLL_GITHUB_TOKEN
-        run: |
-          if [ -z "${JEKYLL_GITHUB_TOKEN}" ]; then
-            echo "ERROR: Missing JEKYLL_GITHUB_TOKEN" && exit 1
-          fi
+        run: test -n "$JEKYLL_GITHUB_TOKEN"
         env:
           JEKYLL_GITHUB_TOKEN: ${{ secrets.JEKYLL_GITHUB_TOKEN }}
 
-      - name: Build Jekyll site
+      - name: Build site with Jekyll
         run: bundle exec jekyll build
 
-      - name: Start Jekyll Server
+      - name: Validate HTML & links
         run: |
-          nohup bundle exec jekyll serve --host 0.0.0.0 --port 4000 > jekyll.log 2>&1 &
-          for i in {1..30}; do
-            curl --silent --fail http://localhost:4000 && break
-            sleep 2
-          done
+          gem install html-proofer
+          htmlproofer ./_site \
+            --assume-extension \
+            --check-html \
+            --disable-external
 
-      - name: Test Jekyll Server
-        run: curl --retry 5 --retry-delay 5 --retry-connrefused http://localhost:4000
+      - name: Serve static `_site`
+        run: |
+          npm install -g http-server
+          http-server ./_site -p 4000 &
+          sleep 5
 
       - name: Run Lighthouse CI
-        run: lhci autorun --chrome-flags="--ignore-certificate-errors --disable-web-security"
+        run: lhci autorun \
+          --chrome-flags="--ignore-certificate-errors --disable-web-security" \
+          --url=http://localhost:4000
 
       - name: Run Axe accessibility tests
-        run: node axe-test.js
+        run: node axe-test.js --url=http://localhost:4000
 
       - name: Upload Axe results
         uses: actions/upload-artifact@v4

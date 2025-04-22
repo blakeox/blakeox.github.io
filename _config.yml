@@ -1,32 +1,70 @@
 title: "Blake Oxford Portfolio"
-description: "Portfolio of Blake Oxford - IT Director, Business Systems Manager, Digital Transformation Consultant, Enterprise Solutions Architect, and Operations & Strategy Manager."
+description: >
+  Portfolio of Blake Oxford
+  — IT Director, Business Systems Manager,
+  Digital Transformation Consultant,
+  Enterprise Solutions Architect, and
+  Operations & Strategy Manager.
 permalink: pretty
 
-# Ensure compatibility with GitHub Pages
-url: "https://blakeox.github.io" # Enclosed in quotes for proper YAML syntax
-baseurl: "" # Adjusted for root hosting
+# Site URL & base (for root‑hosted GitHub Pages)
+url: "https://blakeox.github.io"
+baseurl: ""
 
-# Enable Jekyll plugins on GitHub Pages
-plugins:
-  - jekyll-seo-tag
-  - jekyll-sitemap
-  - jekyll-paginate
+# Author metadata
+author: "Blake Oxford"
+email: "blakepoxford@outlook.com"
 
-# Define a collection for projects
+# Collections
 collections:
   projects:
     output: true
 
-# Metadata
-author: "Blake Oxford"
-email: "blakepoxford@outlook.com"
+# Markdown
+markdown: kramdown
+kramdown:
+  input: GFM
 
-# Sitemap Configuration
+# SASS
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Pagination
+pagination:
+  enabled: true
+  per_page: 5
+  permalink: /page/:num/
+  title: ":title - Page :num"
+  sort_field: "date"
+  sort_reverse: true
+
+# SEO & social
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-paginate
+  - jekyll-feed            # ➤ adds an RSS feed at /feed.xml
+  - jekyll-minifier        # ➤ minifies HTML/CSS/JS output
+
+twitter:
+  card: summary_large_image
+  site: "@blakeox"
+  creator: "@blakeox"
+
+og:
+  title: "Blake Oxford Portfolio"
+  description: "Portfolio of Blake Oxford — IT Director, Business Systems Manager, Digital Transformation Consultant, Enterprise Solutions Architect, and Operations & Strategy Manager."
+  type: "website"
+  url: "https://blakeox.github.io"
+  image: "/assets/images/og-image.jpg"
+
+# Sitemap config
 sitemap:
   exclude:
     - /404.html
 
-# Exclude unnecessary files from the build
+# Exclude any files & folders you don’t want Jekyll to parse
 exclude:
   - Gemfile
   - Gemfile.lock
@@ -37,39 +75,9 @@ exclude:
   - _site
   - jekyll.log
   - node_modules
+  - vendor              # ◂──<- added: skip all bundled gems
 
-# Enable plugins supported by GitHub Pages
+# GitHub Pages settings
 github:
   is_project_page: true
   token: ENV['JEKYLL_GITHUB_TOKEN']
-
-# Other settings
-markdown: kramdown
-kramdown:
-  input: GFM
-
-sass:
-  sass_dir: _sass
-  style: compressed # Optional: Use 'compressed' for minified CSS
-
-pagination:
-  enabled: true
-  per_page: 5
-  permalink: /page/:num/
-  title: ":title - Page :num"
-  sort_field: "date"
-  sort_reverse: true
-
-# Reintroduce the `twitter` section
-twitter:
-  card: summary_large_image
-  site: "@blakeox"
-  creator: "@blakeox"
-
-# Reintroduce the `og:` section
-og:
-  title: "Blake Oxford Portfolio"
-  description: "Portfolio of Blake Oxford - IT Director, Business Systems Manager, Digital Transformation Consultant, Enterprise Solutions Architect, and Operations & Strategy Manager."
-  type: "website"
-  url: "https://blakeox.github.io"
-  image: "/assets/images/og-image.jpg"
