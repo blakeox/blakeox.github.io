@@ -67,7 +67,7 @@ jobs:
           failOnWarnings: false
 
       - name: Set up Node.js (cache Yarn)
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: yarn
@@ -101,7 +101,7 @@ jobs:
         with: { fetch-depth: 0 }
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
           cache: yarn
