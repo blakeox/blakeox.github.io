@@ -1,29 +1,33 @@
-<footer class="footer-container" role="contentinfo">
-  <p>© {{ site.time | date: '%Y' }} {{ site.title }}. All rights reserved.</p>
-  <p>
-    Built with 
-    <a href="https://pages.github.com/" target="_blank" rel="noopener" aria-label="Visit GitHub Pages">GitHub Pages</a>
-    &amp; 
-    <a href="https://jekyllrb.com/" target="_blank" rel="noopener" aria-label="Visit Jekyll">Jekyll</a>.
-  </p>
-  <nav class="social-links" aria-label="Social Media Links">
-    <ul>
-      <li>
-        <a href="https://linkedin.com/in/blake-oxford" target="_blank" rel="noopener" aria-label="Visit my LinkedIn Profile" data-analytics="linkedin">
-          <img src="{{ '/assets/images/linkedin-icon.png' | relative_url }}" alt="LinkedIn Icon" class="social-icon">
-        </a>
-      </li>
-      <li>
-        <a href="https://github.com/blakeox" target="_blank" rel="noopener" aria-label="Visit my GitHub Profile" data-analytics="github">
-          <img src="{{ '/assets/images/github-icon.png' | relative_url }}" alt="GitHub Icon" class="social-icon">
-        </a>
-      </li>
-    </ul>
-  </nav>
-  <div id="offline-banner" class="hidden" role="status">
+<footer class="footer-container py-4 px-3 border bg-background text-center sm:text-left sm:flex sm:items-center sm:justify-between" role="contentinfo">
+  <div class="sm:flex sm:items-center sm:gap-6 w-full">
+    <div class="sm:w-1/2">
+      <p class="mb-2 text-secondary">© {{ site.time | date: '%Y' }} {{ site.title }}. All rights reserved.</p>
+      <p class="mb-3">
+        Built with 
+        <a href="https://pages.github.com/" target="_blank" rel="noopener" aria-label="Visit GitHub Pages" class="text-primary">GitHub Pages</a>
+        &amp; 
+        <a href="https://jekyllrb.com/" target="_blank" rel="noopener" aria-label="Visit Jekyll" class="text-primary">Jekyll</a>.
+      </p>
+    </div>
+    <nav class="social-links flex justify-center gap-2 mb-3 sm:mb-0 sm:justify-end sm:w-1/2" aria-label="Social Media Links">
+      <ul class="flex gap-1 list-unstyled m-0 p-0">
+        <li>
+          <a href="https://linkedin.com/in/blake-oxford" target="_blank" rel="noopener" aria-label="Visit my LinkedIn Profile" data-analytics="linkedin">
+            <img src="{{ '/assets/images/linkedin-icon.png' | relative_url }}" alt="LinkedIn Icon" class="social-icon" />
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/blakeox" target="_blank" rel="noopener" aria-label="Visit my GitHub Profile" data-analytics="github">
+            <img src="{{ '/assets/images/github-icon.png' | relative_url }}" alt="GitHub Icon" class="social-icon" />
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div id="offline-banner" class="hidden bg-warning text-center py-2 mt-2 fade-in" role="status">
     You are offline. Some features may not be available.
   </div>
-  <p>
-    <a href="#top" class="btn back-to-top" aria-label="Back to Top">Back to Top</a>
+  <p class="mt-4 text-center sm:text-right">
+    <a href="#top" class="btn back-to-top hidden" aria-label="Back to Top">Back to Top</a>
   </p>
 </footer>

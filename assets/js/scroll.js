@@ -19,15 +19,21 @@ document.addEventListener('DOMContentLoaded', () => {
   if (backToTopButton) {
     window.addEventListener('scroll', () => {
       if (window.scrollY > 300) {
-        backToTopButton.classList.add('visible');
+        backToTopButton.classList.remove('hidden');
       } else {
-        backToTopButton.classList.remove('visible');
+        backToTopButton.classList.add('hidden');
       }
     });
 
     backToTopButton.addEventListener('click', (event) => {
       event.preventDefault();
       document.body.scrollIntoView({ behavior: 'smooth' });
+      // Accessibility: move focus to body for screen readers/keyboard users
+      document.body.setAttribute('tabindex', '-1');
+      document.body.focus();
+      document.body.addEventListener('blur', () => {
+        document.body.removeAttribute('tabindex');
+      }, { once: true });
     });
   }
 

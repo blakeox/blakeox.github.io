@@ -46,3 +46,11 @@
 .d-inline-grid { 
   display: inline-grid; // Inline grid container
 }
+
+.hidden {
+  display: none !important;
+}
+
+.visible {
+  display: inline-block !important;
+}

@@ -11,14 +11,14 @@
 // - **border-radius:** Adds small rounded corners for a modern look.
 a.btn, button.btn {
   display: inline-block; // Ensure buttons behave like inline-block elements
-  background: var(--color-primary); // Primary background color
+  background-color: $color-primary; // Primary background color
   color: $color-white; // White text for contrast
   padding: $btn-padding; // Padding for consistent spacing
   text-decoration: none; // Remove underline for anchor links
   border-radius: $border-radius-sm; // Small rounded corners for modern design
 
   &:hover {
-    background: $color-primary-hover; // Change background color on hover
+    background-color: $color-primary-hover; // Change background color on hover
     transform: translateY(-2px); // Slight upward movement for interactivity
   }
   &:focus {
@@ -26,7 +26,7 @@ a.btn, button.btn {
     outline-offset: 2px; // Offset for better visibility
   }
   &:active {
-    background: darken($color-primary, 15%); // Darker shade of primary color on active
+    background-color: darken($color-primary, 15%); // Darker shade of primary color on active
     transform: translateY(0); // Reset transform on active
   }
 }
@@ -35,8 +35,14 @@ a.btn, button.btn {
 // - **a:focus, button:focus:** Applies general focus styles to all anchor and button elements.
 // - **outline-offset:** Adds spacing around the outline for better visibility.
 a:focus, button:focus {
-  outline: 2px solid var(--color-primary); // Primary color outline
+  outline: 2px solid $color-primary; // Primary color outline
   outline-offset: 2px; // Offset for better visibility
+}
+
+// Focus-visible styles for accessibility (modern browsers)
+a.btn:focus-visible, button.btn:focus-visible, .btn:focus-visible {
+  outline: 3px solid $color-accent;
+  outline-offset: 2px;
 }
 
 // ### Button Class

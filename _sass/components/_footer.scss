@@ -1,43 +1,42 @@
 // ## Footer Styles
-// Styles for the website footer, including text and social links.
-
-.footer {
-  background-color: $color-secondary; // Secondary background color
-  color: $color-white; // White text color
-  padding: $spacing-lg 0; // Vertical padding
-
-  .footer-container {
-    @extend .container; // Reuse container styles
-    text-align: center; // Center-align content
-    padding: $spacing-md; // Inner padding
-    color: $color-text-secondary; // Secondary text color
-    background: $background-color-light; // Light background color
-
-    p {
-      font-size: $font-size-sm; // Small font size for text
-      margin-bottom: $spacing-sm; // Add spacing below text
-    }
-
-    .social-links {
-      display: flex; // Use flexbox for social links
-      justify-content: center; // Center-align links
-      gap: $spacing-md; // Add spacing between links
-
-      a {
-        color: $color-white; // White text color
-
-        &:hover {
-          color: $color-primary; // Primary color on hover
-        }
-      }
-    }
-  }
-}
+// Only keep unique customizations not covered by utility classes
 
 .footer-container a {
   color: var(--color-primary); // Use CSS variable
   text-decoration: none;
+  transition: color 0.2s;
 }
-.footer-container a:hover {
+.footer-container a:hover,
+.footer-container a:focus-visible {
   text-decoration: underline;
+  color: var(--color-primary-dark, #0056b3); // Use a darker primary for hover/focus if available
+}
+
+// Add dark mode support for the footer
+.footer-container.dark-mode {
+  background: var(--color-dark-bg, #181a1b);
+  color: var(--color-dark-text, #f1f1f1);
+}
+
+// Focus-visible for accessibility
+.footer-container a:focus-visible {
+  outline: 2px solid var(--color-primary, #4dc8aa);
+  outline-offset: 2px;
+}
+
+// Social icon sizing utility (if not already in a utility file)
+.social-icon {
+  width: 2rem;
+  height: 2rem;
+  display: inline-block;
+}
+
+// Fade-in animation for offline banner
+.fade-in {
+  animation: fadeIn 0.6s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

@@ -73,18 +73,4 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   });
-
-  // Back-to-Top Button Focus Management
-  const backToTop = document.querySelector('.back-to-top');
-  if (backToTop) {
-    backToTop.addEventListener('click', (event) => {
-      event.preventDefault();
-      document.body.scrollIntoView({ behavior: 'smooth' });
-      document.body.setAttribute('tabindex', '-1');
-      document.body.focus();
-      document.body.addEventListener('blur', () => {
-        document.body.removeAttribute('tabindex');
-      });
-    });
-  }
 });
