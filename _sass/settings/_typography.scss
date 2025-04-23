@@ -104,3 +104,13 @@ p {
   line-height: $line-height-base;
   margin-bottom: $spacing-md;
 }
+
+// ### Responsive Typography
+// Mixin for fluid type scaling between two sizes across viewports.
+@mixin fluid-type($min-size, $max-size) {
+  font-size: clamp(
+    #{$min-size},
+    calc(#{$min-size} + (#{$max-size} - #{$min-size}) * ((100vw - #{$breakpoint-sm}) / (#{$breakpoint-lg} - #{$breakpoint-sm}))),
+    #{$max-size}
+  );
+}

@@ -35,23 +35,45 @@
   }
 }
 
-// ### About CTA Group
-// - **.about-cta-group:** A container for grouped CTAs, such as in the "About" section.
-// - **text-align:** Centers the group horizontally.
-// - **display:** Uses flexbox for layout.
-// - **flex-wrap:** Allows buttons to wrap to the next line if necessary.
-// - **gap:** Adds spacing between buttons.
+// ### About CTA Group (improved)
+// - Reuse base .call-to-action styles
+// - Use CSS Grid for responsive columns
+// - Equal-width buttons with consistent spacing
 .about-cta-group {
-  text-align: center; // Center-align the content
-  margin-top: $spacing-xl; // Add top margin for spacing
-  display: flex; // Use flexbox for layout
-  flex-wrap: wrap; // Allow buttons to wrap to the next line if necessary
-  gap: $spacing-md; // Add spacing between buttons
-  justify-content: center; // Center-align the buttons horizontally
+  @extend .call-to-action;
 
-  // ### Buttons in CTA Group
-  // - **min-width:** Ensures a consistent minimum width for buttons.
+  // Base grid: one column stack on mobile
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-md;
+  background-color: $background-color-highlight;
+  padding: $spacing-lg;
+  border-radius: $border-radius-md;
+  margin-top: $spacing-xl;
+
+  // Two columns at small breakpoint
+  @include respond-to('sm') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .btn {
-    min-width: 220px; // Ensure a consistent minimum width for buttons
+    // Full width within grid cell
+    width: 100%;
+    max-width: none; // let grid control sizing
+    text-align: center;
+
+    // Add consistent height and font-size for CTA buttons
+    padding: $spacing-md $spacing-md;
+    font-size: $font-size-md;
+
+    // Upgrade hover/focus with elevation
+    box-shadow: 0 2px 6px rgba($color-black, 0.1);
+    transition: transform $transition-duration-fast ease, box-shadow $transition-duration-fast ease;
+
+    &:hover,
+    &:focus-visible {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba($color-black, 0.15);
+    }
   }
 }

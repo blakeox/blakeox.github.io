@@ -13,7 +13,10 @@
     // - **display:** Uses flexbox for horizontal alignment of elements.
     // - **gap:** Adds spacing between the year and content.
     // - **margin-bottom:** Adds vertical spacing between timeline items.
-    display: flex; // Use flexbox for layout
+    @extend .flex;
+    @extend .flex-column;
+    @extend .align-center;
+    text-align: center;
     gap: $spacing-md; // Add spacing between elements using a spacing variable
     margin-bottom: $spacing-lg; // Add bottom margin for spacing
   }
@@ -24,6 +27,7 @@
     // - **color:** Uses the primary color to highlight the year.
     font-weight: $font-weight-bold; // Use bold font weight for emphasis
     color: $color-primary; // Use the primary color for the year
+    margin-bottom: $spacing-xs; // Space below year on mobile
   }
 
   .timeline-content {
@@ -32,6 +36,38 @@
     // - **p:** Removes default paragraph margins for a cleaner layout.
     p {
       margin: 0; // Remove default margin for paragraphs
+    }
+  }
+
+  @include respond-to('sm') {
+    .timeline-item {
+      @extend .flex;
+      @extend .flex-row;
+      @extend .align-start;
+      @extend .justify-between;
+      gap: $spacing-lg; // Increase gap on larger screens
+    }
+    .timeline-year {
+      margin-bottom: 0;
+      margin-right: $spacing-md; // Space to the right of year
+    }
+    .timeline-content {
+      flex: 1; // Allow content to fill remaining space
+    }
+  }
+
+  @media (min-width: $breakpoint-md) {
+    .timeline-item:nth-child(odd) {
+      @extend .flex;
+      @extend .flex-row;
+      @extend .justify-between;
+      flex-direction: row-reverse; // reverse order for odd items
+      text-align: right;
+
+      .timeline-year {
+        margin-right: 0;
+        margin-left: $spacing-md;
+      }
     }
   }
 }

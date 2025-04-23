@@ -12,6 +12,16 @@
   margin: 0 auto; // Center the content horizontally
   padding: $spacing-lg; // Add padding using the spacing variable
   max-width: 960px; // Limit the maximum width of the content
+  padding-bottom: $spacing-xl; // Add space at bottom of About page
+  border-bottom: 1px solid $color-border-light; // Optional visual boundary before footer
+
+  // Fluid headings and paragraphs
+  h2 {
+    @include fluid-type($font-size-lg, $font-size-xl);
+  }
+  p {
+    @include fluid-type($font-size-sm, $font-size-md);
+  }
 
   .about-section {
     // ### About Section
@@ -36,6 +46,29 @@
       // - **line-height:** Ensures consistent spacing between lines for better readability.
       font-size: $font-size-md; // Use medium font size for readability
       line-height: $line-height-base; // Use base line height for consistent spacing
+    }
+  }
+
+  // Summary section: two-column layout on medium+ screens
+  #about-summary {
+    @include respond-to('md') {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: $spacing-lg;
+      align-items: start;
+    }
+  }
+
+  // Skills: wrap tags nicely
+  #about-skills {
+    .tag-list {
+      @extend .flex;
+      @extend .flex-wrap;
+      @extend .justify-center;
+      gap: $spacing-sm $spacing-md;
+      margin: 0; // remove default list margins
+      padding: 0;
+      list-style: none;
     }
   }
 }
