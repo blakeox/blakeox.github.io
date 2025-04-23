@@ -37,6 +37,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Accordion Toggle for Quick Links
+  const accordionToggle = document.querySelector('.accordion-toggle');
+  const quickLinks = document.getElementById('footer-quick-links');
+
+  if (accordionToggle && quickLinks) {
+    accordionToggle.addEventListener('click', () => {
+      const isExpanded = accordionToggle.getAttribute('aria-expanded') === 'true';
+      accordionToggle.setAttribute('aria-expanded', !isExpanded);
+      quickLinks.classList.toggle('expanded', !isExpanded);
+    });
+  }
+
   // Scroll-triggered animations
   const scrollElements = document.querySelectorAll('.scroll-animate');
   function handleScrollAnimations() {

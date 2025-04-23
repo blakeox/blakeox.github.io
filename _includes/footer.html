@@ -12,22 +12,69 @@
     <nav class="social-links flex justify-center gap-2 mb-3 sm:mb-0 sm:justify-end sm:w-1/2" aria-label="Social Media Links">
       <ul class="flex gap-1 list-unstyled m-0 p-0">
         <li>
-          <a href="https://linkedin.com/in/blake-oxford" target="_blank" rel="noopener" aria-label="Visit my LinkedIn Profile" data-analytics="linkedin">
-            <img src="{{ '/assets/images/linkedin-icon.png' | relative_url }}" alt="LinkedIn Icon" class="social-icon" />
+          <a href="https://linkedin.com/in/blake-oxford" target="_blank" rel="noopener" aria-label="Visit my LinkedIn Profile" title="LinkedIn" data-analytics="linkedin">
+            <img src="{{ '/assets/images/LI-In-Bug.png' | relative_url }}" alt="LinkedIn Icon" class="social-icon" loading="lazy" decoding="async" />
           </a>
         </li>
         <li>
-          <a href="https://github.com/blakeox" target="_blank" rel="noopener" aria-label="Visit my GitHub Profile" data-analytics="github">
-            <img src="{{ '/assets/images/github-icon.png' | relative_url }}" alt="GitHub Icon" class="social-icon" />
+          <a href="https://github.com/blakeox" target="_blank" rel="noopener" aria-label="Visit my GitHub Profile" title="GitHub" data-analytics="github">
+            <img src="{{ '/assets/images/github-mark.png' | relative_url }}" alt="GitHub Icon" class="social-icon" loading="lazy" decoding="async" />
           </a>
         </li>
       </ul>
     </nav>
   </div>
+  <!-- Footer Quick Links -->
+  <nav class="footer-sitemap mt-6 mb-4" role="navigation" aria-label="Footer Quick Links">
+    <h4 class="footer-sitemap__title text-lg font-bold text-primary hidden sm:block">Quick Links</h4>
+    <button class="accordion-toggle sm:hidden" aria-expanded="false" aria-controls="footer-quick-links">
+      Quick Links
+    </button>
+    <ul id="footer-quick-links" class="list-unstyled footer-sitemap__list">
+      <li><a href="/about/" title="About">About</a></li>
+      <li><a href="/projects/" title="Projects">Projects</a></li>
+      <li><a href="/blog/" title="Blog">Blog</a></li>
+      <li><a href="/contact/" title="Contact">Contact</a></li>
+    </ul>
+  </nav>
   <div id="offline-banner" class="hidden bg-warning text-center py-2 mt-2 fade-in" role="status">
     You are offline. Some features may not be available.
   </div>
   <p class="mt-4 text-center sm:text-right">
     <a href="#top" class="btn back-to-top hidden" aria-label="Back to Top">Back to Top</a>
   </p>
+
+  <!-- Dark Mode Toggle -->
+  <p class="mt-4 text-center">
+    <button id="theme-toggle" class="btn secondary" aria-pressed="false" aria-label="Toggle dark mode">
+      Toggle Dark Mode
+    </button>
+  </p>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "{{ site.title }}",
+    "url": "{{ site.url | absolute_url }}",
+    "logo": "{{ '/assets/images/Blake-O-scaled.jpg' | absolute_url }}",
+    "sameAs": [
+      "https://linkedin.com/in/blake-oxford",
+      "https://github.com/blakeox"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+1-800-555-5555",
+      "contactType": "Customer Service",
+      "areaServed": "US",
+      "availableLanguage": "English"
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "{{ site.url | absolute_url }}?query={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
 </footer>

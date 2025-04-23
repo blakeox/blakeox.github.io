@@ -40,3 +40,59 @@
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
+.accordion-toggle {
+  background: none;
+  border: none;
+  color: $color-primary;
+  font-size: $font-size-md;
+  text-align: left;
+  cursor: pointer;
+  padding: $spacing-sm 0;
+  width: 100%;
+
+  &:hover {
+    color: $color-primary-hover;
+  }
+}
+
+#footer-quick-links {
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+
+  &.expanded {
+    max-height: 500px; // Arbitrary large value to accommodate content
+    opacity: 1;
+  }
+}
+
+// Desktop defaults: show Quick Links list, hide accordion toggle
+@include respond-to('sm') {
+  #footer-quick-links {
+    max-height: none !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+  }
+  .accordion-toggle {
+    display: none !important;
+  }
+}
+
+// Center Quick Links dropdown text on mobile
+.footer-sitemap__list {
+  text-align: center;
+
+  li {
+    text-align: center;
+  }
+}
+
+.footer-sitemap a {
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: $color-primary-hover;
+  }
+}
