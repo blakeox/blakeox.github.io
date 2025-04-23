@@ -5,12 +5,7 @@ description: "Learn about Blake Oxford, a visionary leader in IT and business tr
 permalink: /about/
 ---
 
-<meta name="description" content="{{ page.description | escape }}">
-<meta property="og:description" content="{{ page.description | escape }}">
-<meta property="og:image" content="{{ '/assets/images/Blake-O-scaled.jpg' | relative_url }}">
-<meta property="og:image:alt" content="Headshot of Blake Oxford, IT Director and Business Systems Manager">
-
-<section class="about-page container" aria-label="About Blake Oxford" id="top">
+<main role="main" class="about-page container" aria-label="About Blake Oxford" id="top">
   <h1 class="page-title fade-in">About Me</h1>
   <img src="{{ '/assets/images/Blake-O-scaled.jpg' | relative_url }}" alt="Photo of Blake Oxford in professional attire" class="about-avatar fade-in">
 
@@ -32,9 +27,12 @@ permalink: /about/
     <div class="key-achievements">
       <h3 class="fade-in">Key Achievements</h3>
       <ul>
-        <li>✅ Scaled an organization from 12 to 180 employees with an 8x revenue increase.</li>
-        <li>💰 Saved over $250K annually through business process automation and consolidation.</li>
-        <li>☁️ Implemented multi-location IT systems and cloud-based SaaS tools for scalability.</li>
+        <li>🚀 <strong>Self-taught Revenue Cycle Management:</strong> Led end-to-end AdvancedMD practice management system implementation by devouring every industry book, podcast, and help file—then authored SOPs and trained the entire team.</li>
+        <li>📊 <strong>Data-Driven Continuous Improvement:</strong> Built SQL &amp; Power BI analytics and automated auditing tools that surfaced operational bottlenecks and drove targeted, measurable performance gains.</li>
+        <li>💰 <strong>Multi-Million-Dollar Cost Savings:</strong> Delivered substantial savings through process automation using Azure, Power BI, OpenAI integrations, and enterprise system consolidations.</li>
+        <li>☁️ <strong>Enterprise SaaS Rollouts:</strong> Orchestrated company-wide deployments of Sage Intacct, Azure/Intune, ADP Workforce Now, Cornerstone LMS, and custom OpenAI workflows for 180+ users.</li>
+        <li>⚡ <strong>Rapid Cloud Migration:</strong> Migrated 180 staff from Google Workspace to Microsoft 365 at the start of COVID-19, ensuring zero disruption to business continuity.</li>
+        <li>📈 <strong>Advanced Financial Forecasting:</strong> Designed real-time Power BI dashboards and predictive models that empowered leadership to make data-backed decisions on departmental investments and restructures.</li>
       </ul>
     </div>
   </section>
@@ -59,7 +57,11 @@ permalink: /about/
       <div class="timeline-year">2018–2024</div>
       <div class="timeline-content">
         <strong>Director of Special Projects, The Oxford Center</strong>
-        <p>Led enterprise system integration, scaled company-wide operations, and drove digital transformation across departments.</p>
+        <ul>
+          <li>Implemented AdvancedMD practice management and revenue cycle SOPs from scratch.</li>
+          <li>Built automated SQL/Power BI reporting &amp; auditing tools to eliminate operational chokepoints.</li>
+          <li>Rolled out Sage Intacct, Azure, Intune, ADP, Cornerstone LMS, and OpenAI integrations.</li>
+        </ul>
       </div>
     </div>
     <div class="timeline-item">
@@ -75,9 +77,10 @@ permalink: /about/
   <section class="about-section resume-summary scroll-animate">
     <h2 class="fade-in">Resume Highlights</h2>
     <ul>
-      <li><strong>Scaled Organization:</strong> From 12 to 180 employees while minimizing overhead through automation.</li>
-      <li><strong>Operational Savings:</strong> $250K+ in annual savings via streamlined processes and systems.</li>
-      <li><strong>Enterprise Platforms:</strong> AdvancedMD, Sage Intacct, ADP, QuickBooks, Azure, Intune, Power BI.</li>
+      <li><strong>Practice Management &amp; RCM:</strong> End-to-end AdvancedMD implementation, SOP creation, team training.</li>
+      <li><strong>Automation &amp; Savings:</strong> Multi-million-dollar overhead reduction via Azure, Power BI, and OpenAI-driven workflows.</li>
+      <li><strong>Cloud &amp; SaaS:</strong> Google Workspace → Microsoft 365 migration for 180 users; Sage Intacct; Azure/Intune; ADP; Cornerstone LMS.</li>
+      <li><strong>Data Analytics:</strong> Real-time SQL/Power BI dashboards &amp; predictive financial models for C-suite decision support.</li>
     </ul>
   </section>
 
@@ -88,8 +91,20 @@ permalink: /about/
       <a href="/assets/files/BlakeOxford_Resume.pdf" class="btn secondary" aria-label="Download Resume" data-analytics="download-resume">📄 Download Resume</a>
     </div>
   </section>
-</section>
 
+  <!-- Connect -->
+  <section id="about-social" class="about-section scroll-animate">
+    <h2 class="fade-in">Connect</h2>
+    <ul class="social-links">
+      <li><a href="https://linkedin.com/in/blake-oxford" aria-label="LinkedIn">LinkedIn</a></li>
+      <li><a href="https://github.com/blakeox" aria-label="GitHub">GitHub</a></li>
+    </ul>
+  </section>
+</main>
+
+<!-- Open Graph -->
+<meta property="og:image" content="{{ '/assets/images/Blake-O-scaled.jpg' | relative_url }}" />
+<meta property="og:image:alt" content="Headshot of Blake Oxford" />
 <!-- Structured Data for SEO -->
 <script type="application/ld+json">
 {
