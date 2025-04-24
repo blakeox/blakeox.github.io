@@ -13,6 +13,7 @@ permalink: /about/
   <nav class="anchor-links scroll-animate" aria-label="Page Sections">
     <ul>
       <li><a href="#about-summary" data-analytics="about-summary">Summary</a></li>
+      <li><a href="#about-education" data-analytics="about-education">Education</a></li>
       <li><a href="#about-skills" data-analytics="about-skills">Key Skills</a></li>
       <li><a href="#about-timeline" data-analytics="about-timeline">Career Highlights</a></li>
       <li><a href="#about-social" data-analytics="about-social">Connect</a></li>
@@ -35,6 +36,20 @@ permalink: /about/
         <li>📈 <strong>Advanced Financial Forecasting:</strong> Designed real-time Power BI dashboards and predictive models that empowered leadership to make data-backed decisions on departmental investments and restructures.</li>
       </ul>
     </div>
+    <!-- Stats Section with Animated Counters -->
+    <section class="stats" id="about-stats">
+      {% for stat in page.stats %}
+        <div class="stat">
+          <span data-target="{{ stat.target }}">0</span>
+          <div class="stat-label">{{ stat.label }}</div>
+        </div>
+      {% endfor %}
+    </section>
+  </section>
+  <!-- Education -->
+  <section class="about-section scroll-animate" id="about-education">
+    <h2 class="fade-in">Education</h2>
+    <p>Bachelor in Business Finance, Calvin College</p>
   </section>
 
   <!-- Skills -->
@@ -53,24 +68,20 @@ permalink: /about/
   <!-- Career Timeline -->
   <section class="about-section timeline scroll-animate" id="about-timeline">
     <h2 class="fade-in">Career Highlights</h2>
-    <div class="timeline-item">
-      <div class="timeline-year">2018–2024</div>
-      <div class="timeline-content">
-        <strong>Director of Special Projects, The Oxford Center</strong>
-        <ul>
-          <li>Implemented AdvancedMD practice management and revenue cycle SOPs from scratch.</li>
-          <li>Built automated SQL/Power BI reporting &amp; auditing tools to eliminate operational chokepoints.</li>
-          <li>Rolled out Sage Intacct, Azure, Intune, ADP, Cornerstone LMS, and OpenAI integrations.</li>
-        </ul>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-year">2014–2018</div>
-      <div class="timeline-content">
-        <strong>Marketing & Finance Manager</strong>
-        <p>Executed IT modernization strategies and championed financial optimization initiatives that improved cash flow and reporting accuracy.</p>
-      </div>
-    </div>
+    <ul class="timeline">
+      {% for block in page.timeline %}
+        <li data-year="{{ block.year }}">
+          <button class="btn secondary timeline-trigger">{{ block.year }}</button>
+          <div class="timeline-details">
+            <ul>
+              {% for item in block.items %}
+                <li>{{ item }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
   </section>
 
   <!-- Resume Summary -->

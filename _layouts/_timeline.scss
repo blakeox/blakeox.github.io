@@ -54,14 +54,14 @@
     margin-bottom: $spacing-lg; // Add bottom margin for spacing
 
     .timeline-trigger {
-      @extend .btn; // base button styles
-      background-color: $color-background-light; // light card background
-      color: $color-primary; // primary accent
-      border: 1px solid $color-primary; // outline
+      background: $color-background-light;
+      border: 1px solid $color-primary;
       padding: $spacing-xs $spacing-md;
-      border-radius: $border-radius-md;
-      transition: background-color $transition-duration-fast ease, color $transition-duration-fast ease;
-      margin-bottom: $spacing-sm;
+      border-radius: $border-radius-circle;
+      font-weight: $font-weight-semibold;
+      cursor: pointer;
+      transition: background-color $transition-duration-fast ease;
+      display: inline-block;
 
       &:hover {
         background-color: $color-primary;

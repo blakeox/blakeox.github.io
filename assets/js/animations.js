@@ -52,22 +52,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Example: Add a bounce animation to buttons on click
   animateOnEvent('.btn', 'bounce', 'click');
+});
 
-  // Hero text animation
-  const heroTitle = document.querySelector('.hero__title');
-  const heroDescription = document.querySelector('.hero__description');
-
-  function animateText(element, delay = 0) {
-    const text = element.textContent;
-    element.textContent = '';
-    text.split('').forEach((char, index) => {
-      const span = document.createElement('span');
-      span.textContent = char;
-      span.style.animationDelay = `${delay + index * 0.05}s`;
-      element.appendChild(span);
+// Interactive Timeline Toggle
+window.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.timeline-trigger').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.nextElementSibling.classList.toggle('open');
     });
-  }
+  });
+});
 
-  if (heroTitle) animateText(heroTitle);
-  if (heroDescription) animateText(heroDescription, 1);
+// Animated Stats Counters
+window.addEventListener('DOMContentLoaded', () => {
+  const animateCount = el => {
+    const target = +el.dataset.target;
+    let count = 0;
+    const step = target / 200;
+    const tick = () => {
+      count += step;
+      el.textContent = Math.floor(count);
+      if (count < target) requestAnimationFrame(tick);
+      else el.textContent = target;
+    };
+    tick();
+  };
+  const statsObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) animateCount(entry.target);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.stat span').forEach(el => statsObserver.observe(el));
 });

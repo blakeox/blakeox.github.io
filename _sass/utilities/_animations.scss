@@ -32,14 +32,6 @@
   transform: translateY(0); // Return to the original position
 }
 
-.hero__title span,
-.hero__description span {
-  display: inline-block; // Ensure each span is treated as a block for animation
-  opacity: 0; // Initially hidden
-  transform: translateY(20px); // Start slightly below the original position
-  animation: fadeInUp $animation-duration-default $ease-in-out forwards; // Use standardized animation duration and easing
-}
-
 // ### Keyframe Animation: Fade In Up
 // This animation combines fading in and moving upward.
 // - **Use Case:** Sequentially animate text or elements with a smooth upward motion.

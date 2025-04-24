@@ -38,4 +38,15 @@
       color: $color-white; // Ensure text remains readable
     }
   }
+
+  // Pill badge styling for tags
+  .tag-list .tag {
+    display: inline-block;
+    background-color: rgba($color-primary, 0.1);
+    color: $color-primary;
+    padding: $spacing-xs $spacing-sm;
+    border-radius: 9999px;
+    font-size: $font-size-sm;
+    margin: $spacing-xs $spacing-sm 0 0;
+  }
 }
