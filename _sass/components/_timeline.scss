@@ -3,21 +3,156 @@
 // The timeline is designed to be visually appealing, responsive, and consistent with the overall design system.
 // SASS variables are used for colors, spacing, and typography to ensure maintainability and easy updates.
 
-.timeline {
+ul.timeline {
   position: relative;
+  // Default vertical layout (mobile)
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+  // Mobile: no scrollbars
 
-  // Vertical spine: only display on medium+ screens
-  @include respond-to('md') {
-    &::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 0;
-      transform: translateX(-50%);
-      width: 2px;
-      height: 100%;
-      background-color: $color-border-medium;
+  // Force card background and text via CSS variables
+  li {
+    @extend %card-base;  // use card base styles
+    background: var(--color-background);
+    color: var(--color-text);
+    z-index: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 240px;
+    max-width: 360px;
+    margin: 0 auto;
+    transition: box-shadow 0.3s, transform 0.3s;
+    overflow-y: visible;
+
+    &.active {
+      border: 2px solid $color-primary;
+      background: lighten($background-color-light, 2%);
+      box-shadow: 0 8px 32px rgba($color-primary, 0.15);
     }
+
+    // Icon and year row
+    .timeline-icon {
+      font-size: 2.5rem;
+      margin-bottom: $spacing-xs;
+      display: block;
+      filter: drop-shadow(0 2px 4px rgba($color-black, 0.08));
+    }
+
+    .timeline-trigger {
+      @extend .btn;
+      background: var(--color-background);
+      color: var(--color-primary);
+      border: 1px solid var(--color-primary);
+      padding: $spacing-xs $spacing-md;
+      border-radius: $border-radius-md;
+      transition: background-color $transition-duration-fast ease, color $transition-duration-fast ease;
+      margin-bottom: $spacing-sm;
+      position: relative;
+
+      &::after {
+        content: '▸';
+        display: inline-block;
+        margin-left: $spacing-xs;
+        transition: transform $transition-duration-fast ease;
+      }
+      &.open::after {
+        transform: rotate(90deg);
+      }
+
+      &:hover {
+        background: var(--color-primary);
+        color: var(--color-white);
+      }
+    }
+
+    .timeline-details {
+      @extend %card-base;  // details as nested card
+      width: 100%;
+      margin-top: $spacing-xs;
+      padding: $spacing-sm $spacing-md;
+      max-height: 1000px;
+      opacity: 1;
+      transition: none;
+      display: block;
+      margin-top: $spacing-sm;
+      max-height: none;
+      overflow: visible;
+      background: var(--color-background-light);
+      color: var(--color-text);
+    }
+
+    // On mobile, details are collapsible
+    @media (max-width: $breakpoint-md) {
+      .timeline-details {
+        max-height: 0;
+        opacity: 0;
+        padding: 0 $spacing-md;
+        transition: max-height 0.4s, opacity 0.3s, padding 0.3s;
+        display: block;
+      }
+      .timeline-details.open {
+        max-height: 1000px;
+        opacity: 1;
+        padding: $spacing-sm $spacing-md;
+      }
+    }
+  }
+
+  @include respond-to('md') {
+    // Desktop: enable horizontal scrolling on the timeline list only
+    overflow-x: auto;
+    overflow-y: hidden;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;  // enable scroll snapping
+
+    li {
+      flex: 0 0 auto;
+      width: 300px;
+      scroll-snap-align: start;
+      margin-right: $spacing-lg;
+      &:last-child { margin-right: 0; }
+
+      &::before { // connector line
+        content: '';
+        position: absolute;
+        top: 50%; left: 16px; right: 16px;
+        height: 2px;
+        background: $color-border-light;
+        transform: translateY(-50%);
+        pointer-events: none;
+      }
+      &:first-child::before { left: 50%; }
+      &:last-child::before { right: 50%; }
+
+      .timeline-trigger,
+      .timeline-details {
+        position: relative;
+        z-index: 1;
+      }
+    }
+
+    // Hide native scrollbars
+    &::-webkit-scrollbar { display: none; }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    // Custom scrollbar for horizontal timeline
+    &::-webkit-scrollbar {
+      height: 8px;
+      background: $background-color-secondary;
+      border-radius: $border-radius-md;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: $color-primary;
+      border-radius: $border-radius-md;
+    }
+    scrollbar-color: $color-primary $background-color-secondary;
+    scrollbar-width: thin;
   }
 
   // ### Timeline Container
@@ -55,25 +190,29 @@
 
     .timeline-trigger {
       @extend .btn; // base button styles
-      background-color: $color-background-light; // light card background
-      color: $color-primary; // primary accent
-      border: 1px solid $color-primary; // outline
+      background-color: $background-color-light;
+      color: $color-primary;
+      border: 1px solid $color-primary;
       padding: $spacing-xs $spacing-md;
       border-radius: $border-radius-md;
       transition: background-color $transition-duration-fast ease, color $transition-duration-fast ease;
       margin-bottom: $spacing-sm;
+      position: relative;
+
+      &::after {
+        content: '▸';
+        display: inline-block;
+        margin-left: $spacing-xs;
+        transition: transform $transition-duration-fast ease;
+      }
+      &.open::after {
+        transform: rotate(90deg);
+      }
 
       &:hover {
         background-color: $color-primary;
         color: $color-white;
       }
-    }
-
-    .timeline-details {
-      background: $background-color-light;
-      margin-top: $spacing-sm;
-      padding: $spacing-md;
-      border-radius: $border-radius-md;
     }
   }
 
@@ -132,5 +271,62 @@
         margin-left: $spacing-md;
       }
     }
+
+    .timeline-item {
+      width: 100%;
+      &:nth-child(even) {
+        .timeline-details {
+          margin-left: calc(50% + $spacing-md);
+          width: calc(50% - $spacing-md);
+        }
+      }
+      &:nth-child(odd) {
+        .timeline-details {
+          margin-right: calc(50% + $spacing-md);
+          width: calc(50% - $spacing-md);
+        }
+      }
+    }
   }
+
+  // Progress dots
+  .timeline-dots {
+    display: flex;
+    justify-content: center;
+    gap: $spacing-sm;
+    margin: $spacing-md 0 0 0;
+    li {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: $color-border-light;
+      transition: background 0.3s;
+      &.active {
+        background: $color-primary;
+      }
+    }
+  }
+
+  // Allow parent section overflow for horizontal scroll only
+  section.about-section.timeline {
+    overflow: visible !important;
+  }
+}
+
+// Animate card pop-in
+ul.timeline li {
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+  transition: opacity 0.5s $ease-in-out, transform 0.5s $ease-in-out;
+  &.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+// Highlight active card via JS
+ul.timeline li.active {
+  border: 2px solid $color-primary;
+  background: lighten($background-color-light, 2%);
+  box-shadow: 0 8px 32px rgba($color-primary, 0.15);
 }

@@ -54,13 +54,53 @@ document.addEventListener('DOMContentLoaded', () => {
   animateOnEvent('.btn', 'bounce', 'click');
 });
 
-// Interactive Timeline Toggle
+// Interactive Timeline Toggle (Accordion behavior)
 window.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.timeline-trigger').forEach(btn => {
+  const triggers = document.querySelectorAll('.timeline-trigger');
+  triggers.forEach((btn, index) => {
+    const details = btn.nextElementSibling;
+    // Set ARIA controls
+    const id = `timeline-details-${index}`;
+    details.setAttribute('id', id);
+    btn.setAttribute('aria-controls', id);
+    btn.setAttribute('aria-expanded', index === 0 ? 'true' : 'false');
+
     btn.addEventListener('click', () => {
-      btn.nextElementSibling.classList.toggle('open');
+      // Close all
+      triggers.forEach(t => {
+        t.nextElementSibling.classList.remove('open');
+        t.classList.remove('open');
+        t.setAttribute('aria-expanded', 'false');
+      });
+      // Toggle current
+      const isOpen = details.classList.toggle('open');
+      btn.classList.toggle('open');
+      btn.setAttribute('aria-expanded', isOpen.toString());
     });
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault(); btn.click();
+      }
+    });
+    btn.setAttribute('tabindex', '0');
   });
+});
+
+// Update sticky current year on scroll
+window.addEventListener('DOMContentLoaded', () => {
+  const currentYearEl = document.getElementById('timeline-current-year');
+  const items = document.querySelectorAll('.timeline-item');
+  if (currentYearEl && items.length) {
+    const yearObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const year = entry.target.getAttribute('data-year');
+          currentYearEl.textContent = year;
+        }
+      });
+    }, { rootMargin: '-50% 0px -50% 0px' });
+    items.forEach(item => yearObserver.observe(item));
+  }
 });
 
 // Animated Stats Counters
@@ -83,4 +123,107 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   }, { threshold: 0.5 });
   document.querySelectorAll('.stat span').forEach(el => statsObserver.observe(el));
+});
+
+// Debounce utility for performance
+function debounce(func, wait = 50) {
+  let timeout;
+  return function(...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, args), wait);
+  };
+}
+
+// Timeline progress dots, auto-scroll, and card pop-in
+window.addEventListener('DOMContentLoaded', () => {
+  const timeline = document.querySelector('.timeline');
+  const dots = document.querySelectorAll('.timeline-dots li');
+  const items = document.querySelectorAll('.timeline > li');
+  if (!timeline || !dots.length || !items.length) return;
+
+  // Use IntersectionObserver for card visibility instead of manual scroll
+  const cardObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      entry.target.classList.toggle('visible', entry.isIntersecting);
+    });
+  }, { threshold: 0.2 });
+  items.forEach(item => cardObserver.observe(item));
+
+  // Debounced dots update
+  function updateDots() {
+    let activeIdx = 0;
+    items.forEach((item, i) => {
+      const rect = item.getBoundingClientRect();
+      if (rect.left < window.innerWidth / 2) activeIdx = i;
+    });
+    dots.forEach((dot, i) => dot.classList.toggle('active', i === activeIdx));
+  }
+  const debouncedUpdateDots = debounce(updateDots);
+  window.addEventListener('scroll', debouncedUpdateDots, { passive: true });
+  window.addEventListener('resize', debouncedUpdateDots);
+  updateDots();
+
+  // Dot click scrolls to card
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      items[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    });
+  });
+
+  // Auto-scroll to current on load (desktop only)
+  if (window.innerWidth >= 768) {
+    setTimeout(() => {
+      const active = document.querySelector('.timeline > li.visible') || items[0];
+      if (active) active.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }, 400);
+  }
+});
+
+// Timeline progress bar and keyboard navigation
+window.addEventListener('DOMContentLoaded', () => {
+  const timelineSection = document.getElementById('about-timeline');
+  const progressBar = document.querySelector('.timeline-progress-bar');
+  const timeline = document.querySelector('.timeline');
+  const items = document.querySelectorAll('.timeline > li');
+  if (!timelineSection || !progressBar || !items.length) return;
+
+  // Animate progress bar as you scroll through timeline
+  function updateTimelineProgress() {
+    const rect = timelineSection.getBoundingClientRect();
+    const winH = window.innerHeight;
+    if (rect.top > winH || rect.bottom < 0) {
+      progressBar.style.width = '0%';
+      return;
+    }
+    // Find the most visible card
+    let maxVisible = 0, activeIdx = 0;
+    items.forEach((item, i) => {
+      const r = item.getBoundingClientRect();
+      const visible = Math.max(0, Math.min(r.bottom, winH) - Math.max(r.top, 0));
+      if (visible > maxVisible) {
+        maxVisible = visible;
+        activeIdx = i;
+      }
+    });
+    const percent = ((activeIdx + 1) / items.length) * 100;
+    progressBar.style.width = percent + '%';
+  }
+  const debouncedProgress = debounce(updateTimelineProgress);
+  window.addEventListener('scroll', debouncedProgress, { passive: true });
+  window.addEventListener('resize', debouncedProgress);
+  updateTimelineProgress();
+
+  // Keyboard navigation (left/right arrows)
+  timeline.addEventListener('keydown', (e) => {
+    if (e.target.classList.contains('timeline-trigger')) {
+      let idx = Array.from(items).findIndex(li => li.contains(e.target));
+      if (e.key === 'ArrowRight' && idx < items.length - 1) {
+        const nextBtn = items[idx + 1].querySelector('.timeline-trigger');
+        if (nextBtn) nextBtn.focus();
+      } else if (e.key === 'ArrowLeft' && idx > 0) {
+        const prevBtn = items[idx - 1].querySelector('.timeline-trigger');
+        if (prevBtn) prevBtn.focus();
+      }
+    }
+  });
 });

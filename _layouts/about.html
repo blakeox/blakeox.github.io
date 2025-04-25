@@ -66,11 +66,16 @@ permalink: /about/
   </section>
 
   <!-- Career Timeline -->
-  <section class="about-section timeline scroll-animate" id="about-timeline">
+  <div class="timeline-current sticky">
+    <strong>Current Highlight:</strong> <span id="timeline-current-year" aria-live="polite">{{ page.timeline[0].year }}</span>
+  </div>
+  <section class="about-section timeline scroll-animate" id="about-timeline" tabindex="0">
     <h2 class="fade-in">Career Highlights</h2>
-    <ul class="timeline">
+    <div class="timeline-progress-bar" aria-hidden="true"></div>
+    <ul class="timeline" tabindex="0" aria-label="Timeline">
       {% for block in page.timeline %}
-        <li data-year="{{ block.year }}">
+        <li class="timeline-item" data-year="{{ block.year }}">
+          {% if block.icon %}<span class="timeline-icon" aria-label="{{ block.year }} icon">{{ block.icon }}</span>{% endif %}
           <button class="btn secondary timeline-trigger">{{ block.year }}</button>
           <div class="timeline-details">
             <ul>
@@ -80,6 +85,12 @@ permalink: /about/
             </ul>
           </div>
         </li>
+      {% endfor %}
+    </ul>
+    <ul class="timeline-dots" aria-label="Timeline navigation">
+      <span class="visually-hidden">Timeline progress</span>
+      {% for block in page.timeline %}
+        <li{% if forloop.first %} class="active"{% endif %}></li>
       {% endfor %}
     </ul>
   </section>
@@ -97,7 +108,7 @@ permalink: /about/
 
   <!-- CTAs -->
   <section class="about-cta-section scroll-animate">
-    <div class="about-cta-group">
+    <div class="about-cta-group"></div>
       <a href="/contact/" class="btn" aria-label="Contact Blake" data-analytics="contact-blake">🚀 Ready to scale your business? Let’s talk!</a>
       <a href="/assets/files/BlakeOxford_Resume.pdf" class="btn secondary" aria-label="Download Resume" data-analytics="download-resume">📄 Download Resume</a>
     </div>

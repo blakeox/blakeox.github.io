@@ -65,3 +65,14 @@
     text-align: center; // Center-align the footer content
   }
 }
+
+// ### Card Base Placeholder
+// Reusable definition for card-like components (box-shadow, border-radius, padding, transition)
+%card-base {
+  background: var(--color-background-light);
+  color: var(--color-text);
+  border-radius: $border-radius-md;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  padding: $spacing-lg $spacing-md;
+}
