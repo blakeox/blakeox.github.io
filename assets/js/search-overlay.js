@@ -14,14 +14,20 @@ async function loadSearchIndex() {
     flexIndex = new FlexSearch.Document({
       document: {
         id: 'url',
-        index: ['title', 'snippet']
+        index: ['title', 'snippet', 'categories', 'tags']
       },
       tokenize: 'forward',
-      cache: true,
-      threshold: 1,
+      cache: 100,
+      threshold: 2,
+      resolution: 9,
+      worker: true,
     });
+    // Add data to index with improved tokenization
     data.forEach(item => flexIndex.add(item));
     indexReady = true;
+    
+    // Notify that search is ready
+    document.dispatchEvent(new CustomEvent('searchReady'));
   } catch (err) {
     console.error('Error loading search index:', err);
     indexReady = false;
@@ -34,6 +40,7 @@ class SearchOverlay {
     this.initializeElements();
     this.initializeModules();
     this.bindEvents();
+    this.addSpotlightEffect();
     this.displayRecentSearches();
     this.displayPopularSearches();
     this.displayBookmarks();
@@ -63,12 +70,31 @@ class SearchOverlay {
     this.bookmarksList = this.overlay?.querySelector('.c-search-overlay__bookmarks-list');
     this.clearButton = this.overlay?.querySelector('.c-search-overlay__clear');
     this.container = this.overlay?.querySelector('.c-search-overlay__container');
+    this.shortcuts = this.overlay?.querySelector('.c-search-overlay__shortcuts');
+    this.inputBackdrop = this.overlay?.querySelector('.c-search-overlay__input-backdrop');
   }
 
   initializeModules() {
     this.theme = new SearchOverlayTheme();
     this.history = new SearchHistory();
     this.analytics = new SearchAnalytics();
+  }
+  
+  // Add a spotlight effect to the input when focused
+  addSpotlightEffect() {
+    this.input?.addEventListener('focus', () => {
+      const inputGlow = this.inputBackdrop?.querySelector('.input-glow');
+      const scanLine = this.inputBackdrop?.querySelector('.input-scan-line');
+      if (inputGlow) inputGlow.classList.add('active');
+      if (scanLine) scanLine.style.animationPlayState = 'running';
+    });
+    
+    this.input?.addEventListener('blur', () => {
+      const inputGlow = this.inputBackdrop?.querySelector('.input-glow');
+      const scanLine = this.inputBackdrop?.querySelector('.input-scan-line');
+      if (inputGlow) inputGlow.classList.remove('active');
+      if (scanLine) scanLine.style.animationPlayState = 'paused';
+    });
   }
 
   bindEvents() {
@@ -103,6 +129,16 @@ class SearchOverlay {
       this.handleLiveSearch();
       this.toggleClearButton();
       this.input.focus();
+    });
+    
+    // Add mouse tracking for spotlight effect on search results
+    this.results?.addEventListener('mousemove', (e) => {
+      const rect = e.currentTarget.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      
+      e.currentTarget.style.setProperty('--x', `${x}%`);
+      e.currentTarget.style.setProperty('--y', `${y}%`);
     });
     this.filter?.addEventListener('change', () => {
       this.handleLiveSearch();

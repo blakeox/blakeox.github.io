@@ -3,30 +3,44 @@
   <div class="c-search-overlay__container" tabindex="-1">
     <div class="c-search-overlay__header">
       <h2 class="c-search-overlay__title">Search</h2>
-      <button class="c-search-overlay__theme-toggle" aria-label="Toggle theme" tabindex="0">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v1m0 16v1m8.66-13.66l-.71.71M4.05 19.95l-.71.71M21 12h-1M4 12H3m16.66 5.66l-.71-.71M4.05 4.05l-.71-.71" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <button class="c-search-overlay__close" aria-label="Close search" tabindex="0">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <button class="c-search-overlay__voice-toggle" aria-label="Voice search" tabindex="0">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 18v2m0 0c-3.31 0-6-2.69-6-6v-2m6 8c3.31 0 6-2.69 6-6v-2m-6 8v-2m0-6a2 2 0 0 0 2-2V7a2 2 0 1 0-4 0v3a2 2 0 0 0 2 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
+      <div class="header-actions">
+        <button class="c-search-overlay__theme-toggle c-search-overlay__button" aria-label="Toggle theme" tabindex="0">
+          <span class="theme-toggle-icon">
+            <span class="sun-moon">
+              <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v1m0 16v1m8.66-13.66l-.71.71M4.05 19.95l-.71.71M21 12h-1M4 12H3m16.66 5.66l-.71-.71M4.05 4.05l-.71-.71" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </span>
+          <span class="theme-label">Theme</span>
+        </button>
+        <button class="c-search-overlay__voice-toggle" aria-label="Voice search" tabindex="0">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 18v2m0 0c-3.31 0-6-2.69-6-6v-2m6 8c3.31 0 6-2.69 6-6v-2m-6 8v-2m0-6a2 2 0 0 0 2-2V7a2 2 0 1 0-4 0v3a2 2 0 0 0 2 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="c-search-overlay__close" aria-label="Close search" tabindex="0">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
     </div>
-    <form class="c-search-overlay__form" action="/search/" method="get" role="search" autocomplete="off">
-      <div class="c-search-overlay__input-group">
+    <form class="c-search-overlay__form" action="/search.html" method="get" role="search" autocomplete="off">
+      <div class="c-search-overlay__input-group spotlight-effect">
         <input 
           type="text" 
           name="q" 
           id="search-overlay-input"
-          class="c-search-overlay__input" 
+          class="c-search-overlay__input tech-cursor-effect" 
           placeholder="Enter search query..." 
           aria-label="Search terms"
           aria-expanded="false"
           aria-controls="search-suggestions"
           role="combobox"
           aria-autocomplete="list"
+          autocomplete="off"
+          spellcheck="false"
         >
+        <div class="c-search-overlay__input-backdrop">
+          <div class="input-glow"></div>
+          <div class="input-scan-line"></div>
+        </div>
         <button type="button" class="c-search-overlay__clear visually-hidden" aria-label="Clear search" tabindex="0">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
@@ -42,7 +56,21 @@
       </div>
       <div class="c-search-overlay__spinner visually-hidden" aria-hidden="true"><span class="spinner"></span></div>
       <div id="search-suggestions" class="c-search-overlay__suggestions" role="listbox" aria-label="Search suggestions"></div>
-      <div id="search-results" class="c-search-overlay__results" role="listbox" aria-label="Live search results"></div>
+      <div id="search-results" class="c-search-overlay__results tech-scan-effect" role="listbox" aria-label="Live search results"></div>
+      <!-- Empty state for search -->
+      <div id="search-empty" class="c-search-overlay__no-results visually-hidden">
+        <div class="no-results-icon">🔍</div>
+        <h3>No results found</h3>
+        <p>Try changing your search terms or filters</p>
+        <div class="suggestions">
+          <p>Try:</p>
+          <ul>
+            <li>Using more general keywords</li>
+            <li>Checking for typos</li>
+            <li>Using synonyms</li>
+          </ul>
+        </div>
+      </div>
     </form>
     <div class="c-search-overlay__recent" aria-live="polite">
       <h3 class="c-search-overlay__recent-title">Recent Searches</h3>
@@ -55,7 +83,24 @@
       <ul class="c-search-overlay__bookmarks-list"></ul>
     </div>
     <div class="c-search-overlay__tips">
-      <p>Press <kbd>ESC</kbd> to close, <kbd>↑</kbd><kbd>↓</kbd> to navigate, <kbd>Tab</kbd> to move, or <kbd>Enter</kbd> to search</p>
+      <div class="c-search-overlay__shortcuts">
+        <div class="shortcut-key">
+          <kbd>ESC</kbd><span>Close</span>
+        </div>
+        <div class="shortcut-key">
+          <kbd class="up arrow-key"></kbd><kbd class="down arrow-key"></kbd>
+          <span>Navigate</span>
+        </div>
+        <div class="shortcut-key">
+          <kbd>/</kbd><span>Focus search</span>
+        </div>
+        <div class="shortcut-key">
+          <kbd>Tab</kbd><span>Move focus</span>
+        </div>
+        <div class="shortcut-key">
+          <kbd>Enter</kbd><span>Select</span>
+        </div>
+      </div>
     </div>
     <div id="search-aria-live" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
   </div>

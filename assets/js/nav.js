@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const navToggle = document.querySelector('.c-navbar__toggle');
   const navLinks = document.querySelector('.c-navbar__links');
   const navItems = document.querySelectorAll('.c-navbar__link');
+  const searchToggle = document.querySelector('.search-toggle');
 
   function toggleTabIndex(isActive) {
     navLinks.querySelectorAll('a').forEach((link) => {
@@ -36,6 +37,29 @@ document.addEventListener('DOMContentLoaded', () => {
         link.removeAttribute('aria-current');
       }
     });
+  }
+
+  // Handle keyboard shortcuts
+  function handleKeyboardShortcuts(event) {
+    // Open search with '/' key when not in an input field
+    if (event.key === '/' && 
+        !['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) {
+      event.preventDefault();
+      openSearch();
+    }
+  }
+  
+  // Open search overlay
+  function openSearch() {
+    if (searchToggle) {
+      searchToggle.click(); // Simulate a click on the search toggle
+    } else {
+      // Fallback if .search-toggle doesn't exist
+      const searchOverlay = document.getElementById('search-overlay');
+      if (searchOverlay && window.searchOverlayInstance) {
+        window.searchOverlayInstance.open();
+      }
+    }
   }
 
   if (navToggle && navLinks) {
@@ -85,6 +109,9 @@ document.addEventListener('DOMContentLoaded', () => {
       // Navigation transition completed - no action needed
     });
   }
+
+  // Add global keyboard shortcuts
+  document.addEventListener('keydown', handleKeyboardShortcuts);
 
   // Initialize active link highlighting
   highlightActiveLink();
