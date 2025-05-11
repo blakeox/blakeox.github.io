@@ -1,3 +1,7 @@
+@import 'spacing';
+@import 'radius';
+@import 'zindex';
+
 // ## Layout Settings
 // This file contains the layout settings for the project.
 // It includes settings for containers, grid system, and breakpoints to ensure a consistent and responsive design.
@@ -39,3 +43,9 @@ $filter-min-width: 200px; // Minimum width for filter controls
   margin: 0 auto; // Center the container horizontally
   padding: 0 $grid-gutter-width / 2; // Add horizontal padding using half the gutter width
 }
+
+// Overlay-specific sizing
+$overlay-max-width: $container-xl !default; // or 98vw for full width
+$overlay-padding: $spacing-lg !default;
+$overlay-border-radius: $border-radius-lg !default;
+$overlay-z-index: $z-index-toast !default;

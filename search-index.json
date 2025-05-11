@@ -1,0 +1,18 @@
+---
+layout: null
+permalink: /search-index.json
+---
+[
+{% assign docs = site.pages | concat: site.projects %}
+{% for doc in docs %}
+  {
+    "title": {{ doc.title | jsonify }},
+    "url": {{ doc.url | relative_url | jsonify }},
+    "snippet": {{ doc.description | default: doc.excerpt | default: doc.content | strip_html | truncate: 180 | jsonify }},
+    "content": {{ doc.content | strip_html | jsonify }},
+    "type": "{% if doc.collection == 'projects' %}project{% else %}page{% endif %}",
+    "categories": {{ doc.categories | jsonify }},
+    "date": {{ doc.date | date_to_xmlschema | jsonify }}
+  }{% unless forloop.last %},{% endunless %}
+{% endfor %}
+]

@@ -245,3 +245,16 @@
     }
   }
 }
+
+// Remove the [inert] styling as we're not using it anymore
+
+// Add special styling to ensure search button is always clickable
+.search-toggle {
+  pointer-events: auto !important; // Ensure the search button is always clickable
+  cursor: pointer !important;
+}
+
+.c-navbar__link:not([inert]) {
+  cursor: pointer;
+  pointer-events: auto !important;
+}

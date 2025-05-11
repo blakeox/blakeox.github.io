@@ -19,26 +19,28 @@ permalink: /search/
         </button>
       </div>
 
+      <!-- Search Bar (matches overlay style) -->
       <div class="tech-search-box">
-        <div class="search-radar-container">
-          <!-- Radar animation will be added via JavaScript -->
-        </div>
         <form class="search-form">
-          <div class="search-input-wrapper">
-            <input type="text" id="search-input" class="search-input" placeholder="Enter search query..." autocomplete="off" data-typing-effect="true">
-            <button type="submit" class="c-btn c-btn--tech">
-              <span class="btn-text">Search</span>
-              <span class="btn-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="11" cy="11" r="8"></circle>
-                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-              </span>
+          <div class="c-search-overlay__input-group">
+            <select class="c-search-overlay__filter" aria-label="Filter">
+              <option>All</option>
+              <option>Blog</option>
+              <option>Projects</option>
+              <option>Pages</option>
+            </select>
+            <input class="c-search-overlay__input" id="search-input" type="text" placeholder="Enter search query..." autocomplete="off" data-typing-effect="true">
+            <button class="c-search-overlay__mic" type="button" aria-label="Voice Search">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18v2m0 0h-3m3 0h3m-3-2a6 6 0 006-6V9a6 6 0 10-12 0v3a6 6 0 006 6z"/></svg>
+            </button>
+            <button class="c-search-overlay__submit" type="submit" aria-label="Search">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
             </button>
           </div>
         </form>
       </div>
 
+      <!-- Filters, Results, and Analytics -->
       <div class="search-results">
         <div class="search-filters">
           <div class="search-filter-group">

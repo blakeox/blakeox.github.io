@@ -1,13 +1,19 @@
+@import '../settings/index';
+@import '../settings/layout';
+@import '../settings/spacing';
+@import '../settings/radius';
+@import '../settings/zindex';
+
 // ============================================================
 // Search Overlay Component
 // ============================================================
 
 // Variables
-$search-overlay-z-index: 1000;
+$search-overlay-z-index: $overlay-z-index;
 $search-overlay-transition-duration: 0.3s;
-$search-overlay-max-width: 800px;
-$search-overlay-padding: 2rem;
-$search-overlay-border-radius: 8px;
+$search-overlay-max-width: $overlay-max-width;
+$search-overlay-padding: $overlay-padding;
+$search-overlay-border-radius: $overlay-border-radius;
 $search-overlay-background-opacity: 0.98;
 $search-overlay-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 $search-overlay-blur: 10px;
@@ -31,232 +37,121 @@ $search-overlay-blur: 10px;
 
 // Base Search Overlay
 .c-search-overlay {
+  display: none; // Hidden by default for accessibility
+  align-items: center;
+  justify-content: center;
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur($search-overlay-blur);
-  -webkit-backdrop-filter: blur($search-overlay-blur);
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.7);
   z-index: $search-overlay-z-index;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity $search-overlay-transition-duration ease,
-              visibility $search-overlay-transition-duration ease;
+}
 
-  &[aria-hidden="false"] {
-    opacity: 1;
-    visibility: visible;
-  }
+.c-search-overlay[aria-hidden="false"] {
+  display: flex; // Show overlay when aria-hidden is false
+}
 
-  &__container {
-    max-width: $search-overlay-max-width;
-    margin: 2rem auto;
-    padding: $search-overlay-padding;
-    @include search-overlay-glass-effect;
-    border-radius: $search-overlay-border-radius;
-    box-shadow: $search-overlay-shadow;
-    transform: translateY(0);
-    transition: transform $search-overlay-transition-duration cubic-bezier(0.4, 0, 0.2, 1);
-  }
+.c-search-overlay__container {
+  background: rgba(var(--tech-bg-color-rgb), 0.98);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  border-radius: $border-radius-lg;
+  max-width: 420px;
+  width: 95vw;
+  padding: $spacing-lg $spacing-md;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: $spacing-md;
+}
 
-  &__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-  }
-
-  &__title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--tech-primary);
-    margin: 0;
-    text-shadow: 0 0 10px rgba(var(--tech-primary-rgb), 0.3);
-  }
-
-  &__close {
-    background: none;
-    border: none;
-    padding: 0.5rem;
-    cursor: pointer;
-    color: var(--tech-secondary);
-    transition: all 0.2s ease;
-    border-radius: 50%;
-
-    &:hover {
-      color: var(--tech-accent);
-      background-color: rgba(var(--tech-accent-rgb), 0.1);
-      transform: rotate(90deg);
-    }
-
-    &:focus {
-      @include search-overlay-focus-ring;
-    }
-  }
-
-  &__form {
-    margin-bottom: 2rem;
-    position: relative;
-  }
-
-  &__input-group {
-    display: flex;
-    gap: 0.5rem;
-    background-color: rgba(0, 0, 0, 0.2);
-    border: 1px solid var(--tech-secondary);
-    border-radius: 4px;
-    padding: 0.5rem;
-    transition: all 0.2s ease;
-
-    &:focus-within {
-      border-color: var(--tech-accent);
-      box-shadow: 0 0 0 2px rgba(var(--tech-accent-rgb), 0.2);
-    }
-  }
-
-  &__input {
-    flex: 1;
-    border: none;
-    background: none;
-    padding: 0.5rem;
-    font-size: 1rem;
-    color: var(--tech-primary);
+.c-search-overlay__close {
+  position: absolute;
+  top: $spacing-md;
+  right: $spacing-md;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $border-radius;
+  border: none;
+  background: transparent;
+  color: $tech-accent;
+  cursor: pointer;
+  font-size: 1.5rem;
+  line-height: 1;
+  z-index: 2;
+  transition: background 0.2s;
+  &:hover, &:focus {
+    background: rgba(var(--tech-accent-rgb), 0.08);
     outline: none;
-
-    &::placeholder {
-      color: var(--tech-secondary);
-      opacity: 0.7;
-    }
-
-    &:focus {
-      @include search-overlay-focus-ring;
-    }
   }
+}
 
-  &__submit {
-    background: none;
-    border: none;
-    padding: 0.5rem;
-    cursor: pointer;
-    color: var(--tech-accent);
-    transition: all 0.2s ease;
-    border-radius: 4px;
+.c-search-overlay__form {
+  width: 100%;
+}
 
-    &:hover {
-      color: var(--tech-primary);
-      background-color: rgba(var(--tech-primary-rgb), 0.1);
-    }
+.c-search-overlay__input-group {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  background: rgba(var(--tech-bg-color-rgb), 0.85);
+  border: 1px solid var(--tech-secondary);
+  border-radius: $border-radius-lg;
+  padding: $spacing-xs;
+}
 
-    &:focus {
-      @include search-overlay-focus-ring;
-    }
+.c-search-overlay__filter {
+  border: none;
+  background: transparent;
+  color: $tech-primary;
+  font-size: 1rem;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $border-radius;
+  outline: none;
+  min-width: 60px;
+}
+
+.c-search-overlay__input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: $tech-primary;
+  font-size: 1rem;
+  padding: $spacing-xs $spacing-sm;
+  outline: none;
+  &::placeholder {
+    color: $tech-secondary;
+    opacity: 0.7;
   }
+}
 
-  &__suggestions {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    margin-top: 0.5rem;
-    @include search-overlay-glass-effect;
-    border-radius: $search-overlay-border-radius;
-    box-shadow: $search-overlay-shadow;
-    max-height: 300px;
-    overflow-y: auto;
-    display: none;
-    z-index: 1;
-
-    &[aria-hidden="false"] {
-      display: block;
-      @include search-overlay-animation(slideDown);
-    }
+.c-search-overlay__mic,
+.c-search-overlay__submit {
+  border: none;
+  background: transparent;
+  color: $tech-accent;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $border-radius;
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  transition: background 0.2s;
+  &:hover, &:focus {
+    background: rgba(var(--tech-accent-rgb), 0.08);
+    outline: none;
   }
+}
 
-  &__suggestion-item {
-    padding: 0.75rem 1rem;
-    cursor: pointer;
-    color: var(--tech-primary);
-    transition: all 0.2s ease;
-
-    &:hover,
-    &[aria-selected="true"] {
-      background-color: rgba(var(--tech-primary-rgb), 0.1);
-      color: var(--tech-accent);
-    }
-
-    &:focus {
-      @include search-overlay-focus-ring;
-    }
-  }
-
-  &__recent {
-    margin-bottom: 2rem;
-  }
-
-  &__recent-title {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--tech-secondary);
-    margin-bottom: 1rem;
-  }
-
-  &__recent-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  &__recent-item {
-    margin-bottom: 0.5rem;
-
-    a {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--tech-primary);
-      text-decoration: none;
-      padding: 0.5rem;
-      border-radius: 4px;
-      transition: all 0.2s ease;
-
-      &:hover {
-        background-color: rgba(var(--tech-primary-rgb), 0.1);
-        color: var(--tech-accent);
-      }
-
-      svg {
-        color: var(--tech-secondary);
-        transition: color 0.2s ease;
-      }
-
-      &:hover svg {
-        color: var(--tech-accent);
-      }
-    }
-  }
-
-  &__tips {
-    font-size: 0.875rem;
-    color: var(--tech-secondary);
-    text-align: center;
-
-    kbd {
-      background-color: rgba(0, 0, 0, 0.2);
-      border: 1px solid var(--tech-secondary);
-      border-radius: 3px;
-      padding: 0.1rem 0.4rem;
-      font-family: monospace;
-      transition: all 0.2s ease;
-
-      &:hover {
-        background-color: rgba(var(--tech-accent-rgb), 0.1);
-        border-color: var(--tech-accent);
-        color: var(--tech-accent);
-      }
-    }
-  }
+// Hide advanced filters, recent/popular/bookmarks, spinner, and results in overlay
+.c-search-overlay__recent,
+.c-search-overlay__popular,
+.c-search-overlay__bookmarks,
+.c-search-overlay__filters,
+.c-search-overlay__results,
+.c-search-overlay__tips,
+.c-search-overlay__spinner {
+  display: none !important;
 }
 
 // ============================================================
@@ -301,9 +196,11 @@ $search-overlay-blur: 10px;
 @keyframes fadeIn {
   from {
     opacity: 0;
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -321,41 +218,10 @@ $search-overlay-blur: 10px;
 // ============================================================
 // Responsive Styles
 // ============================================================
-@media (max-width: 768px) {
-  .c-search-overlay {
-    &__container {
-      margin: 1rem;
-      padding: 1rem;
-    }
-
-    &__header {
-      margin-bottom: 1rem;
-    }
-
-    &__title {
-      font-size: 1.25rem;
-    }
-
-    &__suggestions {
-      max-height: 200px;
-    }
-  }
-}
-
-// ============================================================
-// Reduced Motion
-// ============================================================
-@media (prefers-reduced-motion: reduce) {
-  .c-search-overlay {
-    transition: none;
-
-    &__container,
-    &__input,
-    &__suggestions,
-    &__close {
-      transition: none;
-      animation: none;
-    }
+@media (max-width: $breakpoint-md) {
+  .c-search-overlay__container {
+    max-width: 98vw;
+    padding: $spacing-md $spacing-sm;
   }
 }
 
@@ -400,6 +266,9 @@ $search-overlay-blur: 10px;
     border-top: 3px solid var(--tech-accent);
     border-radius: 50%;
     animation: spin 1s linear infinite;
+  }
+  &.visually-hidden {
+    display: none !important;
   }
 }
 
@@ -497,18 +366,42 @@ $search-overlay-blur: 10px;
   overflow: hidden;
 }
 
-@media (max-width: 768px) {
-  .c-search-overlay__container {
-    margin: 0.5rem;
-    padding: 0.5rem;
+.c-search-overlay__clear {
+  background: none;
+  border: none;
+  color: var(--tech-secondary);
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 0.3rem;
+  margin-left: -2.2rem;
+  margin-right: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s;
+  &:hover, &:focus {
+    background: rgba(var(--tech-accent-rgb), 0.1);
+    color: var(--tech-accent);
+    outline: none;
   }
-  .c-search-overlay__title {
-    font-size: 1.1rem;
-  }
-  .c-search-overlay__input {
-    font-size: 0.95rem;
-  }
-  .c-search-overlay__result-item {
-    padding: 0.7rem;
-  }
+}
+
+// Focus trap utility (for JS, but style for focus)
+.c-search-overlay__container:focus {
+  outline: 2px solid var(--tech-accent);
+  box-shadow: 0 0 0 3px rgba(var(--tech-accent-rgb), 0.2);
+}
+
+.c-search-overlay[aria-hidden="true"] {
+  display: none !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+.c-search-overlay[aria-hidden="false"] {
+  display: flex !important;
+  pointer-events: auto !important;
+  z-index: 10000 !important;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
 }

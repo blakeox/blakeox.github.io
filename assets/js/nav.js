@@ -13,20 +13,14 @@ document.addEventListener('DOMContentLoaded', () => {
   function toggleNav() {
     const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
     navToggle.setAttribute('aria-expanded', !isExpanded);
-    navLinks.setAttribute('aria-hidden', isExpanded);
-    // Apply inert only to nav links except the search toggle button
-    navLinks.querySelectorAll('.c-navbar__link:not(.search-toggle)').forEach(el => {
-      if (isExpanded) el.removeAttribute('inert');
-      else el.setAttribute('inert', '');
-    });
+    // Don't set aria-hidden on the links container to keep it interactive
+    // Just toggle the active class for styling
     navLinks.classList.toggle('c-navbar__links--active', !isExpanded);
   }
 
   // Close navigation menu
   function closeNav() {
     navToggle.setAttribute('aria-expanded', 'false');
-    navLinks.setAttribute('aria-hidden', 'true');
-    navLinks.setAttribute('inert', '');
     navLinks.classList.remove('c-navbar__links--active');
   }
 
@@ -88,16 +82,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     navLinks.addEventListener('transitionend', () => {
-      const isActive = navLinks.classList.contains('c-navbar__links--active');
-      navLinks.setAttribute('aria-hidden', String(!isActive));
-      // Update inert on individual links (excluding search-toggle)
-      navLinks.querySelectorAll('.c-navbar__link:not(.search-toggle)').forEach(el => {
-        if (!isActive) el.setAttribute('inert', '');
-        else el.removeAttribute('inert');
-      });
+      // Navigation transition completed - no action needed
     });
   }
 
   // Initialize active link highlighting
   highlightActiveLink();
+
+  // Ensure search toggle is always accessible
+  document.querySelector('.search-toggle')?.removeAttribute('inert');
 });

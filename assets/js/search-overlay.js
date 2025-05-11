@@ -2,24 +2,35 @@
  * Search Overlay Component
  * Handles search functionality, suggestions, and analytics
  */
-// Mock content index for Fuse.js demo
-const SEARCH_INDEX = [
-  { title: 'JavaScript Guide', url: '/docs/js-guide', snippet: 'Learn JavaScript from basics to advanced.' },
-  { title: 'CSS Tricks', url: '/docs/css-tricks', snippet: 'Advanced CSS techniques and tips.' },
-  { title: 'React Tutorial', url: '/docs/react-tutorial', snippet: 'Build modern UIs with React.' },
-  { title: 'Accessibility Best Practices', url: '/docs/a11y', snippet: 'Make your site accessible to everyone.' },
-  { title: 'AI in Web Development', url: '/blog/ai-web', snippet: 'How AI is changing the web.' },
-  { title: 'Jekyll for GitHub Pages', url: '/docs/jekyll', snippet: 'Host your site with Jekyll and GitHub Pages.' },
-  { title: 'Voice Search Integration', url: '/blog/voice-search', snippet: 'Add voice search to your site.' },
-  { title: 'Fuzzy Search with Fuse.js', url: '/blog/fuzzy-search', snippet: 'Implement typo-tolerant search.' },
-  // ...add more as needed
-];
-
 // Initialize placeholder for FlexSearch index
 let flexIndex;
+let indexReady = false;
+
+async function loadSearchIndex() {
+  try {
+    const res = await fetch('/search-index.json');
+    if (!res.ok) throw new Error('Failed to load search index');
+    const data = await res.json();
+    flexIndex = new FlexSearch.Document({
+      document: {
+        id: 'url',
+        index: ['title', 'snippet']
+      },
+      tokenize: 'forward',
+      cache: true,
+      threshold: 1,
+    });
+    data.forEach(item => flexIndex.add(item));
+    indexReady = true;
+  } catch (err) {
+    console.error('Error loading search index:', err);
+    indexReady = false;
+  }
+}
 
 class SearchOverlay {
   constructor() {
+    this.lastFocusedElement = null;
     this.initializeElements();
     this.initializeModules();
     this.bindEvents();
@@ -50,6 +61,8 @@ class SearchOverlay {
     this.currentResults = [];
     this.voiceButton = this.overlay?.querySelector('.c-search-overlay__voice-toggle');
     this.bookmarksList = this.overlay?.querySelector('.c-search-overlay__bookmarks-list');
+    this.clearButton = this.overlay?.querySelector('.c-search-overlay__clear');
+    this.container = this.overlay?.querySelector('.c-search-overlay__container');
   }
 
   initializeModules() {
@@ -59,9 +72,22 @@ class SearchOverlay {
   }
 
   bindEvents() {
-    document.querySelectorAll('.search-toggle').forEach(button => {
-      button.addEventListener('click', () => this.toggle());
-    });
+    // Directly bind to the nav search button
+    this.navSearchButton = document.querySelector('.search-toggle');
+    if (this.navSearchButton) {
+      // Simplify event handler for search toggle - just toggle the overlay state
+      this.navSearchButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation(); // Prevent the click from bubbling up
+        // Always try to open if hidden, close if visible
+        const isHidden = this.overlay?.getAttribute('aria-hidden') === 'true';
+        if (isHidden) {
+          this.open();
+        } else {
+          this.close();
+        }
+      });
+    }
     this.closeButton?.addEventListener('click', () => this.close());
     this.themeToggle?.addEventListener('click', () => this.toggleTheme());
     this.form?.addEventListener('submit', (e) => {
@@ -70,7 +96,14 @@ class SearchOverlay {
     });
     this.input?.addEventListener('input', this.debounce(() => {
       this.handleLiveSearch();
+      this.toggleClearButton();
     }, 250));
+    this.clearButton?.addEventListener('click', () => {
+      this.input.value = '';
+      this.handleLiveSearch();
+      this.toggleClearButton();
+      this.input.focus();
+    });
     this.filter?.addEventListener('change', () => {
       this.handleLiveSearch();
     });
@@ -103,9 +136,22 @@ class SearchOverlay {
       }
     });
     this.voiceButton?.addEventListener('click', () => this.toggleVoiceSearch());
+    // Focus trap
+    this.overlay?.addEventListener('keydown', (e) => {
+      if (e.key === 'Tab' && this.overlay.getAttribute('aria-hidden') === 'false') {
+        this.trapFocus(e);
+      }
+    });
+    // Close overlay on outside click
+    document.addEventListener('mousedown', (e) => {
+      if (this.overlay.getAttribute('aria-hidden') === 'false' && !this.container.contains(e.target)) {
+        this.close();
+      }
+    });
   }
 
   toggle() {
+    // Remove the justClosed check to allow toggling regardless of state
     const isHidden = this.overlay?.getAttribute('aria-hidden') === 'true';
     if (isHidden) {
       this.open();
@@ -116,18 +162,44 @@ class SearchOverlay {
 
   open() {
     if (!this.overlay) return;
-    this.overlay.setAttribute('aria-hidden', 'false');
+    console.warn('[SearchOverlay] Opening overlay');
+    // Find the nav search button and store as lastFocusedElement
+    const navSearchButton = document.querySelector('.search-toggle');
+    this.lastFocusedElement = document.activeElement === navSearchButton ? navSearchButton : document.activeElement;
+    // Set display directly first, then set aria-hidden and other properties
+    this.overlay.style.display = 'flex';
+    // Force a reflow to ensure display takes effect before other changes
+    void this.overlay.offsetHeight;
+    this.overlay.setAttribute('aria-hidden', 'false'); 
+    this.overlay.style.pointerEvents = 'auto';
+    this.overlay.style.zIndex = '10000';
     document.body.style.overflow = 'hidden';
     this.input?.focus();
     this.analytics?.trackEvent('search_overlay_open');
     this.overlay.dispatchEvent(new CustomEvent('searchoverlay:open'));
     this.displayRecentSearches();
     this.displayPopularSearches();
+    // Debug: print computed style
+    const cs = window.getComputedStyle(this.overlay);
+    console.warn('[SearchOverlay] After open, computed style:', {
+      display: cs.display,
+      pointerEvents: cs.pointerEvents,
+      zIndex: cs.zIndex
+    });
   }
 
   close() {
     if (!this.overlay) return;
+    console.warn('[SearchOverlay] Closing overlay');
+    // Set aria-hidden first, then handle display
     this.overlay.setAttribute('aria-hidden', 'true');
+    this.overlay.style.pointerEvents = 'none';
+    this.overlay.style.zIndex = '0';
+    
+    // Use setTimeout to ensure CSS transitions complete before hiding
+    setTimeout(() => {
+      this.overlay.style.display = 'none';
+    }, 10);
     document.body.style.overflow = '';
     this.input?.blur();
     this.analytics?.trackEvent('search_overlay_close');
@@ -135,6 +207,21 @@ class SearchOverlay {
     this.clearResults();
     this.clearSuggestions();
     this.hideSpinner();
+    // Always return focus to the nav search button if available
+    if (this.navSearchButton && typeof this.navSearchButton.focus === 'function') {
+      this.navSearchButton.focus();
+      console.warn('[SearchOverlay] Focus returned to nav search button');
+    } else if (this.lastFocusedElement && typeof this.lastFocusedElement.focus === 'function') {
+      this.lastFocusedElement.focus();
+      console.warn('[SearchOverlay] Focus returned to last focused element');
+    }
+    // Debug: print computed style
+    const cs = window.getComputedStyle(this.overlay);
+    console.warn('[SearchOverlay] After close, computed style:', {
+      display: cs.display,
+      pointerEvents: cs.pointerEvents,
+      zIndex: cs.zIndex
+    });
   }
 
   async handleSearch() {
@@ -171,7 +258,7 @@ class SearchOverlay {
       this.displaySuggestions(suggestions);
       this.analytics?.trackEvent('suggestion_show', { query, count: suggestions.length });
       this.announce(`${suggestions.length} suggestions for "${query}"`);
-    } catch (error) {
+    } catch {
       this.displayError('Error fetching suggestions.');
       this.announce('Error fetching suggestions.');
     } finally {
@@ -179,19 +266,18 @@ class SearchOverlay {
     }
   }
 
-  async fetchSuggestions(query, filter) {
-    if (!query) return [];
+  async fetchSuggestions(query) {
+    if (!query || !indexReady) return [];
     const results = flexIndex.search(query, { limit: 5, enrich: true });
     const flat = results.flatMap(r => r.result);
     if (flat.length === 0) {
-      // Optionally, you can implement a "Did you mean" feature here
       return [];
     }
     return flat.map(item => item.title);
   }
 
-  async fetchResults(query, filter) {
-    if (!query) return [];
+  async fetchResults(query) {
+    if (!query || !indexReady) return [];
     const results = flexIndex.search(query, { limit: 10, enrich: true });
     const flat = results.flatMap(r => r.result);
     if (flat.length === 0) {
@@ -208,7 +294,7 @@ class SearchOverlay {
     }));
   }
 
-  getDidYouMean(query) {
+  getDidYouMean() {
     // FlexSearch does not provide a built-in "did you mean" feature.
     return null;
   }
@@ -222,7 +308,7 @@ class SearchOverlay {
 
   displaySuggestions(suggestions) {
     if (!this.suggestions) return;
-    this.suggestions.innerHTML = suggestions.map((s, i) =>
+    this.suggestions.innerHTML = suggestions.map(s =>
       `<div class="c-search-overlay__suggestion-item" role="option" data-suggestion="${s}" tabindex="-1">${s}</div>`
     ).join('');
     this.suggestions.style.display = suggestions.length ? 'block' : 'none';
@@ -233,22 +319,26 @@ class SearchOverlay {
   displayResults(results) {
     if (!this.results) return;
     const bookmarks = this.getBookmarks();
-    this.results.innerHTML = results.map((r, i) =>
-      `<div class="c-search-overlay__result-item" role="option" data-url="${r.url}" data-title="${r.title.replace(/<[^>]+>/g, '')}" tabindex="0">
-        <strong>${r.title}</strong><br><span>${r.snippet}</span>
-        <button class="bookmark-btn" aria-label="Bookmark result" aria-pressed="${bookmarks.some(b => b.url === r.url) ? 'true' : 'false'}">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 4v16l6-5.333L18 20V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-      </div>`
-    ).join('');
-    this.results.style.display = results.length ? 'block' : 'none';
+    if (!results.length) {
+      this.results.innerHTML = '<div class=\'c-search-overlay__empty\'>No results found.<br>Try different keywords or explore popular topics below.</div>';
+    } else {
+      this.results.innerHTML = results.map(r =>
+        `<div class='c-search-overlay__result-item' role='option' data-url='${r.url}' data-title='${r.title.replace(/<[^>]+>/g, '')}' tabindex='0'>
+          <strong>${r.title}</strong><br><span>${r.snippet}</span>
+          <button class='bookmark-btn' aria-label='Bookmark result' aria-pressed='${bookmarks.some(b => b.url === r.url) ? 'true' : 'false'}'>
+            <svg width='18' height='18' viewBox='0 0 24 24' fill='none'><path d='M6 4v16l6-5.333L18 20V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2z' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>
+          </button>
+        </div>`
+      ).join('');
+    }
+    this.results.style.display = 'block';
     this.currentResults = results;
     this.activeResultIndex = -1;
   }
 
   displayError(message) {
     if (this.results) {
-      this.results.innerHTML = `<div class="c-search-overlay__error">${message}</div>`;
+      this.results.innerHTML = `<div class='c-search-overlay__error'>${message}</div>`;
       this.results.style.display = 'block';
     }
   }
@@ -268,10 +358,10 @@ class SearchOverlay {
   }
 
   showSpinner() {
-    if (this.spinner) this.spinner.style.display = 'block';
+    if (this.spinner) this.spinner.classList.remove('visually-hidden');
   }
   hideSpinner() {
-    if (this.spinner) this.spinner.style.display = 'none';
+    if (this.spinner) this.spinner.classList.add('visually-hidden');
   }
 
   handleKeyboardNavigation(e) {
@@ -385,7 +475,7 @@ class SearchOverlay {
       this.updateVoiceButton();
       this.announce('Stopped listening.');
     };
-    this.speechRecognition.onerror = (event) => {
+    this.speechRecognition.onerror = () => {
       this.isListening = false;
       this.updateVoiceButton();
       this.announce('Voice search error.');
@@ -435,6 +525,24 @@ class SearchOverlay {
       ? bookmarks.map(b => `<li><a href="${b.url}">${b.title}</a></li>`).join('')
       : '<li>No bookmarks yet.</li>';
   }
+
+  trapFocus(e) {
+    const focusable = this.container.querySelectorAll('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    const focusableArray = Array.prototype.slice.call(focusable);
+    const first = focusableArray[0];
+    const last = focusableArray[focusableArray.length - 1];
+    if (e.shiftKey) {
+      if (document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      }
+    } else {
+      if (document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  }
 }
 
 // Export for use in other modules
@@ -455,15 +563,5 @@ document.addEventListener('DOMContentLoaded', () => {
     new SearchOverlay();
   }
   // Initialize FlexSearch
-  flexIndex = new FlexSearch.Document({
-    document: {
-      id: 'url',
-      index: ['title', 'snippet']
-    },
-    tokenize: 'forward',
-    cache: true,
-    // encode: 'icase',  // removed to use default encoding function
-    threshold: 1,
-  });
-  SEARCH_INDEX.forEach(item => flexIndex.add(item));
+  loadSearchIndex();
 });

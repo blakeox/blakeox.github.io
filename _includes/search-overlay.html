@@ -1,6 +1,6 @@
 <!-- Search Overlay Component -->
 <div id="search-overlay" class="c-search-overlay" aria-hidden="true" data-tech-theme="default" role="dialog" aria-modal="true" aria-label="Search">
-  <div class="c-search-overlay__container">
+  <div class="c-search-overlay__container" tabindex="-1">
     <div class="c-search-overlay__header">
       <h2 class="c-search-overlay__title">Search</h2>
       <button class="c-search-overlay__theme-toggle" aria-label="Toggle theme" tabindex="0">
@@ -18,15 +18,18 @@
         <input 
           type="text" 
           name="q" 
+          id="search-overlay-input"
           class="c-search-overlay__input" 
           placeholder="Enter search query..." 
           aria-label="Search terms"
           aria-expanded="false"
           aria-controls="search-suggestions"
-          aria-activedescendant=""
           role="combobox"
           aria-autocomplete="list"
         >
+        <button type="button" class="c-search-overlay__clear visually-hidden" aria-label="Clear search" tabindex="0">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
         <select class="c-search-overlay__filter" aria-label="Filter results">
           <option value="all">All</option>
           <option value="articles">Articles</option>
@@ -37,22 +40,22 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
       </div>
-      <div class="c-search-overlay__spinner" aria-hidden="true" style="display:none;"><span class="spinner"></span></div>
+      <div class="c-search-overlay__spinner visually-hidden" aria-hidden="true"><span class="spinner"></span></div>
       <div id="search-suggestions" class="c-search-overlay__suggestions" role="listbox" aria-label="Search suggestions"></div>
       <div id="search-results" class="c-search-overlay__results" role="listbox" aria-label="Live search results"></div>
     </form>
     <div class="c-search-overlay__recent" aria-live="polite">
       <h3 class="c-search-overlay__recent-title">Recent Searches</h3>
-      <ul class="c-search-overlay__recent-list" role="list"></ul>
+      <ul class="c-search-overlay__recent-list"></ul>
       <h3 class="c-search-overlay__recent-title">Popular Searches</h3>
-      <ul class="c-search-overlay__popular-list" role="list"></ul>
+      <ul class="c-search-overlay__popular-list"></ul>
     </div>
     <div class="c-search-overlay__bookmarks" aria-live="polite">
       <h3 class="c-search-overlay__recent-title">Bookmarked Results</h3>
-      <ul class="c-search-overlay__bookmarks-list" role="list"></ul>
+      <ul class="c-search-overlay__bookmarks-list"></ul>
     </div>
     <div class="c-search-overlay__tips">
-      <p>Press <kbd>ESC</kbd> to close, <kbd>↑</kbd><kbd>↓</kbd> to navigate, or <kbd>Enter</kbd> to search</p>
+      <p>Press <kbd>ESC</kbd> to close, <kbd>↑</kbd><kbd>↓</kbd> to navigate, <kbd>Tab</kbd> to move, or <kbd>Enter</kbd> to search</p>
     </div>
     <div id="search-aria-live" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
   </div>
