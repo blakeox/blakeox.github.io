@@ -29,7 +29,7 @@ ul.timeline {
 
     &.active {
       border: 2px solid $color-primary;
-      background: lighten($background-color-light, 2%);
+      background: var(--color-background-light-hover, #fafafa);
       box-shadow: 0 8px 32px rgba($color-primary, 0.15);
     }
 
@@ -327,6 +327,6 @@ ul.timeline li {
 // Highlight active card via JS
 ul.timeline li.active {
   border: 2px solid $color-primary;
-  background: lighten($background-color-light, 2%);
+  background: var(--color-background-light-hover, #fafafa);
   box-shadow: 0 8px 32px rgba($color-primary, 0.15);
 }

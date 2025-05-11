@@ -70,7 +70,9 @@ document.addEventListener('DOMContentLoaded', () => {
       setInterval(() => {
         // Reset animation by cloning and replacing
         const newPing = ping.cloneNode(true);
-        ping.parentNode.replaceChild(newPing, ping);
+        if (ping.parentNode) {
+          ping.parentNode.replaceChild(newPing, ping);
+        }
       }, 3000);
     });
   }

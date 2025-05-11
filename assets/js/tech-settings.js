@@ -418,13 +418,21 @@ if (typeof window.TechSettings === 'undefined') {
       }
     }
     
+    /**
+     * Safe getter for isSearchPage
+     */
+    function isSearchPage() {
+      return _isSearchPage;
+    }
+    
     // Public API
     return {
       init: init,
       applyTechTheme: applyTechTheme,
       getSavedSettings: getSavedSettings,
       saveSettings: saveSettings,
-      saveThemeSetting: saveThemeSetting
+      saveThemeSetting: saveThemeSetting,
+      isSearchPage: isSearchPage
     };
   })();
 }

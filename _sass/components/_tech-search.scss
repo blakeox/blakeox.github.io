@@ -1744,7 +1744,7 @@
       transition: color 0.3s ease;
       
       &:hover {
-        color: lighten($tech-secondary, 15%);
+        color: var(--tech-secondary-hover);
       }
     }
   }
@@ -1785,7 +1785,7 @@
   
   mark {
     background-color: rgba($tech-accent, 0.2);
-    color: lighten($tech-accent, 30%);
+    color: var(--tech-accent-hover);
     padding: 0 2px;
     border-radius: 2px;
   }
@@ -1880,7 +1880,7 @@
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
       
       .search-results__title a {
-        color: lighten($tech-secondary, 15%);
+        color: var(--tech-secondary-hover);
       }
     }
   }

@@ -41,6 +41,7 @@ $dark-mode-border: #333; // Border color for dark mode
   --color-text: #333;
   --color-background: #f9f9f9;
   --color-background-light: #ffffff;
+  --color-background-light-hover: #fafafa;
   
   // RGB variants for opacity manipulation
   --color-primary-rgb: 77, 200, 170;
@@ -53,6 +54,10 @@ $dark-mode-border: #333; // Border color for dark mode
   --tech-grid-color: rgba(85, 210, 230, 0.15);
   --tech-glow-color: rgba(0, 170, 255, 0.6);
   --tech-bg-color: rgba(0, 20, 40, 0.9);
+  
+  // Hover state variations
+  --tech-secondary-hover: #3d8eff;
+  --tech-accent-hover: #ff66cc;
 }
 
 [data-theme="dark"] {
@@ -78,6 +83,10 @@ $dark-mode-border: #333; // Border color for dark mode
   --tech-grid-color: rgba(85, 210, 230, 0.2);
   --tech-glow-color: rgba(61, 142, 255, 0.6);
   --tech-bg-color: rgba(20, 30, 40, 0.9);
+  
+  // Hover state variations
+  --tech-secondary-hover: #5d9eff;
+  --tech-accent-hover: #ff7ad9;
 }
 
 // Tech theme variations

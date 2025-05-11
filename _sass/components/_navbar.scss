@@ -149,6 +149,32 @@
       display: block;
     }
 
+    // Search toggle button styles
+    .search-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px;
+      border-radius: $border-radius-circle;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--color-text);
+      transition: all $transition-duration-default ease;
+      
+      &:hover, 
+      &:focus {
+        background-color: rgba(var(--color-accent-rgb), 0.15);
+        color: var(--color-accent);
+        outline: none;
+      }
+
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
     & li a {
       // ### Individual Link Styles
       // - **text-decoration:** Removes underline by default.

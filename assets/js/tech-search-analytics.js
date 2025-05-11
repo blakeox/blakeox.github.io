@@ -377,3 +377,148 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }, 800);
 });
+
+/**
+ * Search Analytics
+ * Tracks search performance, usage patterns, and user behavior
+ */
+class SearchAnalytics {
+  constructor() {
+    this.events = [];
+    this.metrics = {
+      searches: 0,
+      suggestions: 0,
+      errors: 0,
+      averageLatency: 0
+    };
+    this.initialize();
+  }
+
+  initialize() {
+    // Set up performance observer
+    if ('PerformanceObserver' in window) {
+      this.observer = new PerformanceObserver(this.handlePerformanceEntries.bind(this));
+      this.observer.observe({ entryTypes: ['measure', 'resource'] });
+    }
+
+    // Set up error tracking
+    window.addEventListener('error', this.handleError.bind(this));
+  }
+
+  trackEvent(eventName, data = {}) {
+    const event = {
+      name: eventName,
+      timestamp: Date.now(),
+      data
+    };
+
+    this.events.push(event);
+    this.updateMetrics(event);
+
+    // Send to analytics service if configured
+    if (window.analytics?.track) {
+      window.analytics.track(eventName, data);
+    }
+  }
+
+  updateMetrics(event) {
+    switch (event.name) {
+      case 'search_start':
+        this.metrics.searches++;
+        break;
+      case 'suggestion_show':
+        this.metrics.suggestions++;
+        break;
+      case 'search_error':
+        this.metrics.errors++;
+        break;
+      case 'search_complete':
+        if (event.data.latency) {
+          this.updateLatencyMetrics(event.data.latency);
+        }
+        break;
+    }
+  }
+
+  updateLatencyMetrics(latency) {
+    const total = this.metrics.averageLatency * (this.metrics.searches - 1) + latency;
+    this.metrics.averageLatency = total / this.metrics.searches;
+  }
+
+  handlePerformanceEntries(entries) {
+    for (const entry of entries.getEntries()) {
+      if (entry.name === 'search') {
+        this.trackEvent('search_performance', {
+          duration: entry.duration,
+          startTime: entry.startTime
+        });
+      }
+    }
+  }
+
+  handleError(error) {
+    this.trackEvent('search_error', {
+      message: error.message,
+      stack: error.stack
+    });
+  }
+
+  getMetrics() {
+    return {
+      ...this.metrics,
+      events: this.events.length,
+      lastEvent: this.events[this.events.length - 1]
+    };
+  }
+
+  getSearchPatterns() {
+    const searches = this.events.filter(e => e.name === 'search_start');
+    return {
+      totalSearches: searches.length,
+      averageTimeBetweenSearches: this.calculateAverageTimeBetweenSearches(searches),
+      popularQueries: this.getPopularQueries(searches)
+    };
+  }
+
+  calculateAverageTimeBetweenSearches(searches) {
+    if (searches.length < 2) return 0;
+    
+    const times = searches.map(s => s.timestamp);
+    const differences = times.slice(1).map((time, i) => time - times[i]);
+    return differences.reduce((a, b) => a + b) / differences.length;
+  }
+
+  getPopularQueries(searches) {
+    const queries = searches.map(s => s.data.query);
+    const counts = queries.reduce((acc, query) => {
+      acc[query] = (acc[query] || 0) + 1;
+      return acc;
+    }, {});
+
+    return Object.entries(counts)
+      .sort(([,a], [,b]) => b - a)
+      .slice(0, 5)
+      .map(([query, count]) => ({ query, count }));
+  }
+
+  exportData() {
+    return {
+      events: this.events,
+      metrics: this.metrics,
+      patterns: this.getSearchPatterns()
+    };
+  }
+
+  clearData() {
+    this.events = [];
+    this.metrics = {
+      searches: 0,
+      suggestions: 0,
+      errors: 0,
+      averageLatency: 0
+    };
+  }
+}
+
+// Export for use in other modules
+window.SearchAnalytics = SearchAnalytics;
