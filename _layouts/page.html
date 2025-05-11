@@ -2,12 +2,15 @@
 layout: default
 ---
 
-<section class="page-header">
-  <div class="container">
-    <h1>{{ page.title }}</h1>
+<section class="c-page-header">
+  <div class="c-page-header__container">
+    <h1 class="c-page-header__title">{{ page.title }}</h1>
+    {% if page.description %}
+      <p class="c-page-header__description">{{ page.description }}</p>
+    {% endif %}
   </div>
 </section>
 
-<section class="page-content container">
+<section class="c-page-content container">
   {{ content }}
 </section>

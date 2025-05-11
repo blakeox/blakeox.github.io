@@ -24,6 +24,9 @@ A fast, SEO‑optimized, Jekyll‑powered portfolio for **Blake Oxford**—IT Di
 - **Progressive Web App Ready**  
   Service‑worker + `manifest.json` scaffold in place.
 
+- **Futuristic Tech Search**  
+  Advanced search with modular JavaScript components, keyboard shortcuts, and interactive analytics.
+
 - **CI/CD**  
   GitHub Actions pipeline for CodeQL, linting, HTMLProofer, Lighthouse, Axe, and automated Pages deploys.
 

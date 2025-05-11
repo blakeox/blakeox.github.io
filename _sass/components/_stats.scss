@@ -1,17 +1,17 @@
 // ## Stats Section Styles
 // Styles for the animated counters in the About page stats section.
-.stats {
+.c-stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: $spacing-lg;
   margin: $spacing-lg 0;
 
-  .stat {
-    background-color: $background-color-secondary; // Soft tinted background
-    border: 1px solid $color-border-light; // Light border for card edge
-    padding: $spacing-lg; // Increase padding for card feel
-    border-radius: $border-radius-md; // Smooth corners
-    box-shadow: 0 4px 8px rgba($color-black, 0.05); // Subtle larger shadow
+  &__item {
+    background-color: $background-color-secondary;
+    border: 1px solid $color-border-light;
+    padding: $spacing-lg;
+    border-radius: $border-radius-md;
+    box-shadow: 0 4px 8px rgba($color-black, 0.05);
     transition: transform $transition-duration-fast ease, box-shadow $transition-duration-fast ease;
     text-align: center;
 
@@ -20,7 +20,7 @@
       box-shadow: 0 8px 16px rgba($color-black, 0.1);
     }
 
-    span {
+    &__value {
       display: block;
       font-size: $font-size-xxl;
       font-weight: $font-weight-bold;
@@ -29,7 +29,7 @@
       letter-spacing: 0.5px;
     }
 
-    .stat-label {
+    &__label {
       display: block;
       font-size: $font-size-sm;
       color: $color-text-secondary;

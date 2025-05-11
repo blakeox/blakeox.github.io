@@ -3,7 +3,7 @@
 // The tag list is designed to display tags in a flexible, responsive layout, often used for categorization or metadata display.
 // SASS variables are used for colors, spacing, typography, and border-radius to ensure consistency and easy updates.
 
-.tag-list {
+.c-tag-list {
   // ### Tag List Container
   // - **display:** Uses flexbox for layout to arrange tags in a horizontal row.
   // - **flex-wrap:** Allows tags to wrap to the next line if necessary for responsiveness.
@@ -15,7 +15,7 @@
   flex-wrap: wrap; // Allow tags to wrap to the next line if necessary
   gap: $spacing-sm; // Add spacing between tags using a spacing variable
 
-  .tag {
+  &__item {
     // ### Individual Tag Styles
     // - **background-color:** Uses the secondary color for the tag background.
     // - **color:** Uses white text for contrast against the background.
@@ -39,14 +39,16 @@
     }
   }
 
-  // Pill badge styling for tags
-  .tag-list .tag {
-    display: inline-block;
-    background-color: rgba($color-primary, 0.1);
-    color: $color-primary;
-    padding: $spacing-xs $spacing-sm;
-    border-radius: 9999px;
-    font-size: $font-size-sm;
-    margin: $spacing-xs $spacing-sm 0 0;
+  // Additional pill-style modifiers if needed
+  &--pill {
+    &__item {
+      display: inline-block;
+      background-color: rgba($color-primary, 0.1);
+      color: $color-primary;
+      padding: $spacing-xs $spacing-sm;
+      border-radius: 9999px;
+      font-size: $font-size-sm;
+      margin: $spacing-xs $spacing-sm 0 0;
+    }
   }
 }

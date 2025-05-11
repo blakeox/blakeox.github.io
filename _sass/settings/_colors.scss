@@ -24,6 +24,10 @@ $dark-mode-secondary: #b0bec5; // Secondary color for dark mode
 $dark-mode-accent: rgba(144, 202, 249, 0.8); // Accent color for dark mode
 $dark-mode-border: #333; // Border color for dark mode
 
+// ### Tech Search Theme Colors
+// For tech theme variations, see _tech-variables.scss
+// This comment acts as a reference to where to find all tech theme color definitions
+
 // ### CSS Variables
 // Define CSS variables for runtime theming and toggling between light and dark modes.
 :root {
@@ -37,6 +41,18 @@ $dark-mode-border: #333; // Border color for dark mode
   --color-text: #333;
   --color-background: #f9f9f9;
   --color-background-light: #ffffff;
+  
+  // RGB variants for opacity manipulation
+  --color-primary-rgb: 77, 200, 170;
+  --color-secondary-rgb: 108, 117, 125;
+  
+  // Tech search theme variables - defaults
+  --tech-primary: var(--color-primary);
+  --tech-secondary: #0af;
+  --tech-accent: #f0a;
+  --tech-grid-color: rgba(85, 210, 230, 0.15);
+  --tech-glow-color: rgba(0, 170, 255, 0.6);
+  --tech-bg-color: rgba(0, 20, 40, 0.9);
 }
 
 [data-theme="dark"] {
@@ -50,6 +66,55 @@ $dark-mode-border: #333; // Border color for dark mode
   --color-text: #e0e0e0;
   --color-background: #121212;
   --color-background-light: #1e1e1e;
+  
+  // RGB variants for dark mode
+  --color-primary-rgb: 144, 202, 249;
+  --color-secondary-rgb: 176, 190, 197;
+  
+  // Tech search theme variables - adjusted for dark mode
+  --tech-primary: var(--color-primary);
+  --tech-secondary: #3d8eff;
+  --tech-accent: #f459cc;
+  --tech-grid-color: rgba(85, 210, 230, 0.2);
+  --tech-glow-color: rgba(61, 142, 255, 0.6);
+  --tech-bg-color: rgba(20, 30, 40, 0.9);
+}
+
+// Tech theme variations
+[data-tech-theme="default"] {
+  --tech-primary: var(--color-primary);
+  --tech-secondary: #0af;
+  --tech-accent: #f0a;
+  --tech-grid-color: rgba(85, 210, 230, 0.15);
+  --tech-glow-color: rgba(0, 170, 255, 0.6);
+  --tech-bg-color: rgba(0, 20, 40, 0.9);
+}
+
+[data-tech-theme="neon"] {
+  --tech-primary: #0ff;
+  --tech-secondary: #f0f;
+  --tech-accent: #ff0;
+  --tech-grid-color: rgba(0, 255, 255, 0.15);
+  --tech-glow-color: rgba(255, 0, 255, 0.6);
+  --tech-bg-color: rgba(0, 10, 20, 0.95);
+}
+
+[data-tech-theme="cyberpunk"] {
+  --tech-primary: #f5a623;
+  --tech-secondary: #ff3b77;
+  --tech-accent: #00ffc8;
+  --tech-grid-color: rgba(245, 166, 35, 0.15);
+  --tech-glow-color: rgba(255, 59, 119, 0.6);
+  --tech-bg-color: rgba(20, 5, 20, 0.95);
+}
+
+[data-tech-theme="dark"] {
+  --tech-primary: #3d7cf5;
+  --tech-secondary: #5f33ff;
+  --tech-accent: #00e5ff;
+  --tech-grid-color: rgba(61, 124, 245, 0.15);
+  --tech-glow-color: rgba(95, 51, 255, 0.6);
+  --tech-bg-color: rgba(5, 10, 25, 0.95);
 }
 
 // Support class-based dark mode

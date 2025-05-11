@@ -1,0 +1,390 @@
+// ## Tech Settings Panel
+// This file contains styles for the tech search settings panel.
+// It is organized into logical sections:
+//
+// 1. Panel Container - Base structure and positioning
+// 2. Toggle Button - To open/close the panel 
+// 3. Panel Sections - Headers, dividers, and content areas
+// 4. Control Elements - Toggles, checkboxes, radio buttons
+// 5. Theme Selection - Theme preview and selection components
+// 6. Animations - Transitions and interactive states
+//
+// All variables used here are imported from _tech-variables.scss
+
+.tech-settings-panel {
+  position: fixed;
+  top: 20%;
+  right: 0;
+  width: auto;
+  z-index: 1000; // Higher z-index to appear above search results
+  transition: all 0.3s ease;
+  font-family: var(--font-primary, system-ui, sans-serif); // Match site's font
+  
+  .tech-settings-toggle {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 44px;
+    height: 44px;
+    background: var(--tech-bg-color);
+    border: 1px solid var(--tech-secondary);
+    border-right: none;
+    border-radius: 8px 0 0 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--tech-secondary);
+    
+    &:hover {
+      background: rgba(0, 30, 60, 0.95);
+      box-shadow: -2px 0 10px rgba(var(--color-primary-rgb), 0.6);
+      color: var(--tech-primary);
+      
+      svg {
+        transform: rotate(30deg);
+      }
+    }
+    
+    svg {
+      transition: transform 0.5s ease;
+    }
+  }
+  
+  .tech-settings-content {
+    position: relative;
+    width: 300px;
+    background: var(--tech-bg-color);
+    border: 1px solid var(--tech-secondary);
+    border-right: none;
+    border-radius: 8px 0 0 8px;
+    padding: 15px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        linear-gradient(90deg, rgba(var(--color-primary-rgb), 0.05) 0%, 
+                              rgba(0, 0, 0, 0) 100%);
+      pointer-events: none;
+      z-index: -1;
+    }
+  }
+  
+  &.active {
+    .tech-settings-toggle {
+      opacity: 0;
+    }
+    
+    .tech-settings-content {
+      transform: translateX(0);
+    }
+  }
+  
+  .tech-settings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(var(--tech-secondary), 0.3);
+    
+    h3 {
+      margin: 0;
+      color: var(--tech-primary);
+      font-size: 18px;
+      font-weight: bold;
+    }
+    
+    .tech-settings-close {
+      background: none;
+      border: none;
+      padding: 5px;
+      cursor: pointer;
+      color: var(--tech-secondary);
+      transition: all 0.3s ease;
+      
+      &:hover {
+        color: var(--tech-primary);
+        transform: rotate(90deg);
+      }
+    }
+  }
+  
+  .tech-settings-section {
+    margin-bottom: 20px;
+    
+    h4 {
+      margin: 0 0 10px 0;
+      color: var(--tech-secondary);
+      font-size: 16px;
+      position: relative;
+      padding-left: 15px;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 8px;
+        height: 8px;
+        background-color: var(--tech-accent);
+        border-radius: 50%;
+      }
+    }
+  }
+  
+  .tech-theme-selector {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    
+    .theme-option {
+      background: rgba(0, 20, 40, 0.7);
+      border: 1px solid rgba(var(--tech-secondary), 0.3);
+      border-radius: 6px;
+      padding: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      
+      .theme-preview {
+        width: 40px;
+        height: 40px;
+        border-radius: 6px;
+        margin-bottom: 5px;
+        position: relative;
+        overflow: hidden;
+        
+        &::before, &::after {
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: 100%;
+        }
+        
+        &.default {
+          background-color: rgba(0, 20, 40, 0.9);
+          
+          &::before {
+            background: linear-gradient(90deg, #4dc8aa, transparent);
+            opacity: 0.7;
+            top: 30%;
+            height: 2px;
+          }
+          
+          &::after {
+            background: radial-gradient(circle at center, #0af 0%, transparent 70%);
+            opacity: 0.4;
+          }
+        }
+        
+        &.neon {
+          background-color: rgba(0, 10, 20, 0.95);
+          
+          &::before {
+            background: linear-gradient(90deg, #0ff, transparent);
+            opacity: 0.7;
+            top: 30%;
+            height: 2px;
+          }
+          
+          &::after {
+            background: radial-gradient(circle at center, #f0f 0%, transparent 70%);
+            opacity: 0.4;
+          }
+        }
+        
+        &.cyberpunk {
+          background-color: rgba(20, 5, 20, 0.95);
+          
+          &::before {
+            background: linear-gradient(90deg, #f5a623, transparent);
+            opacity: 0.7;
+            top: 30%;
+            height: 2px;
+          }
+          
+          &::after {
+            background: radial-gradient(circle at center, #ff3b77 0%, transparent 70%);
+            opacity: 0.4;
+          }
+        }
+        
+        &.dark {
+          background-color: rgba(5, 10, 25, 0.95);
+          
+          &::before {
+            background: linear-gradient(90deg, #3d7cf5, transparent);
+            opacity: 0.7;
+            top: 30%;
+            height: 2px;
+          }
+          
+          &::after {
+            background: radial-gradient(circle at center, #5f33ff 0%, transparent 70%);
+            opacity: 0.4;
+          }
+        }
+      }
+      
+      .theme-name {
+        font-size: 12px;
+        color: var(--tech-secondary);
+      }
+      
+      &[aria-pressed="true"] {
+        background: rgba(0, 40, 70, 0.8);
+        border-color: var(--tech-primary);
+        box-shadow: 0 0 8px rgba(var(--color-primary-rgb), 0.4);
+        
+        .theme-name {
+          color: var(--tech-primary);
+          font-weight: bold;
+        }
+      }
+      
+      &:hover {
+        background: rgba(0, 30, 60, 0.8);
+        border-color: var(--tech-secondary);
+        
+        .theme-name {
+          color: var(--tech-primary);
+        }
+      }
+    }
+  }
+  
+  .tech-animation-toggles {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+    .setting-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px 10px;
+      background: rgba(0, 20, 40, 0.7);
+      border-radius: 4px;
+      
+      label {
+        color: var(--tech-secondary);
+        font-size: 14px;
+      }
+      
+      .toggle-switch {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+        
+        &:focus + .toggle-slider {
+          box-shadow: 0 0 5px var(--tech-primary);
+        }
+        
+        &:checked + .toggle-slider {
+          background-color: var(--tech-primary);
+          
+          &:before {
+            transform: translateX(18px);
+          }
+        }
+      }
+      
+      .toggle-slider {
+        position: relative;
+        display: inline-block;
+        width: 40px;
+        height: 22px;
+        background-color: rgba(0, 0, 0, 0.3);
+        border-radius: 22px;
+        transition: 0.3s;
+        cursor: pointer;
+        
+        &:before {
+          position: absolute;
+          content: "";
+          height: 16px;
+          width: 16px;
+          left: 3px;
+          bottom: 3px;
+          background-color: white;
+          border-radius: 50%;
+          transition: 0.3s;
+        }
+      }
+    }
+  }
+  
+  .tech-settings-note {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    border-left: 3px solid var(--tech-accent);
+    
+    p {
+      margin: 0;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.7);
+      
+      &:not(:last-child) {
+        margin-bottom: 6px;
+      }
+      
+      strong {
+        color: var(--tech-accent);
+      }
+    }
+    
+    .tech-settings-status {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      
+      #current-theme-name {
+        color: var(--tech-primary);
+        font-weight: bold;
+        position: relative;
+        
+        &::after {
+          content: '';
+          display: inline-block;
+          width: 8px;
+          height: 8px;
+          background-color: var(--tech-primary);
+          border-radius: 50%;
+          margin-left: 6px;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .tech-settings-panel {
+    .tech-settings-content {
+      width: 260px;
+    }
+    
+    .tech-theme-selector {
+      grid-template-columns: 1fr;
+    }
+  }
+}

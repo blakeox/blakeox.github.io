@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const dropdown = document.querySelector('#filter-dropdown');
   const searchInput = document.querySelector('#search-input');
-  const projectItems = document.querySelectorAll('.project-item');
+  const projectItems = document.querySelectorAll('.c-projects-list__item');
   const noResults = document.querySelector('#no-results'); 
   const loadMoreBtn = document.querySelector('#load-more-btn');
   const statusEl = document.querySelector('#filter-status');

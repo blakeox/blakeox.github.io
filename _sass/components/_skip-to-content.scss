@@ -5,7 +5,7 @@
 // SASS variables are used for colors and spacing to ensure consistency and easy customization.
 // Referenced variables are defined in the settings folder for maintainability.
 
-.skip-to-content {
+.c-skip-to-content {
   // ### Base Styles
   // - **position:** Positions the link absolutely within the document.
   // - **top:** Hides the link above the viewport by default.
@@ -25,7 +25,7 @@
   transition: top 0.3s ease; // Smooth transition for visibility changes
 }
 
-.skip-to-content:focus {
+.c-skip-to-content:focus {
   // ### Focus Styles
   // - **top:** Moves the link into the viewport when focused.
   // - **outline:** Adds a focus outline for better visibility.

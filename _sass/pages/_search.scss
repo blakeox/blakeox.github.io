@@ -4,11 +4,18 @@
 // SASS variables are used for spacing, colors, typography, and transitions to ensure consistency and easy updates.
 // Referenced variables are defined in the settings folder for maintainability.
 
+// Search page container
+.search-page {
+  padding: $spacing-lg 0;
+  min-height: 60vh;
+}
+
+// Search box styles
 .search-box {
   // ### Search Box Container
   // - **margin-top:** Adds spacing above the search box.
   // - **text-align:** Centers the content horizontally.
-  margin-top: $spacing-lg; // Add top margin using the spacing variable
+  margin-bottom: $spacing-lg; // Add bottom margin using the spacing variable
   text-align: center; // Center-align the content
 
   h2 {
@@ -19,10 +26,15 @@
     margin-bottom: $spacing-md; // Add bottom margin using the spacing variable
   }
 
-  form {
+  .search-form {
     // ### Search Form
     // - **display:** Centers the form inline for alignment.
-    display: inline-block; // Center the form inline
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: $spacing-sm;
+    max-width: 600px;
+    margin: 0 auto;
   }
 
   input[type="text"] {
@@ -34,13 +46,21 @@
     // - **max-width:** Limits the maximum width of the input for responsiveness.
     // - **font-size:** Uses a medium font size for readability.
     // - **color:** Uses the standard text color for consistency.
-    padding: $spacing-sm; // Add padding for better usability
+    padding: $spacing-sm $spacing-md; // Add padding for better usability
     border: 1px solid $color-border-light; // Use light border color
     border-radius: $border-radius; // Apply rounded corners
-    width: 80%; // Set input width to 80% of the container
-    max-width: 300px; // Limit the maximum width of the input
+    width: 100%; // Set input width to 100% of the container
+    max-width: 500px; // Limit the maximum width of the input
     font-size: $font-size-md; // Use medium font size for readability
     color: $color-text; // Use standard text color
+    flex-grow: 1;
+    transition: border-color $transition-duration-default ease, box-shadow $transition-duration-default ease;
+
+    &:focus {
+      border-color: $color-primary;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba($color-primary, 0.2);
+    }
   }
 
   button {
@@ -68,6 +88,321 @@
       // ### Hover Effect for Search Button
       // - **background:** Changes to a darker primary color for interactivity.
       background: $color-primary-dark; // Use darker primary color
+    }
+  }
+}
+
+// Search filters
+.search-filters {
+  margin-top: $spacing-md;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  
+  fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+    
+    legend {
+      margin-bottom: $spacing-sm;
+      font-weight: $font-weight-bold;
+      text-align: center;
+      width: 100%;
+      font-size: $font-size-sm;
+      color: $color-text-secondary;
+    }
+  }
+  
+  &__options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-md;
+    justify-content: center;
+  }
+}
+
+.search-filter-label {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  font-size: $font-size-sm;
+  cursor: pointer;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $border-radius;
+  transition: all $transition-duration-default ease;
+  
+  &:hover {
+    background-color: rgba($color-primary, 0.1);
+  }
+  
+  input[type="checkbox"] {
+    margin: 0;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+  
+  &.active {
+    background-color: rgba($color-primary, 0.15);
+    border: 1px solid $color-primary;
+    font-weight: $font-weight-semibold;
+  }
+}
+
+// Search controls container
+.search-controls {
+  margin-top: $spacing-md;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  
+  @include respond-to('md') {
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+  }
+}
+
+// Search sort
+.search-sort {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  
+  fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+    
+    legend {
+      margin-bottom: $spacing-sm;
+      font-weight: $font-weight-bold;
+      text-align: center;
+      width: 100%;
+      font-size: $font-size-sm;
+      color: $color-text-secondary;
+    }
+  }
+  
+  &__options {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+    
+    @include respond-to('sm') {
+      flex-direction: row;
+      gap: $spacing-md;
+    }
+  }
+}
+
+.search-sort-label {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  font-size: $font-size-sm;
+  cursor: pointer;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $border-radius;
+  transition: all $transition-duration-default ease;
+  
+  &:hover {
+    background-color: rgba($color-primary, 0.1);
+  }
+  
+  &.active {
+    background-color: rgba($color-primary, 0.15);
+    border: 1px solid $color-primary;
+    font-weight: $font-weight-semibold;
+  }
+}
+
+// Search status
+.search-status {
+  margin-top: $spacing-md;
+  color: $color-text-secondary;
+  font-size: $font-size-sm;
+  
+  &.error {
+    color: $color-error;
+  }
+}
+
+// Search results container
+.search-results {
+  margin-top: $spacing-lg;
+  
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  &__item {
+    padding: $spacing-md;
+    border-bottom: 1px solid $color-border-light;
+    transition: background-color $transition-duration-default ease;
+    
+    &:hover {
+      background-color: rgba($color-primary, 0.05);
+    }
+    
+    article {
+      display: grid;
+      gap: $spacing-xs;
+    }
+  }
+  
+  &__title {
+    font-size: $font-size-md;
+    margin: 0 0 $spacing-xs;
+    
+    a {
+      color: $color-primary;
+      text-decoration: none;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  
+  &__category {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+    display: inline-block;
+    background-color: rgba($color-primary, 0.1);
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-right: $spacing-sm;
+  }
+  
+  &__date {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+  }
+  
+  &__snippet {
+    margin: $spacing-sm 0 0;
+    font-size: $font-size-sm;
+    color: $color-text;
+    line-height: 1.6;
+  }
+  
+  &__no-result {
+    padding: $spacing-lg;
+    text-align: center;
+    color: $color-text-secondary;
+    font-size: $font-size-md;
+    background-color: rgba($color-border-light, 0.3);
+    border-radius: $border-radius;
+  }
+}
+
+// Search instructions section
+.search-instructions {
+  margin-top: $spacing-xl;
+  padding: $spacing-md;
+  background-color: rgba($color-primary, 0.05);
+  border-radius: $border-radius;
+  
+  h3 {
+    font-size: $font-size-md;
+    margin-top: 0;
+    margin-bottom: $spacing-sm;
+  }
+  
+  ul {
+    list-style: disc;
+    margin: 0;
+    padding-left: $spacing-lg;
+    
+    li {
+      margin-bottom: $spacing-xs;
+    }
+  }
+}
+
+// Highlight matches
+mark {
+  background-color: rgba($color-primary, 0.2);
+  padding: 0 2px;
+  border-radius: 2px;
+  color: inherit;
+}
+
+// Keyboard navigation focus style
+.keyboard-focus {
+  outline: 2px solid $color-primary;
+  outline-offset: 2px;
+  text-decoration: underline;
+  background-color: rgba($color-primary, 0.05);
+  border-radius: $border-radius;
+  padding: 2px;
+}
+
+// Keyboard navigation focus state
+.keyboard-focus {
+  outline: 2px solid $color-primary;
+  outline-offset: 2px;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border-radius: $border-radius;
+    box-shadow: 0 0 0 2px rgba($color-primary, 0.4);
+    pointer-events: none;
+  }
+}
+
+// Search icon style in navigation
+.search-icon {
+  margin-right: 5px;
+  vertical-align: text-bottom;
+}
+
+// Hidden class for elements that start hidden
+.hidden {
+  display: none;
+}
+
+// Search statistics
+.search-stats {
+  margin-top: $spacing-xl;
+  padding: $spacing-md;
+  background-color: rgba($color-primary, 0.05);
+  border-radius: $border-radius;
+  
+  h3 {
+    font-size: $font-size-md;
+    margin-top: 0;
+    margin-bottom: $spacing-sm;
+    color: $color-primary;
+  }
+  
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+    
+    p {
+      margin: 0;
+      font-size: $font-size-sm;
+      
+      span {
+        font-weight: $font-weight-semibold;
+      }
+    }
+    
+    button {
+      align-self: flex-start;
+      margin-top: $spacing-sm;
     }
   }
 }

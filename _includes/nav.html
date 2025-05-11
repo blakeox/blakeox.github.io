@@ -1,18 +1,25 @@
-<nav class="navbar" aria-label="Main Navigation">
-  <div class="nav-container">
-    <a class="nav-logo" href="{{ '/' | relative_url }}" aria-label="Home">
-      <span class="logo-circle" aria-hidden="true">B</span>
+<nav class="c-navbar" aria-label="Main Navigation">
+  <div class="c-navbar__container">
+    <a class="c-navbar__logo" href="{{ '/' | relative_url }}" aria-label="Home">
+      <span class="c-navbar__logo-circle" aria-hidden="true">B</span>
       <span class="visually-hidden">Blake Oxford Portfolio</span>
     </a>
-    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" data-target=".nav-links">
-      <span class="hamburger-icon" aria-hidden="true"></span>
+    <button class="c-navbar__toggle" aria-label="Toggle navigation" aria-expanded="false" data-target=".c-navbar__links">
+      <span class="c-navbar__hamburger-icon" aria-hidden="true"></span>
     </button>
-    <ul class="nav-links" aria-hidden="true">
-      <li><a href="{{ '/' | relative_url }}" data-analytics="nav-home">Home</a></li>
-      <li><a href="{{ '/about/' | relative_url }}" data-analytics="nav-about">About</a></li>
-      <li><a href="{{ '/projects/' | relative_url }}" data-analytics="nav-projects">Projects</a></li>
-      <li><a href="{{ '/blog/' | relative_url }}" data-analytics="nav-blog">Blog</a></li>
-      <li><a href="{{ '/contact/' | relative_url }}" data-analytics="nav-contact">Contact</a></li>
+    <ul class="c-navbar__links" aria-hidden="true">
+      <li class="c-navbar__item"><a class="c-navbar__link" href="{{ '/' | relative_url }}" data-analytics="nav-home">Home</a></li>
+      <li class="c-navbar__item"><a class="c-navbar__link" href="{{ '/about/' | relative_url }}" data-analytics="nav-about">About</a></li>
+      <li class="c-navbar__item"><a class="c-navbar__link" href="{{ '/projects/' | relative_url }}" data-analytics="nav-projects">Projects</a></li>
+      <li class="c-navbar__item"><a class="c-navbar__link" href="{{ '/blog/' | relative_url }}" data-analytics="nav-blog">Blog</a></li>
+      <li class="c-navbar__item"><a class="c-navbar__link" href="{{ '/contact/' | relative_url }}" data-analytics="nav-contact">Contact</a></li>
+      <li class="c-navbar__item">
+        <a class="c-navbar__link c-navbar__link--icon" href="/search/" data-analytics="nav-search" aria-label="Search">
+          <svg class="c-navbar__icon" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </li>
     </ul>
   </div>
 </nav>

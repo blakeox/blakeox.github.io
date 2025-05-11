@@ -5,9 +5,9 @@ description: "Explore my projects, showcasing skills in process automation, fina
 permalink: /projects/
 ---
 
-<section class="projects-list container" role="region" aria-labelledby="projects-title">
+<section class="c-projects-list container" role="region" aria-labelledby="projects-title">
   <h1 id="projects-title">{{ page.title | replace: '&', '&amp;' }}</h1>
-  <p class="projects-intro">
+  <p class="c-projects-list__intro">
     Explore a curated collection of projects showcasing key skills in process automation, 
     finance, and more. Use the filters to narrow your interests.
   </p>
@@ -16,11 +16,11 @@ permalink: /projects/
   {% include filter-controls.html %}
 
   <!-- Project Grid -->
-  <div class="project-grid" id="project-grid">
+  <div class="c-project-cards__grid" id="project-grid">
     {% assign projects_list = paginator.projects | default: site.projects %}
     {% if projects_list and projects_list.size > 0 %}
       {% for project in projects_list %}
-        <div class="project-item" data-tags="{% for tag in project.tags %}{{ tag | downcase | replace: ' ', '-' }}{% if forloop.last == false %},{% endif %}{% endfor %}">
+        <div class="c-projects-list__item" data-tags="{% for tag in project.tags %}{{ tag | downcase | replace: ' ', '-' }}{% if forloop.last == false %},{% endif %}{% endfor %}">
           {% if project.image %}
             <img data-src="{{ project.image | relative_url }}" alt="{{ project.title | escape }}" class="lazyload" loading="lazy">
           {% else %}
@@ -33,14 +33,14 @@ permalink: /projects/
           </h3>
           <p>{{ project.description }}</p>
           {% if project.link %}
-            <a href="{{ project.link }}" class="btn" target="_blank" rel="noopener" aria-label="Visit {{ project.title }}">
+            <a href="{{ project.link }}" class="c-btn" target="_blank" rel="noopener" aria-label="Visit {{ project.title }}">
               View Project
             </a>
           {% endif %}
           {% if project.tags %}
-            <ul class="tag-list">
+            <ul class="c-tag-list">
               {% for tag in project.tags %}
-                <li class="tag">{{ tag }}</li>
+                <li class="c-tag-list__item">{{ tag }}</li>
               {% endfor %}
             </ul>
           {% endif %}
@@ -57,8 +57,8 @@ permalink: /projects/
   </div>
 
   <!-- “Load More” Button with Spinner -->
-  <div class="load-more-container">
-    <button id="load-more-btn" class="btn" aria-label="Load more projects">Load More</button>
+  <div class="c-projects-list__load-more">
+    <button id="load-more-btn" class="c-btn" aria-label="Load more projects">Load More</button>
     <span id="load-more-spinner" class="spinner hidden"></span>
   </div>
 

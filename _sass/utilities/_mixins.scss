@@ -1,0 +1,15 @@
+// filepath: _sass/utilities/_mixins.scss
+// Reusable mixins for common styling patterns: shadows, border-radius, and transitions
+
+// Shadows
+@mixin shadow-sm { box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); }
+@mixin shadow-md { box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1); }
+@mixin shadow-lg { box-shadow: 0 8px 32px rgba(var(--color-primary-rgb), 0.15); }
+
+// Border radius
+@mixin radius($size) { border-radius: $size; }
+
+// Transitions - pass properties as arguments
+@mixin transition($props...) {
+  transition: #{join($props, ", ")} $transition-duration-default $transition-timing-function-default;
+}

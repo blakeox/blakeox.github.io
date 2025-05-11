@@ -4,7 +4,7 @@ title: "Blog"
 description: "Explore my latest thoughts, tutorials, and insights on web development, design, and technology."
 ---
 
-<section class="blog-page container">
+<section class="c-blog-page container">
   <h1>{{ page.title }}</h1>
 
   <!-- Blog Search Bar -->
@@ -17,7 +17,7 @@ description: "Explore my latest thoughts, tutorials, and insights on web develop
       <article class="blog-post scroll-animate" data-title="{{ post.title | downcase }}" data-excerpt="{{ post.excerpt | downcase }}">
         <h2><a href="{{ post.url | relative_url }}" data-analytics="blog-read-more">{{ post.title }}</a></h2>
         <p>{{ post.excerpt }}</p>
-        <a href="{{ post.url | relative_url }}" class="btn" data-analytics="blog-read-more">Read More</a>
+        <a href="{{ post.url | relative_url }}" class="c-btn" data-analytics="blog-read-more">Read More</a>
       </article>
     {% endfor %}
   </div>

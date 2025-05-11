@@ -1,0 +1,128 @@
+<div id="search-overlay" class="c-search-overlay" aria-hidden="true" data-tech-theme="default">
+  <div class="c-search-overlay__container tech-scan-effect">
+    <div class="c-search-overlay__background">
+      <div class="grid-line"></div>
+      <div class="grid-line"></div>
+      <div class="grid-line"></div>
+      <div class="scan-line"></div>
+      <div class="tech-particles-animated"></div>
+    </div>
+    <div class="c-search-overlay__header">
+      <h2 class="c-search-overlay__title">
+        <span class="tech-badge pulse">AI</span>
+        <span class="tech-badge-text">Advanced Search</span>
+        <span class="tech-decorations">
+          <span class="line-decoration"></span>
+          <span class="dot-decoration"></span>
+        </span>
+      </h2>
+      <button id="close-search" class="c-search-overlay__close" aria-label="Close search">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+    <form class="c-search-overlay__form search-wave-container" action="/search/" method="get">
+      <div class="search-radar-container">
+        <div class="radar-ping"></div>
+        <div class="radar-circle"></div>
+      </div>
+      <div class="c-search-overlay__input-group animate-pulse-glow">
+        <div class="input-decoration">
+          <span class="input-decoration-element"></span>
+          <span class="input-decoration-element"></span>
+        </div>
+        <svg class="c-search-overlay__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <input type="text" name="q" class="c-search-overlay__input" placeholder="Enter search query..." aria-label="Search terms" data-typing-effect="true">
+      </div>
+      <button type="submit" class="c-search-overlay__submit c-btn c-btn--neon">
+        <span class="btn-text">SEARCH</span>
+        <span class="btn-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </button>
+    </form>
+    
+    <div class="c-search-overlay__recent">
+      <!-- Recent searches will be dynamically inserted here -->
+      <div class="recent-searches-decoration">
+        <span class="corner-decoration top-left"></span>
+        <span class="corner-decoration top-right"></span>
+        <span class="corner-decoration bottom-left"></span>
+        <span class="corner-decoration bottom-right"></span>
+      </div>
+    </div>
+    
+    <div class="c-search-overlay__tips">
+      <p>Press <kbd>ESC</kbd> to close or <kbd>Enter</kbd> to search</p>
+      <div class="keyboard-decoration">
+        <span class="key-light"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Include tech search settings panel inside overlay -->
+{% include tech-search-settings.html %}
+
+<!-- Load modular tech search scripts -->
+<script src="/assets/js/tech-search-animations.js" defer></script>
+<script src="/assets/js/tech-search-core.js" defer></script>
+<script src="/assets/js/keyboard-navigation.js" defer></script>
+<script src="/assets/js/search-history.js" defer></script>
+<script src="/assets/js/tech-search-suggestions.js" defer></script>
+<script src="/assets/js/tech-settings.js" defer></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize animations
+    if (window.TechSearchAnimations) {
+      window.TechSearchAnimations.init();
+    }
+    
+    // Initialize settings (will handle theme synchronization)
+    if (window.TechSettings) {
+      window.TechSettings.init();
+    }
+    
+    // Initialize keyboard navigation for overlay
+    if (window.TechSearchKeyboardNavigation) {
+      const searchInput = document.querySelector('.c-search-overlay__input');
+      window.TechSearchKeyboardNavigation.init(searchInput, []);
+    }
+    
+    // Initialize search suggestions
+    if (window.TechSearchSuggestions) {
+      window.TechSearchSuggestions.init({
+        searchInputSelector: '.c-search-overlay__input'
+      });
+    }
+    
+    // Initialize tech search core module (for overlay search)
+    if (window.TechSearchCore) {
+      window.TechSearchCore.init({
+        searchInputSelector: '.c-search-overlay__input',
+        resultsContainerSelector: '.search-results__list',
+        statusElementSelector: '#search-status',
+        searchBoxSelector: '.c-search-overlay__input-group',
+        searchFormSelector: '.c-search-overlay__form',
+        resultItemClass: 'search-results__item'
+      });
+    }
+    
+    // Setup close button functionality
+    const closeButton = document.getElementById('close-search');
+    const searchOverlay = document.getElementById('search-overlay');
+    
+    if (closeButton && searchOverlay) {
+      closeButton.addEventListener('click', function() {
+        searchOverlay.classList.remove('active');
+        searchOverlay.setAttribute('aria-hidden', 'true');
+      });
+    }
+  });
+</script>

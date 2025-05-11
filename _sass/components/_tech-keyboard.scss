@@ -1,0 +1,74 @@
+/**
+ * Tech keyboard shortcuts component
+ * Styling for keyboard shortcut elements throughout the site
+ */
+
+.tech-key {
+  display: inline-block;
+  padding: 3px 8px;
+  background: rgba(33, 150, 243, 0.1);
+  border: 1px solid var(--tech-accent-color, #2196f3);
+  border-radius: 4px;
+  color: var(--tech-accent-color, #2196f3);
+  font-family: monospace;
+  font-size: 0.9em;
+  box-shadow: 0 0 5px var(--tech-glow-color, rgba(33, 150, 243, 0.3));
+  margin: 0 2px;
+  text-transform: none;
+  letter-spacing: 0;
+  
+  &--large {
+    padding: 5px 10px;
+    font-size: 1.1em;
+  }
+  
+  &--small {
+    padding: 2px 6px;
+    font-size: 0.8em;
+  }
+  
+  // Dark theme variations
+  [data-tech-theme="dark"] & {
+    background: rgba(33, 150, 243, 0.15);
+    border-color: var(--tech-accent-color-dark, #64b5f6);
+    color: var(--tech-accent-color-dark, #64b5f6);
+    box-shadow: 0 0 8px var(--tech-glow-color-dark, rgba(33, 150, 243, 0.5));
+  }
+  
+  // Cyberpunk theme variations
+  [data-tech-theme="cyberpunk"] & {
+    background: rgba(255, 83, 112, 0.15);
+    border-color: var(--tech-accent-color-cyberpunk, #ff5370);
+    color: var(--tech-accent-color-cyberpunk, #ff5370);
+    box-shadow: 0 0 8px var(--tech-glow-color-cyberpunk, rgba(255, 83, 112, 0.7));
+  }
+}
+
+// Special key combinations like Ctrl+K
+.key-combo {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  
+  .key-separator {
+    color: var(--tech-text-color, rgba(255, 255, 255, 0.7));
+    margin: 0 2px;
+  }
+}
+
+// Interactive key effect
+.tech-key-interactive {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 8px var(--tech-glow-color, rgba(33, 150, 243, 0.5));
+  }
+  
+  &:active {
+    transform: translateY(1px);
+    box-shadow: 0 0 3px var(--tech-glow-color, rgba(33, 150, 243, 0.3));
+  }
+}

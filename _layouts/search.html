@@ -1,0 +1,213 @@
+---
+layout: default
+title: Search
+description: Search through blog posts, projects, and more to find exactly what you're looking for.
+permalink: /search/
+---
+
+<div class="tech-search-page" data-tech-theme="default">
+  <div class="container">
+    <div class="search-section">
+      <div class="search-header tech-header">
+        <div class="tech-header-decorations">
+          <div class="tech-header-line"></div>
+          <div class="tech-header-dot"></div>
+        </div>
+        <h1 class="tech-title">Search</h1>
+        <button class="keyboard-shortcut-help-btn c-btn c-btn--tech c-btn--sm" aria-label="Show keyboard shortcuts">
+          <span class="tech-key">?</span>
+        </button>
+      </div>
+
+      <div class="tech-search-box">
+        <div class="search-radar-container">
+          <!-- Radar animation will be added via JavaScript -->
+        </div>
+        <form class="search-form">
+          <div class="search-input-wrapper">
+            <input type="text" id="search-input" class="search-input" placeholder="Enter search query..." autocomplete="off" data-typing-effect="true">
+            <button type="submit" class="c-btn c-btn--tech">
+              <span class="btn-text">Search</span>
+              <span class="btn-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+              </span>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="search-results">
+        <div class="search-filters">
+          <div class="search-filter-group">
+            <span class="filter-group-label">Category</span>
+            <div class="search-filter-options">
+              <label class="search-filter-label active">
+                <input type="checkbox" class="search-filter" data-category="all" checked>
+                <span class="filter-text">All</span>
+              </label>
+              <label class="search-filter-label">
+                <input type="checkbox" class="search-filter" data-category="blog">
+                <span class="filter-text">Blog</span>
+              </label>
+              <label class="search-filter-label">
+                <input type="checkbox" class="search-filter" data-category="project">
+                <span class="filter-text">Projects</span>
+              </label>
+              <label class="search-filter-label">
+                <input type="checkbox" class="search-filter" data-category="page">
+                <span class="filter-text">Pages</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="search-sort-group">
+            <span class="sort-group-label">Sort by</span>
+            <div class="search-sort-options">
+              <label class="search-sort-label active">
+                <input type="radio" name="sort" class="search-sort-option" value="relevance" checked>
+                <span class="sort-text">Relevance</span>
+              </label>
+              <label class="search-sort-label">
+                <input type="radio" name="sort" class="search-sort-option" value="date">
+                <span class="sort-text">Date</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="search-results-container">
+          <div class="search-results-header">
+            <div class="search-status" id="search-status">Please enter a search term</div>
+          </div>
+          <ul class="search-results__list"></ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="search-stats hidden">
+      <div class="tech-card">
+        <div class="card-header">
+          <h3>Search Stats</h3>
+          <span class="card-decoration"></span>
+        </div>
+        <div class="stats-container">
+          <div class="stat-item">
+            <span class="stat-label">Recent searches</span>
+            <span class="stat-value" id="recent-search-count">0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Most common term</span>
+            <span class="stat-value" id="most-common-term">None</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Average results</span>
+            <span class="stat-value" id="avg-results">0</span>
+          </div>
+        </div>
+        <button id="clear-search-history" class="c-btn c-btn--tech c-btn--sm">Clear History</button>
+      </div>
+    </div>
+    
+    <!-- Advanced Search Analytics -->
+    <div class="search-analytics"></div>
+
+    <div class="search-tips">
+      <div class="tech-card">
+        <div class="card-header">
+          <h3>Search Tips</h3>
+          <span class="card-decoration"></span>
+        </div>
+        <ul>
+          <li>Enter keywords related to blog posts, projects, or pages</li>
+          <li>Search is case-insensitive</li>
+          <li>Results update as you type</li>
+          <li>Press <span class="tech-key">/</span> anywhere to focus search</li>
+          <li><a href="/search-shortcuts/">View all keyboard shortcuts</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Load modular tech search scripts -->
+<script src="/assets/js/tech-search-animations.js" defer></script>
+<script src="/assets/js/tech-search-core.js" defer></script>
+<script src="/assets/js/keyboard-navigation.js" defer></script>
+<script src="/assets/js/search-history.js" defer></script>
+<script src="/assets/js/tech-search-suggestions.js" defer></script>
+<script src="/assets/js/tech-search-analytics.js" defer></script>
+<script src="/assets/js/tech-keyboard-shortcuts.js" defer></script>
+<script src="/assets/js/tech-settings.js" defer></script>
+
+<style>
+  .tech-key {
+    display: inline-block;
+    padding: 3px 8px;
+    background: rgba(33, 150, 243, 0.1);
+    border: 1px solid var(--tech-accent-color, #2196f3);
+    border-radius: 4px;
+    color: var(--tech-accent-color, #2196f3);
+    font-family: monospace;
+    font-size: 0.9em;
+    box-shadow: 0 0 5px var(--tech-glow-color, rgba(33, 150, 243, 0.3));
+    margin: 0 2px;
+  }
+</style>
+
+<script>
+  // Initialize all modular tech search components
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize keyboard navigation module
+    if (window.TechSearchKeyboardNavigation) {
+      const searchInput = document.getElementById('search-input');
+      window.TechSearchKeyboardNavigation.init(searchInput, []);
+    }
+    
+    // Initialize search history module
+    if (window.TechSearchHistory) {
+      window.TechSearchHistory.init({
+        statsContainer: document.querySelector('.search-stats'),
+        clearButton: document.getElementById('clear-search-history')
+      });
+    }
+    
+    // Initialize animations
+    if (window.TechSearchAnimations) {
+      window.TechSearchAnimations.init();
+    }
+    
+    // Initialize tech search core module
+    if (window.TechSearchCore) {
+      window.TechSearchCore.init({
+        searchInputSelector: '#search-input',
+        resultsContainerSelector: '.search-results__list',
+        statusElementSelector: '#search-status',
+        searchBoxSelector: '.tech-search-box',
+        searchFormSelector: '.search-form',
+        resultItemClass: 'search-results__item'
+      });
+    }
+    
+    // Initialize search suggestions
+    if (window.TechSearchSuggestions) {
+      window.TechSearchSuggestions.init({
+        searchInputSelector: '#search-input'
+      });
+    }
+    
+    // Initialize search analytics
+    if (window.TechSearchAnalytics) {
+      window.TechSearchAnalytics.init({
+        analyticsContainerSelector: '.search-analytics'
+      });
+    }
+    
+    // Initialize keyboard shortcuts module
+    if (window.TechKeyboardShortcuts) {
+      window.TechKeyboardShortcuts.init();
+    }
+  });
+</script>

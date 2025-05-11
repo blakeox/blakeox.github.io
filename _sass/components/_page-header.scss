@@ -4,26 +4,30 @@
 // SASS variables are used for colors, spacing, and typography to ensure maintainability and easy updates.
 
 // ### Page Header Container
-// - **.page-header:** The main container for the page header.
+// - **.c-page-header:** The main container for the page header.
 // - **text-align:** Centers the content horizontally.
 // - **margin-bottom:** Adds spacing below the header for separation from the rest of the page content.
-.page-header {
+.c-page-header {
   text-align: center; // Center-align the content
   margin-bottom: $spacing-lg; // Add bottom margin for spacing
 
+  &__container {
+    @extend .container;
+  }
+
   // ### Main Heading
-  // - **h1:** Styles for the main heading in the page header.
+  // - **.c-page-header__title:** Styles for the main heading in the page header.
   // - **font-size:** Uses a large font size for prominence.
   // - **margin-bottom:** Adds spacing below the heading for separation.
-  h1 {
+  &__title {
     margin-bottom: $spacing-md; // Add bottom margin for spacing
   }
 
   // ### Optional Description
-  // - **p:** Styles for the optional description text in the page header.
+  // - **.c-page-header__description:** Styles for the optional description text in the page header.
   // - **font-size:** Uses a medium font size for readability.
   // - **color:** Uses the standard text color for consistency.
-  p {
+  &__description {
     color: $color-text; // Use standard text color
   }
 }

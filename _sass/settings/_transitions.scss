@@ -10,6 +10,7 @@
 $transition-duration-fast: 0.15s; // Fast transitions (150ms) for quick interactions
 $transition-duration-default: 0.3s; // Default transition duration (300ms) for most elements
 $transition-duration-slow: 0.5s; // Slow transitions (500ms) for emphasis
+$transition-timing-function-default: ease; // Default timing function
 
 // ### Animation Durations
 // Defines the duration of animations for different use cases.

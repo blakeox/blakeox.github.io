@@ -4,34 +4,34 @@
 // SASS variables are used for colors, spacing, and typography to ensure maintainability and easy updates.
 
 // ### Key Achievements Container
-// - **.key-achievements:** The main container for the Key Achievements section.
+// - **.c-key-achievements:** The main container for the Key Achievements section.
 // - **margin-top:** Adds spacing above the section.
-.key-achievements {
+.c-key-achievements {
   margin-top: $spacing-lg; // Add top margin for spacing
 
   // ### Section Heading
-  // - **h3:** Styles for the section heading.
+  // - **&__heading:** Styles for the section heading.
   // - **font-size:** Uses a large font size for prominence.
   // - **margin-bottom:** Adds spacing below the heading.
-  h3 {
+  &__heading {
     font-size: $font-size-lg; // Use large font size for prominence
     margin-bottom: $spacing-md; // Add bottom margin for spacing
   }
 
   // ### Achievements List
-  // - **ul:** Styles for the list of achievements.
+  // - **&__list:** Styles for the list of achievements.
   // - **list-style:** Removes default list styling.
   // - **padding:** Removes default padding for a clean layout.
-  ul {
+  &__list {
     list-style: none; // Remove default list styling
     padding: 0; // Remove default padding
 
     // ### Individual Achievement Items
-    // - **li:** Styles for individual list items.
+    // - **&__item:** Styles for individual list items.
     // - **margin-bottom:** Adds spacing between list items.
     // - **font-size:** Uses a medium font size for readability.
     // - **::before:** Adds a checkmark icon before each item.
-    li {
+    &__item {
       margin-bottom: $spacing-sm; // Add spacing between list items
       font-size: $font-size-md; // Use medium font size for readability
 

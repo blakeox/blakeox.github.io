@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.querySelector('#search-input');
     const sortDropdown = document.querySelector('#sort-dropdown');
     const projectGrid = document.querySelector('#project-grid');
-    const projectItems = Array.from(document.querySelectorAll('.project-item'));
+    const projectItems = Array.from(document.querySelectorAll('.c-projects-list__item'));
     const noResults = document.querySelector('#no-results');
     const loadMoreBtn = document.querySelector('#load-more-btn');
     
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     function sortProjects() {
-      const visibleItems = [...projectGrid.querySelectorAll('.project-item:not(.hidden)')];
+      const visibleItems = [...projectGrid.querySelectorAll('.c-projects-list__item:not(.hidden)')];
       const sortValue = sortDropdown.value;
     
       visibleItems.sort((a, b) => {

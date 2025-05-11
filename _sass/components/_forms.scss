@@ -5,18 +5,18 @@
 // Referenced variables are defined in the settings folder for consistency across the project.
 
 // ### Form Group
-// - **.form-group:** A wrapper for form elements to provide consistent spacing.
+// - **.c-form-group:** A wrapper for form elements to provide consistent spacing.
 // - **margin-bottom:** Adds spacing below each form group for better layout separation.
-.form-group {
+.c-form-group {
   margin-bottom: $spacing-md; // Add spacing below each form group
 
   // ### Form Labels
-  // - **label:** Styles for form labels.
+  // - **&__label:** Styles for form labels.
   // - **display:** Ensures labels are displayed on their own line.
   // - **font-size:** Uses a small font size for readability.
   // - **font-weight:** Makes labels bold for better visibility.
   // - **margin-bottom:** Adds spacing below the label for separation.
-  label {
+  &__label {
     display: block; // Ensure labels are displayed on their own line
     font-size: $font-size-sm; // Use small font size for labels
     font-weight: bold; // Make labels bold for better visibility

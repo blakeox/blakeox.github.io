@@ -1,26 +1,26 @@
 <!-- Pagination (if available) -->
 {% if paginator and paginator.total_pages > 1 %}
-  <nav class="pagination" aria-label="Pagination">
+  <nav class="c-pagination" aria-label="Pagination">
     <p>Page {{ paginator.page }} of {{ paginator.total_pages }}</p>
-    <div class="pagination-links">
+    <div class="c-pagination__links">
       {% if paginator.previous_page %}
-        <a href="{{ paginator.previous_page_path | relative_url }}" class="btn secondary" aria-label="Go to previous page">
+        <a href="{{ paginator.previous_page_path | relative_url }}" class="c-btn c-btn--secondary c-pagination__link" aria-label="Go to previous page">
           Previous
         </a>
       {% endif %}
 
       {% for page in (1..paginator.total_pages) %}
         {% if page == paginator.page %}
-          <span class="btn current" aria-current="page">{{ page }}</span>
+          <span class="c-btn c-pagination__link active" aria-current="page">{{ page }}</span>
         {% else %}
-          <a href="{{ paginator.base_path | relative_url }}/page/{{ page }}" class="btn secondary" aria-label="Go to page {{ page }}">
+          <a href="{{ paginator.base_path | relative_url }}/page/{{ page }}" class="c-btn c-btn--secondary c-pagination__link" aria-label="Go to page {{ page }}">
             {{ page }}
           </a>
         {% endif %}
       {% endfor %}
 
       {% if paginator.next_page %}
-        <a href="{{ paginator.next_page_path | relative_url }}" class="btn secondary" aria-label="Go to next page">
+        <a href="{{ paginator.next_page_path | relative_url }}" class="c-btn c-btn--secondary c-pagination__link" aria-label="Go to next page">
           Next
         </a>
       {% endif %}
@@ -29,15 +29,15 @@
 {% endif %}
 
 {% if page.previous or page.next %}
-  <nav class="pagination" aria-label="Pagination">
-    <div class="pagination-links">
+  <nav class="c-pagination" aria-label="Pagination">
+    <div class="c-pagination__links">
       {% if page.previous %}
-        <a href="{{ page.previous.url | relative_url }}" class="btn secondary" aria-label="Previous Project: {{ page.previous.title }}">
+        <a href="{{ page.previous.url | relative_url }}" class="c-btn c-btn--secondary c-pagination__link" aria-label="Previous Project: {{ page.previous.title }}">
           ← Previous Project
         </a>
       {% endif %}
       {% if page.next %}
-        <a href="{{ page.next.url | relative_url }}" class="btn secondary" aria-label="Next Project: {{ page.next.title }}">
+        <a href="{{ page.next.url | relative_url }}" class="c-btn c-btn--secondary c-pagination__link" aria-label="Next Project: {{ page.next.title }}">
           Next Project →
         </a>
       {% endif %}

@@ -1,31 +1,31 @@
 // ## Footer Styles
 // Only keep unique customizations not covered by utility classes
 
-.footer-container a {
+.c-footer__link {
   color: var(--color-primary); // Use CSS variable
   text-decoration: none;
   transition: color 0.2s;
 }
-.footer-container a:hover,
-.footer-container a:focus-visible {
+.c-footer__link:hover,
+.c-footer__link:focus-visible {
   text-decoration: underline;
   color: var(--color-primary-dark, #0056b3); // Use a darker primary for hover/focus if available
 }
 
 // Add dark mode support for the footer
-.footer-container.dark-mode {
+.c-footer--dark-mode {
   background: var(--color-dark-bg, #181a1b);
   color: var(--color-dark-text, #f1f1f1);
 }
 
 // Focus-visible for accessibility
-.footer-container a:focus-visible {
+.c-footer__link:focus-visible {
   outline: 2px solid var(--color-primary, #4dc8aa);
   outline-offset: 2px;
 }
 
 // Social icon sizing utility (if not already in a utility file)
-.social-icon {
+.c-footer__social-links {
   width: 2rem;
   height: 2rem;
   display: inline-block;
@@ -41,7 +41,7 @@
   to { opacity: 1; }
 }
 
-.accordion-toggle {
+.c-footer__accordion-toggle {
   background: none;
   border: none;
   color: $color-primary;
@@ -56,7 +56,7 @@
   }
 }
 
-#footer-quick-links {
+#c-footer__quick-links {
   transition: max-height 0.3s ease, opacity 0.3s ease;
   overflow: hidden;
   max-height: 0;
@@ -70,18 +70,18 @@
 
 // Desktop defaults: show Quick Links list, hide accordion toggle
 @include respond-to('sm') {
-  #footer-quick-links {
+  #c-footer__quick-links {
     max-height: none !important;
     opacity: 1 !important;
     overflow: visible !important;
   }
-  .accordion-toggle {
+  .c-footer__accordion-toggle {
     display: none !important;
   }
 }
 
 // Center Quick Links dropdown text on mobile
-.footer-sitemap__list {
+.c-footer__sitemap-list {
   text-align: center;
 
   li {
@@ -89,7 +89,7 @@
   }
 }
 
-.footer-sitemap a {
+.c-footer__sitemap a {
   transition: color 0.3s ease;
 
   &:hover {

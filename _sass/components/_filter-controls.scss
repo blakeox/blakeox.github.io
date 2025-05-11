@@ -4,14 +4,17 @@
 // The styles are designed to be reusable, responsive, and consistent with the overall design system.
 // SASS variables are used for colors, spacing, typography, and transitions to ensure maintainability and easy updates.
 
+// Add mixins import
+@import '../utilities/mixins';
+
 // ### Filter Controls Container
-// - **.filter-controls:** The main container for the filter controls section.
+// - **.c-filter-controls:** The main container for the filter controls section.
 // - **display:** Uses flexbox for layout.
 // - **flex-wrap:** Allows items to wrap to the next line if necessary.
 // - **gap:** Adds spacing between items.
 // - **align-items:** Aligns items vertically.
 // - **margin-bottom:** Adds spacing below the filter controls section.
-.filter-controls {
+.c-filter-controls {
   display: flex; // Use flexbox for layout
   flex-wrap: wrap; // Allow items to wrap to the next line if necessary
   gap: $spacing-md; // Add spacing between items
@@ -19,13 +22,13 @@
   margin-bottom: $spacing-lg; // Add bottom margin for spacing
 
   // ### Dropdown and Input Containers
-  // - **.filter-dropdown-container, .sort-dropdown-container, .search-input-container:**
+  // - **.c-filter-controls__dropdown-container, .c-filter-controls__sort-dropdown-container, .c-filter-controls__search-input-container:**
   //   Containers for dropdowns and search inputs.
   // - **flex:** Allows flexible resizing of containers.
   // - **min-width:** Ensures a minimum width for containers.
-  .filter-dropdown-container,
-  .sort-dropdown-container,
-  .search-input-container {
+  &__dropdown-container,
+  &__sort-dropdown-container,
+  &__search-input-container {
     flex: 1 1 auto; // Allow flexible resizing
     min-width: $filter-min-width; // Minimum width for containers
   }
@@ -44,79 +47,79 @@
     width: 100%; // Full width to match the container
     padding: $spacing-sm $spacing-md; // Add inner padding
     font-size: $font-size-base; // Use base font size
-    border: 1px solid $color-border-light; // Light border color
-    border-radius: $border-radius; // Rounded corners
-    background-color: $background-color-light; // Light background color
-    transition: border-color $transition-duration-default ease, box-shadow $transition-duration-default ease; // Smooth transitions
+    border: 1px solid var(--color-border-light); // Light border color
+    @include radius($border-radius); // Rounded corners
+    background-color: var(--color-background-light); // Light background color
+    @include transition(border-color, box-shadow); // Smooth transitions
 
     &:focus {
       // Focus styles for accessibility
-      border-color: $color-primary; // Highlight border with primary color
-      box-shadow: 0 0 4px rgba($color-primary, 0.5); // Add subtle shadow
+      border-color: var(--color-primary); // Highlight border with primary color
+      @include shadow-sm; // Add subtle shadow
       outline: none; // Remove default outline
     }
 
     &:hover {
       // Hover styles for interactivity
-      border-color: $color-primary-hover; // Use hover color for border
+      border-color: var(--color-primary-hover); // Use hover color for border
     }
   }
 
   // ### Buttons
-  // - **.btn:** Base styles for buttons in the filter controls section.
+  // - **.c-btn:** Base styles for buttons in the filter controls section.
   // - **padding:** Adds padding for a clickable area.
   // - **font-size:** Uses the base font size.
   // - **border:** Removes the default border.
   // - **border-radius:** Applies rounded corners for a modern look.
   // - **cursor:** Changes the cursor to a pointer for interactivity.
   // - **transition:** Enables smooth background color transitions.
-  .btn {
+  .c-btn {
     padding: $spacing-sm $spacing-md; // Add padding for clickable area
     font-size: $font-size-base; // Use base font size
     border: none; // Remove default border
-    border-radius: $border-radius; // Rounded corners
+    @include radius($border-radius); // Rounded corners
     cursor: pointer; // Pointer cursor for interactivity
-    transition: background-color $transition-duration-default ease; // Smooth background color transition
+    @include transition(background-color); // Smooth background color transition
 
     &.secondary {
       // Styles for secondary buttons
-      background-color: $color-secondary; // Secondary background color
-      color: $color-text-secondary; // Secondary text color
-      border: 1px solid $color-border-secondary; // Secondary border color
+      background-color: var(--color-secondary); // Secondary background color
+      color: var(--color-text-secondary); // Secondary text color
+      border: 1px solid var(--color-border-secondary); // Secondary border color
 
       &:hover {
         // Hover effect for secondary buttons
-        background-color: $color-secondary-hover; // Darker secondary color
+        background-color: var(--color-secondary-hover); // Darker secondary color
       }
     }
 
     &:hover {
       // Hover effect for primary buttons
-      background-color: $color-primary-hover; // Darker primary color
-      color: $color-text; // Standard text color
+      background-color: var(--color-primary-hover); // Darker primary color
+      color: var(--color-text); // Standard text color
     }
 
     &:focus {
       // Focus styles for accessibility
-      outline: 2px solid $color-primary; // Highlight outline with primary color
+      outline: 2px solid var(--color-primary); // Highlight outline with primary color
       outline-offset: 2px; // Add spacing around the outline
     }
   }
 
   // ### Loading Spinner
-  // - **.spinner:** Styles for the loading spinner.
+  // - **.c-filter-controls__spinner:** Styles for the loading spinner.
   // - **display:** Ensures the spinner is inline-block for layout.
   // - **width, height:** Sets the size of the spinner.
   // - **border:** Adds a light border with a primary-colored top border.
   // - **border-radius:** Ensures a circular shape.
   // - **animation:** Adds a spinning animation.
-  .spinner {
+  &__spinner {
     display: inline-block; // Inline-block for layout
     width: $spinner-size; // Spinner width
     height: $spinner-size; // Spinner height
-    border: 3px solid rgba($color-border-light, 0.1); // Light border color
-    border-top: 3px solid $color-primary; // Primary color for the top border
-    border-radius: $border-radius-circle; // Circular shape
+    border: 3px solid rgba(var(--color-border-light-rgb), 0.1); // Light border color
+    border-top: 3px solid var(--color-primary); // Primary color for the top border
+    @include radius($border-radius-circle); // Circular shape
     animation: spin $animation-duration-fast linear infinite; // Spinning animation
 
     &.hidden {
@@ -128,9 +131,9 @@
   // ### Spinner Visibility Transition
   // - **opacity:** Controls the visibility of the spinner.
   // - **transition:** Adds smooth opacity transitions.
-  .spinner {
+  &__spinner {
     opacity: 0;
-    transition: opacity $transition-duration-default ease; // Smooth opacity transition
+    @include transition(opacity); // Smooth opacity transition
 
     &.hidden {
       opacity: 0; // Fully transparent
@@ -141,14 +144,12 @@
       opacity: 1; // Fully visible
     }
   }
-}
 
-// ### Spinner Animation Keyframes
-// - **spin:** Defines the spinning animation for the spinner.
-// - **transform:** Rotates the spinner 360 degrees.
-@keyframes spin {
-  to {
-    transform: rotate(360deg); // Full rotation
+  // Spinner Animation
+  @keyframes spin {
+    to {
+      transform: rotate(360deg); // Full rotation
+    }
   }
 }
 
@@ -160,17 +161,17 @@
 // - **width:** Ensures full width for buttons.
 // - **text-align:** Centers button text.
 @media (max-width: $breakpoint-md) {
-  .filter-controls {
+  .c-filter-controls {
     flex-direction: column; // Stack items vertically
     gap: $spacing-md; // Add spacing between items
 
-    .filter-dropdown-container,
-    .sort-dropdown-container,
-    .search-input-container {
+    &__dropdown-container,
+    &__sort-dropdown-container,
+    &__search-input-container {
       min-width: 100%; // Full width for containers
     }
 
-    .btn {
+    .c-btn {
       width: 100%; // Full width for buttons
       text-align: center; // Center-align button text
     }

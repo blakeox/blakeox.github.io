@@ -8,21 +8,21 @@ date: "{{ page.date | date: '%Y-%m-%d' }}"
 link: "{{ page.link }}"
 ---
 
-<article class="project-detail container">
+<article class="c-project-detail container">
   <!-- Breadcrumb Navigation -->
   {% include breadcrumb.html %}
 
-  <h1>{{ page.title | replace: '&', '&amp;' }}</h1>
+  <h1 class="c-project-detail__title">{{ page.title | replace: '&', '&amp;' }}</h1>
 
   {% if page.image %}
-    <div class="project-image">
-      <img data-src="{{ page.image | relative_url }}" alt="{{ page.title | escape }}" class="lazyload" loading="lazy" width="800" height="400">
+    <div class="c-project-detail__image-wrapper">
+      <img data-src="{{ page.image | relative_url }}" alt="{{ page.title | escape }}" class="c-project-detail__image lazyload" loading="lazy" width="800" height="400">
     </div>
   {% endif %}
 
   <!-- Short Project Overview -->
   {% if page.description %}
-    <p class="project-overview">
+    <p class="c-project-detail__overview">
       {{ page.description }}
     </p>
   {% endif %}
@@ -31,22 +31,22 @@ link: "{{ page.link }}"
 
   {% if page.link %}
     <p>
-      <a href="{{ page.link }}" target="_blank" rel="noopener" class="btn" aria-label="Visit {{ page.title }}">
+      <a href="{{ page.link }}" target="_blank" rel="noopener" class="c-btn" aria-label="Visit {{ page.title }}">
         View Project
       </a>
     </p>
   {% endif %}
 
-  <div class="project-body">
+  <div class="c-project-detail__body">
     {{ content }}
   </div>
 
   <p>
     <strong>Tags:</strong>
-    <ul class="tag-list" role="list">
+    <ul class="c-tag-list" role="list">
       {% for tag in page.tags %}
-        <li>
-          <a href="/projects/?filter={{ tag | downcase | replace: ' ', '-' }}" class="btn secondary tag" aria-label="Filter projects by {{ tag }}">
+        <li class="c-tag-list__item">
+          <a href="/projects/?filter={{ tag | downcase | replace: ' ', '-' }}" class="c-btn c-btn--secondary c-tag-list__link" aria-label="Filter projects by {{ tag }}">
             {{ tag }}
           </a>
         </li>
@@ -55,20 +55,19 @@ link: "{{ page.link }}"
   </p>
 
   <p>
-    <button onclick="window.print()" class="btn" aria-label="Print this project">Print Project</button>
+    <button onclick="window.print()" class="c-btn" aria-label="Print this project">Print Project</button>
   </p>
 
   <!-- Social Sharing Buttons -->
   {% include social-sharing.html %}
 
   <!-- Related Projects (Optional) -->
-  <section class="related-projects mt-1">
-    <h2>Related Projects</h2>
-    <ul>
-      {% assign related_projects = site.projects | where_exp: "item", "item.tags contains page.tags[0]" | where: "title", page.title | limit: 3 %}
+  <section class="c-related-projects mt-1">
+    <h2 class="c-related-projects__title">Related Projects</h2>
+    <ul class="c-related-projects__list">
       {% for project in related_projects %}
-        <li>
-          <a href="{{ project.url | relative_url }}" class="btn secondary" aria-label="View {{ project.title }}">
+        <li class="c-related-projects__item">
+          <a href="{{ project.url | relative_url }}" class="c-btn c-btn--secondary" aria-label="View {{ project.title }}">
             {{ project.title }}
           </a>
         </li>
@@ -77,9 +76,9 @@ link: "{{ page.link }}"
   </section>
 
   <!-- Back to Projects & Pagination -->
-  <div class="project-navigation" aria-label="Project Navigation">
+  <div class="c-project-detail__navigation" aria-label="Project Navigation">
     <p>
-      <a href="{{ '/projects/' | relative_url }}" class="btn secondary" aria-label="Back to Projects">
+      <a href="{{ '/projects/' | relative_url }}" class="c-btn c-btn--secondary" aria-label="Back to Projects">
         Back to Projects
       </a>
     </p>

@@ -10,12 +10,10 @@
     </div>
 
     <!-- Skip to Content Link -->
-    <a href="#main-content" class="skip-to-content" aria-label="Skip to main content">Skip to main content</a>
+    <a href="#main-content" class="c-skip-to-content" aria-label="Skip to main content">Skip to main content</a>
 
     <!-- Header -->
-    <header class="site-header">
-      {% include nav.html %}
-    </header>
+    {% include nav.html %}
 
     <!-- Main Content -->
     <main id="main-content">
@@ -26,6 +24,9 @@
     <footer class="footer-container">
       {% include footer.html %}
     </footer>
+
+    <!-- Search Overlay -->
+    {% include search-overlay.html %}
 
     <!-- Fallback Content for No-JS -->
     <noscript>
@@ -47,5 +48,7 @@
     <script src="/assets/js/theme.js" defer></script>
     <script src="/assets/js/preloader.js" defer></script>
     <script src="/assets/js/animations.js" defer></script>
+    <script src="/assets/js/search.js" defer></script>
+    <script src="/assets/js/search-overlay.js" defer></script>
   </body>
 </html>

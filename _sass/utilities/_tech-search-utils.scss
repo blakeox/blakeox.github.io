@@ -1,0 +1,244 @@
+// ## Tech Search Utility Classes
+// This file contains utility classes organized into logical sections:
+// 1. Animation Toggle Utilities - For enabling/disabling various animations
+// 2. Browser-Specific Styles - For cross-browser compatibility
+// 3. Accessibility Helpers - For improving user experience
+// 4. Theme Switcher Utilities - For theme management across components
+
+// ============================================================
+// Animation Toggle Utilities
+// Controls animation effects based on user preferences
+// ============================================================
+html {
+  &.tech-disable-particles {
+    .tech-particles,
+    .tech-particles-animated,
+    .tech-background .tech-particles,
+    .tech-particles-animated::before,
+    .tech-particles-animated::after {
+      display: none !important;
+    }
+  }
+  
+  &.tech-disable-scan-lines {
+    .scan-line,
+    .tech-scan-effect .scan-line,
+    [class*="result-tech-decoration"] .scan-line,
+    .grid-line {
+      display: none !important;
+    }
+  }
+  
+  &.tech-disable-glow {
+    [class*="pulse-glow"],
+    .btn-glow,
+    .hover-glow,
+    .animate-pulse-glow,
+    [class*="tech"] [class*="badge"],
+    .search-results__item mark,
+    .tech-search-results__item mark,
+    .search-pulse {
+      box-shadow: none !important;
+      text-shadow: none !important;
+      animation: none !important;
+    }
+    
+    // Target search.html specific elements
+    .c-btn--tech .btn-glow,
+    .tech-input:focus,
+    .input-border {
+      box-shadow: none !important;
+      filter: none !important;
+    }
+  }
+  
+  &.tech-disable-radar {
+    .search-radar-container,
+    .radar-ping,
+    .radar-circle {
+      display: none !important;
+    }
+  }
+  
+  &.tech-reduced-motion {
+    * {
+      transition-duration: 0.1s !important;
+      animation-duration: 0.1s !important;
+    }
+    
+    .glitch-layer,
+    .scan-line,
+    .grid-line,
+    .tech-particles-animated::before,
+    .tech-particles-animated::after,
+    .search-pulse,
+    .tech-grid,
+    .radar-ping,
+    .radar-circle {
+      animation: none !important;
+      transition: none !important;
+    }
+    
+    .search-results__item.tech-result-animate,
+    .search-results__item.searchable,
+    .search-results__item.focused {
+      animation: none !important;
+      transition: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    
+    // search.html specific elements
+    .animate-pulse-glow,
+    .input-border,
+    .tech-input::after {
+      animation: none !important;
+      transition: none !important;
+    }
+    
+    // Hide purely decorative animations
+    .tech-decorations,
+    .corner-element,
+    .line-element,
+    .input-decoration-element {
+      opacity: 0.3 !important;
+    }
+  }
+}
+
+// ============================================================
+// Browser-Specific Styles
+// Fixes and adjustments for different browser engines
+// ============================================================
+.browser-safari {
+  // Safari-specific adjustments
+  .tech-grid,
+  .grid-line {
+    background-attachment: scroll !important;
+    transform: translateZ(0);
+  }
+  
+  .search-results__item::after {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+}
+
+.browser-firefox {
+  // Firefox-specific adjustments
+  .tech-particles {
+    // Firefox can sometimes struggle with complex particles
+    opacity: 0.5;
+  }
+}
+
+.browser-old-edge {
+  // Old Edge browser adjustments
+  .tech-particles,
+  .tech-grid {
+    opacity: 0.3;
+  }
+  
+  .glitch-layer {
+    // Old Edge doesn't handle glitch effects well
+    display: none;
+  }
+}
+
+// ============================================================
+// Accessibility Helpers
+// Improves usability for keyboard navigation, focus states,
+// screen readers, and reduced motion preferences
+// ============================================================
+.tech-keyboard-focused {
+  outline: 2px solid var(--tech-primary) !important;
+  outline-offset: 2px !important;
+  position: relative;
+  z-index: 5;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 3px;
+    box-shadow: 0 0 0 3px rgba(0, 170, 255, 0.5);
+    z-index: -1;
+  }
+}
+
+// Screen reader only text
+.tech-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+// Live region for screen readers
+.tech-live-region {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+  
+  &:not(:empty) {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    position: absolute;
+    width: auto;
+  }
+}
+
+// ============================================================
+// Theme Switcher Utilities
+// Manages theme application across tech search components
+// ============================================================
+[data-tech-theme="default"] {
+  --tech-primary: var(--color-primary);
+  --tech-secondary: #0af;
+  --tech-accent: #f0a;
+  --tech-grid-color: rgba(85, 210, 230, 0.15);
+  --tech-glow-color: rgba(0, 170, 255, 0.6);
+  --tech-bg-color: rgba(0, 20, 40, 0.9);
+}
+
+[data-tech-theme="neon"] {
+  --tech-primary: #0ff;
+  --tech-secondary: #f0f;
+  --tech-accent: #ff0;
+  --tech-grid-color: rgba(0, 255, 255, 0.15);
+  --tech-glow-color: rgba(255, 0, 255, 0.6);
+  --tech-bg-color: rgba(0, 10, 20, 0.95);
+}
+
+[data-tech-theme="cyberpunk"] {
+  --tech-primary: #f5a623;
+  --tech-secondary: #ff3b77;
+  --tech-accent: #00ffc8;
+  --tech-grid-color: rgba(245, 166, 35, 0.15);
+  --tech-glow-color: rgba(255, 59, 119, 0.6);
+  --tech-bg-color: rgba(20, 5, 20, 0.95);
+}
+
+[data-tech-theme="dark"] {
+  --tech-primary: #3d7cf5;
+  --tech-secondary: #5f33ff;
+  --tech-accent: #00e5ff;
+  --tech-grid-color: rgba(61, 124, 245, 0.15);
+  --tech-glow-color: rgba(95, 51, 255, 0.6);
+  --tech-bg-color: rgba(5, 10, 25, 0.95);
+}

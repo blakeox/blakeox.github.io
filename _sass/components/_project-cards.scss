@@ -5,7 +5,7 @@
 // SASS variables are used for colors, spacing, typography, and transitions to ensure maintainability and easy updates.
 
 /* Project Grid */
-.project-grid {
+.c-project-cards {
   // ### Project Grid
   // - **display:** Uses grid layout for responsive design.
   // - **grid-template-columns:** Creates responsive columns based on available space.
@@ -16,10 +16,18 @@
   gap: $spacing-lg; // Add spacing between grid items
   margin-top: $spacing-lg; // Add top margin for spacing
   margin-bottom: $spacing-xl; // Add bottom margin for spacing
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: $spacing-lg;
+    margin-top: $spacing-lg;
+    margin-bottom: $spacing-xl;
+  }
 }
 
 /* Project Card */
-.project-item {
+.c-project-cards__item {
   // ### Project Card
   // - **display:** Uses flexbox for vertical stacking of content.
   // - **background:** Uses a light background color for contrast.

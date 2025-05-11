@@ -4,42 +4,42 @@
 // SASS variables are used for colors, spacing, typography, and transitions to ensure consistency and easy updates.
 
 // ### Latest Blog Posts Container
-// - **.latest-blog-posts:** The main container for the Latest Blog Posts section.
+// - **.c-latest-blog-posts:** The main container for the Latest Blog Posts section.
 // - **margin-top:** Adds spacing above the section.
-.latest-blog-posts {
+.c-latest-blog-posts {
   margin-top: $spacing-lg; // Add top margin for spacing
 
   // ### Section Heading
-  // - **h2:** Styles for the section heading.
+  // - **&__title:** Styles for the section heading.
   // - **font-size:** Uses a large font size for prominence.
   // - **margin-bottom:** Adds spacing below the heading.
   // - **text-align:** Centers the heading horizontally.
-  h2 {
+  &__title {
     font-size: $font-size-lg; // Use large font size for prominence
     margin-bottom: $spacing-md; // Add bottom margin for spacing
     text-align: center; // Center-align the heading
   }
 
   // ### Project Grid (Optional)
-  // - **.project-grid:** The container for the grid layout of projects (if applicable).
+  // - **&__grid:** The container for the grid layout of projects (if applicable).
   // - **display:** Uses grid layout for responsive design.
   // - **grid-template-columns:** Creates responsive columns based on available space.
   // - **gap:** Adds spacing between grid items.
-  .project-grid {
+  &__grid {
     display: grid; // Use grid layout for responsive design
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); // Create responsive columns
     gap: $spacing-lg; // Add spacing between grid items
   }
 
   // ### Blog Posts List
-  // - **.blog-posts-list:** The container for the list of blog posts.
+  // - **&__list:** The container for the list of blog posts.
   // - **list-style:** Removes default list styling.
   // - **padding:** Removes default padding for a clean layout.
   // - **margin:** Removes default margin for a clean layout.
   // - **display:** Uses grid layout for responsive design.
   // - **grid-template-columns:** Creates responsive columns based on available space.
   // - **gap:** Adds spacing between grid items.
-  .blog-posts-list {
+  &__list {
     list-style: none; // Remove default list styling
     padding: 0; // Remove default padding
     margin: 0; // Remove default margin
@@ -49,19 +49,19 @@
   }
 
   // ### Blog Post Items
-  // - **.blog-post-item:** Styles for individual blog post items.
+  // - **&__item:** Styles for individual blog post items.
   // - **text-align:** Centers the content horizontally.
-  .blog-post-item {
+  &__item {
     text-align: center; // Center-align the content
   }
 
   // ### Blog Post Links
-  // - **.blog-post-link:** Styles for links to individual blog posts.
+  // - **&__link:** Styles for links to individual blog posts.
   // - **text-decoration:** Removes underline by default.
   // - **color:** Uses the standard text color.
   // - **transition:** Adds smooth hover effects for color changes.
   // - **hover and focus styles:** Changes color and adds underline for emphasis.
-  .blog-post-link {
+  &__link {
     text-decoration: none; // Remove underline by default
     color: $color-text; // Use standard text color
     transition: color 0.3s ease; // Smooth transition for hover effects

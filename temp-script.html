@@ -1,0 +1,36 @@
+<!-- This is a temporary file containing the new script section -->
+<script>
+  // Initialize all modular tech search components
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize keyboard navigation module
+    if (window.TechSearchKeyboardNavigation) {
+      const searchInput = document.getElementById('search-input');
+      window.TechSearchKeyboardNavigation.init(searchInput, []);
+    }
+    
+    // Initialize search history module
+    if (window.TechSearchHistory) {
+      window.TechSearchHistory.init({
+        statsContainer: document.querySelector('.search-stats'),
+        clearButton: document.getElementById('clear-search-history')
+      });
+    }
+    
+    // Initialize animations
+    if (window.TechSearchAnimations) {
+      window.TechSearchAnimations.init();
+    }
+    
+    // Initialize tech search core module
+    if (window.TechSearchCore) {
+      window.TechSearchCore.init({
+        searchInputSelector: '#search-input',
+        resultsContainerSelector: '.search-results__list',
+        statusElementSelector: '#search-status',
+        searchBoxSelector: '.tech-search-box',
+        searchFormSelector: '.search-form',
+        resultItemClass: 'search-results__item'
+      });
+    }
+  });
+</script>

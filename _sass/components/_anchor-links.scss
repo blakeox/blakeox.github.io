@@ -6,16 +6,16 @@
 // Referenced variables are defined in the settings folder for consistency across the project.
 
 // ### Base Styles
-// - **.anchor-links:** The container for the anchor links section.
-// - **ul:** The unordered list that holds the anchor links.
-// - **li:** Individual list items containing anchor links.
-// - **a:** The anchor link itself, styled for accessibility and interactivity.
+// - **.c-anchor-links:** The container for the anchor links section.
+// - **.c-anchor-links__list:** The unordered list that holds the anchor links.
+// - **.c-anchor-links__item:** Individual list items containing anchor links.
+// - **.c-anchor-links__link:** The anchor link itself, styled for accessibility and interactivity.
 
-.anchor-links {
+.c-anchor-links {
   // Add vertical spacing around the anchor links section
   margin: $spacing-lg 0; // Use spacing variable from _spacing.scss
 
-  ul {
+  &__list {
     // Style the list of anchor links
     display: flex; // Arrange links in a horizontal row
     justify-content: center; // Center-align the links
@@ -24,26 +24,23 @@
     padding: $spacing-md 0; // Add vertical padding using a variable
     border-top: 1px solid $color-border-light; // Add a light border at the top
     border-bottom: 1px solid $color-border-light; // Add a light border at the bottom
+  }
 
-    li {
-      // Style individual list items
-      a {
-        // Style the anchor links
-        text-decoration: none; // Remove underline by default
-        color: $color-primary; // Use the primary color for the text
-        font-weight: $font-weight-medium; // Apply medium font weight for emphasis
+  &__link {
+    // Style the anchor links
+    text-decoration: none; // Remove underline by default
+    color: $color-primary; // Use the primary color for the text
+    font-weight: $font-weight-medium; // Apply medium font weight for emphasis
 
-        &:hover {
-          // Add hover effect for anchor links
-          text-decoration: underline; // Underline the text on hover for better visibility
-        }
+    &:hover {
+      // Add hover effect for anchor links
+      text-decoration: underline; // Underline the text on hover for better visibility
+    }
 
-        &:focus {
-          // Add focus styles for accessibility
-          outline: 2px solid $color-primary; // Highlight the link with a focus outline
-          outline-offset: 2px; // Add spacing between the outline and the link
-        }
-      }
+    &:focus {
+      // Add focus styles for accessibility
+      outline: 2px solid $color-primary; // Highlight the link with a focus outline
+      outline-offset: 2px; // Add spacing between the outline and the link
     }
   }
 }

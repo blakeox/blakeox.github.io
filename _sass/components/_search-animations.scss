@@ -1,0 +1,152 @@
+// ## Search Animations
+// This file contains animations specific to the search functionality
+// Creating a futuristic, high-tech experience with modern animations
+
+// Keyframes for the search interface animations
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 0 rgba($color-primary, 0.4); }
+  50% { box-shadow: 0 0 15px rgba($color-primary, 0.7); }
+  100% { box-shadow: 0 0 0 rgba($color-primary, 0.4); }
+}
+
+@keyframes search-wave {
+  0% { transform: scale(0); opacity: 1; }
+  100% { transform: scale(1.2); opacity: 0; }
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes cursor-blink {
+  0%, 100% { border-color: transparent; }
+  50% { border-color: $color-primary; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -468px 0; }
+  100% { background-position: 468px 0; }
+}
+
+@keyframes float-up {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in {
+  0% { opacity: 0; transform: translateX(-20px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fade-in-scale {
+  0% { opacity: 0; transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes tech-scan {
+  0% { background-size: 100% 0%; }
+  50% { background-size: 100% 100%; }
+  100% { background-size: 100% 0%; }
+}
+
+// Animation utility classes - can be applied to elements
+.animate-pulse-glow {
+  animation: pulse-glow 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: box-shadow;
+}
+
+.animate-float-up {
+  animation: float-up 0.5s ease forwards;
+  will-change: opacity, transform;
+}
+
+.animate-slide-in {
+  animation: slide-in 0.4s ease forwards;
+  will-change: opacity, transform;
+}
+
+.animate-fade-in-scale {
+  animation: fade-in-scale 0.4s ease-out forwards;
+  will-change: opacity, transform;
+}
+
+.animate-shimmer {
+  background: linear-gradient(to right, rgba($color-primary, 0) 8%, rgba($color-primary, 0.2) 18%, rgba($color-primary, 0) 33%);
+  background-size: 800px 104px;
+  animation: shimmer 1.5s infinite linear;
+  will-change: background-position;
+}
+
+// Search results entrance animations
+.search-results__item {
+  opacity: 0;
+  
+  &.visible {
+    animation: fade-in-scale 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.0) forwards;
+    will-change: opacity, transform;
+  }
+  
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.08}s;
+    }
+  }
+}
+
+// Tech scan effect for search container
+.tech-scan-effect {
+  position: relative;
+  overflow: hidden;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, rgba($color-primary, 0.1), transparent);
+    animation: tech-scan 2s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+    will-change: background-size;
+  }
+}
+
+// Wave effect on search button click
+.search-wave-container {
+  position: relative;
+  overflow: hidden;
+  
+  .search-wave {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: rgba($color-primary, 0.2);
+    animation: search-wave 1s ease-out forwards;
+    will-change: transform, opacity;
+    pointer-events: none;
+  }
+}
+
+// Futuristic cursor effect for search input
+.tech-cursor-effect {
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background-color: $color-primary;
+    animation: cursor-blink 1s infinite;
+    will-change: border-color;
+  }
+}

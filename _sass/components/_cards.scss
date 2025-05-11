@@ -4,64 +4,66 @@
 // SASS variables are used for colors, spacing, and typography to ensure maintainability and easy updates.
 // Referenced variables are defined in the settings folder for consistency across the project.
 
+@import '../utilities/mixins';
+
 // ### Card Container
-// - **.card:** The main container for the card component.
+// - **.c-card:** The main container for the card component.
 // - **background:** Sets the background color of the card.
 // - **border:** Adds a border using the secondary color.
 // - **border-radius:** Applies rounded corners for a modern look.
 // - **box-shadow:** Adds depth to the card with a small shadow.
 // - **overflow:** Ensures content stays within the card boundaries.
 // - **transition:** Enables smooth hover effects.
-.card {
-  background: $color-background; // Use background color variable from _colors.scss
-  border: 1px solid $color-secondary; // Use secondary color for the border
-  border-radius: $border-radius; // Apply rounded corners using the border-radius variable
-  box-shadow: $box-shadow-sm; // Apply a small shadow for depth
+.c-card {
+  background: var(--color-background); // Use background color variable from _colors.scss
+  border: 1px solid var(--color-secondary); // Use secondary color for the border
+  @include radius($border-radius); // Apply rounded corners using the border-radius variable
+  @include shadow-sm; // Apply a small shadow for depth
   overflow: hidden; // Prevent content overflow
-  transition: box-shadow 0.3s ease, transform 0.3s ease; // Add transform transition
+  @include transition(box-shadow, transform); // Add transform transition
 
   &:hover {
     // Hover effect for the card
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); // Deeper shadow on hover
+    @include shadow-md; // Deeper shadow on hover
     transform: translateY(-4px); // Lift card on hover
   }
 
   // ### Card Header
-  // - **.card-header:** The header section of the card.
+  // - **.c-card__header:** The header section of the card.
   // - **padding:** Adds inner spacing for better readability.
   // - **font-size:** Uses medium font size for the header text.
   // - **font-weight:** Makes the header text bold.
   // - **background-color:** Uses the primary color for the header background.
   // - **color:** Sets the text color to white for contrast.
-  .card-header {
+  &__header {
     padding: $spacing-md; // Apply medium spacing for padding
     font-size: $font-size-md; // Use medium font size for the header text
     font-weight: bold; // Make the header text bold
-    background-color: $color-primary; // Use primary color for the header background
-    color: #fff; // White text for contrast
+    background-color: var(--color-primary); // Use primary color for the header background
+    color: var(--color-white); // White text for contrast
   }
 
   // ### Card Body
-  // - **.card-body:** The main content area of the card.
+  // - **.c-card__body:** The main content area of the card.
   // - **padding:** Adds inner spacing for better readability.
   // - **font-size:** Uses small font size for the body text.
   // - **color:** Sets the text color to the standard text color.
-  .card-body {
+  &__body {
     padding: $spacing-md; // Apply medium spacing for padding
     font-size: $font-size-sm; // Use small font size for the body text
-    color: $color-text; // Use standard text color
+    color: var(--color-text); // Use standard text color
   }
 
   // ### Card Footer
-  // - **.card-footer:** The footer section of the card.
+  // - **.c-card__footer:** The footer section of the card.
   // - **padding:** Adds inner spacing for better readability.
   // - **background-color:** Uses the secondary color for the footer background.
   // - **color:** Sets the text color to white for contrast.
   // - **text-align:** Centers the footer content.
-  .card-footer {
+  &__footer {
     padding: $spacing-sm; // Apply small spacing for padding
-    background-color: $color-secondary; // Use secondary color for the footer background
-    color: #fff; // White text for contrast
+    background-color: var(--color-secondary); // Use secondary color for the footer background
+    color: var(--color-white); // White text for contrast
     text-align: center; // Center-align the footer content
   }
 }

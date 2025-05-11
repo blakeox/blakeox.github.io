@@ -6,28 +6,28 @@
 // Referenced variables are defined in the settings folder for consistency across the project.
 
 // ### Featured Projects Container
-// - **.featured-projects:** The main container for the Featured Projects section.
+// - **.c-featured-projects:** The main container for the Featured Projects section.
 // - **margin-top:** Adds spacing above the section.
-.featured-projects {
+.c-featured-projects {
   margin-top: $spacing-lg; // Add top margin for spacing
 
   // ### Section Heading
-  // - **h2:** Styles for the section heading.
+  // - **&__title:** Styles for the section heading.
   // - **font-size:** Uses a large font size for prominence.
   // - **margin-bottom:** Adds spacing below the heading.
   // - **text-align:** Centers the heading horizontally.
-  h2 {
+  &__title {
     font-size: $font-size-lg; // Use large font size for prominence
     margin-bottom: $spacing-md; // Add bottom margin for spacing
     text-align: center; // Center-align the heading
   }
 
   // ### Project Grid
-  // - **.project-grid:** The container for the grid layout of projects.
+  // - **&__grid:** The container for the grid layout of projects.
   // - **display:** Uses grid layout for responsive design.
   // - **grid-template-columns:** Creates responsive columns based on available space.
   // - **gap:** Adds spacing between grid items.
-  .project-grid {
+  &__grid {
     display: grid; // Use grid layout for responsive design
     grid-template-columns: 1fr; // Single column by default on mobile
     gap: $spacing-lg; // Add spacing between grid items
@@ -35,5 +35,49 @@
     @include respond-to('md') {
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); // Multi-column on medium+ screens
     }
+  }
+
+  // ### Individual Feature Item
+  // - **&__item:** Styles for each project item in the grid.
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+    background: var(--color-background-light);
+    @include radius($border-radius);
+    @include shadow-sm;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      @include shadow-md;
+    }
+  }
+
+  // ### Item Elements
+  &__item-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+  }
+
+  &__item-heading {
+    font-size: $font-size-md;
+    margin: $spacing-md 0;
+    text-align: center;
+  }
+
+  &__item-description {
+    flex-grow: 1;
+    margin-bottom: $spacing-md;
+    text-align: center;
+  }
+
+  &__item-cta {
+    @extend .c-btn;
+    align-self: center;
+    margin-top: auto;
   }
 }

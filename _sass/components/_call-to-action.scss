@@ -5,20 +5,20 @@
 // SASS variables are used for colors, spacing, typography, and transitions to ensure maintainability and easy updates.
 
 // ### Call-to-Action Section
-// - **.call-to-action:** The main container for the CTA section.
+// - **.c-call-to-action:** The main container for the CTA section.
 // - **text-align:** Centers the content horizontally.
 // - **margin-top:** Adds spacing above the section.
-.call-to-action {
+.c-call-to-action {
   text-align: center; // Center-align the content
   margin-top: $spacing-lg; // Add top margin for spacing
 
   // ### CTA Buttons
-  // - **.btn:** Styles for buttons within the CTA section.
+  // - **.c-btn:** Styles for buttons within the CTA section.
   // - **padding:** Adds inner spacing for better usability.
   // - **background-color:** Uses the primary color for the button.
   // - **border-radius:** Adds rounded corners for a modern look.
   // - **transition:** Enables smooth hover effects.
-  .btn {
+  .c-btn {
     padding: $spacing-sm $spacing-md; // Add padding for clickable area
     background-color: $color-primary; // Use primary color for the button
     color: $color-white; // Use white text for contrast
@@ -36,11 +36,11 @@
 }
 
 // ### About CTA Group (improved)
-// - Reuse base .call-to-action styles
+// - Reuse base .c-call-to-action styles
 // - Use CSS Grid for responsive columns
 // - Equal-width buttons with consistent spacing
-.about-cta-group {
-  @extend .call-to-action;
+.c-about-cta-group {
+  @extend .c-call-to-action;
 
   // Base grid: one column stack on mobile
   display: grid;
@@ -56,14 +56,14 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .btn {
+  .c-btn {
     // Full width within grid cell
     width: 100%;
     max-width: none; // let grid control sizing
     text-align: center;
 
     // Add consistent height and font-size for CTA buttons
-    padding: $spacing-md $spacing-md;
+    padding: $spacing-md;
     font-size: $font-size-md;
 
     // Upgrade hover/focus with elevation

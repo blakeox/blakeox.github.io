@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const navToggle = document.querySelector('.nav-toggle');
-  const navLinks = document.querySelector('.nav-links');
-  const navItems = navLinks.querySelectorAll('a');
+  const navToggle = document.querySelector('.c-navbar__toggle');
+  const navLinks = document.querySelector('.c-navbar__links');
+  const navItems = document.querySelectorAll('.c-navbar__link');
   console.log('Nav script loaded', { navToggle, navLinks });
 
   function toggleTabIndex(isActive) {
@@ -15,14 +15,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
     navToggle.setAttribute('aria-expanded', !isExpanded);
     navLinks.setAttribute('aria-hidden', isExpanded);
-    navLinks.classList.toggle('active', !isExpanded);
+    navLinks.classList.toggle('c-navbar__links--active', !isExpanded);
   }
 
   // Close navigation menu
   function closeNav() {
     navToggle.setAttribute('aria-expanded', 'false');
     navLinks.setAttribute('aria-hidden', 'true');
-    navLinks.classList.remove('active');
+    navLinks.classList.remove('c-navbar__links--active');
   }
 
   // Highlight active menu item
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     navLinks.addEventListener('transitionend', () => {
-      const isActive = navLinks.classList.contains('active');
+      const isActive = navLinks.classList.contains('c-navbar__links--active');
       navLinks.setAttribute('aria-hidden', String(!isActive));
     });
   }

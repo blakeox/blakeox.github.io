@@ -1,8 +1,8 @@
-<div class="filter-controls" aria-live="polite">
+<div class="c-filter-controls" aria-live="polite">
   <!-- Filter Dropdown -->
-  <div class="filter-dropdown-container">
+  <div class="c-filter-controls__dropdown-container">
     <label for="filter-dropdown" id="filter-dropdown-label">Filter projects:</label>
-    <select id="filter-dropdown" class="btn secondary" aria-labelledby="filter-dropdown-label">
+    <select id="filter-dropdown" class="c-btn c-btn--secondary" aria-labelledby="filter-dropdown-label">
       <option value="all">All</option>
       {% assign all_tags = site.projects | map: "tags" | join: "," | split: "," | uniq %}
       {% for tag in all_tags %}
@@ -12,9 +12,9 @@
   </div>
 
   <!-- Sort By Dropdown -->
-  <div class="sort-dropdown-container">
+  <div class="c-filter-controls__sort-dropdown-container">
     <label for="sort-dropdown" id="sort-dropdown-label">Sort by:</label>
-    <select id="sort-dropdown" class="btn secondary" aria-labelledby="sort-dropdown-label">
+    <select id="sort-dropdown" class="c-btn c-btn--secondary" aria-labelledby="sort-dropdown-label">
       <option value="title-asc">Title (A–Z)</option>
       <option value="title-desc">Title (Z–A)</option>
       <option value="date-desc">Newest First</option>
@@ -23,17 +23,17 @@
   </div>
 
   <!-- Search Input -->
-  <div class="search-input-container">
+  <div class="c-filter-controls__search-input-container">
     <label for="search-input" id="search-input-label" class="visually-hidden">Search projects:</label>
-    <input type="text" id="search-input" class="btn secondary" placeholder="Search projects..." aria-labelledby="search-input-label">
+    <input type="text" id="search-input" class="c-btn c-btn--secondary" placeholder="Search projects..." aria-labelledby="search-input-label">
   </div>
 
   <!-- Clear Filters Button -->
-  <button id="clear-filters-btn" class="btn secondary" aria-label="Clear all filters">Clear Filters</button>
+  <button id="clear-filters-btn" class="c-btn c-btn--secondary" aria-label="Clear all filters">Clear Filters</button>
 
   <!-- Reset Filters Button -->
-  <button id="reset-filters-btn" class="btn secondary" aria-label="Reset all filters and sorting">Reset Filters</button>
+  <button id="reset-filters-btn" class="c-btn c-btn--secondary" aria-label="Reset all filters and sorting">Reset Filters</button>
 
   <!-- Filter Loading Spinner -->
-  <div id="filter-loading-spinner" class="spinner hidden" aria-hidden="true"></div>
+  <div id="filter-loading-spinner" class="c-filter-controls__spinner hidden" aria-hidden="true"></div>
 </div>

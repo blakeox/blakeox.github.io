@@ -6,96 +6,76 @@
 // Referenced variables are defined in the settings folder for consistency across the project.
 
 // ### Blog Grid
-// - **.blog-grid:** The container for the blog cards, styled as a responsive grid.
-.blog-grid {
+// - **.c-blog-cards:** The container for the blog cards, styled as a responsive grid.
+.c-blog-cards {
   display: grid; // Use grid layout for responsive design
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); // Responsive grid layout
   gap: $spacing-lg; // Add spacing between grid items
   margin-top: $spacing-lg; // Add top margin for spacing
   margin-bottom: $spacing-xl; // Add bottom margin for spacing
-}
 
-// ### Blog Card
-// - **.blog-item:** The individual blog card container with a flexible layout.
-.blog-item {
-  display: flex; // Use flexbox for layout
-  flex-direction: column; // Stack content vertically
-  justify-content: flex-start; // Align items at the top
-  background: $background-color-light; // Use light background color
-  border: 1px solid $color-border-light; // Add a light border
-  border-radius: $border-radius; // Apply rounded corners
-  padding: $spacing-lg; // Add padding for inner spacing
-  box-shadow: $box-shadow-sm; // Add a small shadow for depth
-  transition: transform $transition-duration-default ease, box-shadow $transition-duration-default ease; // Smooth hover effects
-  color: $color-text; // Use standard text color
-  height: 100%; // Ensure consistent height for all cards
-}
+  &__item {
+    display: flex; // Use flexbox for layout
+    flex-direction: column; // Stack content vertically
+    justify-content: flex-start; // Align items at the top
+    background: $background-color-light; // Use light background color
+    border: 1px solid $color-border-light; // Add a light border
+    border-radius: $border-radius; // Apply rounded corners
+    padding: $spacing-lg; // Add padding for inner spacing
+    box-shadow: $box-shadow-sm; // Add a small shadow for depth
+    transition: transform $transition-duration-default ease, box-shadow $transition-duration-default ease; // Smooth hover effects
+    color: $color-text; // Use standard text color
+    height: 100%; // Ensure consistent height for all cards
 
-.blog-item:hover {
-  transform: translateY(-5px); // Slight upward movement
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Add a larger shadow for emphasis
-}
+    &:hover {
+      transform: translateY(-5px); // Slight upward movement
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Add a larger shadow for emphasis
+    }
+  }
 
-// ### Blog Card Image
-// - Styles for the image inside the blog card.
-.blog-item img {
-  width: 100%; // Ensure image fills the card width
-  height: 200px; // Set a consistent height for all images
-  object-fit: cover; // Crop the image to fit the container
-  border-radius: $border-radius-sm; // Apply small rounded corners
-  margin-bottom: $spacing-md; // Add spacing below the image
-}
+  &__item-image {
+    width: 100%; // Ensure image fills the card width
+    height: 200px; // Set a consistent height for all images
+    object-fit: cover; // Crop the image to fit the container
+    border-radius: $border-radius-sm; // Apply small rounded corners
+    margin-bottom: $spacing-md; // Add spacing below the image
+  }
 
-// ### Blog Card Title
-// - **h3:** The title of the blog post, styled for emphasis.
-.blog-item h3 {
-  margin-top: $spacing-sm; // Add top margin for spacing
-  margin-bottom: $spacing-md; // Add bottom margin for spacing
-  font-size: $font-size-lg; // Use large font size for titles
-  text-align: center; // Center-align the title
-  min-height: 3rem; // Ensure consistent vertical space for titles
-  display: flex; // Use flexbox for alignment
-  align-items: center; // Vertically center the text
-  justify-content: center; // Horizontally center the text
-}
+  &__item-heading {
+    margin-top: $spacing-sm; // Add top margin for spacing
+    margin-bottom: $spacing-md; // Add bottom margin for spacing
+    font-size: $font-size-lg; // Use large font size for titles
+    text-align: center; // Center-align the title
+    min-height: 3rem; // Ensure consistent vertical space for titles
+    display: flex; // Use flexbox for alignment
+    align-items: center; // Vertically center the text
+    justify-content: center; // Horizontally center the text
 
-// ### Blog Card Title Link
-// - **a:** The clickable link for the blog title.
-.blog-item h3 a {
-  text-decoration: none; // Remove underline
-  color: $color-primary; // Use primary color for links
-  transition: color $transition-duration-default ease; // Smooth color transition on hover
-}
+    &-link {
+      text-decoration: none; // Remove underline
+      color: $color-primary; // Use primary color for links
+      transition: color $transition-duration-default ease; // Smooth color transition on hover
 
-.blog-item h3 a:hover {
-  color: $color-primary-dark; // Use darker primary color on hover
-}
+      &:hover {
+        color: $color-primary-dark; // Use darker primary color on hover
+      }
+    }
+  }
 
-// ### Blog Card Description
-// - **p:** The description or excerpt of the blog post.
-.blog-item p {
-  flex-grow: 1; // Allow the description to take up remaining space
-  margin-bottom: $spacing-md; // Add bottom margin for spacing
-  text-align: center; // Center-align the description
-}
+  &__item-description {
+    flex-grow: 1; // Allow the description to take up remaining space
+    margin-bottom: $spacing-md; // Add bottom margin for spacing
+    text-align: center; // Center-align the description
+  }
 
-// ### Blog Card Button
-// - **.btn:** The "Read More" button for the blog card.
-.blog-item .btn {
-  display: inline-block; // Inline-block for button-like appearance
-  background: $color-primary; // Use primary color for the button
-  color: $color-white; // Use white text for contrast
-  padding: $spacing-sm $spacing-md; // Add padding for clickable area
-  text-decoration: none; // Remove underline
-  border-radius: $border-radius; // Apply rounded corners
-  font-size: $font-size-md; // Use medium font size for the button
-  text-align: center; // Center-align the button text
-  transition: background $transition-duration-fast ease, transform $transition-duration-fast ease; // Smooth hover effects
-  margin-top: auto; // Push the button to the bottom
-  align-self: center; // Center-align the button
-}
+  &__item-cta {
+    @extend .c-btn;
+    margin-top: auto; // Push the button to the bottom
+    align-self: center; // Center-align the button
 
-.blog-item .btn:hover {
-  background: $color-primary-dark; // Use darker primary color on hover
-  transform: translateY(-2px); // Slight upward movement
+    &:hover {
+      background-color: $color-primary-dark; // Use darker primary color on hover
+      transform: translateY(-2px); // Slight upward movement
+    }
+  }
 }

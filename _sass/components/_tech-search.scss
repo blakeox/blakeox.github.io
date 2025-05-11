@@ -1,0 +1,2515 @@
+// ## Tech Search Components
+// This file contains styles for the futuristic tech-inspired search UI components.
+// The styles create a modern, high-tech aesthetic with glowing elements, grid patterns,
+// and animated decorations.
+//
+// NOTE: Variables previously defined here have been moved to _sass/settings/_tech-variables.scss
+// The file is now organized into sections:
+// 1. Header and Title components
+// 2. Search Box and Form elements
+// 3. Results display and animations
+// 4. Accessibility features and keyboard navigation
+// 5. Animation and transition definitions
+
+// ============================================================
+// 1. Tech Header Component
+// ============================================================
+.tech-header {
+  position: relative;
+  overflow: hidden;
+  
+  // Background elements including grid and particles
+  .tech-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    
+    .tech-grid {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-size: 50px 50px;
+      opacity: 0.3;
+      
+      &.horizontal {
+        background-image: linear-gradient(to bottom, $tech-grid-color 1px, transparent 1px);
+      }
+      
+      &.vertical {
+        background-image: linear-gradient(to right, $tech-grid-color 1px, transparent 1px);
+      }
+    }
+    
+    .tech-particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        radial-gradient(circle, rgba(0, 170, 255, 0.2) 2px, transparent 2px),
+        radial-gradient(circle, rgba(255, 0, 170, 0.1) 1px, transparent 1px);
+      background-size: 60px 60px, 30px 30px;
+      animation: float 20s infinite linear;
+    }
+  }
+  
+  // Title styling with decorative elements
+  .tech-title {
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    
+    .title-decoration {
+      position: absolute;
+      right: -20px;
+      top: 0;
+      width: 10px;
+      height: 10px;
+      border: 2px solid $tech-primary;
+      border-right: none;
+      border-bottom: none;
+      opacity: 0.8;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        width: 20px;
+        height: 2px;
+        background-color: $tech-secondary;
+        box-shadow: 0 0 8px rgba(0, 170, 255, 0.8);
+      }
+      
+      &::after {
+        content: '';
+        position: absolute;
+        top: 10px;
+        right: -10px;
+        width: 2px;
+        height: 15px;
+        background-color: $tech-secondary;
+        box-shadow: 0 0 8px rgba(0, 170, 255, 0.8);
+      }
+    }
+  }
+  
+  // Description text with glow effect
+  .tech-description {
+    position: relative;
+    display: inline-block;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 0 10px rgba(0, 170, 255, 0.5);
+    letter-spacing: 0.03em;
+  }
+}
+
+// ============================================================
+// 2. Tech Search Box Component
+// Main search input container with decorative elements
+// ============================================================
+.tech-search-page {
+  position: relative;
+  
+  .tech-search-box {
+    position: relative;
+    margin-bottom: $spacing-xl;
+    padding: $spacing-lg;
+    border-radius: 4px;
+    background-color: rgba(15, 25, 40, 0.3);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    
+    // Decorative interface elements (corners, lines)
+    .search-interface-decoration {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      
+      .corner-element {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        
+        &::before, &::after {
+          content: '';
+          position: absolute;
+          background-color: $tech-secondary;
+        }
+        
+        &::before {
+          width: 100%;
+          height: 2px;
+        }
+        
+        &::after {
+          width: 2px;
+          height: 100%;
+        }
+        
+        &.top-left {
+          top: 0;
+          left: 0;
+          
+          &::before {
+            top: 0;
+            left: 0;
+          }
+          
+          &::after {
+            top: 0;
+            left: 0;
+          }
+        }
+        
+        &.top-right {
+          top: 0;
+          right: 0;
+          
+          &::before {
+            top: 0;
+            right: 0;
+          }
+          
+          &::after {
+            top: 0;
+            right: 0;
+          }
+        }
+        
+        &.bottom-left {
+          bottom: 0;
+          left: 0;
+          
+          &::before {
+            bottom: 0;
+            left: 0;
+          }
+          
+          &::after {
+            bottom: 0;
+            left: 0;
+          }
+        }
+        
+        &.bottom-right {
+          bottom: 0;
+          right: 0;
+          
+          &::before {
+            bottom: 0;
+            right: 0;
+          }
+          
+          &::after {
+            bottom: 0;
+            right: 0;
+          }
+        }
+      }
+      
+      .line-element {
+        position: absolute;
+        background-color: rgba(0, 170, 255, 0.2);
+        
+        &.horizontal {
+          height: 1px;
+          left: 40px;
+          right: 40px;
+          top: 50%;
+        }
+        
+        &.vertical {
+          width: 1px;
+          top: 40px;
+          bottom: 40px;
+          left: 50%;
+        }
+      }
+    }
+    
+    // Form and input elements 
+    .tech-search-form {
+      position: relative;
+      z-index: 2;
+      
+      .input-wrapper {
+        position: relative;
+        flex-grow: 1;
+        
+        .search-icon {
+          position: absolute;
+          left: 12px;
+          top: 50%;
+          transform: translateY(-50%);
+          color: rgba(0, 170, 255, 0.8);
+        }
+        
+        .tech-input {
+          width: 100%;
+          padding: 12px 12px 12px 40px;
+          background: rgba(0, 20, 40, 0.3);
+          border: 1px solid rgba(0, 170, 255, 0.4);
+          border-radius: 4px;
+          color: #fff;
+          font-size: 16px;
+          transition: all 0.3s ease;
+          
+          &:focus {
+            outline: none;
+            border-color: $tech-primary;
+            background: rgba(0, 30, 60, 0.4);
+            box-shadow: 0 0 15px rgba(0, 170, 255, 0.4);
+          }
+          
+          &::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+          }
+        }
+        
+        .input-border {
+          position: absolute;
+          bottom: -2px;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background: linear-gradient(to right, 
+            rgba(0, 170, 255, 0.8), 
+            rgba(255, 0, 170, 0.8), 
+            rgba(0, 170, 255, 0.8)
+          );
+          background-size: 200% 100%;
+          animation: gradient-shift 3s ease infinite;
+          transform: scaleX(0.8);
+          opacity: 0;
+          transition: transform 0.3s ease, opacity 0.3s ease;
+          
+          .tech-input:focus + & {
+            opacity: 1;
+            transform: scaleX(1);
+          }
+        }
+      }
+    }
+  }
+}
+
+// ============================================================
+// 3. Tech Search Results Component
+// ============================================================
+.tech-search-results-container {
+  position: relative;
+  
+  // Search radar animation component
+  .search-radar-container {
+    position: absolute;
+    left: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 60px;
+    
+    .radar-ping {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 8px;
+      height: 8px;
+      background-color: $tech-secondary;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(0, 170, 255, 0.8);
+      z-index: 1;
+    }
+    
+    .radar-circle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 50px;
+      height: 50px;
+      border: 1px dashed rgba(0, 170, 255, 0.3);
+      border-radius: 50%;
+      animation: radarPulse 3s infinite;
+    }
+  }
+  
+  // Individual search results and animations
+  .search-results__list {
+    display: grid;
+    gap: $spacing-md;
+  }
+  
+  .search-results__item {
+    position: relative;
+    border: none;
+    border-radius: 4px;
+    background: rgba(0, 20, 40, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    padding: $spacing-md;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fade-in-up 0.5s forwards ease;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, $tech-primary, $tech-secondary);
+    }
+    
+    &:hover {
+      background: rgba(0, 30, 60, 0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      
+      &::after {
+        opacity: 1;
+      }
+      
+      .search-results__title a {
+        color: $tech-secondary;
+      }
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(to right, 
+        transparent, 
+        rgba(0, 170, 255, 0.8), 
+        transparent
+      );
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    @for $i from 1 through 10 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{$i * 0.08}s;
+      }
+    }
+    
+    // Keyboard navigation and focus states
+    &.focused {
+      outline: 2px solid var(--tech-primary);
+      outline-offset: 2px;
+      position: relative;
+      z-index: 5;
+      
+      // Enhanced visual feedback for keyboard users
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 3px;
+        box-shadow: 0 0 0 3px rgba(0, 170, 255, 0.5);
+        z-index: -1;
+        pointer-events: none;
+      }
+    }
+    
+    // Result decorations and scanning effects
+    .result-tech-decoration {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      
+      .corner {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        
+        &::before, &::after {
+          content: '';
+          position: absolute;
+          background-color: $tech-secondary;
+        }
+        
+        &::before {
+          width: 100%;
+          height: 2px;
+        }
+        
+        &::after {
+          width: 2px;
+          height: 100%;
+        }
+        
+        &.top-left {
+          top: 0;
+          left: 0;
+          
+          &::before { top: 0; left: 0; }
+          &::after { top: 0; left: 0; }
+        }
+        
+        &.top-right {
+          top: 0;
+          right: 0;
+          
+          &::before { top: 0; right: 0; }
+          &::after { top: 0; right: 0; }
+        }
+        
+        &.bottom-left {
+          bottom: 0;
+          left: 0;
+          
+          &::before { bottom: 0; left: 0; }
+          &::after { bottom: 0; left: 0; }
+        }
+        
+        &.bottom-right {
+          bottom: 0;
+          right: 0;
+          
+          &::before { bottom: 0; right: 0; }
+          &::after { bottom: 0; right: 0; }
+        }
+      }
+      
+      .scan-line {
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 50%;
+        height: 1px;
+        background: linear-gradient(to right, transparent, $tech-secondary, transparent);
+        animation: scanLine 3s linear infinite;
+        box-shadow: 0 0 8px rgba(0, 170, 255, 0.5);
+        opacity: 0.7;
+      }
+    }
+  }
+  
+  // No-results state styling
+  .search-results__empty {
+    text-align: center;
+    padding: $spacing-lg;
+    background: rgba(0, 20, 40, 0.3);
+    border-radius: 4px;
+    color: rgba(255, 255, 255, 0.7);
+    position: relative;
+    overflow: hidden;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(to right, 
+        transparent, 
+        rgba(255, 60, 60, 0.6),
+        transparent
+      );
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(to right, 
+        transparent, 
+        rgba(255, 60, 60, 0.6),
+        transparent
+      );
+    }
+    
+    p {
+      position: relative;
+      display: inline-block;
+      padding-left: 26px;
+      
+      &::before {
+        content: '!';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+        background: rgba(255, 60, 60, 0.2);
+        border: 1px solid rgba(255, 60, 60, 0.6);
+        border-radius: 50%;
+        color: rgba(255, 60, 60, 0.9);
+        animation: pulse-glow 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 0 10px rgba(255, 60, 60, 0.3);
+      }
+    }
+  }
+}
+
+// ============================================================
+// 4. Theme Variations
+// Applied via data-tech-theme attribute
+// See also _tech-variables.scss and _tech-search-utils.scss
+// ============================================================
+// Base theme properties applied to all themes via data-tech-theme attribute
+// Theme-specific overrides handled via CSS variables in _tech-search-utils.scss
+
+// ============================================================
+// 5. Animations and Keyframes
+// ============================================================
+@keyframes float {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+  100% {
+    background-position: 100px 100px, 50px 50px;
+  }
+}
+
+@keyframes scan {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 5px rgba(0, 170, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(0, 170, 255, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(0, 170, 255, 0.5);
+  }
+}
+
+// ============================================================
+// 6. Media Queries for Responsive Design
+// ============================================================
+@media (max-width: $breakpoint-md) {
+  // Tablet and mobile adjustments
+  .tech-search-box {
+    padding: $spacing-sm;
+    
+    .search-interface-decoration {
+      .corner-element {
+        width: 15px;
+        height: 15px;
+      }
+    }
+    
+    .search-form {
+      flex-direction: column;
+      
+      .input-wrapper {
+        width: 100%;
+        margin-bottom: $spacing-sm;
+      }
+      
+      button {
+        width: 100%;
+        margin-top: $spacing-sm;
+      }
+    }
+  }
+  
+  .tech-search-results-container {
+    // ...existing code...
+  }
+  
+  // Simplified animations for better performance on mobile devices
+  // Opacity adjustments for decorative elements on smaller screens
+}
+
+// ============================================================
+// 7. Print Styles
+// Hide decorative elements and improve contrast for print
+// ============================================================
+@media print {
+  .tech-background,
+  .search-interface-decoration,
+  .corner-element,
+  .line-element,
+  .tech-particles,
+  .search-radar-container {
+    display: none !important;
+  }
+  
+  // Improve contrast for printed content
+  .tech-search-box,
+  .search-results__item {
+    background: transparent !important;
+    border: 1px solid #ddd !important;
+    box-shadow: none !important;
+  }
+}
+
+// ============================================================
+// Tech Button
+// ============================================================
+.c-btn--tech {
+  position: relative;
+  background: linear-gradient(135deg, rgba(0, 80, 120, 0.8), rgba(0, 30, 60, 0.9));
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 170, 255, 0.2);
+  
+  &:hover {
+    background: linear-gradient(135deg, rgba(0, 100, 150, 0.9), rgba(0, 40, 80, 1));
+    box-shadow: 0 0 20px rgba(0, 170, 255, 0.4);
+    
+    .btn-glow {
+      opacity: 1;
+    }
+  }
+  
+  .btn-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+      rgba(0, 170, 255, 0.8) 0%, 
+      rgba(0, 80, 120, 0.4) 50%, 
+      rgba(0, 170, 255, 0.8) 100%
+    );
+    background-size: 300% 100%;
+    opacity: 0.2;
+    animation: gradient-shift 3s ease infinite;
+    z-index: 1;
+  }
+  
+  .btn-text {
+    position: relative;
+    z-index: 3;
+  }
+  
+  .btn-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, 
+      rgba(0, 170, 255, 0.7) 0%, 
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+  }
+}
+
+// ============================================================
+// Search Controls & Filters Styling
+// ============================================================
+.search-controls {
+  margin-top: $spacing-lg;
+  background: rgba(0, 20, 40, 0.3);
+  border: 1px solid rgba(0, 170, 255, 0.2);
+  border-radius: 4px;
+  padding: $spacing-md;
+  position: relative;
+  
+  fieldset {
+    position: relative;
+    
+    legend {
+      color: rgba(0, 170, 255, 0.9);
+      font-weight: 600;
+    }
+  }
+  
+  .search-filters__options,
+  .search-sort__options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: $spacing-md;
+  }
+  
+  .search-filter-label,
+  .search-sort-label {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    background: rgba(0, 40, 80, 0.4);
+    border: 1px solid rgba(0, 170, 255, 0.3);
+    border-radius: 4px;
+    padding: 8px 12px;
+    transition: all 0.3s ease;
+    position: relative;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background-color: $tech-primary;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    &:hover {
+      background: rgba(0, 60, 100, 0.5);
+      
+      &::before {
+        opacity: 0.5;
+      }
+    }
+    
+    &.active {
+      background: rgba(0, 80, 120, 0.6);
+      border-color: rgba(0, 170, 255, 0.8);
+      
+      &::before {
+        opacity: 1;
+      }
+    }
+    
+    input {
+      position: relative;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(0, 170, 255, 0.5);
+      border-radius: 3px;
+      background: rgba(0, 20, 40, 0.5);
+      cursor: pointer;
+      
+      &:checked {
+        background: rgba(0, 170, 255, 0.7);
+        
+        &::after {
+          content: '';
+          position: absolute;
+          top: 2px;
+          left: 6px;
+          width: 4px;
+          height: 8px;
+          border: solid white;
+          border-width: 0 2px 2px 0;
+          transform: rotate(45deg);
+        }
+      }
+      
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(0, 170, 255, 0.4);
+      }
+    }
+  }
+}
+
+// ============================================================
+// Search Results Styling
+// ============================================================
+.search-results {
+  margin-top: $spacing-xl;
+  
+  &__list {
+    display: grid;
+    gap: $spacing-md;
+  }
+  
+  &__item {
+    position: relative;
+    border: none;
+    border-radius: 4px;
+    background: rgba(0, 20, 40, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    padding: $spacing-md;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fade-in-up 0.5s forwards ease;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, $tech-primary, $tech-secondary);
+    }
+    
+    &:hover {
+      background: rgba(0, 30, 60, 0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      
+      &::after {
+        opacity: 1;
+      }
+      
+      .search-results__title a {
+        color: $tech-secondary;
+      }
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(to right, 
+        transparent, 
+        rgba(0, 170, 255, 0.8), 
+        transparent
+      );
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    @for $i from 1 through 10 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{$i * 0.08}s;
+      }
+    }
+  }
+  
+  &__title {
+    position: relative;
+    margin-bottom: $spacing-sm;
+    padding-right: 20px;
+    
+    a {
+      color: rgba(0, 210, 255, 0.9);
+      text-decoration: none;
+      font-weight: 600;
+      position: relative;
+      transition: all 0.3s ease;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background-color: $tech-secondary;
+        transition: width 0.3s ease;
+      }
+      
+      &:hover {
+        text-decoration: none;
+        
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+    
+    &::after {
+      content: '>';
+      position: absolute;
+      right: 0;
+      top: 0;
+      color: $tech-secondary;
+      font-family: monospace;
+      opacity: 0.7;
+    }
+  }
+  
+  &__category {
+    display: inline-block;
+    background: rgba(0, 170, 255, 0.15);
+    border: 1px solid rgba(0, 170, 255, 0.3);
+    color: rgba(0, 210, 255, 0.9);
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    margin-right: $spacing-sm;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  &__date {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    font-family: monospace;
+  }
+  
+  &__snippet {
+    margin-top: $spacing-sm;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    line-height: 1.6;
+    
+    mark {
+      background-color: rgba(0, 170, 255, 0.3);
+      color: rgba(255, 255, 255, 0.95);
+      padding: 2px 4px;
+      border-radius: 2px;
+      font-weight: 500;
+      box-shadow: 0 0 5px rgba(0, 170, 255, 0.3);
+    }
+  }
+  
+  &__no-result {
+    text-align: center;
+    padding: $spacing-lg;
+    background: rgba(0, 20, 40, 0.3);
+    border-radius: 4px;
+    color: rgba(255, 255, 255, 0.7);
+    position: relative;
+    overflow: hidden;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(to right, 
+        transparent, 
+        rgba(255, 60, 60, 0.6),
+        transparent
+      );
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(to right, 
+        transparent, 
+        rgba(255, 60, 60, 0.6),
+        transparent
+      );
+    }
+    
+    p {
+      position: relative;
+      display: inline-block;
+      padding-left: 26px;
+      
+      &::before {
+        content: '!';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+        background: rgba(255, 60, 60, 0.2);
+        border: 1px solid rgba(255, 60, 60, 0.6);
+        border-radius: 50%;
+        color: rgba(255, 60, 60, 0.9);
+        animation: pulse-glow 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 0 10px rgba(255, 60, 60, 0.3);
+      }
+    }
+  }
+}
+
+// ============================================================
+// Search Stats Section
+// ============================================================
+.search-stats {
+  margin-top: $spacing-xl;
+  padding: $spacing-lg;
+  background: rgba(0, 20, 40, 0.3);
+  border: 1px solid rgba(0, 170, 255, 0.2);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, 
+      transparent, 
+      rgba(0, 170, 255, 0.7), 
+      transparent
+    );
+  }
+  
+  h3 {
+    color: $tech-secondary;
+    margin-top: 0;
+    margin-bottom: $spacing-md;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 18px;
+    position: relative;
+    display: inline-block;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 40px;
+      height: 2px;
+      background-color: $tech-secondary;
+    }
+  }
+  
+  &__content {
+    display: grid;
+    gap: $spacing-sm;
+    
+    p {
+      color: rgba(255, 255, 255, 0.8);
+      margin: 0;
+      
+      span {
+        color: $tech-secondary;
+        font-weight: 600;
+        margin-left: 5px;
+        font-family: monospace;
+      }
+    }
+    
+    button {
+      justify-self: start;
+      margin-top: $spacing-sm;
+      background: rgba(255, 60, 60, 0.2);
+      color: rgba(255, 200, 200, 0.9);
+      border: 1px solid rgba(255, 60, 60, 0.4);
+      border-radius: 4px;
+      padding: 8px 16px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        background: rgba(255, 60, 60, 0.3);
+        box-shadow: 0 0 10px rgba(255, 60, 60, 0.3);
+      }
+    }
+  }
+}
+
+// ============================================================
+// Search Instructions
+// ============================================================
+.search-instructions {
+  margin-top: $spacing-xl;
+  padding: $spacing-lg;
+  background: rgba(0, 20, 40, 0.3);
+  border: 1px solid rgba(0, 170, 255, 0.2);
+  border-radius: 4px;
+  
+  h3 {
+    color: $tech-secondary;
+    margin-top: 0;
+    margin-bottom: $spacing-md;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+    li {
+      position: relative;
+      padding-left: 24px;
+      margin-bottom: $spacing-sm;
+      color: rgba(255, 255, 255, 0.8);
+      
+      &::before {
+        content: '•';
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: $tech-secondary;
+        font-size: 18px;
+        line-height: 1.2;
+      }
+    }
+  }
+}
+
+// ============================================================
+// Search Overlay Specific Styles
+// ============================================================
+.c-search-overlay {
+  background-color: rgba(0, 10, 30, 0.95);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  
+  &__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    
+    .grid-line {
+      position: absolute;
+      background-size: 50px 50px;
+      width: 100%;
+      height: 100%;
+      opacity: 0.3;
+      top: 0;
+      left: 0;
+      
+      &:nth-child(1) {
+        background-image: linear-gradient(to bottom, $tech-grid-color 1px, transparent 1px);
+      }
+      
+      &:nth-child(2) {
+        background-image: linear-gradient(to right, $tech-grid-color 1px, transparent 1px);
+      }
+      
+      &:nth-child(3) {
+        background-image: 
+          radial-gradient(circle, rgba(0, 170, 255, 0.2) 2px, transparent 2px),
+          radial-gradient(circle, rgba(255, 0, 170, 0.1) 1px, transparent 1px);
+        background-size: 60px 60px, 30px 30px;
+        animation: float 20s infinite linear;
+      }
+    }
+    
+    .scan-line {
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 300%;
+      height: 2px;
+      background: linear-gradient(90deg, 
+        transparent, 
+        rgba(0, 170, 255, 0.5), 
+        rgba(255, 0, 170, 0.5), 
+        transparent
+      );
+      box-shadow: 0 0 20px rgba(0, 170, 255, 0.8);
+      animation: scan-line 4s ease-in-out infinite;
+    }
+  }
+  
+  &__header {
+    position: relative;
+    
+    .c-search-overlay__close {
+      background: rgba(0, 20, 40, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: rgba(255, 255, 255, 0.8);
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        background: rgba(255, 60, 60, 0.2);
+        border-color: rgba(255, 60, 60, 0.5);
+        color: rgba(255, 200, 200, 1);
+      }
+    }
+  }
+  
+  &__title {
+    position: relative;
+    display: flex;
+    align-items: center;
+    
+    .tech-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, $tech-primary, $tech-secondary);
+      color: white;
+      font-weight: bold;
+      padding: 4px 8px;
+      border-radius: 4px;
+      margin-right: 10px;
+      position: relative;
+      box-shadow: 0 0 10px rgba(0, 170, 255, 0.5);
+      
+      &.pulse {
+        animation: pulse-glow 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      
+      &::before {
+        content: '';
+        position: absolute;
+        top: -3px;
+        left: -3px;
+        right: -3px;
+        bottom: -3px;
+        border: 1px solid rgba(0, 170, 255, 0.3);
+        border-radius: 6px;
+        pointer-events: none;
+      }
+    }
+    
+    .tech-badge-text {
+      font-size: 24px;
+      color: rgba(255, 255, 255, 0.95);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .tech-decorations {
+      position: absolute;
+      right: -15px;
+      top: 0;
+      
+      .line-decoration {
+        position: absolute;
+        top: 5px;
+        right: -10px;
+        width: 20px;
+        height: 2px;
+        background-color: $tech-secondary;
+      }
+      
+      .dot-decoration {
+        position: absolute;
+        top: 4px;
+        right: -20px;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background-color: $tech-accent;
+      }
+    }
+  }
+  
+  &__form {
+    position: relative;
+    margin-top: $spacing-lg;
+    
+    .search-radar-container {
+      position: absolute;
+      top: 50%;
+      left: 15px;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      
+      .radar-ping {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 6px;
+        height: 6px;
+        background-color: $tech-secondary;
+        border-radius: 50%;
+        
+        &::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          border: 1px solid rgba(0, 170, 255, 0.5);
+          animation: search-wave 1.5s infinite cubic-bezier(0.1, 0.25, 0.3, 1);
+        }
+      }
+    }
+  }
+  
+  &__input-group {
+    flex-grow: 1;
+    position: relative;
+    border: 1px solid rgba(0, 170, 255, 0.4);
+    border-radius: 4px;
+    background: rgba(0, 20, 40, 0.4);
+    
+    .input-decoration {
+      position: absolute;
+      top: 0;
+      right: 10px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      pointer-events: none;
+      
+      .input-decoration-element {
+        width: 3px;
+        height: 12px;
+        background-color: rgba(0, 170, 255, 0.5);
+        border-radius: 1px;
+        
+        &:nth-child(1) {
+          height: 8px;
+        }
+      }
+    }
+  }
+  
+  &__input {
+    background: transparent;
+    border: none;
+    color: white;
+    padding: 12px 12px 12px 45px;
+    width: 100%;
+    font-size: 16px;
+    
+    &:focus {
+      outline: none;
+    }
+    
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
+  
+  &__submit {
+    padding: 0 20px;
+    height: 44px;
+    background: linear-gradient(135deg, rgba(0, 80, 120, 0.8), rgba(0, 30, 60, 0.9));
+    border: 1px solid rgba(0, 170, 255, 0.4);
+    border-radius: 4px;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    margin-left: 10px;
+    
+    &:hover {
+      background: linear-gradient(135deg, rgba(0, 100, 150, 0.9), rgba(0, 40, 80, 1));
+      box-shadow: 0 0 20px rgba(0, 170, 255, 0.4);
+      
+      .btn-glow {
+        opacity: 1;
+      }
+    }
+    
+    .btn-text {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .btn-icon {
+      display: none;
+    }
+  }
+  
+  &__recent {
+    position: relative;
+    margin-top: $spacing-lg;
+    padding: $spacing-md;
+    background: rgba(0, 20, 40, 0.3);
+    border: 1px solid rgba(0, 170, 255, 0.2);
+    border-radius: 4px;
+    
+    .recent-searches-decoration {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      
+      .corner-decoration {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        
+        &.top-left {
+          top: 0;
+          left: 0;
+          border-top: 2px solid rgba(0, 170, 255, 0.8);
+          border-left: 2px solid rgba(0, 170, 255, 0.8);
+        }
+        
+        &.top-right {
+          top: 0;
+          right: 0;
+          border-top: 2px solid rgba(0, 170, 255, 0.8);
+          border-right: 2px solid rgba(0, 170, 255, 0.8);
+        }
+        
+        &.bottom-left {
+          bottom: 0;
+          left: 0;
+          border-bottom: 2px solid rgba(0, 170, 255, 0.8);
+          border-left: 2px solid rgba(0, 170, 255, 0.8);
+        }
+        
+        &.bottom-right {
+          bottom: 0;
+          right: 0;
+          border-bottom: 2px solid rgba(0, 170, 255, 0.8);
+          border-right: 2px solid rgba(0, 170, 255, 0.8);
+        }
+      }
+    }
+  }
+  
+  &__recent-title {
+    color: $tech-secondary;
+    margin-top: 0;
+    font-size: 18px;
+    position: relative;
+    display: inline-block;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 30px;
+      height: 2px;
+      background-color: $tech-secondary;
+    }
+  }
+  
+  &__recent-list {
+    list-style: none;
+    padding: 0;
+    margin: $spacing-md 0 0;
+  }
+  
+  &__recent-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.8);
+    padding: 8px 10px;
+    width: 100%;
+    text-align: left;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+    
+    &:hover {
+      background: rgba(0, 170, 255, 0.1);
+    }
+    
+    .c-search-overlay__recent-icon {
+      color: $tech-secondary;
+      display: flex;
+      align-items: center;
+    }
+  }
+  
+  &__tips {
+    margin-top: $spacing-md;
+    text-align: center;
+    position: relative;
+    
+    p {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 14px;
+    }
+    
+    kbd {
+      background: rgba(0, 20, 40, 0.6);
+      border: 1px solid rgba(0, 170, 255, 0.3);
+      border-radius: 3px;
+      padding: 1px 5px;
+      color: $tech-secondary;
+      font-family: monospace;
+    }
+    
+    .keyboard-decoration {
+      position: absolute;
+      top: 50%;
+      right: 30px;
+      transform: translateY(-50%);
+      
+      .key-light {
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        background-color: $tech-secondary;
+        border-radius: 50%;
+        animation: pulse-glow 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+      }
+    }
+  }
+}
+
+// ============================================================
+// Safari Compatibility Fixes
+// ============================================================
+@supports (-webkit-backdrop-filter: none) {
+  .c-search-overlay {
+    background-color: rgba(0, 10, 30, 0.97);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+  
+  .tech-search-box {
+    background-color: rgba(5, 15, 30, 0.9);
+  }
+}
+
+// ============================================================
+// Search Result Animations & Styles
+// ============================================================
+.search-results__item {
+  position: relative;
+  margin-bottom: $spacing-md;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  transform-origin: center;
+  opacity: 0;
+  
+  &.tech-result-animate {
+    animation: fadeInTechResult 0.5s forwards;
+  }
+  
+  .result-tech-decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    
+    .corner {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      
+      &::before, &::after {
+        content: '';
+        position: absolute;
+        background-color: $tech-secondary;
+      }
+      
+      &::before {
+        width: 100%;
+        height: 2px;
+      }
+      
+      &::after {
+        width: 2px;
+        height: 100%;
+      }
+      
+      &.top-left {
+        top: 0;
+        left: 0;
+        
+        &::before { top: 0; left: 0; }
+        &::after { top: 0; left: 0; }
+      }
+      
+      &.top-right {
+        top: 0;
+        right: 0;
+        
+        &::before { top: 0; right: 0; }
+        &::after { top: 0; right: 0; }
+      }
+      
+      &.bottom-left {
+        bottom: 0;
+        left: 0;
+        
+        &::before { bottom: 0; left: 0; }
+        &::after { bottom: 0; left: 0; }
+      }
+      
+      &.bottom-right {
+        bottom: 0;
+        right: 0;
+        
+        &::before { bottom: 0; right: 0; }
+        &::after { bottom: 0; right: 0; }
+      }
+    }
+    
+    .scan-line {
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 50%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, $tech-secondary, transparent);
+      animation: scanLine 3s linear infinite;
+      box-shadow: 0 0 8px rgba(0, 170, 255, 0.5);
+      opacity: 0.7;
+    }
+  }
+  
+  article {
+    position: relative;
+    background-color: rgba(10, 20, 40, 0.4);
+    border: 1px solid rgba(0, 170, 255, 0.2);
+    border-radius: 4px;
+    padding: $spacing-md;
+    z-index: 1;
+    transition: all 0.3s ease;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        linear-gradient(180deg, rgba(0, 170, 255, 0.05) 0%, rgba(0, 0, 0, 0) 100%),
+        linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 170, 255, 0.03) 50%, rgba(0, 0, 0, 0) 100%);
+      z-index: -1;
+    }
+  }
+  
+  .search-results__title {
+    position: relative;
+    margin-top: 0;
+    padding-left: 12px;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 70%;
+      width: 3px;
+      background: linear-gradient(to bottom, $tech-secondary, rgba($tech-secondary, 0.3));
+    }
+    
+    a {
+      color: $tech-secondary;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      
+      &:hover {
+        color: lighten($tech-secondary, 15%);
+      }
+    }
+  }
+  
+  .search-results__category {
+    display: inline-block;
+    background-color: rgba(0, 170, 255, 0.1);
+    border: 1px solid rgba(0, 170, 255, 0.3);
+    color: $tech-secondary;
+    font-size: 0.85em;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-right: 8px;
+  }
+  
+  .search-results__date {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85em;
+  }
+  
+  .search-results__snippet {
+    position: relative;
+    margin-top: $spacing-sm;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+    padding-left: 12px;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 2px;
+      background: linear-gradient(to bottom, rgba($tech-secondary, 0.3), transparent);
+    }
+  }
+  
+  mark {
+    background-color: rgba($tech-accent, 0.2);
+    color: lighten($tech-accent, 30%);
+    padding: 0 2px;
+    border-radius: 2px;
+  }
+  
+  .hover-glow {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle, 
+      rgba(0, 170, 255, 0.4) 0%, 
+      rgba(0, 170, 255, 0.1) 40%, 
+      transparent 70%
+    );
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: screen;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 0;
+  }
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    
+    article {
+      border-color: rgba(0, 170, 255, 0.5);
+    }
+  }
+  
+  // Media query for mobile devices
+  @media (max-width: 768px) {
+    .result-tech-decoration {
+      .corner {
+        width: 6px;
+        height: 6px;
+      }
+    }
+    
+    article {
+      padding: $spacing-sm;
+    }
+    
+    .search-results__title {
+      font-size: 1.1em;
+      padding-left: 8px;
+      
+      &::before {
+        width: 2px;
+      }
+    }
+    
+    .search-results__snippet {
+      font-size: 0.9em;
+      padding-left: 8px;
+    }
+  }
+}
+
+// ============================================================
+// Keyboard Navigation Styles
+// ============================================================
+.search-results__item {
+  // ...existing code...
+  
+  &:focus,
+  &.focused {
+    outline: none;
+    position: relative;
+    z-index: 2;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      border: 2px solid var(--color-primary);
+      border-radius: 6px;
+      box-shadow: 0 0 8px var(--color-primary);
+      pointer-events: none;
+      animation: focusPulse 2s infinite alternate;
+      z-index: -1;
+    }
+    
+    article {
+      background-color: rgba(10, 30, 50, 0.7);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+      
+      .search-results__title a {
+        color: lighten($tech-secondary, 15%);
+      }
+    }
+  }
+}
+
+// Visually hidden class for screen reader announcements
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+@keyframes focusPulse {
+  0% {
+    box-shadow: 0 0 5px rgba(var(--color-primary-rgb, 77, 200, 170), 0.5);
+  }
+  100% {
+    box-shadow: 0 0 12px rgba(var(--color-primary-rgb, 77, 200, 170), 0.8);
+  }
+}
+
+// ============================================================
+// Glitch Effect for Tech Titles
+// ============================================================
+.tech-title, .c-search-overlay__title {
+  position: relative;
+  
+  .glitch-base {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .glitch-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: attr(data-text);
+    opacity: 0.8;
+  }
+  
+  .glitch-before {
+    color: #0ff;
+    z-index: 0;
+    animation: glitch-anim-1 5s infinite linear alternate-reverse;
+  }
+  
+  .glitch-after {
+    color: #f0a;
+    z-index: 0;
+    animation: glitch-anim-2 3s infinite linear alternate-reverse;
+  }
+}
+
+// ============================================================
+// Mobile Responsiveness
+// ============================================================
+@media (max-width: 768px) {
+  .tech-search-box {
+    padding: $spacing-sm;
+    
+    .search-interface-decoration {
+      .corner-element {
+        width: 15px;
+        height: 15px;
+      }
+    }
+    
+    .search-form {
+      flex-direction: column;
+      
+      .input-wrapper {
+        width: 100%;
+        margin-bottom: $spacing-sm;
+      }
+      
+      button {
+        width: 100%;
+        margin-top: $spacing-sm;
+      }
+    }
+  }
+  
+  .c-search-overlay {
+    &__container {
+      padding: $spacing-md;
+    }
+    
+    &__form {
+      flex-direction: column;
+      
+      .c-search-overlay__input-group {
+        width: 100%;
+        margin-bottom: $spacing-sm;
+      }
+      
+      .c-search-overlay__submit {
+        width: 100%;
+        margin-top: $spacing-sm;
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+// ============================================================
+// Animations
+// ============================================================
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes float {
+  from { background-position: 0 0; }
+  to { background-position: 100px 100px; }
+}
+
+@keyframes scan-line {
+  0% { top: 0%; }
+  50% { top: 100%; }
+  100% { top: 0%; }
+}
+
+@keyframes fade-in-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+// Ripple effect for buttons
+.ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(0, 170, 255, 0.4);
+  width: 100px;
+  height: 100px;
+  margin-left: -50px;
+  margin-top: -50px;
+  pointer-events: none;
+  animation: ripple 1s ease-out forwards;
+}
+
+@keyframes fadeInTechResult {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes scanLine {
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes glitch-anim-1 {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+@keyframes glitch-anim-2 {
+  0% { transform: translate(0); }
+  20% { transform: translate(2px, -2px); }
+  40% { transform: translate(2px, 2px); }
+  60% { transform: translate(-2px, -2px); }
+  80% { transform: translate(-2px, 2px); }
+  100% { transform: translate(0); }
+}
+
+// ============================================================
+// Tech Search Cards & Tips
+// ============================================================
+.tech-search-tips {
+  margin-top: $spacing-lg;
+  
+  .tech-card {
+    position: relative;
+    background-color: rgba(0, 20, 40, 0.4);
+    border: 1px solid rgba(0, 170, 255, 0.2);
+    border-radius: 4px;
+    padding: $spacing-md;
+    overflow: hidden;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(0, 170, 255, 0.05) 0%, rgba(0, 0, 0, 0) 100%);
+      z-index: 0;
+    }
+    
+    .card-header {
+      position: relative;
+      margin-bottom: $spacing-md;
+      
+      h3 {
+        position: relative;
+        margin: 0 0 10px 0;
+        color: $tech-secondary;
+        font-weight: bold;
+        padding-left: 15px;
+        z-index: 1;
+        
+        &::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          height: 70%;
+          width: 3px;
+          background: linear-gradient(to bottom, $tech-secondary, rgba($tech-secondary, 0.3));
+        }
+      }
+      
+      .card-decoration {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 20px;
+        height: 2px;
+        background-color: $tech-secondary;
+        
+        &::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background-color: $tech-secondary;
+          box-shadow: 0 0 10px rgba(0, 170, 255, 0.8);
+        }
+      }
+    }
+    
+    ul {
+      position: relative;
+      margin: 0;
+      padding: 0 0 0 $spacing-md;
+      list-style-type: none;
+      z-index: 1;
+      
+      li {
+        position: relative;
+        margin-bottom: 8px;
+        color: rgba(255, 255, 255, 0.8);
+        
+        &::before {
+          content: '›';
+          color: $tech-secondary;
+          position: absolute;
+          left: -$spacing-md;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+// ============================================================
+// Tech Search Status Styling
+// ============================================================
+.tech-search-status {
+  display: inline-block;
+  margin-top: $spacing-sm;
+  padding: 5px 10px;
+  background-color: rgba(0, 30, 60, 0.4);
+  border-left: 3px solid $tech-secondary;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9em;
+  border-radius: 0 3px 3px 0;
+  
+  &.error {
+    border-left-color: $tech-accent;
+  }
+}
+
+// ============================================================
+// No Results Styling
+// ============================================================
+.tech-no-result {
+  .tech-no-results-container {
+    position: relative;
+    padding: $spacing-md;
+    background-color: rgba(0, 20, 40, 0.4);
+    border: 1px solid rgba(255, 0, 170, 0.2);
+    border-radius: 4px;
+    text-align: center;
+    
+    .tech-icon {
+      display: block;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      margin: 0 auto $spacing-sm;
+      border-radius: 50%;
+      background-color: rgba(255, 0, 170, 0.2);
+      color: #f0a;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    
+    p {
+      margin: 0 0 $spacing-sm;
+      color: rgba(255, 255, 255, 0.8);
+      
+      .query-text {
+        color: #f0a;
+        font-weight: bold;
+      }
+    }
+    
+    .suggestion {
+      font-size: 0.9em;
+      color: rgba(255, 255, 255, 0.6);
+    }
+  }
+}
+
+// ============================================================
+// Tech Particles Animation
+// ============================================================
+.tech-particles-animated {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-repeat: repeat;
+    opacity: 0.4;
+    animation: floatParticles 20s infinite linear;
+  }
+  
+  &::before {
+    background-image: 
+      radial-gradient(circle, rgba(0, 170, 255, 0.3) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation-duration: 30s;
+  }
+  
+  &::after {
+    background-image: 
+      radial-gradient(circle, rgba(255, 0, 170, 0.2) 1px, transparent 1px);
+    background-size: 30px 30px;
+    animation-direction: reverse;
+    animation-duration: 15s;
+  }
+}
+
+// ============================================================
+// Enhanced Button Styling
+// ============================================================
+.c-btn--tech, .c-btn--neon {
+  position: relative;
+  background-color: rgba(0, 50, 80, 0.7);
+  color: $tech-secondary;
+  border: 1px solid rgba(0, 170, 255, 0.5);
+  padding: 10px 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(0, 170, 255, 0.2), transparent);
+    transform: skewX(-20deg);
+    transition: all 0.8s ease;
+  }
+  
+  &:hover {
+    background-color: rgba(0, 60, 100, 0.9);
+    border-color: rgba(0, 170, 255, 0.8);
+    box-shadow: 0 0 15px rgba(0, 170, 255, 0.5);
+    color: white;
+    
+    &::before {
+      left: 150%;
+    }
+  }
+  
+  &:active {
+    transform: translateY(1px);
+    box-shadow: 0 0 5px rgba(0, 170, 255, 0.5);
+  }
+}
+
+// ============================================================
+// Radar Animation
+// ============================================================
+.search-radar-container {
+  position: absolute;
+  left: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 60px;
+  
+  .radar-ping {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background-color: $tech-secondary;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 170, 255, 0.8);
+    z-index: 1;
+  }
+  
+  .radar-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    border: 1px dashed rgba(0, 170, 255, 0.3);
+    border-radius: 50%;
+    animation: radarPulse 3s infinite;
+  }
+}
+
+@keyframes radarPulse {
+  0% {
+    width: 10px;
+    height: 10px;
+    opacity: 1;
+  }
+  100% {
+    width: 60px;
+    height: 60px;
+    opacity: 0;
+  }
+}
+
+@keyframes floatParticles {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+// ============================================================
+// Search Pulse Animation
+// ============================================================
+.search-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(
+    circle,
+    rgba(0, 170, 255, 0.8) 0%,
+    rgba(0, 170, 255, 0.5) 20%,
+    rgba(0, 170, 255, 0.2) 40%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  z-index: 1;
+  opacity: 0.8;
+  pointer-events: none;
+  animation: searchPulse 1s ease-out forwards;
+}
+
+@keyframes searchPulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
+
+// ============================================================
+// Media Queries for Responsive Design
+// ============================================================
+@media (max-width: 576px) {
+  .c-search-overlay {
+    &__container {
+      padding: $spacing-sm;
+      width: 95%;
+    }
+    
+    &__title {
+      font-size: 1.25rem;
+      
+      .tech-badge {
+        padding: 2px 5px;
+        font-size: 0.7rem;
+      }
+    }
+    
+    &__form {
+      margin-top: $spacing-sm;
+    }
+    
+    &__input-group {
+      padding: 6px 10px;
+    }
+    
+    &__input {
+      font-size: 0.9rem;
+    }
+    
+    .search-radar-container {
+      display: none;
+    }
+  }
+  
+  .tech-search-box {
+    .search-interface-decoration {
+      .corner-element {
+        width: 10px;
+        height: 10px;
+      }
+    }
+    
+    .search-controls {
+      flex-direction: column;
+      
+      .search-filters, .search-sort {
+        width: 100%;
+        margin-bottom: $spacing-sm;
+      }
+    }
+  }
+  
+  .tech-search-tips {
+    .tech-card {
+      padding: $spacing-sm;
+      
+      ul li {
+        font-size: 0.9rem;
+      }
+    }
+  }
+  
+  .search-pulse {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+// Only apply complex animations if user hasn't requested reduced motion
+@media (prefers-reduced-motion: reduce) {
+  .radar-ping,
+  .radar-circle,
+  .scan-line,
+  .search-pulse,
+  .ripple-effect,
+  .tech-particles,
+  .tech-particles-animated::before,
+  .tech-particles-animated::after {
+    animation: none !important;
+  }
+  
+  .tech-result-animate {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+  
+  .glitch-before,
+  .glitch-after {
+    display: none !important;
+  }
+}

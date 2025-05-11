@@ -4,7 +4,7 @@
 // SASS variables are used for spacing, colors, typography, and transitions to ensure consistency and easy updates.
 // Referenced variables are defined in the settings folder for maintainability.
 
-.projects-page {
+.c-projects-list {
   // ### Base Styles
   // - **margin:** Centers the content horizontally.
   // - **padding:** Adds inner spacing around the content.
@@ -13,14 +13,14 @@
   padding: $spacing-lg; // Add padding using the spacing variable
   max-width: 960px; // Limit the maximum width of the content
 
-  .projects-header {
+  &__header {
     // ### Header Section
     // - **text-align:** Centers the header content.
     // - **margin-bottom:** Adds spacing below the header.
     text-align: center;
     margin-bottom: $spacing-lg; // Add bottom margin using the spacing variable
 
-    h1 {
+    &__title {
       // ### Main Heading
       // - **font-size:** Uses a large font size for prominence.
       // - **margin-bottom:** Adds spacing below the heading.
@@ -28,7 +28,7 @@
       margin-bottom: $spacing-md; // Add bottom margin using the spacing variable
     }
 
-    p {
+    &__intro {
       // ### Description Text
       // - **font-size:** Uses a medium font size for readability.
       // - **color:** Uses the standard text color for consistency.
@@ -37,7 +37,7 @@
     }
   }
 
-  .filter-bar {
+  &__filter-bar {
     // ### Filter Bar
     // - **display:** Uses flexbox for layout.
     // - **flex-wrap:** Allows items to wrap to the next line if necessary.
@@ -50,8 +50,8 @@
     align-items: center; // Align items vertically
     margin-bottom: $spacing-lg; // Add bottom margin using the spacing variable
 
-    .filter-dropdown,
-    .search-input {
+    &__dropdown,
+    &__search-input {
       // ### Dropdowns and Search Input
       // - **flex:** Allows flexible resizing.
       // - **max-width:** Limits the maximum width of the input fields.
@@ -80,7 +80,7 @@
     }
   }
 
-  .project-grid {
+  &__grid {
     // ### Project Grid
     // - **display:** Uses grid layout for responsive design.
     // - **grid-template-columns:** Creates responsive columns based on available space.
@@ -93,7 +93,7 @@
     margin-bottom: $spacing-xl; // Add bottom margin for spacing
   }
 
-  .no-results {
+  &__no-results {
     // ### No Results Message
     // - **text-align:** Centers the message horizontally.
     // - **font-size:** Uses a medium font size for readability.
@@ -105,14 +105,14 @@
     margin-top: $spacing-lg; // Add top margin for spacing
   }
 
-  .load-more-container {
+  &__load-more {
     // ### Load More Button Container
     // - **text-align:** Centers the button horizontally.
     // - **margin-top:** Adds spacing above the button.
     text-align: center; // Center-align the button
     margin-top: $spacing-lg; // Add top margin for spacing
 
-    .btn {
+    .c-btn {
       // ### Load More Button
       // - **padding:** Adds inner spacing for better usability.
       // - **background-color:** Uses the primary color for the button.

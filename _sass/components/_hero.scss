@@ -4,19 +4,22 @@
 // The styles are organized using the BEM (Block Element Modifier) methodology for better readability and maintainability.
 // SASS variables are used for colors, spacing, typography, and transitions to ensure consistency and easy updates.
 
+@import '../utilities/mixins';
+
 // ### Base Hero Styles
-// - **.hero:** The main container for the hero section.
+// - **.c-hero:** The main container for the hero section.
 // - **position:** Ensures the hero section is positioned relative to allow for overlays.
 // - **padding:** Adds spacing around the content.
 // - **text-align:** Centers the text horizontally.
 // - **background:** Uses radial gradients for a visually appealing background.
 // - **height:** Sets the hero section to full viewport height.
 // - **display:** Uses flexbox for centering content vertically and horizontally.
-.hero {
+.c-hero {
   position: relative;
+  @include radius($border-radius-lg); // if needed for content container
   padding: $spacing-xl $spacing-md; // Add padding for spacing
   text-align: center; // Center-align text
-  color: $color-black; // Use primary text color
+  color: var(--color-text); // Use primary text color
   background: 
     radial-gradient(circle at center, $color-white 0%, $color-white 35%, transparent 45%),
     radial-gradient(circle at bottom left, $color-accent 0%, $color-accent 8%, transparent 20%),
@@ -37,7 +40,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba($color-white, $hero-overlay-opacity); // Semi-transparent overlay
+    background: rgba(var(--color-white-rgb), $hero-overlay-opacity); // Semi-transparent overlay
     z-index: 0; // Place behind content
   }
 
@@ -48,7 +51,7 @@
   }
 
   // ### Hero Title
-  // - **.hero__title:** Styles for the main title in the hero section.
+  // - **.c-hero__title:** Styles for the main title in the hero section.
   // - **font-size:** Uses a large font size for prominence.
   // - **font-weight:** Makes the title bold for emphasis.
   // - **animation:** Adds a fade-in effect for visual appeal.
@@ -59,7 +62,7 @@
   }
 
   // ### Hero Description
-  // - **.hero__description:** Styles for the description text in the hero section.
+  // - **.c-hero__description:** Styles for the description text in the hero section.
   // - **font-size:** Uses a medium font size for readability.
   // - **max-width:** Limits the width for better readability.
   // - **color:** Uses a secondary text color for contrast.
@@ -71,26 +74,14 @@
   }
 
   // ### Call-to-Action Button
-  // - **.hero__cta:** Styles for the call-to-action button in the hero section.
+  // - **.c-hero__cta:** Styles for the call-to-action button in the hero section.
   // - **padding:** Adds inner spacing for better usability.
   // - **background-color:** Uses the primary color for the button.
   // - **border-radius:** Adds rounded corners for a modern look.
   // - **transition:** Enables smooth hover effects.
   &__cta {
-    display: inline-block;
-    padding: $spacing-sm $spacing-md; // Add padding for clickable area
-    background-color: $color-primary; // Primary background color
-    color: $color-white; // White text color
-    font-size: $font-size-md; // Medium font size
-    font-weight: $font-weight-bold; // Bold font weight
-    border-radius: $border-radius-md; // Rounded corners
-    text-decoration: none; // Remove underline
-    transition: background-color $transition-duration-default ease; // Smooth hover transition
-
-    &:hover {
-      // Hover effect for the button
-      background-color: $color-primary-dark; // Darker primary color
-    }
+    @extend .c-btn;  // use standardized button
+    @include transition(background-color);
   }
 
   @include respond-to('md') {
@@ -121,10 +112,10 @@
 }
 
 // ### Home Page Modifier
-// - **.hero--home-page:** Modifier for the hero section on the home page.
+// - **.c-hero--home-page:** Modifier for the hero section on the home page.
 // - **padding:** Adjusts padding for the home page layout.
 // - **background:** Reuses the radial gradient background.
-.hero--home-page {
+.c-hero--home-page {
   padding: $spacing-xl $spacing-sm; // Adjust padding for home page
   background: 
     radial-gradient(circle at center, $color-white 0%, $color-white 35%, transparent 45%),
@@ -141,16 +132,16 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba($color-white, $hero-overlay-opacity); // Semi-transparent overlay
+    background: rgba(var(--color-white-rgb), $hero-overlay-opacity); // Semi-transparent overlay
     z-index: 0;
   }
 }
 
 // ### Hero Banner
-// - **.hero__banner:** Container for the banner content in the hero section.
+// - **.c-hero__banner:** Container for the banner content in the hero section.
 // - **gap:** Adds spacing between elements in the banner.
 // - **margin-top:** Adds spacing above the banner.
-.hero__banner {
+.c-hero__banner {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -183,11 +174,11 @@
 }
 
 // ### Hero Figure
-// - **.hero__figure:** Styles for the circular image in the hero section.
+// - **.c-hero__figure:** Styles for the circular image in the hero section.
 // - **width, height:** Ensures a perfect circular shape.
 // - **border-radius:** Applies a circular shape.
 // - **box-shadow:** Adds depth to the image.
-.hero__figure {
+.c-hero__figure {
   width: 150px; // Fixed width
   height: 150px; // Fixed height for a perfect circle
   border-radius: 50%; // Circular shape
@@ -227,7 +218,7 @@
 // - **color:** Uses dark mode text color.
 // - **background:** Adjusts the background gradients for dark mode.
 @media (prefers-color-scheme: dark) {
-  .hero {
+  .c-hero {
     color: $color-text-dark; // Use dark mode text color
     background: 
       radial-gradient(circle at center, $color-background-dark 0%, $color-background-dark 35%, transparent 45%),
@@ -235,7 +226,7 @@
       radial-gradient(circle at top right, $color-primary-dark 0%, $color-primary-dark 10%, transparent 20%);
   }
 
-  .hero--home-page::before {
+  .c-hero--home-page::before {
     background: rgba($color-background-dark, $hero-overlay-opacity); // Adjust overlay for dark mode
   }
 }

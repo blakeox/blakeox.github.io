@@ -5,7 +5,7 @@ description: "Explore my projects, blog posts, and get in touch with me."
 ---
 
 <!-- Skip to main content link for accessibility -->
-<a href="#main-content" class="skip-link">Skip to main content</a>
+<a href="#main-content" class="c-skip-to-content">Skip to main content</a>
 
 <!-- Hero Section -->
 <main id="main-content" aria-label="Main Content" tabindex="-1">
@@ -13,29 +13,29 @@ description: "Explore my projects, blog posts, and get in touch with me."
 </main>
 
 <!-- Featured Projects Section -->
-<section class="featured-projects container content-section" aria-live="polite" aria-labelledby="featured-projects">
-  <h2 id="featured-projects">Featured Projects</h2>
+<section class="c-featured-projects container content-section" aria-live="polite" aria-labelledby="featured-projects">
+  <h2 id="featured-projects" class="c-featured-projects__title">Featured Projects</h2>
   {% if site.projects.size > 0 %}
-    <div class="project-grid" role="list" aria-live="polite" aria-atomic="true">
+    <div class="c-featured-projects__grid" role="list" aria-live="polite" aria-atomic="true">
       {% for project in site.projects limit:3 %}
-        <div class="project-item" role="listitem">
+        <div class="c-featured-projects__item" role="listitem">
           {% if project.image %}
-            <img data-src="{{ project.image | relative_url }}" alt="Screenshot of {{ project.title }} project" class="project-image lazyload" loading="lazy">
+            <img data-src="{{ project.image | relative_url }}" alt="Screenshot of {{ project.title }} project" class="c-featured-projects__item-image lazyload" loading="lazy">
           {% else %}
-            <img data-src="/assets/images/default-project.png" alt="Default placeholder image for a project" class="project-image lazyload" loading="lazy">
+            <img data-src="/assets/images/default-project.png" alt="Default placeholder image for a project" class="c-featured-projects__item-image lazyload" loading="lazy">
           {% endif %}
-          <h3>
+          <h3 class="c-featured-projects__item-heading">
             <a href="{{ project.url | relative_url }}" aria-label="View details about {{ project.title }}">
               {{ project.title }}
             </a>
           </h3>
-          <p>{{ project.description }}</p>
-          <a href="{{ project.link }}" class="btn" target="_blank" rel="noopener" aria-label="View {{ project.title }} project">View Project</a>
+          <p class="c-featured-projects__item-description">{{ project.description }}</p>
+          <a href="{{ project.link }}" class="c-featured-projects__item-cta c-btn" target="_blank" rel="noopener" aria-label="View {{ project.title }} project">View Project</a>
         </div>
       {% endfor %}
     </div>
-    <div class="btn-container">
-      <a href="/projects/" class="btn secondary" aria-label="View all projects">View My Projects</a>
+    <div class="c-btn-container">
+      <a href="/projects/" class="c-btn c-btn--secondary" aria-label="View all projects">View My Projects</a>
     </div>
   {% else %}
     <p>No projects available at the moment. Please check back later!</p>
@@ -43,20 +43,22 @@ description: "Explore my projects, blog posts, and get in touch with me."
 </section>
 
 <!-- Latest Blog Posts Section -->
-<section class="latest-blog-posts container content-section" aria-labelledby="latest-blog-posts">
-  <h2 id="latest-blog-posts">Latest Blog Posts</h2>
+<section class="c-latest-blog-posts container content-section" aria-labelledby="latest-blog-posts">
+  <h2 id="latest-blog-posts" class="c-latest-blog-posts__title">Latest Blog Posts</h2>
   {% if site.posts.size > 0 %}
-    <ul class="blog-posts-list" role="list" aria-live="polite" aria-atomic="true">
+    <ul class="c-latest-blog-posts__list" role="list" aria-live="polite" aria-atomic="true">
       {%- for post in site.posts limit:3 -%}
-        <li class="blog-post-item" role="listitem">
-          <a href="{{ post.url | relative_url }}" aria-label="Read {{ post.title }}" class="blog-post-link">
+        <li class="c-latest-blog-posts__item" role="listitem">
+          <a href="{{ post.url | relative_url }}" aria-label="Read {{ post.title }}" class="c-latest-blog-posts__link">
             <h3>{{ post.title }}</h3>
             <small>{{ post.date | date: "%B %d, %Y" }}</small>
           </a>
         </li>
       {%- endfor -%}
     </ul>
-    <a href="/blog/" class="btn" aria-label="View all blog posts">View All Blog Posts</a>
+    <div class="c-latest-blog-posts__cta">
+      <a href="/blog/" class="c-btn" aria-label="View all blog posts">View All Blog Posts</a>
+    </div>
   {% else %}
     <p>No blog posts available at the moment. Please check back later!</p>
   {% endif %}
@@ -66,5 +68,5 @@ description: "Explore my projects, blog posts, and get in touch with me."
 <section class="call-to-action container" aria-labelledby="call-to-action">
   <h2 id="call-to-action">Want to Work Together?</h2>
   <p>I'm always open to exciting new opportunities and collaborations. Let's create something amazing together!</p>
-  <a href="/contact/" class="btn" aria-label="Contact Blake Oxford">Contact Me</a>
+  <a href="/contact/" class="c-btn" aria-label="Contact Me">Contact Me</a>
 </section>

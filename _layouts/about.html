@@ -10,13 +10,13 @@ permalink: /about/
   <img src="{{ '/assets/images/Blake-O-scaled.jpg' | relative_url }}" alt="Photo of Blake Oxford in professional attire" class="about-avatar fade-in">
 
   <!-- Anchor Navigation -->
-  <nav class="anchor-links scroll-animate" aria-label="Page Sections">
-    <ul>
-      <li><a href="#about-summary" data-analytics="about-summary">Summary</a></li>
-      <li><a href="#about-education" data-analytics="about-education">Education</a></li>
-      <li><a href="#about-skills" data-analytics="about-skills">Key Skills</a></li>
-      <li><a href="#about-timeline" data-analytics="about-timeline">Career Highlights</a></li>
-      <li><a href="#about-social" data-analytics="about-social">Connect</a></li>
+  <nav class="c-anchor-links scroll-animate" aria-label="Page Sections">
+    <ul class="c-anchor-links__list">
+      <li><a class="c-anchor-links__link" href="#about-summary" data-analytics="about-summary">Summary</a></li>
+      <li><a class="c-anchor-links__link" href="#about-education" data-analytics="about-education">Education</a></li>
+      <li><a class="c-anchor-links__link" href="#about-skills" data-analytics="about-skills">Key Skills</a></li>
+      <li><a class="c-anchor-links__link" href="#about-timeline" data-analytics="about-timeline">Career Highlights</a></li>
+      <li><a class="c-anchor-links__link" href="#about-social" data-analytics="about-social">Connect</a></li>
     </ul>
   </nav>
 
@@ -25,15 +25,15 @@ permalink: /about/
     <h2 class="fade-in">Professional Summary</h2>
     <p>I am a visionary leader with a proven track record of scaling organizations, optimizing financial systems, and leveraging technology to streamline operations and maximize business outcomes.</p>
 
-    <div class="key-achievements">
-      <h3 class="fade-in">Key Achievements</h3>
-      <ul>
-        <li>🚀 <strong>Self-taught Revenue Cycle Management:</strong> Led end-to-end AdvancedMD practice management system implementation by devouring every industry book, podcast, and help file—then authored SOPs and trained the entire team.</li>
-        <li>📊 <strong>Data-Driven Continuous Improvement:</strong> Built SQL &amp; Power BI analytics and automated auditing tools that surfaced operational bottlenecks and drove targeted, measurable performance gains.</li>
-        <li>💰 <strong>Multi-Million-Dollar Cost Savings:</strong> Delivered substantial savings through process automation using Azure, Power BI, OpenAI integrations, and enterprise system consolidations.</li>
-        <li>☁️ <strong>Enterprise SaaS Rollouts:</strong> Orchestrated company-wide deployments of Sage Intacct, Azure/Intune, ADP Workforce Now, Cornerstone LMS, and custom OpenAI workflows for 180+ users.</li>
-        <li>⚡ <strong>Rapid Cloud Migration:</strong> Migrated 180 staff from Google Workspace to Microsoft 365 at the start of COVID-19, ensuring zero disruption to business continuity.</li>
-        <li>📈 <strong>Advanced Financial Forecasting:</strong> Designed real-time Power BI dashboards and predictive models that empowered leadership to make data-backed decisions on departmental investments and restructures.</li>
+    <div class="c-key-achievements scroll-animate">
+      <h3 class="c-key-achievements__heading fade-in">Key Achievements</h3>
+      <ul class="c-key-achievements__list">
+        <li class="c-key-achievements__list__item">🚀 <strong>Self-taught Revenue Cycle Management:</strong> Led end-to-end AdvancedMD practice management system implementation by devouring every industry book, podcast, and help file—then authored SOPs and trained the entire team.</li>
+        <li class="c-key-achievements__list__item">📊 <strong>Data-Driven Continuous Improvement:</strong> Built SQL &amp; Power BI analytics and automated auditing tools that surfaced operational bottlenecks and drove targeted, measurable performance gains.</li>
+        <li class="c-key-achievements__list__item">💰 <strong>Multi-Million-Dollar Cost Savings:</strong> Delivered substantial savings through process automation using Azure, Power BI, OpenAI integrations, and enterprise system consolidations.</li>
+        <li class="c-key-achievements__list__item">☁️ <strong>Enterprise SaaS Rollouts:</strong> Orchestrated company-wide deployments of Sage Intacct, Azure/Intune, ADP Workforce Now, Cornerstone LMS, and custom OpenAI workflows for 180+ users.</li>
+        <li class="c-key-achievements__list__item">⚡ <strong>Rapid Cloud Migration:</strong> Migrated 180 staff from Google Workspace to Microsoft 365 at the start of COVID-19, ensuring zero disruption to business continuity.</li>
+        <li class="c-key-achievements__list__item">📈 <strong>Advanced Financial Forecasting:</strong> Designed real-time Power BI dashboards and predictive models that empowered leadership to make data-backed decisions on departmental investments and restructures.</li>
       </ul>
     </div>
     <!-- Stats Section with Animated Counters -->
@@ -76,7 +76,7 @@ permalink: /about/
       {% for block in page.timeline %}
         <li class="timeline-item" data-year="{{ block.year }}">
           {% if block.icon %}<span class="timeline-icon" aria-label="{{ block.year }} icon">{{ block.icon }}</span>{% endif %}
-          <button class="btn secondary timeline-trigger">{{ block.year }}</button>
+          <button class="c-btn c-btn--secondary timeline-trigger">{{ block.year }}</button>
           <div class="timeline-details">
             <ul>
               {% for item in block.items %}
@@ -109,8 +109,8 @@ permalink: /about/
   <!-- CTAs -->
   <section class="about-cta-section scroll-animate">
     <div class="about-cta-group"></div>
-      <a href="/contact/" class="btn" aria-label="Contact Blake" data-analytics="contact-blake">🚀 Ready to scale your business? Let’s talk!</a>
-      <a href="/assets/files/BlakeOxford_Resume.pdf" class="btn secondary" aria-label="Download Resume" data-analytics="download-resume">📄 Download Resume</a>
+      <a href="/contact/" class="c-btn" aria-label="Contact Blake" data-analytics="contact-blake">🚀 Ready to scale your business? Let’s talk!</a>
+      <a href="/assets/files/BlakeOxford_Resume.pdf" class="c-btn c-btn--secondary" aria-label="Download Resume" data-analytics="download-resume">📄 Download Resume</a>
     </div>
   </section>
 

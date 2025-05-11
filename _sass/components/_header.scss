@@ -1,24 +1,24 @@
 // ## Header Styles
 // Styles for the website header, including the logo and navigation.
 
-.header {
+.c-header {
   background-color: $color-primary; // Primary background color
   color: $color-white; // White text color
   padding: $spacing-md 0; // Vertical padding
 
-  .header-container {
+  .c-header__container {
     @extend .container; // Reuse container styles
     display: flex; // Use flexbox for layout
     justify-content: space-between; // Space out logo and navigation
     align-items: center; // Align items vertically
   }
 
-  .logo {
+  .c-header__logo {
     font-size: $font-size-lg; // Large font size for the logo
     font-weight: $font-weight-bold; // Bold font weight
   }
 
-  .nav {
+  .c-header__nav {
     display: flex; // Use flexbox for navigation links
     gap: $spacing-md; // Add spacing between links
 

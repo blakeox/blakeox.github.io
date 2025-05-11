@@ -1,47 +1,27 @@
-// ## Pagination Styles
-// This file contains styles for the pagination component used throughout the project.
-// The pagination component allows users to navigate between pages of content, such as blog posts or projects.
-// The styles are designed to be reusable, responsive, and consistent with the overall design system.
-// SASS variables are used for colors, spacing, typography, and transitions to ensure maintainability and easy updates.
+@import '../utilities/mixins';
 
-.pagination {
-  // ### Pagination Container
-  // - **display:** Uses flexbox for layout.
-  // - **justify-content:** Centers the pagination links horizontally.
-  // - **margin-top:** Adds spacing above the pagination component.
+// ## Pagination Component Styles
+.c-pagination {
   display: flex; // Use flexbox for layout
   justify-content: center; // Center-align the pagination links
   margin-top: $spacing-lg; // Add top margin for spacing
 
-  .page-link {
-    // ### Pagination Links
-    // - **margin:** Adds horizontal spacing between links.
-    // - **padding:** Adds inner padding for better usability.
-    // - **background-color:** Uses the secondary color for the background.
-    // - **color:** Uses white text for contrast.
-    // - **text-decoration:** Removes underline for a clean look.
-    // - **border-radius:** Applies rounded corners for a modern design.
-    // - **transition:** Enables smooth hover effects for background color changes.
-    margin: 0 $spacing-xs; // Add horizontal spacing between links
-    padding: $spacing-sm $spacing-md; // Add padding for clickable area
-    background-color: $color-secondary; // Use secondary color for the background
-    color: $color-white; // Use white text for contrast
+  // Pagination links
+  &__link {
+    margin: 0 $spacing-xs; // Horizontal spacing
+    padding: $spacing-sm $spacing-md; // Clickable padding
+    background-color: var(--color-secondary); // Secondary background
+    color: var(--color-white); // White text
     text-decoration: none; // Remove underline
-    border-radius: $border-radius; // Apply rounded corners
-    transition: background-color $transition-duration-default ease; // Smooth transition for hover effects
+    @include radius($border-radius); // Rounded corners
+    @include transition(background-color); // Smooth hover transition
 
     &:hover {
-      // ### Hover Styles
-      // - **background-color:** Changes to the primary color on hover for interactivity.
-      background-color: $color-primary; // Use primary color for hover state
+      background-color: var(--color-primary); // Primary on hover
     }
-
     &.active {
-      // ### Active Link Styles
-      // - **background-color:** Uses the primary color to indicate the active page.
-      // - **font-weight:** Makes the active link bold for emphasis.
-      background-color: $color-primary; // Use primary color for the active state
-      font-weight: $font-weight-bold; // Use bold font weight for emphasis
+      background-color: var(--color-primary); // Primary for active state
+      font-weight: $font-weight-bold; // Emphasize active link
     }
   }
 }

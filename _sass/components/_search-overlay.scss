@@ -1,0 +1,273 @@
+// ## Search Overlay Component
+// This file contains styles for the search overlay that appears when users click the search icon.
+// The overlay provides a fullscreen search experience that's accessible and user-friendly.
+
+.c-search-overlay {
+  // Position and visibility
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(var(--color-background-rgb), 0.92);
+  backdrop-filter: blur(10px);
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity $transition-duration-default ease, visibility $transition-duration-default ease;
+  overflow-y: auto;
+  padding: $spacing-md;
+
+  // When active
+  &.is-active {
+    opacity: 1;
+    visibility: visible;
+    
+    .c-search-overlay__container {
+      animation: fade-in-scale 0.4s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+    }
+    
+    .c-search-overlay__title {
+      animation: slide-in 0.5s ease forwards;
+    }
+    
+    .c-search-overlay__input-group {
+      animation: float-up 0.6s ease forwards;
+    }
+    
+    .c-search-overlay__submit {
+      animation: float-up 0.7s ease forwards;
+    }
+    
+    .c-search-overlay__recent {
+      animation: float-up 0.8s ease forwards;
+    }
+  }
+
+  // Container
+  &__container {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: $spacing-lg;
+    border-radius: $border-radius;
+    background-color: var(--color-background-light);
+    border: 1px solid rgba($color-primary, 0.3);
+    box-shadow: 
+      0 10px 30px rgba(0, 0, 0, 0.1),
+      0 1px 8px rgba($color-primary, 0.1),
+      0 0 0 1px rgba($color-primary, 0.05),
+      inset 0 0 0 1px rgba($color-primary, 0.05);
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+  }
+
+  // Header with title and close button
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $spacing-md;
+  }
+
+  &__title {
+    font-size: $font-size-lg;
+    margin: 0;
+  }
+
+  &__close {
+    background: none;
+    border: none;
+    color: var(--color-text);
+    cursor: pointer;
+    padding: $spacing-xs;
+    border-radius: $border-radius-circle;
+    transition: background-color $transition-duration-default ease, color $transition-duration-default ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover, &:focus {
+      background-color: rgba(var(--color-text-rgb), 0.1);
+      color: var(--color-accent);
+    }
+  }
+
+  // Form styling
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+    margin-bottom: $spacing-md;
+
+    @include respond-to('md') {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  &__input-group {
+    position: relative;
+    flex-grow: 1;
+  }
+
+  &__icon {
+    position: absolute;
+    left: $spacing-sm;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-text-light);
+  }
+
+  &__input {
+    width: 100%;
+    padding: $spacing-md $spacing-md $spacing-md $spacing-lg * 2;
+    border: 2px solid var(--color-border);
+    border-radius: $border-radius;
+    font-size: $font-size-md;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    transition: border-color $transition-duration-default ease, box-shadow $transition-duration-default ease;
+
+    &::placeholder {
+      color: var(--color-text-light);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.2);
+    }
+  }
+
+  &__submit {
+    padding: $spacing-md $spacing-lg;
+    white-space: nowrap;
+  }
+
+  // Keyboard tips
+  &__tips {
+    text-align: center;
+    color: var(--color-text-light);
+    font-size: $font-size-sm;
+
+    kbd {
+      background-color: var(--color-background-dark);
+      border-radius: 3px;
+      border: 1px solid var(--color-border);
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+      display: inline-block;
+      font-size: 0.85em;
+      font-weight: $font-weight-bold;
+      line-height: 1;
+      padding: 2px 6px;
+      margin: 0 2px;
+    }
+  }
+  
+  // Recent searches
+  &__recent {
+    margin-top: $spacing-sm;
+    margin-bottom: $spacing-md;
+    
+    &-title {
+      font-size: $font-size-sm;
+      color: var(--color-text-light);
+      margin-bottom: $spacing-sm;
+    }
+    
+    &-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: $spacing-xs;
+    }
+    
+    &-item {
+      background: none;
+      border: 1px solid var(--color-border);
+      border-radius: $border-radius;
+      padding: $spacing-xs $spacing-sm;
+      font-size: $font-size-xs;
+      color: var(--color-text);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: $spacing-xs;
+      transition: all $transition-duration-default ease;
+      
+      &:hover, &:focus {
+        background-color: rgba(var(--color-primary-rgb), 0.1);
+        border-color: var(--color-primary);
+      }
+    }
+    
+    &-icon {
+      display: flex;
+      align-items: center;
+      color: var(--color-text-light);
+    }
+  }
+}
+
+// Recent searches component
+.recent-searches {
+  margin-top: $spacing-md;
+  padding: $spacing-md;
+  border-radius: $border-radius;
+  background-color: rgba(var(--color-background-rgb), 0.7);
+  border: 1px solid var(--color-border);
+  
+  &__title {
+    font-size: $font-size-md;
+    margin-top: 0;
+    margin-bottom: $spacing-sm;
+    color: var(--color-text);
+  }
+  
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+    li {
+      margin-bottom: $spacing-xs;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  
+  .recent-search-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    text-align: left;
+    padding: $spacing-xs $spacing-sm;
+    border: none;
+    background: transparent;
+    color: var(--color-text);
+    font-size: $font-size-sm;
+    cursor: pointer;
+    border-radius: $border-radius-sm;
+    transition: background-color $transition-duration-default ease;
+    
+    &:hover, &:focus {
+      background-color: rgba(var(--color-text-rgb), 0.05);
+      color: var(--color-accent);
+    }
+    
+    .search-history-icon {
+      display: flex;
+      margin-right: $spacing-sm;
+      color: var(--color-text-light);
+    }
+  }
+}
