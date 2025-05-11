@@ -37,10 +37,11 @@ class SearchOverlayTheme {
       });
     });
 
-    // Listen for theme change events
-    this.searchOverlay.addEventListener('themechange', (e) => {
-      this.applyTheme(e.detail.theme);
-    });
+    // Remove recursive listener to avoid infinite loop
+    // Previously listened for 'themechange' on searchOverlay and reapplied theme, causing recursion
+    // this.searchOverlay.addEventListener('themechange', (e) => {
+    //   this.applyTheme(e.detail.theme);
+    // });
   }
 
   watchSystemTheme() {
@@ -166,4 +167,4 @@ class SearchOverlayTheme {
 }
 
 // Export for use in other modules
-window.SearchOverlayTheme = SearchOverlayTheme; 
+window.SearchOverlayTheme = SearchOverlayTheme;

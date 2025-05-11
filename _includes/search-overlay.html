@@ -57,25 +57,3 @@
     <div id="search-aria-live" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
   </div>
 </div>
-
-<!-- Initialize search overlay -->
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    console.log('Search overlay initialization started');
-    
-    // Check if required classes are available
-    console.log('SearchOverlayTheme available:', typeof SearchOverlayTheme !== 'undefined');
-    console.log('SearchOverlay available:', typeof SearchOverlay !== 'undefined');
-    
-    // Initialize search overlay components
-    if (typeof SearchOverlayTheme !== 'undefined') {
-      console.log('Initializing SearchOverlayTheme');
-      new SearchOverlayTheme();
-    }
-    
-    if (typeof SearchOverlay !== 'undefined') {
-      console.log('Initializing SearchOverlay');
-      new SearchOverlay();
-    }
-  });
-</script>

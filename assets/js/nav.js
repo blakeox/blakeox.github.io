@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const navToggle = document.querySelector('.c-navbar__toggle');
   const navLinks = document.querySelector('.c-navbar__links');
   const navItems = document.querySelectorAll('.c-navbar__link');
-  console.log('Nav script loaded', { navToggle, navLinks });
 
   function toggleTabIndex(isActive) {
     navLinks.querySelectorAll('a').forEach((link) => {
@@ -15,6 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
     navToggle.setAttribute('aria-expanded', !isExpanded);
     navLinks.setAttribute('aria-hidden', isExpanded);
+    // Apply inert only to nav links except the search toggle button
+    navLinks.querySelectorAll('.c-navbar__link:not(.search-toggle)').forEach(el => {
+      if (isExpanded) el.removeAttribute('inert');
+      else el.setAttribute('inert', '');
+    });
     navLinks.classList.toggle('c-navbar__links--active', !isExpanded);
   }
 
@@ -22,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function closeNav() {
     navToggle.setAttribute('aria-expanded', 'false');
     navLinks.setAttribute('aria-hidden', 'true');
+    navLinks.setAttribute('inert', '');
     navLinks.classList.remove('c-navbar__links--active');
   }
 
@@ -66,7 +71,8 @@ document.addEventListener('DOMContentLoaded', () => {
     navItems.forEach((link) => {
       link.addEventListener('click', () => {
         closeNav();
-        console.log(`Navigation clicked: ${link.getAttribute('data-analytics')}`);
+        // Navigation clicked analytics event
+        // Optionally send tracking data here
       });
     });
 
@@ -84,6 +90,11 @@ document.addEventListener('DOMContentLoaded', () => {
     navLinks.addEventListener('transitionend', () => {
       const isActive = navLinks.classList.contains('c-navbar__links--active');
       navLinks.setAttribute('aria-hidden', String(!isActive));
+      // Update inert on individual links (excluding search-toggle)
+      navLinks.querySelectorAll('.c-navbar__link:not(.search-toggle)').forEach(el => {
+        if (!isActive) el.setAttribute('inert', '');
+        else el.removeAttribute('inert');
+      });
     });
   }
 

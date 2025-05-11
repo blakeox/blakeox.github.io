@@ -15,18 +15,8 @@ const SEARCH_INDEX = [
   // ...add more as needed
 ];
 
-// Initialize FlexSearch
-const flexIndex = new FlexSearch.Document({
-  document: {
-    id: 'url',
-    index: ['title', 'snippet']
-  },
-  tokenize: 'forward',
-  cache: true,
-  encode: 'icase',
-  threshold: 1,
-});
-SEARCH_INDEX.forEach(item => flexIndex.add(item));
+// Initialize placeholder for FlexSearch index
+let flexIndex;
 
 class SearchOverlay {
   constructor() {
@@ -449,3 +439,31 @@ class SearchOverlay {
 
 // Export for use in other modules
 window.SearchOverlay = SearchOverlay;
+
+document.addEventListener('DOMContentLoaded', () => {
+  console.warn('Search overlay initialization started');
+  // Check if required classes are available
+  console.warn('SearchOverlayTheme available:', typeof SearchOverlayTheme !== 'undefined');
+  console.warn('SearchOverlay available:', typeof SearchOverlay !== 'undefined');
+  // Initialize search overlay components
+  if (typeof SearchOverlayTheme !== 'undefined') {
+    console.warn('Initializing SearchOverlayTheme');
+    new SearchOverlayTheme();
+  }
+  if (typeof SearchOverlay !== 'undefined') {
+    console.warn('Initializing SearchOverlay');
+    new SearchOverlay();
+  }
+  // Initialize FlexSearch
+  flexIndex = new FlexSearch.Document({
+    document: {
+      id: 'url',
+      index: ['title', 'snippet']
+    },
+    tokenize: 'forward',
+    cache: true,
+    // encode: 'icase',  // removed to use default encoding function
+    threshold: 1,
+  });
+  SEARCH_INDEX.forEach(item => flexIndex.add(item));
+});
