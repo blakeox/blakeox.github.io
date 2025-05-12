@@ -45,23 +45,28 @@ permalink: /search/
         <div class="search-filters">
           <div class="search-filter-group">
             <span class="filter-group-label">Category</span>
-            <div class="search-filter-options">
-              <label class="search-filter-label active">
-                <input type="checkbox" class="search-filter" data-category="all" checked>
+            <div class="search-category-filters">
+              <button type="button" class="category-filter-btn active" data-category="all" aria-pressed="true">
+                <span class="filter-icon"></span>
                 <span class="filter-text">All</span>
-              </label>
-              <label class="search-filter-label">
-                <input type="checkbox" class="search-filter" data-category="blog">
+                <span class="filter-count">0</span>
+              </button>
+              <button type="button" class="category-filter-btn" data-category="blog" aria-pressed="false">
+                <span class="filter-icon"></span>
                 <span class="filter-text">Blog</span>
-              </label>
-              <label class="search-filter-label">
-                <input type="checkbox" class="search-filter" data-category="project">
+                <span class="filter-count">0</span>
+              </button>
+              <button type="button" class="category-filter-btn" data-category="project" aria-pressed="false">
+                <span class="filter-icon"></span>
                 <span class="filter-text">Projects</span>
-              </label>
-              <label class="search-filter-label">
-                <input type="checkbox" class="search-filter" data-category="page">
+                <span class="filter-count">0</span>
+              </button>
+              <button type="button" class="category-filter-btn" data-category="page" aria-pressed="false">
+                <span class="filter-icon"></span>
                 <span class="filter-text">Pages</span>
-              </label>
+                <span class="filter-count">0</span>
+              </button>
+              <span class="search-filters-loading" aria-hidden="true"></span>
             </div>
           </div>
 
@@ -89,10 +94,11 @@ permalink: /search/
       </div>
     </div>
 
+    <!-- Basic Search Stats Card (simplified) -->
     <div class="search-stats hidden">
       <div class="tech-card">
         <div class="card-header">
-          <h3>Search Stats</h3>
+          <h3>Your Search Activity</h3>
           <span class="card-decoration"></span>
         </div>
         <div class="stats-container">
@@ -100,21 +106,20 @@ permalink: /search/
             <span class="stat-label">Recent searches</span>
             <span class="stat-value" id="recent-search-count">0</span>
           </div>
-          <div class="stat-item">
-            <span class="stat-label">Most common term</span>
-            <span class="stat-value" id="most-common-term">None</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-label">Average results</span>
-            <span class="stat-value" id="avg-results">0</span>
-          </div>
         </div>
-        <button id="clear-search-history" class="c-btn c-btn--tech c-btn--sm">Clear History</button>
+        <div class="stats-actions">
+          <button id="clear-search-history" class="c-btn c-btn--tech c-btn--sm">Clear History</button>
+          <a href="/admin/search-analytics/" class="c-btn c-btn--tech c-btn--outline c-btn--sm admin-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="admin-icon">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="8.5" cy="7" r="4"></circle>
+              <polyline points="17 11 19 13 23 9"></polyline>
+            </svg>
+            <span>Admin Analytics</span>
+          </a>
+        </div>
       </div>
     </div>
-    
-    <!-- Advanced Search Analytics -->
-    <div class="search-analytics"></div>
 
     <div class="search-tips">
       <div class="tech-card">
@@ -143,6 +148,8 @@ permalink: /search/
 <script src="/assets/js/tech-search-analytics.js" defer></script>
 <script src="/assets/js/tech-keyboard-shortcuts.js" defer></script>
 <script src="/assets/js/tech-settings.js" defer></script>
+<script src="/assets/js/category-filters.js" defer></script>
+<script src="/assets/js/tech-search-previews.js" defer></script>
 
 <style>
   .tech-key {
@@ -162,6 +169,23 @@ permalink: /search/
 <script>
   // Initialize all modular tech search components
   document.addEventListener('DOMContentLoaded', function() {
+    // Get search query from URL params
+    function getQueryParam(param) {
+      var urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+    
+    // Get the search query from URL
+    var queryFromUrl = getQueryParam('q');
+    
+    // Set the search input value if a query exists in the URL
+    if (queryFromUrl) {
+      const searchInput = document.getElementById('search-input');
+      if (searchInput) {
+        searchInput.value = decodeURIComponent(queryFromUrl);
+      }
+    }
+    
     // Initialize keyboard navigation module
     if (window.TechSearchKeyboardNavigation) {
       const searchInput = document.getElementById('search-input');
@@ -189,8 +213,17 @@ permalink: /search/
         statusElementSelector: '#search-status',
         searchBoxSelector: '.tech-search-box',
         searchFormSelector: '.search-form',
-        resultItemClass: 'search-results__item'
+        resultItemClass: 'search-results__item',
+        // Pass the initial query from URL
+        initialQuery: queryFromUrl
       });
+      
+      // Trigger search immediately if we have a query from URL
+      if (queryFromUrl && window.TechSearchCore.search) {
+        setTimeout(() => {
+          window.TechSearchCore.search(queryFromUrl);
+        }, 100);
+      }
     }
     
     // Initialize search suggestions

@@ -52,35 +52,42 @@ if (typeof window.TechSearchCore === 'undefined') {
         return;
       }
       
+      // Set up form submit handler
       if (searchForm) {
-        searchForm.addEventListener('submit', function(e) {
+        searchForm.addEventListener('submit', e => {
           e.preventDefault();
-          performSearch();
+          search(searchInput.value);
         });
       }
       
-      // Set up debounced search
-      searchInput.addEventListener('input', function() {
+      // Set up input handler with debounce
+      searchInput.addEventListener('input', () => {
         clearTimeout(_debounceTimer);
-        _debounceTimer = setTimeout(performSearch, _options.debounceTime);
+        _debounceTimer = setTimeout(() => {
+          search(searchInput.value);
+        }, _options.debounceTime);
       });
       
       // Load search index
-      try {
-        await loadSearchIndex();
-        
-        // Initialize from URL parameters if present
-        const urlParams = new URLSearchParams(window.location.search);
-        const searchQuery = urlParams.get('q');
-        if (searchQuery) {
-          searchInput.value = searchQuery;
-          performSearch();
-        }
-        
-        _initialized = true;
-      } catch (error) {
-        console.error('Failed to initialize search:', error);
+      await loadSearchIndex();
+      
+      // Initialize CategoryFilters if available
+      if (window.CategoryFilters) {
+        window.CategoryFilters.init({}, filters => {
+          // When filters change, re-run the search with current query
+          search(searchInput.value);
+        });
       }
+      
+      // If initial query provided, perform search
+      if (options.initialQuery) {
+        search(options.initialQuery);
+      }
+      
+      _initialized = true;
+      
+      // Dispatch event signaling search module is ready
+      document.dispatchEvent(new Event('techSearchInitialized'));
     }
     
     /**
@@ -95,14 +102,16 @@ if (typeof window.TechSearchCore === 'undefined') {
         
         const searchData = await response.json();
         
-        // Process the data for search
+        // Process the data for search with enhanced field support
         _searchIndex = searchData.map(item => ({
-          id: item.id,
-          title: item.title,
-          content: item.content,
-          url: item.url,
-          category: item.category,
-          date: item.date,
+          id: item.id || item.url,
+          title: item.title || '',
+          content: item.content || '',
+          url: item.url || '',
+          type: item.type || 'page',
+          categories: item.categories || [],
+          category: item.category || (item.categories && item.categories.length ? item.categories[0] : ''),
+          date: item.date || '',
           snippet: item.snippet || extractSnippet(item.content, 150)
         }));
         
@@ -130,20 +139,20 @@ if (typeof window.TechSearchCore === 'undefined') {
     
     /**
      * Perform search with current input value
+     * @param {string} query - Search query
+     * @returns {Promise} Promise resolving when search is complete
      */
-    function performSearch() {
-      const searchInput = document.querySelector(_options.searchInputSelector);
-      const resultsContainer = document.querySelector(_options.resultsContainerSelector);
-      
-      if (!searchInput || !resultsContainer) return;
-      
-      const query = searchInput.value.toLowerCase().trim();
+    function search(query) {
+      query = (query || '').toLowerCase().trim();
       
       // Create visual search feedback
       createSearchPulse();
       
-      // Clear results
-      resultsContainer.innerHTML = '';
+      // Clear results and update UI state
+      const resultsContainer = document.querySelector(_options.resultsContainerSelector);
+      if (resultsContainer) {
+        resultsContainer.innerHTML = '';
+      }
       
       // Reset keyboard navigation
       if (window.TechSearchKeyboardNavigation) {
@@ -152,7 +161,9 @@ if (typeof window.TechSearchCore === 'undefined') {
       
       if (query === '') {
         updateStatus('Please enter a search term');
-        return;
+        // Dispatch event signaling search completion
+        document.dispatchEvent(new Event('techSearchComplete'));
+        return Promise.resolve([]);
       }
       
       // Get selected filters
@@ -168,6 +179,9 @@ if (typeof window.TechSearchCore === 'undefined') {
       // Update status
       updateStatus(`${results.length} result${results.length === 1 ? '' : 's'} found`);
       
+      // Update category counts if available
+      updateCategoryCounts(results);
+      
       // Display results
       if (results.length > 0) {
         renderSearchResults(results, query, resultsContainer);
@@ -178,7 +192,7 @@ if (typeof window.TechSearchCore === 'undefined') {
           window.TechSearchKeyboardNavigation.updateResultItems(resultItems);
         }
       } else {
-        renderNoResults(query, resultsContainer);
+        renderNoResultsMessage(query, resultsContainer);
       }
       
       // Save search to history if available
@@ -189,6 +203,11 @@ if (typeof window.TechSearchCore === 'undefined') {
       
       // Announce to screen readers
       announceSearchResults(results.length, query);
+      
+      // Dispatch event signaling search completion
+      document.dispatchEvent(new Event('techSearchComplete'));
+      
+      return Promise.resolve(results);
     }
     
     /**
@@ -196,6 +215,12 @@ if (typeof window.TechSearchCore === 'undefined') {
      * @returns {Array} Active filter categories
      */
     function getActiveFilters() {
+      // Use CategoryFilters module if available
+      if (window.CategoryFilters) {
+        return window.CategoryFilters.getActiveFilters();
+      }
+      
+      // Legacy fallback for backward compatibility
       const filterCheckboxes = document.querySelectorAll('.search-filter:checked');
       const filters = Array.from(filterCheckboxes).map(cb => cb.dataset.category);
       
@@ -224,15 +249,30 @@ if (typeof window.TechSearchCore === 'undefined') {
      */
     function filterSearchResults(query, filters) {
       return _searchIndex.filter(item => {
-        // Match content
-        const titleMatch = item.title.toLowerCase().includes(query);
-        const contentMatch = item.content.toLowerCase().includes(query);
-        const contentMatches = titleMatch || contentMatch;
+        // Match content across all important fields
+        const titleMatch = (item.title || '').toLowerCase().includes(query);
+        const contentMatch = (item.content || '').toLowerCase().includes(query);
+        const snippetMatch = (item.snippet || '').toLowerCase().includes(query);
         
-        // Filter by category if filters are active
-        const categoryMatches = filters.length === 0 || filters.includes(item.category);
+        // Check for category matches
+        const categoryMatches = item.categories && item.categories.some(cat => 
+          cat.toLowerCase().includes(query)
+        );
         
-        return contentMatches && categoryMatches;
+        const contentMatches = titleMatch || contentMatch || snippetMatch || categoryMatches;
+        
+        // Filter by document type if filters are active
+        // Map some common filter names to our internal type names
+        const typeMatches = filters.length === 0 || 
+            filters.some(filter => {
+              if (filter === 'all') return true;
+              if (filter === 'blog' && item.type === 'post') return true;
+              if (filter === 'project' && item.type === 'project') return true;
+              if (filter === 'page' && item.type === 'page') return true;
+              return filter === item.type;
+            });
+        
+        return contentMatches && typeMatches;
       });
     }
     
@@ -274,13 +314,26 @@ if (typeof window.TechSearchCore === 'undefined') {
         resultItem.setAttribute('aria-selected', 'false');
         resultItem.setAttribute('data-result-index', index.toString());
         
+        // Add data attributes for content type and other metadata for styling
+        if (result.type) {
+            resultItem.setAttribute('data-type', result.type);
+        }
+        if (result.date) {
+            resultItem.setAttribute('data-date', result.date);
+        }
+        
         resultItem.innerHTML = `
           <article>
-            <h3 class="search-results__title">
-              <a href="${result.url}">${titleWithHighlight}</a>
-            </h3>
-            ${result.category ? `<span class="search-results__category">${result.category}</span>` : ''}
-            ${result.date ? `<span class="search-results__date">${formatDate(result.date)}</span>` : ''}
+            <div class="search-results__header">
+              <h3 class="search-results__title">
+                <a href="${result.url}">${titleWithHighlight}</a>
+              </h3>
+              ${result.type ? `<span class="search-results__type" data-type="${result.type}">${result.type}</span>` : ''}
+            </div>
+            <div class="search-results__meta">
+              ${result.categories && result.categories.length ? result.categories.map(cat => `<span class="search-results__category">${cat}</span>`).join('') : ''}
+              ${result.date ? `<span class="search-results__date">${formatDate(result.date)}</span>` : ''}
+            </div>
             <p class="search-results__snippet">${snippetWithHighlight}</p>
           </article>
         `;
@@ -307,21 +360,231 @@ if (typeof window.TechSearchCore === 'undefined') {
     }
     
     /**
-     * Render no results message
+     * Render no results message with suggestions
      * @param {string} query - Search query
      * @param {HTMLElement} container - Results container
      */
-    function renderNoResults(query, container) {
+    function renderNoResultsMessage(query, container) {
+      // Create related terms based on the query
+      const getRelatedTerms = (q) => {
+        // Split the query into terms
+        const terms = q.toLowerCase().split(/\s+/).filter(t => t.length > 1);
+        
+        // Use some common topics from the site as fallbacks
+        const commonTopics = [
+          'projects', 'blog', 'tutorials', 'portfolio', 'technology', 
+          'development', 'programming', 'web design', 'code', 'software',
+          'github', 'javascript', 'python', 'react', 'design', 'analysis'
+        ];
+        
+        // Try to create related terms
+        let related = [];
+        
+        // If we have a multi-word query, suggest individual parts
+        if (terms.length > 1) {
+          related = [...terms.slice(0, 2)]; // Include first two individual terms
+          
+          // Add combination of first words with slight modification
+          if (terms[0].length > 3 && terms[1].length > 3) {
+            related.push(`${terms[0]} ${terms[1].substring(0, Math.ceil(terms[1].length * 0.7))}`);
+          }
+          
+          // Try to find similar topic
+          commonTopics.forEach(topic => {
+            for (const term of terms) {
+              if (term.length > 3 && 
+                (topic.includes(term.substring(0, 3)) || 
+                term.includes(topic.substring(0, 3)))) {
+                related.push(topic);
+                break;
+              }
+            }
+          });
+        } else if (terms.length === 1) {
+          // For single word queries, find related terms
+          const term = terms[0];
+          
+          // Try some prefix/suffix modifications
+          if (term.length > 5) {
+            related.push(term.substring(0, Math.floor(term.length * 0.7)));
+            
+            // Try alternate endings if the term might be plural or past tense
+            if (term.endsWith('s')) {
+              related.push(term.substring(0, term.length - 1));
+            } else if (term.endsWith('ing')) {
+              related.push(term.substring(0, term.length - 3));
+            } else if (term.endsWith('ed')) {
+              related.push(term.substring(0, term.length - 2));
+            } else {
+              // Try adding common suffixes
+              related.push(`${term}s`);
+            }
+          }
+          
+          // Find common topics that contain parts of the term
+          commonTopics.forEach(topic => {
+            if (topic.includes(term.substring(0, Math.min(3, term.length))) || 
+                term.includes(topic.substring(0, Math.min(3, topic.length)))) {
+              related.push(topic);
+            }
+          });
+        }
+        
+        // Add some common topics if we don't have enough suggestions
+        while (related.length < 3) {
+          const randomTopic = commonTopics[Math.floor(Math.random() * commonTopics.length)];
+          if (!related.includes(randomTopic)) {
+            related.push(randomTopic);
+          }
+        }
+        
+        // Return de-duplicated list
+        return [...new Set(related)].slice(0, 3);
+      };
+      
+      // Generate related terms based on query and search index
+      let relatedTerms = getRelatedTerms(query);
+      
+      // Look for similar terms in search index (fuzzy matching)
+      if (_searchIndex && _searchIndex.length > 0) {
+        const queryTerms = query.toLowerCase().split(/\s+/).filter(t => t.length > 2);
+        
+        // Find potential matches in titles and categories
+        const potentialMatches = new Set();
+        queryTerms.forEach(term => {
+          // Only check first few chars to allow for fuzzy matching
+          const termPrefix = term.substring(0, Math.min(4, term.length));
+          
+          _searchIndex.slice(0, 50).forEach(item => { // Limit to first 50 items for performance
+            // Check title words
+            const titleWords = (item.title || '').toLowerCase().split(/\s+/);
+            titleWords.forEach(word => {
+              if (word.length > 3 && (word.includes(termPrefix) || termPrefix.includes(word.substring(0, 3)))) {
+                potentialMatches.add(word);
+              }
+            });
+            
+            // Check categories
+            (item.categories || []).forEach(category => {
+              const catLower = category.toLowerCase();
+              if (catLower.includes(termPrefix) || termPrefix.includes(catLower.substring(0, 3))) {
+                potentialMatches.add(category.toLowerCase());
+              }
+            });
+          });
+        });
+        
+        // Add potential matches to related terms
+        if (potentialMatches.size > 0) {
+          relatedTerms = [...relatedTerms, ...Array.from(potentialMatches).slice(0, 3)];
+        }
+      }
+      
+      // Deduplicate and limit
+      relatedTerms = [...new Set(relatedTerms)].slice(0, 5);
+      
+      // Format the related terms as HTML with improved styling
+      const relatedTermsHtml = relatedTerms.map(term => 
+        `<li><a href="#" class="suggested-term tech-suggested-term" data-term="${term}">
+          <span class="suggestion-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </span>
+          <span class="suggestion-text">${term}</span>
+        </a></li>`
+      ).join('');
+      
+      // Create no results container with enhanced styling
       const noResults = document.createElement('li');
-      noResults.className = _options.noResultsClass + ' tech-no-result';
+      noResults.className = `${_options.noResultsClass} tech-no-results`;
       noResults.innerHTML = `
-        <div class="tech-no-results-container">
-          <span class="tech-icon">!</span>
-          <p>No results found for <span class="query-text">"${query}"</span>.</p>
-          <p class="suggestion">Try different keywords or check spelling.</p>
+        <div class="tech-no-results-content">
+          <div class="no-results-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+              <line x1="12" y1="9" x2="12" y2="13"></line>
+              <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+          </div>
+          <h3 class="no-results-title">No matching results</h3>
+          <p class="no-results-message">Your search for <strong>"${query}"</strong> did not match any content.</p>
+          
+          <div class="no-results-suggestions">
+            <div class="suggestions-section">
+              <p class="suggestions-title">Suggestions:</p>
+              <ul class="suggestions-list">
+                <li>Check your spelling</li>
+                <li>Try using more general terms</li>
+                <li>Use fewer keywords</li>
+                <li>Try different filters</li>
+              </ul>
+            </div>
+            
+            <div class="related-terms-section">
+              <p class="suggestions-title">You might be looking for:</p>
+              <ul class="related-terms-list">
+                ${relatedTermsHtml}
+              </ul>
+            </div>
+          </div>
+          
+          <div class="no-results-help">
+            <span class="help-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+            </span>
+            <span class="help-text">Still can't find what you're looking for? Try browsing the <a href="/blog/">blog</a> or <a href="/projects/">projects</a>.</span>
+          </div>
         </div>
       `;
+      
+      // Add the no results element to the container
       container.appendChild(noResults);
+      
+      // Add event listeners for suggested terms
+      const suggestedTerms = noResults.querySelectorAll('.suggested-term');
+      suggestedTerms.forEach(term => {
+        term.addEventListener('click', (e) => {
+          e.preventDefault();
+          // Get the term value, accounting for nested elements in the link
+          let target = e.target;
+          while (target && !target.hasAttribute('data-term') && target !== term) {
+            target = target.parentElement;
+          }
+          
+          const suggestedTerm = target.getAttribute('data-term');
+          const searchInput = document.querySelector(_options.searchInputSelector);
+          
+          if (searchInput && suggestedTerm) {
+            // Add visual feedback
+            const allSuggestions = document.querySelectorAll('.suggested-term');
+            allSuggestions.forEach(s => s.classList.remove('clicked'));
+            target.classList.add('clicked');
+            
+            // Animate the input change
+            const currentValue = searchInput.value;
+            let i = 0;
+            searchInput.value = '';
+            
+            // Clear and retype the new search term for visual effect
+            const typingInterval = setInterval(() => {
+              if (i <= suggestedTerm.length) {
+                searchInput.value = suggestedTerm.substring(0, i);
+                i++;
+              } else {
+                clearInterval(typingInterval);
+                // Perform search after typing animation
+                search(suggestedTerm);
+              }
+            }, 30);
+          }
+        });
+      });
     }
     
     /**
@@ -462,11 +725,98 @@ if (typeof window.TechSearchCore === 'undefined') {
       updateStatus('Please enter a search term');
     }
     
+    /**
+     * Update category counts based on search results
+     * @param {Array} results - Search results
+     */
+    function updateCategoryCounts(results) {
+      // Skip if CategoryFilters is not available
+      if (!window.CategoryFilters) return;
+      
+      // Count items by category
+      const counts = {
+        blog: 0,
+        project: 0,
+        page: 0
+      };
+      
+      // Map internal types to filter types
+      results.forEach(item => {
+        if (item.type === 'post') counts.blog++;
+        else if (item.type === 'project') counts.project++;
+        else if (item.type === 'page') counts.page++;
+        else {
+          // Check if item has a category that matches our filter types
+          const category = (item.category || '').toLowerCase();
+          if (category === 'blog') counts.blog++;
+          else if (category === 'project') counts.project++;
+          else if (category === 'page') counts.page++;
+        }
+      });
+      
+      // Update the category filter counts
+      window.CategoryFilters.updateCounts(counts);
+    }
+    
+    /**
+     * Generate search preview for real-time feedback
+     * @param {string} query - Search query
+     * @returns {Promise} Promise resolving with preview data
+     */
+    function generatePreview(query) {
+      query = (query || '').toLowerCase().trim();
+      
+      return new Promise((resolve) => {
+        // If query is empty, return empty results
+        if (!query || query.length < 2) {
+          resolve({ count: 0, highlights: [] });
+          return;
+        }
+        
+        // Do lightweight search (without rendering)
+        const activeFilters = getActiveFilters();
+        const results = filterSearchResults(query, activeFilters);
+        
+        // Extract highlights (unique terms that match the query)
+        const highlights = [];
+        const uniqueTerms = new Set();
+        
+        // Extract unique matching terms from results
+        if (results.length > 0) {
+          results.forEach(result => {
+            // Extract words that contain the query
+            const content = (result.content || '').toLowerCase();
+            const words = content.split(/\s+/);
+            
+            words.forEach(word => {
+              // Remove punctuation
+              const cleanWord = word.replace(/[^\w\s]/g, '');
+              
+              // Add unique terms that include the query
+              if (cleanWord.includes(query) && 
+                  cleanWord.length > 3 && 
+                  !uniqueTerms.has(cleanWord) &&
+                  highlights.length < 10) {
+                uniqueTerms.add(cleanWord);
+                highlights.push(cleanWord);
+              }
+            });
+          });
+        }
+        
+        resolve({
+          count: results.length,
+          highlights: highlights
+        });
+      });
+    }
+    
     // Public API
     return {
       init: init,
       performSearch: performSearch,
       clearSearch: clearSearch,
+      search: search,
       loadSearchIndex: loadSearchIndex,
       highlightText: highlightText,
       getSearchIndex: getSearchIndex

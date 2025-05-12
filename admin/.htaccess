@@ -1,0 +1,24 @@
+# Additional server-side protection for admin area
+# Note: This only works if your hosting supports .htaccess files
+# Client-side protection is still handled by admin-auth.js
+
+# Prevent directory listing
+Options -Indexes
+
+# For Apache servers, require local access or valid authentication
+# This is in addition to our client-side JS authentication
+# <IfModule mod_authz_core.c>
+#   Require local
+# </IfModule>
+
+# Set strict content security policy for this directory
+<IfModule mod_headers.c>
+  Header set Content-Security-Policy "default-src 'self'; script-src 'self' cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data:;"
+</IfModule>
+
+# Cache control - don't cache admin pages
+<IfModule mod_headers.c>
+  Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+  Header set Pragma "no-cache"
+  Header set Expires "Thu, 01 Jan 1970 00:00:00 GMT"
+</IfModule>

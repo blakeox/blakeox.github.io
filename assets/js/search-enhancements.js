@@ -19,13 +19,18 @@ function initSearchEnhancements() {
   
   // Ensure search form submits to search.html
   if (searchForm) {
-    searchForm.setAttribute('action', '/search.html');
+    searchForm.setAttribute('action', '/search/');
     
     // Handle form submission
     searchForm.addEventListener('submit', (event) => {
       if (searchInput && !searchInput.value.trim()) {
         event.preventDefault(); // Prevent empty submissions
         searchInput.focus();
+      } else if (searchInput) {
+        // Add the search to history before navigating
+        if (window.SearchHistory) {
+          window.SearchHistory.addSearch(searchInput.value.trim());
+        }
       }
     });
   }

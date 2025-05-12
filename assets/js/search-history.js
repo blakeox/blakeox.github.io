@@ -128,40 +128,41 @@ if (typeof window.TechSearchHistory === 'undefined') {
       // Show stats container
       container.classList.remove('hidden');
       
-      // Update count
+      // Update count - only show count in the user-facing simplified view
       const countElement = container.querySelector('#recent-search-count');
       if (countElement) {
         countElement.textContent = history.length;
       }
       
-      // Find most common term
+      // Advanced stats are now in the admin page - collect stats but don't display
       const termCounts = {};
       history.forEach(item => {
         termCounts[item.query] = (termCounts[item.query] || 0) + 1;
       });
       
-      let mostCommonTerm = '';
-      let maxCount = 0;
-      for (const term in termCounts) {
-        if (termCounts[term] > maxCount) {
-          mostCommonTerm = term;
-          maxCount = termCounts[term];
-        }
+      // Store stats in localStorage for the admin page to use
+      try {
+        localStorage.setItem('tech-search-stats', JSON.stringify({
+          totalSearches: history.length,
+          uniqueTerms: Object.keys(termCounts).length,
+          avgResults: calculateAvgResults(history),
+          lastUpdated: new Date().getTime()
+        }));
+      } catch (e) {
+        console.warn('Could not save search stats:', e);
       }
+    }
+    
+    /**
+     * Calculate average results from search history
+     * @param {Array} history - Search history array
+     * @returns {number} Average results
+     */
+    function calculateAvgResults(history) {
+      if (!history || history.length === 0) return 0;
       
-      const termElement = container.querySelector('#most-common-term');
-      if (termElement) {
-        termElement.textContent = mostCommonTerm || 'None';
-      }
-      
-      // Calculate average results
       const totalResults = history.reduce((sum, item) => sum + item.resultCount, 0);
-      const avgResults = (totalResults / history.length).toFixed(1);
-      
-      const avgElement = container.querySelector('#avg-results');
-      if (avgElement) {
-        avgElement.textContent = avgResults;
-      }
+      return parseFloat((totalResults / history.length).toFixed(1));
     }
     
     /**

@@ -1,0 +1,211 @@
+// _sass/components/_search-loading-states.scss
+// Provides advanced loading state animations for search functionality
+
+.search-loading-container {
+  position: relative;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  transition: height 0.3s ease;
+  opacity: 0;
+  margin: 0.5rem 0;
+  
+  &.active {
+    height: 4rem;
+    opacity: 1;
+  }
+
+  // Tech-themed loading indicator
+  .tech-loader {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    // Scanning animation
+    &::before {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      background: linear-gradient(
+        to right,
+        transparent 0%,
+        var(--tech-primary, #2196f3) 50%,
+        transparent 100%
+      );
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      animation: techScan 2s ease-in-out infinite;
+      box-shadow: 0 0 10px var(--tech-primary, #2196f3);
+      border-radius: 2px;
+    }
+    
+    // Pulsing dots
+    .loading-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      
+      .dot {
+        width: 8px;
+        height: 8px;
+        background-color: var(--tech-primary, #2196f3);
+        border-radius: 50%;
+        opacity: 0.6;
+        
+        &:nth-child(1) {
+          animation: techPulse 1.5s ease-in-out infinite;
+        }
+        
+        &:nth-child(2) {
+          animation: techPulse 1.5s ease-in-out 0.3s infinite;
+        }
+        
+        &:nth-child(3) {
+          animation: techPulse 1.5s ease-in-out 0.6s infinite;
+        }
+      }
+    }
+    
+    // Status text
+    .loading-text {
+      position: absolute;
+      bottom: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--tech-text-secondary, rgba(255, 255, 255, 0.7));
+      text-align: center;
+      width: 100%;
+      letter-spacing: 0.05rem;
+      font-family: var(--tech-font-mono, monospace);
+      
+      &::after {
+        content: '';
+        animation: techEllipsis 1.5s infinite;
+      }
+    }
+  }
+}
+
+// Search preview state
+.search-preview {
+  padding: 0.75rem 1rem;
+  margin-top: 0.75rem;
+  background: rgba(var(--tech-bg-color-rgb), 0.6);
+  border: 1px solid rgba(var(--tech-accent-rgb), 0.15);
+  border-radius: 8px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  display: none;
+  position: relative;
+  overflow: hidden;
+  
+  &.active {
+    opacity: 1;
+    transform: translateY(0);
+    display: block;
+  }
+  
+  &::before {
+    content: "PREVIEW";
+    position: absolute;
+    top: 0.25rem;
+    right: 0.5rem;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--tech-accent-color, #2196f3);
+    letter-spacing: 0.08em;
+    opacity: 0.6;
+  }
+  
+  .preview-content {
+    font-size: 0.9rem;
+    color: var(--tech-text-color);
+    
+    .preview-count {
+      font-weight: 500;
+    }
+    
+    .preview-highlights {
+      margin-top: 0.5rem;
+      padding-top: 0.5rem;
+      border-top: 1px dashed rgba(var(--tech-accent-rgb), 0.2);
+      
+      .highlight-item {
+        display: inline-block;
+        margin: 0 0.25rem 0.25rem 0;
+        padding: 0.15rem 0.5rem;
+        background: rgba(var(--tech-primary-rgb), 0.1);
+        border-radius: 100px;
+        font-size: 0.8rem;
+        color: var(--tech-primary, #2196f3);
+      }
+    }
+  }
+}
+
+// Animations
+@keyframes techScan {
+  0% {
+    width: 0%;
+    left: 0;
+    opacity: 0;
+  }
+  50% {
+    width: 100%;
+    left: 0;
+    opacity: 1;
+  }
+  100% {
+    width: 0%;
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes techPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+}
+
+@keyframes techEllipsis {
+  0% { content: ''; }
+  25% { content: '.'; }
+  50% { content: '..'; }
+  75% { content: '...'; }
+  100% { content: ''; }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  .search-loading-container .tech-loader::before {
+    box-shadow: 0 0 15px var(--tech-primary, #2196f3);
+  }
+  
+  .search-preview {
+    background: rgba(var(--tech-bg-dark-rgb, 18, 18, 20), 0.7);
+  }
+}
+
+// Mobile responsiveness
+@media (max-width: 768px) {
+  .search-loading-container {
+    &.active {
+      height: 3rem;
+    }
+  }
+  
+  .search-preview .preview-content .preview-highlights .highlight-item {
+    margin-bottom: 0.4rem;
+  }
+}

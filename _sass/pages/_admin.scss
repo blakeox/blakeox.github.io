@@ -1,0 +1,404 @@
+// Admin Pages Styles
+// Contains styles for admin interfaces and dashboards
+
+// Admin Login
+.admin-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.admin-auth-container {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: rgba(var(--tech-bg-color-rgb), 0.8);
+  border: 1px solid rgba(var(--tech-accent-rgb), 0.2);
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+  }
+}
+
+.admin-login-form {
+  .admin-form-header {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    position: relative;
+    
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      color: var(--tech-text-color);
+    }
+    
+    .tech-header-decorations {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0.5rem 0;
+      
+      .tech-header-line {
+        height: 2px;
+        width: 60px;
+        background: var(--tech-accent-color, #2196f3);
+      }
+      
+      .tech-header-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--tech-accent-color, #2196f3);
+        margin: 0 5px;
+      }
+    }
+  }
+  
+  .admin-instructions {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--tech-text-secondary, rgba(255, 255, 255, 0.7));
+  }
+}
+
+.admin-input-group {
+  display: flex;
+  gap: 0.75rem;
+  
+  .admin-password-input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba(var(--tech-secondary-rgb), 0.2);
+    border-radius: 6px;
+    background: rgba(var(--tech-bg-color-rgb), 0.6);
+    color: var(--tech-text-color);
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    
+    &:focus {
+      outline: none;
+      border-color: var(--tech-primary, #2196f3);
+      box-shadow: 0 0 0 2px rgba(var(--tech-primary-rgb), 0.3);
+    }
+  }
+}
+
+// Shake animation for invalid password
+.admin-password-input.shake-error {
+  animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  border-color: var(--tech-error-color, #ff3860);
+  box-shadow: 0 0 0 2px rgba(255, 56, 96, 0.3);
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.admin-auth-error {
+  color: var(--tech-error-color, #ff3860);
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  text-align: center;
+  min-height: 1.5rem;
+  
+  &:not(:empty) {
+    padding: 0.5rem;
+    background: rgba(255, 56, 96, 0.1);
+    border-radius: 4px;
+  }
+}
+
+// Admin Content
+.admin-content {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(var(--tech-secondary-rgb), 0.2);
+  
+  h1 {
+    margin: 0;
+    font-size: 2rem;
+    color: var(--tech-text-color);
+  }
+  
+  .admin-controls {
+    display: flex;
+    gap: 1rem;
+  }
+}
+
+// Analytics Dashboard
+.admin-dashboard {
+  .dashboard-overview {
+    margin-bottom: 2rem;
+    
+    h2 {
+      margin-bottom: 0.5rem;
+    }
+    
+    .dashboard-description {
+      color: var(--tech-text-secondary, rgba(255, 255, 255, 0.7));
+    }
+  }
+}
+
+.analytics-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  
+  .analytics-card {
+    background: rgba(var(--tech-bg-color-rgb), 0.7);
+    border: 1px solid rgba(var(--tech-secondary-rgb), 0.2);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    h3 {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--tech-text-secondary, rgba(255, 255, 255, 0.7));
+      margin-bottom: 0.75rem;
+    }
+    
+    .metric-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--tech-text-color);
+      margin-bottom: 0.5rem;
+      line-height: 1;
+    }
+    
+    .metric-change {
+      font-size: 0.85rem;
+      
+      &.positive {
+        color: var(--tech-success-color, #48c774);
+      }
+      
+      &.negative {
+        color: var(--tech-error-color, #ff3860);
+      }
+    }
+    
+    &.total-searches {
+      border-top: 4px solid var(--tech-primary, #2196f3);
+    }
+    
+    &.success-rate {
+      border-top: 4px solid var(--tech-success-color, #48c774);
+    }
+    
+    &.avg-results {
+      border-top: 4px solid var(--tech-accent-color, #ff9800);
+    }
+    
+    &.no-results {
+      border-top: 4px solid var(--tech-error-color, #ff3860);
+    }
+  }
+}
+
+.analytics-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+  
+  .analytics-section {
+    background: rgba(var(--tech-bg-color-rgb), 0.7);
+    border: 1px solid rgba(var(--tech-secondary-rgb), 0.2);
+    border-radius: 10px;
+    padding: 1.5rem;
+    
+    h2 {
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(var(--tech-secondary-rgb), 0.2);
+      color: var(--tech-text-color);
+    }
+  }
+}
+
+.popular-terms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  min-height: 100px;
+  
+  .term-tag {
+    padding: 0.5rem 1rem;
+    border-radius: 100px;
+    background: rgba(var(--tech-secondary-rgb), 0.1);
+    color: var(--tech-text-color);
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    
+    .term-count {
+      background: rgba(var(--tech-primary-rgb), 0.2);
+      color: var(--tech-primary, #2196f3);
+      border-radius: 100px;
+      padding: 0.2rem 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+  }
+}
+
+.recent-searches {
+  min-height: 250px;
+  
+  .search-chart {
+    width: 100%;
+    height: 200px;
+  }
+}
+
+.performance-chart-container {
+  height: 300px;
+  position: relative;
+}
+
+.patterns-container {
+  .pattern-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+    
+    .pattern-metric {
+      padding: 1rem;
+      background: rgba(var(--tech-secondary-rgb), 0.07);
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      
+      .metric-label {
+        font-size: 0.85rem;
+        color: var(--tech-text-secondary, rgba(255, 255, 255, 0.7));
+        margin-bottom: 0.5rem;
+      }
+      
+      .metric-value {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--tech-text-color);
+      }
+    }
+  }
+}
+
+.admin-controls-panel {
+  background: rgba(var(--tech-bg-color-rgb), 0.7);
+  border: 1px solid rgba(var(--tech-secondary-rgb), 0.2);
+  border-radius: 10px;
+  padding: 1.5rem;
+  
+  .controls-header {
+    margin-bottom: 1.5rem;
+    
+    h2 {
+      font-size: 1.4rem;
+      color: var(--tech-text-color);
+    }
+  }
+  
+  .controls-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
+
+.loading-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  color: var(--tech-text-secondary, rgba(255, 255, 255, 0.7));
+  font-style: italic;
+}
+
+// Dark mode adjustments
+@media (prefers-color-scheme: dark) {
+  .admin-auth-container {
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+  }
+  
+  .analytics-card {
+    background: rgba(var(--tech-bg-dark-rgb, 18, 18, 20), 0.7);
+  }
+  
+  .analytics-section {
+    background: rgba(var(--tech-bg-dark-rgb, 18, 18, 20), 0.7);
+  }
+  
+  .admin-controls-panel {
+    background: rgba(var(--tech-bg-dark-rgb, 18, 18, 20), 0.7);
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .analytics-metrics {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .analytics-card .metric-value {
+    font-size: 2rem;
+  }
+  
+  .admin-input-group {
+    flex-direction: column;
+  }
+  
+  .admin-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .analytics-metrics {
+    grid-template-columns: 1fr;
+  }
+  
+  .patterns-container .pattern-metrics {
+    grid-template-columns: 1fr;
+  }
+  
+  .admin-controls-panel .controls-buttons {
+    flex-direction: column;
+  }
+}

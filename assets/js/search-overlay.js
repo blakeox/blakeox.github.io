@@ -14,7 +14,8 @@ async function loadSearchIndex() {
     flexIndex = new FlexSearch.Document({
       document: {
         id: 'url',
-        index: ['title', 'snippet', 'categories', 'tags']
+        index: ['title', 'content', 'snippet', 'categories', 'tags', 'type'],
+        store: ['title', 'url', 'snippet', 'content', 'type', 'date', 'categories', 'tags']
       },
       tokenize: 'forward',
       cache: 100,
@@ -40,13 +41,17 @@ class SearchOverlay {
     this.initializeElements();
     this.initializeModules();
     this.bindEvents();
-    this.addSpotlightEffect();
-    this.displayRecentSearches();
-    this.displayPopularSearches();
-    this.displayBookmarks();
-    this.isListening = false;
-    this.speechRecognition = null;
-    this.initVoiceSearch();
+    
+    // Skip certain initializations in minimal mode
+    if (!this.isMinimal) {
+      this.addSpotlightEffect();
+      this.displayRecentSearches();
+      this.displayPopularSearches();
+      this.displayBookmarks();
+      this.isListening = false;
+      this.speechRecognition = null;
+      this.initVoiceSearch();
+    }
   }
 
   initializeElements() {
@@ -54,20 +59,27 @@ class SearchOverlay {
     this.input = this.overlay?.querySelector('.c-search-overlay__input');
     this.form = this.overlay?.querySelector('.c-search-overlay__form');
     this.closeButton = this.overlay?.querySelector('.c-search-overlay__close');
-    this.themeToggle = this.overlay?.querySelector('.c-search-overlay__theme-toggle');
-    this.recentSearches = this.overlay?.querySelector('.c-search-overlay__recent-list');
-    this.popularSearches = this.overlay?.querySelector('.c-search-overlay__popular-list');
-    this.suggestions = this.overlay?.querySelector('.c-search-overlay__suggestions');
-    this.results = this.overlay?.querySelector('.c-search-overlay__results');
-    this.spinner = this.overlay?.querySelector('.c-search-overlay__spinner');
-    this.filter = this.overlay?.querySelector('.c-search-overlay__filter');
     this.ariaLive = this.overlay?.querySelector('#search-aria-live');
     this.searchCount = 0;
     this.lastSearchTime = 0;
-    this.activeResultIndex = -1;
-    this.currentResults = [];
-    this.voiceButton = this.overlay?.querySelector('.c-search-overlay__voice-toggle');
-    this.bookmarksList = this.overlay?.querySelector('.c-search-overlay__bookmarks-list');
+    
+    // Support both regular and minimal search overlay
+    this.isMinimal = this.overlay?.classList.contains('c-search-overlay--minimal');
+    
+    // Only initialize elements if not in minimal mode
+    if (!this.isMinimal) {
+      this.themeToggle = this.overlay?.querySelector('.c-search-overlay__theme-toggle');
+      this.recentSearches = this.overlay?.querySelector('.c-search-overlay__recent-list');
+      this.popularSearches = this.overlay?.querySelector('.c-search-overlay__popular-list');
+      this.suggestions = this.overlay?.querySelector('.c-search-overlay__suggestions');
+      this.results = this.overlay?.querySelector('.c-search-overlay__results');
+      this.spinner = this.overlay?.querySelector('.c-search-overlay__spinner');
+      this.filter = this.overlay?.querySelector('.c-search-overlay__filter');
+      this.activeResultIndex = -1;
+      this.currentResults = [];
+      this.voiceButton = this.overlay?.querySelector('.c-search-overlay__voice-toggle');
+      this.bookmarksList = this.overlay?.querySelector('.c-search-overlay__bookmarks-list');
+    }
     this.clearButton = this.overlay?.querySelector('.c-search-overlay__clear');
     this.container = this.overlay?.querySelector('.c-search-overlay__container');
     this.shortcuts = this.overlay?.querySelector('.c-search-overlay__shortcuts');
@@ -75,13 +87,21 @@ class SearchOverlay {
   }
 
   initializeModules() {
-    this.theme = new SearchOverlayTheme();
-    this.history = new SearchHistory();
+    // Only initialize these modules if not in minimal mode
+    if (!this.isMinimal) {
+      this.theme = new SearchOverlayTheme();
+      this.history = new SearchHistory();
+    }
+    
+    // Always initialize analytics
     this.analytics = new SearchAnalytics();
   }
   
   // Add a spotlight effect to the input when focused
   addSpotlightEffect() {
+    // Skip this functionality in minimal mode
+    if (this.isMinimal) return;
+    
     this.input?.addEventListener('focus', () => {
       const inputGlow = this.inputBackdrop?.querySelector('.input-glow');
       const scanLine = this.inputBackdrop?.querySelector('.input-scan-line');
@@ -114,12 +134,29 @@ class SearchOverlay {
         }
       });
     }
+    
     this.closeButton?.addEventListener('click', () => this.close());
-    this.themeToggle?.addEventListener('click', () => this.toggleTheme());
-    this.form?.addEventListener('submit', (e) => {
-      e.preventDefault();
-      this.handleSearch();
-    });
+    
+    // Only bind theme toggle in regular mode
+    if (!this.isMinimal && this.themeToggle) {
+      this.themeToggle.addEventListener('click', () => this.toggleTheme());
+    }
+    // Allow form to submit to search page when user presses Enter
+    if (this.form) {
+      // Make sure form action points to the search page
+      this.form.setAttribute('action', '/search/');
+      
+      this.form.addEventListener('submit', (e) => {
+        const query = this.input?.value.trim();
+        if (!query) {
+          e.preventDefault();
+          return;
+        }
+        // Add the search to history before navigating
+        this.history?.addSearch(query);
+        // Let the form submit naturally to search page
+      });
+    }
     this.input?.addEventListener('input', this.debounce(() => {
       this.handleLiveSearch();
       this.toggleClearButton();
@@ -198,7 +235,6 @@ class SearchOverlay {
 
   open() {
     if (!this.overlay) return;
-    console.warn('[SearchOverlay] Opening overlay');
     // Find the nav search button and store as lastFocusedElement
     const navSearchButton = document.querySelector('.search-toggle');
     this.lastFocusedElement = document.activeElement === navSearchButton ? navSearchButton : document.activeElement;
@@ -213,15 +249,12 @@ class SearchOverlay {
     this.input?.focus();
     this.analytics?.trackEvent('search_overlay_open');
     this.overlay.dispatchEvent(new CustomEvent('searchoverlay:open'));
-    this.displayRecentSearches();
-    this.displayPopularSearches();
-    // Debug: print computed style
-    const cs = window.getComputedStyle(this.overlay);
-    console.warn('[SearchOverlay] After open, computed style:', {
-      display: cs.display,
-      pointerEvents: cs.pointerEvents,
-      zIndex: cs.zIndex
-    });
+    
+    // Only show recent and popular searches in full mode
+    if (!this.isMinimal) {
+      this.displayRecentSearches();
+      this.displayPopularSearches();
+    }
   }
 
   close() {
@@ -314,19 +347,29 @@ class SearchOverlay {
 
   async fetchResults(query) {
     if (!query || !indexReady) return [];
-    const results = flexIndex.search(query, { limit: 10, enrich: true });
+    // Search across all indexed fields
+    const results = flexIndex.search(query, { 
+      limit: 15, 
+      enrich: true,
+      field: ['title', 'content', 'snippet', 'categories', 'tags']
+    });
     const flat = results.flatMap(r => r.result);
     if (flat.length === 0) {
       return [{
         title: 'No results found',
         url: '#',
-        snippet: 'Try different keywords, check your spelling, or explore popular topics below.'
+        snippet: 'Try different keywords, check your spelling, or explore popular topics below.',
+        type: 'none'
       }];
     }
+    
     return flat.map(item => ({
-      title: this.highlightMatch(item.title, query),
+      title: this.highlightMatch(item.title || '', query),
       url: item.url,
-      snippet: this.highlightMatch(item.snippet, query)
+      snippet: this.highlightMatch(item.snippet || '', query),
+      type: item.type || 'page',
+      category: item.categories || [],
+      date: item.date
     }));
   }
 
@@ -356,16 +399,39 @@ class SearchOverlay {
     if (!this.results) return;
     const bookmarks = this.getBookmarks();
     if (!results.length) {
-      this.results.innerHTML = '<div class=\'c-search-overlay__empty\'>No results found.<br>Try different keywords or explore popular topics below.</div>';
+      this.results.innerHTML = '<div class="c-search-overlay__empty">No results found.</div>';
     } else {
-      this.results.innerHTML = results.map(r =>
-        `<div class='c-search-overlay__result-item' role='option' data-url='${r.url}' data-title='${r.title.replace(/<[^>]+>/g, '')}' tabindex='0'>
-          <strong>${r.title}</strong><br><span>${r.snippet}</span>
-          <button class='bookmark-btn' aria-label='Bookmark result' aria-pressed='${bookmarks.some(b => b.url === r.url) ? 'true' : 'false'}'>
-            <svg width='18' height='18' viewBox='0 0 24 24' fill='none'><path d='M6 4v16l6-5.333L18 20V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2z' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>
-          </button>
-        </div>`
-      ).join('');
+      this.results.innerHTML = results.map(r => {
+        // Format the result type for display
+        const typeLabel = r.type ? '<span class="c-search-overlay__result-type">' + r.type + '</span>' : '';
+        
+        // Format category badges if available
+        let categoryBadges = '';
+        if (r.category && r.category.length > 0) {
+          const categories = Array.isArray(r.category) ? r.category : [r.category];
+          categoryBadges = categories.map(cat => 
+            '<span class="c-search-overlay__result-category">' + cat + '</span>'
+          ).join('');
+        }
+        
+        // Format date if available
+        const dateStr = r.date ? '<span class="c-search-overlay__result-date">' + new Date(r.date).toLocaleDateString() + '</span>' : '';
+        
+        return '<div class="c-search-overlay__result-item" role="option" data-url="' + r.url + '" data-title="' + r.title.replace(/<[^>]+>/g, '') + '" data-type="' + (r.type || "") + '" tabindex="0">' +
+          '<div class="c-search-overlay__result-header">' +
+            '<strong>' + r.title + '</strong>' +
+            typeLabel +
+          '</div>' +
+          '<div class="c-search-overlay__result-meta">' +
+            categoryBadges +
+            dateStr +
+          '</div>' +
+          '<span class="c-search-overlay__result-snippet">' + r.snippet + '</span>' +
+          '<button class="bookmark-btn" aria-label="Bookmark result" aria-pressed="' + (bookmarks.some(b => b.url === r.url) ? 'true' : 'false') + '">' +
+            '<svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 4v16l6-5.333L18 20V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+          '</button>' +
+        '</div>';
+      }).join('');
     }
     this.results.style.display = 'block';
     this.currentResults = results;
@@ -374,7 +440,7 @@ class SearchOverlay {
 
   displayError(message) {
     if (this.results) {
-      this.results.innerHTML = `<div class='c-search-overlay__error'>${message}</div>`;
+      this.results.innerHTML = '<div class="c-search-overlay__error">' + message + '</div>';
       this.results.style.display = 'block';
     }
   }

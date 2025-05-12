@@ -1,0 +1,38 @@
+---
+layout: default
+---
+
+<div class="admin-page">
+  <div class="admin-auth-container" id="admin-auth-container">
+    <div class="admin-login-form">
+      <div class="admin-form-header">
+        <h2>Admin Login</h2>
+        <div class="tech-header-decorations">
+          <div class="tech-header-line"></div>
+          <div class="tech-header-dot"></div>
+        </div>
+      </div>
+      <div class="admin-form-content">
+        <p class="admin-instructions">Please enter the admin password to continue.</p>
+        <div class="admin-input-group">
+          <input type="password" id="admin-password" class="admin-password-input" placeholder="Enter password">
+          <button type="button" id="admin-login-btn" class="c-btn c-btn--tech">Login</button>
+        </div>
+        <div class="admin-auth-error" id="admin-auth-error"></div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="admin-content" id="admin-content" style="display: none;">
+    <div class="admin-header">
+      <h1>{{ page.title }}</h1>
+      <div class="admin-controls">
+        <button id="admin-logout-btn" class="c-btn c-btn--tech c-btn--sm">Logout</button>
+      </div>
+    </div>
+    
+    {{ content }}
+  </div>
+</div>
+
+<script src="/assets/js/admin-auth.js" defer></script>

@@ -2,7 +2,18 @@
  * Search functionality for blakeox.github.io
  * This script provides in-page search capabilities for both:
  * 1. Filtering items with .searchable class (for in-page filtering)
- * 2. Full site search using the search index (for the dedicated search page)
+ * 2. Ful        // Process the data for search
+        _searchIndex = searchData.map(item => ({
+          id: item.id,
+          title: item.title || '',
+          content: item.content || '', 
+          url: item.url || '',
+          category: item.category || '',
+          categories: item.categories || [],
+          type: item.type || 'page',
+          date: item.date || '',
+          snippet: item.snippet || ''
+        }));rch using the search index (for the dedicated search page)
  */
 document.addEventListener('DOMContentLoaded', () => {
   // Common utility functions

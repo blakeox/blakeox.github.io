@@ -1,0 +1,103 @@
+---
+layout: admin
+title: Search Analytics Dashboard
+description: Admin dashboard for monitoring search analytics and user behavior.
+permalink: /admin/search-analytics/
+---
+
+<div class="admin-dashboard">
+  <div class="dashboard-overview">
+    <h2>Search Analytics Overview</h2>
+    <p class="dashboard-description">Analyze search patterns, popular terms, and user behavior to improve content discoverability.</p>
+  </div>
+
+  <!-- Analytics Cards -->
+  <div class="analytics-metrics">
+    <div class="analytics-card total-searches">
+      <h3>TOTAL SEARCHES</h3>
+      <div class="metric-value" id="total-searches-value">0</div>
+      <div class="metric-change positive">+0%</div>
+    </div>
+    
+    <div class="analytics-card success-rate">
+      <h3>SUCCESS RATE</h3>
+      <div class="metric-value" id="success-rate-value">0%</div>
+      <div class="metric-change positive">+0%</div>
+    </div>
+    
+    <div class="analytics-card avg-results">
+      <h3>AVG RESULTS</h3>
+      <div class="metric-value" id="avg-results-value">0</div>
+      <div class="metric-change positive">+0%</div>
+    </div>
+    
+    <div class="analytics-card no-results">
+      <h3>ZERO RESULTS</h3>
+      <div class="metric-value" id="zero-results-value">0%</div>
+      <div class="metric-change negative">+0%</div>
+    </div>
+  </div>
+
+  <!-- Advanced Analytics Sections -->
+  <div class="analytics-sections">
+    <!-- Popular Search Terms -->
+    <div class="analytics-section">
+      <h2>Popular Search Terms</h2>
+      <div class="popular-terms" id="popular-terms-container">
+        <div class="loading-placeholder">Loading popular search terms...</div>
+      </div>
+    </div>
+    
+    <!-- Recent Search Results -->
+    <div class="analytics-section">
+      <h2>Recent Search Results</h2>
+      <div class="recent-searches" id="recent-searches-container">
+        <div class="loading-placeholder">Loading recent search data...</div>
+      </div>
+    </div>
+    
+    <!-- Search Performance -->
+    <div class="analytics-section">
+      <h2>Search Performance</h2>
+      <div class="performance-chart-container">
+        <canvas id="search-performance-chart"></canvas>
+      </div>
+    </div>
+    
+    <!-- Search Patterns -->
+    <div class="analytics-section">
+      <h2>Search Patterns</h2>
+      <div class="patterns-container">
+        <div class="pattern-metrics">
+          <div class="pattern-metric">
+            <span class="metric-label">Avg. Query Length</span>
+            <span class="metric-value" id="avg-query-length">0 chars</span>
+          </div>
+          <div class="pattern-metric">
+            <span class="metric-label">Most Common Filter</span>
+            <span class="metric-value" id="most-common-filter">None</span>
+          </div>
+          <div class="pattern-metric">
+            <span class="metric-label">Peak Search Time</span>
+            <span class="metric-value" id="peak-search-time">N/A</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Admin Controls -->
+  <div class="admin-controls-panel">
+    <div class="controls-header">
+      <h2>Admin Controls</h2>
+    </div>
+    <div class="controls-buttons">
+      <button id="refresh-stats-btn" class="c-btn c-btn--tech">REFRESH STATS</button>
+      <button id="clear-history-btn" class="c-btn c-btn--tech c-btn--danger">CLEAR HISTORY</button>
+      <button id="export-data-btn" class="c-btn c-btn--tech">EXPORT DATA</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js" defer></script>
+<script src="/assets/js/admin-search-analytics.js" defer></script>

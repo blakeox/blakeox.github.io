@@ -2,5 +2,6 @@
 # filepath: /robots.txt
 User-agent: *
 Allow: /
+Disallow: /admin/
 Sitemap: {{ site.url | append: site.baseurl }}/sitemap.xml
 ```

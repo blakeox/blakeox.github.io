@@ -37,16 +37,21 @@ if (typeof window.TechSearchAnalytics === 'undefined') {
       // Merge options
       _options = Object.assign(_options, options);
       
-      // Get analytics container
+      // Check if we're on the search page or admin page
       const analyticsContainer = document.querySelector(_options.analyticsContainerSelector);
+      const isAdminPage = document.querySelector('.admin-dashboard') !== null;
       
-      if (!analyticsContainer) {
+      if (isAdminPage) {
+        // On admin page, don't render anything - the admin-search-analytics.js will handle it
+        console.info('On admin page - analytics will be handled by admin module');
+      } else if (!analyticsContainer && !isAdminPage) {
         console.warn('Analytics container not found');
         return;
+      } else if (!isAdminPage) {
+        // On regular search page, add admin link and minimal stats only
+        // Full analytics are now in the admin dashboard
+        console.info('Analytics now available in admin dashboard');
       }
-      
-      // Initialize analytics display
-      renderAnalytics(analyticsContainer);
       
       _initialized = true;
     }

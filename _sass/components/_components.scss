@@ -14,9 +14,12 @@
 @import 'footer'; // Styles for the footer section
 @import 'grid'; // Styles for grid layout system
 //@import 'header'; // Disabled legacy header styles
+@import 'category-filters'; // Styles for category filters in search
 @import 'filter-controls'; // Styles for filter controls in project lists
 @import 'forms'; // Styles for form elements
 @import 'hero'; // Styles for the hero section
+@import 'search-results-enhanced'; // Enhanced styles for search results
+@import 'search-loading-states'; // Loading animations and real-time previews
 @import 'key-achievements'; // Styles for key achievements section
 @import 'latest-blog-posts'; // Styles for latest blog posts section
 @import 'navbar'; // Styles for the navigation bar
@@ -31,6 +34,9 @@
 @import 'stats';  // Styles for stats cards on About page
 @import 'search-overlay'; // Styles for search overlay component
 @import 'search-results'; // Improved search results with enhanced UI
+@import 'search-types'; // Content type styling for search results
+@import 'search-overlay-enhancements'; // Enhanced UI features for search overlay
+@import 'minimal-search-overlay'; // Minimal search overlay design
 @import 'tech-search'; // Futuristic tech-inspired search styling
 @import 'tech-settings-panel'; // Tech search settings panel component
 @import 'tech-keyboard'; // Keyboard shortcut styling
