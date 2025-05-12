@@ -1,0 +1,202 @@
+---
+layout: default
+title: Admin Login
+description: Secure login page for site administrators
+permalink: /admin/login/
+---
+
+<div class="admin-login-page">
+  <div class="container">
+    <div class="admin-auth-container" id="admin-auth-container">
+      <div class="admin-login-form">
+        <div class="admin-form-header">
+          <h2>Admin Login</h2>
+          <div class="tech-header-decorations">
+            <div class="tech-header-line"></div>
+            <div class="tech-header-dot"></div>
+          </div>
+        </div>
+        <div class="admin-form-content">
+          <p class="admin-instructions">Please enter the admin password to continue.</p>
+          <div class="admin-input-group">
+            <input type="password" id="admin-password" class="admin-password-input" placeholder="Enter password">
+            <button type="button" id="admin-login-btn" class="c-btn c-btn--tech">Login</button>
+          </div>
+          <div class="admin-auth-error" id="admin-auth-error"></div>
+          <div class="admin-login-notes">
+            <p>This area is restricted to site administrators.</p>
+            <p>Unauthorized access attempts are monitored and logged.</p>
+            <p><a href="/" class="return-link">Return to site</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="admin-content" id="admin-content" style="display: none;">
+      <div class="admin-header">
+        <h1>Admin Dashboard</h1>
+        <div class="admin-controls">
+          <button id="admin-logout-btn" class="c-btn c-btn--tech c-btn--sm">Logout</button>
+        </div>
+      </div>
+      
+      <div class="admin-dashboard-links">
+        <div class="admin-card-grid">
+          <a href="/admin/search-analytics/" class="admin-dashboard-card">
+            <div class="card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12a9 9 0 0 1-9 9m9-9a9 9 0 0 0-9-9m9 9H3m9 9a9 9 0 0 1-9-9m9 9c-4.97 0-9-4.03-9-9m9 0a9 9 0 0 0-9 9"/>
+              </svg>
+            </div>
+            <div class="card-content">
+              <h3>Search Analytics</h3>
+              <p>View detailed search analytics and user behavior data</p>
+            </div>
+            <div class="card-arrow">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m9 18 6-6-6-6"/>
+              </svg>
+            </div>
+          </a>
+          
+          <!-- Additional admin sections can be added here -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .admin-login-page {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+  }
+  
+  .admin-login-form {
+    max-width: 480px;
+    margin: 0 auto;
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+  }
+  
+  .admin-form-header {
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  
+  .admin-input-group {
+    display: flex;
+    margin-bottom: 1rem;
+  }
+  
+  .admin-password-input {
+    flex: 1;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    margin-right: 0.5rem;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  }
+  
+  .admin-auth-error {
+    color: #e74c3c;
+    margin-bottom: 1rem;
+    min-height: 1.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .admin-login-notes {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: var(--text-color-light);
+    text-align: center;
+  }
+  
+  .return-link {
+    color: var(--link-color);
+    text-decoration: underline;
+  }
+  
+  /* Admin dashboard grid */
+  .admin-dashboard-links {
+    margin-top: 2rem;
+  }
+  
+  .admin-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .admin-dashboard-card {
+    display: flex;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    color: var(--text-color);
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  .admin-dashboard-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: var(--tech-accent-color, #2196f3);
+  }
+  
+  .card-icon {
+    flex: 0 0 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(33, 150, 243, 0.1);
+    border-radius: 8px;
+    color: var(--tech-accent-color, #2196f3);
+    margin-right: 1rem;
+    height: 60px;
+  }
+  
+  .card-content {
+    flex: 1;
+  }
+  
+  .card-content h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+  
+  .card-content p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-color-light);
+  }
+  
+  .card-arrow {
+    display: flex;
+    align-items: center;
+    color: var(--tech-accent-color, #2196f3);
+  }
+  
+  /* Animation for incorrect password */
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+  }
+  
+  .shake-error {
+    animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+  }
+</style>
+
+<script src="/assets/js/admin-auth.js" defer></script>

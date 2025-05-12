@@ -20,9 +20,17 @@ function initAdminAuth() {
   
   if (!authContainer || !contentContainer) return;
   
+  // Check if current page is admin page but not login page
+  const isAdminPage = window.location.pathname.startsWith('/admin/');
+  const isLoginPage = window.location.pathname === '/admin/login/';
+  
   // Check if already authenticated
   if (isAuthenticated()) {
     showAdminContent();
+  } else if (isAdminPage && !isLoginPage) {
+    // Redirect to login page if not authenticated and trying to access admin page
+    window.location.href = '/admin/login/?redirect=' + encodeURIComponent(window.location.pathname);
+    return;
   }
   
   // Add login handler
@@ -68,9 +76,24 @@ function initAdminAuth() {
       sessionStorage.setItem('admin-auth', Date.now().toString());
       showAdminContent();
       
+      // Log successful authentication
+      if (window.AdminAuditLogger) {
+        window.AdminAuditLogger.logAuthAttempt('admin', true, {
+          method: 'password'
+        });
+      }
+      
       // Load admin data
       loadAdminData();
     } else {
+      // Log failed authentication attempt
+      if (window.AdminAuditLogger) {
+        window.AdminAuditLogger.logAuthAttempt('admin', false, {
+          method: 'password',
+          reason: 'invalid_password'
+        });
+      }
+      
       // Show error
       if (errorElement) {
         errorElement.textContent = 'Invalid password. Please try again.';
@@ -123,6 +146,17 @@ function initAdminAuth() {
       setTimeout(() => {
         contentContainer.classList.add('visible');
       }, 50);
+      
+      // Check if we should redirect after successful login
+      const urlParams = new URLSearchParams(window.location.search);
+      const redirectPath = urlParams.get('redirect');
+      
+      if (redirectPath && window.location.pathname === '/admin/login/') {
+        // Only redirect if we're on the login page and have a valid redirect path
+        if (redirectPath.startsWith('/admin/')) {
+          window.location.href = redirectPath;
+        }
+      }
     }
   }
   
@@ -146,7 +180,7 @@ function initAdminAuth() {
     // Convert to hex string and pad to consistent length
     let hexHash = Math.abs(hash).toString(16);
     while (hexHash.length < 32) {
-      hexHash = "0" + hexHash;
+      hexHash = '0' + hexHash;
     }
     
     return hexHash.substring(0, 32);

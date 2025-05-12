@@ -48,9 +48,8 @@ if (typeof window.TechSearchAnalytics === 'undefined') {
         console.warn('Analytics container not found');
         return;
       } else if (!isAdminPage) {
-        // On regular search page, add admin link and minimal stats only
-        // Full analytics are now in the admin dashboard
-        console.info('Analytics now available in admin dashboard');
+        // On regular search page, show minimal stats only
+        console.info('Full analytics are available in admin dashboard');
       }
       
       _initialized = true;
