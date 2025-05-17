@@ -6,7 +6,9 @@
 // ### Latest Blog Posts Container
 // - **.c-latest-blog-posts:** The main container for the Latest Blog Posts section.
 // - **margin-top:** Adds spacing above the section.
+
 .c-latest-blog-posts {
+
   margin-top: $spacing-lg; // Add top margin for spacing
 
   // ### Section Heading
@@ -14,7 +16,9 @@
   // - **font-size:** Uses a large font size for prominence.
   // - **margin-bottom:** Adds spacing below the heading.
   // - **text-align:** Centers the heading horizontally.
+
   &__title {
+
     font-size: $font-size-lg; // Use large font size for prominence
     margin-bottom: $spacing-md; // Add bottom margin for spacing
     text-align: center; // Center-align the heading
@@ -25,10 +29,12 @@
   // - **display:** Uses grid layout for responsive design.
   // - **grid-template-columns:** Creates responsive columns based on available space.
   // - **gap:** Adds spacing between grid items.
+
   &__grid {
+
     display: grid; // Use grid layout for responsive design
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); // Create responsive columns
     gap: $spacing-lg; // Add spacing between grid items
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); // Create responsive columns
   }
 
   // ### Blog Posts List
@@ -39,19 +45,23 @@
   // - **display:** Uses grid layout for responsive design.
   // - **grid-template-columns:** Creates responsive columns based on available space.
   // - **gap:** Adds spacing between grid items.
+
   &__list {
-    list-style: none; // Remove default list styling
-    padding: 0; // Remove default padding
-    margin: 0; // Remove default margin
+
     display: grid; // Use grid layout for responsive design
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); // Create responsive columns
     gap: $spacing-lg; // Add spacing between grid items
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); // Create responsive columns
+    list-style: none; // Remove default list styling
+    margin: 0; // Remove default margin
+    padding: 0; // Remove default padding
   }
 
   // ### Blog Post Items
   // - **&__item:** Styles for individual blog post items.
   // - **text-align:** Centers the content horizontally.
+
   &__item {
+
     text-align: center; // Center-align the content
   }
 
@@ -60,14 +70,31 @@
   // - **text-decoration:** Removes underline by default.
   // - **color:** Uses the standard text color.
   // - **transition:** Adds smooth hover effects for color changes.
-  // - **hover and focus styles:** Changes color and adds underline for emphasis.
+  // - **hover and focus styles:** Changes color and adds underline for emphasis.@media screen and (prefers-reduced-motion: reduce) {
+    &__link {
+
+      color: $color-text; // Use standard text color
+      text-decoration: none; // Remove underline by default
+      transition: none; // Smooth transition for hover effects
+
+      &:hover,
+      &:focus {
+
+        color: $color-accent; // Use accent color for hover and focus
+        text-decoration: underline; // Add underline for emphasis
+      }
+    }
+  }
+
   &__link {
-    text-decoration: none; // Remove underline by default
+
     color: $color-text; // Use standard text color
+    text-decoration: none; // Remove underline by default
     transition: color 0.3s ease; // Smooth transition for hover effects
 
     &:hover,
     &:focus {
+
       color: $color-accent; // Use accent color for hover and focus
       text-decoration: underline; // Add underline for emphasis
     }

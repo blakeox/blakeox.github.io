@@ -1,0 +1,32 @@
+// _sass/components/_index.scss
+// Component Styles Index
+// This file imports all modular component partials used in the project.
+// Each component is defined in its own file for scalability and maintainability.
+
+// Base Components
+@import 'anchor-links';
+@import 'buttons';
+@import 'forms';
+@import 'navbar';
+@import 'pagination';
+@import 'page-header';
+@import 'preloader';
+
+// Content & Display
+@import 'cards';
+@import 'blog-cards';
+@import 'blog-list';
+@import 'featured-projects';
+@import 'project-cards';
+@import 'hero';
+@import 'call-to-action';
+@import 'key-achievements';
+@import 'latest-blog-posts';
+@import 'timeline';
+
+// Search UI
+@import 'search-overlay';
+@import 'search-results';
+@import 'tag-list';
+@import 'tech-search';
+@import 'tech-settings-panel';

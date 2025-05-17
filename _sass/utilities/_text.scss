@@ -5,41 +5,55 @@
 
 // ### Text Alignment Utilities
 // These classes control the horizontal alignment of text.
-// - **.text-left:** Aligns text to the left.
+// - **.u-text-left:** Aligns text to the left.
 //   - **Use Case:** Aligns text for left-to-right languages or when left alignment is required.
-// - **.text-center:** Centers text horizontally.
+// - **.u-text-center:** Centers text horizontally.
 //   - **Use Case:** Centers headings, titles, or other content for emphasis.
-// - **.text-right:** Aligns text to the right.
+// - **.u-text-right:** Aligns text to the right.
 //   - **Use Case:** Aligns text for right-to-left languages or when right alignment is required.
-.text-left { 
-  text-align: left; // Align text to the left
+
+.u-text-left { 
+
+  text-align: start; // Align text to the start (logical left)
 }
-.text-center { 
+
+.u-text-center { 
+
   text-align: center; // Center text horizontally
 }
-.text-right { 
-  text-align: right; // Align text to the right
+
+.u-text-right { 
+
+  text-align: end; // Align text to the end (logical right)
 }
 
 // ### Text Transformation Utilities
 // These classes control the case and wrapping behavior of text.
-// - **.text-uppercase:** Transforms text to uppercase.
+// - **.u-text-uppercase:** Transforms text to uppercase.
 //   - **Use Case:** Use for headings, labels, or buttons that require uppercase styling.
-// - **.text-lowercase:** Transforms text to lowercase.
+// - **.u-text-lowercase:** Transforms text to lowercase.
 //   - **Use Case:** Use for stylistic purposes or when lowercase text is required.
-// - **.text-capitalize:** Capitalizes the first letter of each word.
+// - **.u-text-capitalize:** Capitalizes the first letter of each word.
 //   - **Use Case:** Use for titles, headings, or other content requiring capitalization.
-// - **.text-nowrap:** Prevents text from wrapping to the next line.
+// - **.u-text-nowrap:** Prevents text from wrapping to the next line.
 //   - **Use Case:** Use for inline elements or when text wrapping needs to be avoided.
-.text-uppercase { 
+
+.u-text-uppercase { 
+
   text-transform: uppercase; // Transform text to uppercase
 }
-.text-lowercase { 
+
+.u-text-lowercase { 
+
   text-transform: lowercase; // Transform text to lowercase
 }
-.text-capitalize { 
+
+.u-text-capitalize { 
+
   text-transform: capitalize; // Capitalize the first letter of each word
 }
-.text-nowrap { 
+
+.u-text-nowrap { 
+
   white-space: nowrap; // Prevent text from wrapping
 }

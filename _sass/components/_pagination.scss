@@ -1,25 +1,33 @@
-@import '../utilities/mixins';
+@import '../tools/mixins';
 
 // ## Pagination Component Styles
+
 .c-pagination {
+
   display: flex; // Use flexbox for layout
   justify-content: center; // Center-align the pagination links
   margin-top: $spacing-lg; // Add top margin for spacing
 
   // Pagination links
+
   &__link {
-    margin: 0 $spacing-xs; // Horizontal spacing
-    padding: $spacing-sm $spacing-md; // Clickable padding
+
+    @include radius($border-radius); // Rounded corners
+
+    @include transition(background-color); // Smooth hover transition
     background-color: var(--color-secondary); // Secondary background
     color: var(--color-white); // White text
+    margin: 0 $spacing-xs; // Horizontal spacing
+    padding: $spacing-sm $spacing-md; // Clickable padding
     text-decoration: none; // Remove underline
-    @include radius($border-radius); // Rounded corners
-    @include transition(background-color); // Smooth hover transition
 
-    &:hover {
+    &:hover, &:focus {
+
       background-color: var(--color-primary); // Primary on hover
     }
+
     &.active {
+
       background-color: var(--color-primary); // Primary for active state
       font-weight: $font-weight-bold; // Emphasize active link
     }

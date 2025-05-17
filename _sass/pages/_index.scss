@@ -1,0 +1,15 @@
+// _sass/pages/_index.scss
+// Page-Level Styles
+// These styles are scoped to individual templates and views.
+// Each file contains overrides or unique styles only needed on that page.
+
+@import 'home';
+@import 'about';
+@import 'contact';
+@import 'blog';
+@import 'project';
+@import 'projects';
+@import 'admin';
+@import 'search';
+@import 'error';      // 404, fallback pages
+@import 'pages';      // Shared styles across multiple page types

@@ -3,19 +3,8 @@
 // Shadows are used to add depth and emphasis to elements like cards, modals, and buttons.
 // By centralizing shadow definitions, we ensure consistency and easy customization across the project.
 
-// ### Shadow Variables
-// These variables define reusable shadow styles for different levels of depth:
-// - **$box-shadow-sm:** A small shadow for subtle depth, typically used for lightweight elements.
-// - **$box-shadow-md:** A medium shadow for moderate depth, suitable for cards or containers.
-// - **$box-shadow-lg:** A large shadow for prominent depth, ideal for modals or elevated elements.
-// - **$box-shadow-xl:** An extra-large shadow for strong emphasis, used sparingly for key elements.
-
-$box-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05); // Small shadow for subtle depth
-$box-shadow-md: 0 4px 8px rgba(0, 0, 0, 0.2); // Medium shadow for moderate depth
-$box-shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.15); // Large shadow for prominent depth
-$box-shadow-xl: 0 15px 30px rgba(0, 0, 0, 0.25); // Extra-large shadow for strong emphasis
-
 // ### Shadow Utility Classes
+// Shadow utility classes only. Shadow variables have been moved to settings/_shadows.scss for ITCSS compliance.
 // These utility classes apply the predefined shadow styles to elements:
 // - **.shadow-sm:** Applies the small shadow defined in `$box-shadow-sm`.
 //   - **Use Case:** Lightweight elements like buttons or small cards.
@@ -27,17 +16,21 @@ $box-shadow-xl: 0 15px 30px rgba(0, 0, 0, 0.25); // Extra-large shadow for stron
 //   - **Use Case:** Reset shadow styles for specific elements.
 
 .shadow-sm { 
+
   box-shadow: $box-shadow-sm; // Apply small shadow
 }
 
 .shadow-md { 
+
   box-shadow: $box-shadow-md; // Apply medium shadow
 }
 
 .shadow-lg { 
+
   box-shadow: $box-shadow-lg; // Apply large shadow
 }
 
 .shadow-none { 
+
   box-shadow: none; // Remove shadow
 }

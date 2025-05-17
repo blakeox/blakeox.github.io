@@ -1,29 +1,67 @@
 {
   "name": "blakeox.github.io",
   "version": "1.0.0",
-  "description": "Welcome to the Blake Oxford Portfolio repository. This site is built with [Jekyll](https://jekyllrb.com/) and hosted on [GitHub Pages](https://pages.github.com/).",
+  "private": true,
+  "description": "Welcome to the Blake Oxford Portfolio repository. This site is built with Jekyll and hosted on GitHub Pages.",
+  "type": "module",
   "main": "axe-test.js",
   "scripts": {
+    "prepare": "husky install",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint:js": "eslint . --ext .js",
-    "lint:scss": "stylelint '**/*.scss'"
+    "lint:scss": "stylelint \"**/*.scss\""
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "lint-staged": {
+    "*.{scss,css}": "stylelint --fix",
+    "*.js": "eslint --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blakeox/blakeox.github.io.git"
+  },
+  "bugs": {
+    "url": "https://github.com/blakeox/blakeox.github.io/issues"
+  },
+  "homepage": "https://blakeox.github.io#readme",
+  "engines": {
+    "node": ">=18.12.0"
+  },
+  "packageManager": "yarn@4.9.1",
   "devDependencies": {
     "@axe-core/puppeteer": "^4.10.1",
+    "@double-great/stylelint-a11y": "^3.0.4",
     "@lhci/cli": "^0.14.0",
-    "@stylelint/postcss-css-in-js": "^0.38.0",
     "eslint": "^9.26.0",
+    "flat-cache": "^6.1.9",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.0.0",
     "postcss": "^8.5.3",
+    "postcss-scss": "^4.0.9",
+    "postcss-syntax": "^0.36.2",
     "puppeteer": "^24.7.0",
     "stylelint": "^16.19.1",
-    "stylelint-config-recommended-scss": "^14.1.0",
     "stylelint-config-standard": "^38.0.0",
-    "stylelint-scss": "^6.11.1"
+    "stylelint-config-standard-scss": "^15.0.0",
+    "stylelint-declaration-strict-value": "^1.10.11",
+    "stylelint-order": "^7.0.0",
+    "stylelint-scss": "^6.12.0",
+    "stylelint-use-logical": "^2.1.2"
   },
   "resolutions": {
-    "cookie": "0.7.1"
+    "flat-cache": "^6.1.9"
+  },
+  "dependenciesMeta": {
+    "eslint": {
+      "unplugged": true
+    },
+    "postcss-scss": {
+      "unplugged": true
+    },
+    "stylelint": {
+      "unplugged": true
+    },
+    "stylelint-scss": {
+      "unplugged": true
+    }
   }
 }

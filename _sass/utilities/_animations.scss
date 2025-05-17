@@ -2,51 +2,67 @@
 // ## Animations Utilities
 // This file contains reusable animations and utility classes for adding motion effects to elements.
 // The animations are designed to enhance user experience by providing smooth transitions and visual feedback.
-// These utilities include keyframes and classes for fade-in, scroll animations, and spinning effects.
+// These utilities include keyframes and classes for fade‑in, scroll animations, and spinning effects.
 
-// ### Keyframe Animation: Fade In
-// This animation gradually increases the opacity of an element from 0 to 1.
-// - **Use Case:** Smoothly reveal elements as they appear on the page.
-@keyframes fadeIn {
+// --- Keyframe Animation: fade‑in
+// Smoothly reveal elements as they appear on the page.
+@keyframes fade-in {
   from {
-    opacity: 0; // Start fully transparent
+
+    opacity: 0;
   }
   to {
-    opacity: 1; // Transition to fully visible
+
+    opacity: 1;
   }
 }
 
-// ### Utility Class: Scroll Animation
-// This class is used to animate elements as they scroll into view.
-// - **Initial State:** Hidden with slight downward offset.
-// - **Visible State:** Fully visible and positioned at its original location.
-// - **Use Case:** Apply to elements that should animate when they enter the viewport.
+// --- Utility Class: Scroll Animation
+// Animate elements as they scroll into view.
+@media screen and (prefers-reduced-motion: reduce) {
+  .scroll-animate {
+
+    opacity: 0;
+    transform: translateY(20px);
+    transition: none;
+  }
+}
+
 .scroll-animate {
-  opacity: 0; // Initially hidden
-  transform: translateY(20px); // Start slightly below the original position
-  transition: opacity $transition-duration-default $ease-in-out, transform $transition-duration-default $ease-in-out; // Standardized durations and easing
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition-duration: var(--transition-duration-default);
+  transition-property: opacity, transform;
+  transition-timing-function: ease-in-out;
 }
 
 .scroll-animate.visible {
-  opacity: 1; // Fully visible
-  transform: translateY(0); // Return to the original position
+
+  opacity: 1;
+  transform: translateY(0);
 }
 
-// ### Keyframe Animation: Fade In Up
-// This animation combines fading in and moving upward.
-// - **Use Case:** Sequentially animate text or elements with a smooth upward motion.
-@keyframes fadeInUp {
+// --- Keyframe Animation: fade‑in‑up
+// Combines fading in and moving upward.
+@keyframes fade-in-up {
+  from {
+
+    opacity: 0;
+    transform: translateY(10px);
+  }
   to {
-    opacity: 1; // Fully visible
-    transform: translateY(0); // Return to the original position
+
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-// ### Keyframe Animation: Spin
-// This animation rotates an element 360 degrees.
-// - **Use Case:** Loading spinners or rotating icons for visual feedback.
+// --- Keyframe Animation: spin
+// Full 360‑degree rotation (e.g. for loaders).
 @keyframes spin {
   to {
-    transform: rotate(360deg); // Full rotation
+
+    transform: rotate(360deg);
   }
 }

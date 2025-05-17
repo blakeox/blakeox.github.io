@@ -4,77 +4,140 @@
 // SASS variables are used for colors, spacing, typography, and transitions to ensure consistency and easy updates.
 // Referenced variables are defined in the settings folder for maintainability.
 
+/* stylelint-disable a11y/media-prefers-color-scheme, max-nesting-depth */
+
 // ### Blog List Container
 // - **.c-blog-list:** The main container for the blog list.
 // - **grid-template-columns:** Adjusts the number of columns based on available space.
 // - **gap:** Adds spacing between grid items.
+
 .c-blog-list {
+
+  @media (prefers-color-scheme: dark) {
+    &__item:hover,
+    &__item:focus {
+
+      box-shadow: $box-shadow-md;
+      transform: translateY(-5px);
+    }
+    &__content h2,
+    &__content p {
+
+      color: $color-white;
+    }
+  }
+
+  // Dark mode styles
+  @media (prefers-color-scheme: dark) {
+    .c-blog-list__item {
+      @media (hover: hover), (pointer: fine) {
+        &:hover, &:focus {
+
+          box-shadow: $box-shadow-md;
+          transform: translateY(-5px);
+        }
+      }
+      background: $background-color-dark;
+      border-color: $color-secondary-dark;
+      color: $color-white;
+      .c-blog-list__content h2,
+      .c-blog-list__content p {
+
+        color: $color-white;
+      }
+      .c-blog-list__read-more {
+        @media (hover: hover), (pointer: fine) {
+          &:hover, &:focus {
+
+            background-color: color.adjust($color-primary-dark, $lightness: -10%);
+          }
+        }
+        background-color: $color-primary-dark;
+        color: $color-white;
+      }
+    }
+  }
   display: grid; // Use grid layout for responsive design
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); // Adjust columns based on available space
   gap: $spacing-lg; // Spacing between grid items
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); // Adjust columns based on available space
 
   // ### Blog Item
   // - **.c-blog-list__item:** Represents an individual blog post.
   // - **box-shadow:** Adds depth to the blog item.
   // - **transition:** Enables smooth hover effects.
-  &__item {
-    background: $background-color-light; // Light background for contrast
-    border: 1px solid $color-secondary; // Border with secondary color
-    border-radius: $border-radius; // Rounded corners for a modern look
-    box-shadow: $box-shadow-sm; // Subtle shadow for depth
-    overflow: hidden; // Ensure content stays within bounds
-    transition: transform $transition-duration-default ease, box-shadow $transition-duration-default ease; // Smooth hover effects
 
-    &:hover {
-      // Hover effect for blog items
-      transform: translateY(-5px); // Slight upward movement
-      box-shadow: $box-shadow-md; // Enhanced shadow for emphasis
-    }
+  // Light mode styles
+  .c-blog-list__item {
+    @media (hover: hover), (pointer: fine) {
+      &:hover, &:focus {
 
-    // ### Blog Thumbnail
-    // - **.c-blog-list__thumbnail:** Styles for the blog post thumbnail image.
-    // - **object-fit:** Ensures the image covers the area without distortion.
-    &__thumbnail {
-      width: 100%; // Full width of the container
-      height: 200px; // Fixed height for uniformity
-      object-fit: cover; // Ensure the image covers the area without distortion
-    }
-
-    // ### Blog Content
-    // - **.c-blog-list__content:** Container for the blog post content.
-    // - **h2:** Styles for the blog post title.
-    // - **p:** Styles for the blog post excerpt or description.
-    &__content {
-      padding: $spacing-md; // Inner spacing for content
-
-      h2 {
-        font-size: $font-size-lg; // Large font size for prominence
-        margin-bottom: $spacing-sm; // Space below the title
+        box-shadow: $box-shadow-md;
+        transform: translateY(-5px);
       }
+    }
+    background: $background-color-light;
+    border-color: $color-secondary;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow-sm;
+    overflow: hidden;
+    transition-duration: $transition-duration-default, $transition-duration-default;
+    transition-property: transform, box-shadow;
+    transition-timing-function: ease, ease;
+  }
 
-      p {
-        font-size: $font-size-md; // Medium font size for readability
-        line-height: $line-height-base; // Consistent line height
-        color: $color-text; // Standard text color
+  // Blog Thumbnail
+  .c-blog-list__thumbnail {
+
+    block-size: 200px;
+    inline-size: 100%;
+    object-fit: cover;
+  }
+
+  // Blog Content
+  .c-blog-list__content {
+
+    padding: $spacing-md;
+    h2 {
+
+      font-size: $font-size-lg;
+      margin-block-end: $spacing-sm;
+    }
+    p {
+      @media (prefers-color-scheme: dark) {
+
+        color: $color-white;
       }
+      color: $color-text;
+      font-size: $font-size-md;
+      line-height: $line-height-base;
+    }
+    .c-blog-list__read-more {
+      @media (hover: hover), (pointer: fine) {
+        &:hover, &:focus {
 
-      // ### Read More Button
-      // - **.c-blog-list__read-more:** Styles for the "Read More" button.
-      // - **transition:** Smooth hover effect for visual feedback.
-      &__read-more {
-        display: inline-block; // Inline block for button-like appearance
-        margin-top: $spacing-sm; // Space above the button
-        padding: $spacing-sm $spacing-md; // Padding for clickable area
-        background-color: $color-primary; // Primary color for the button
-        color: $color-white; // White text for contrast
-        text-decoration: none; // Remove underline
-        border-radius: $border-radius; // Rounded corners
-        transition: background-color $transition-duration-default ease; // Smooth hover effect
-
-        &:hover {
-          background-color: $color-primary-dark; // Darker shade for visual feedback
+          background-color: $color-primary-dark;
         }
       }
+      @media (prefers-color-scheme: dark) {
+        @media (hover: hover), (pointer: fine) {
+          &:hover, &:focus {
+
+            background-color: color.adjust($color-primary-dark, $lightness: -10%);
+          }
+        }
+        background-color: $color-primary-dark;
+        color: $color-white;
+      }
+      background-color: $color-primary;
+      border-radius: $border-radius;
+      color: $color-white;
+      display: inline-block;
+      margin-block-start: $spacing-sm;
+      padding: $spacing-sm $spacing-md;
+      text-decoration: none;
+      transition-duration: $transition-duration-default;
+      transition-property: background-color;
+      transition-timing-function: ease;
     }
   }
 }

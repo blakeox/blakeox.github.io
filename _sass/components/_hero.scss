@@ -4,7 +4,7 @@
 // The styles are organized using the BEM (Block Element Modifier) methodology for better readability and maintainability.
 // SASS variables are used for colors, spacing, typography, and transitions to ensure consistency and easy updates.
 
-@import '../utilities/mixins';
+@import '../tools/mixins';
 
 // ### Base Hero Styles
 // - **.c-hero:** The main container for the hero section.
@@ -14,34 +14,81 @@
 // - **background:** Uses radial gradients for a visually appealing background.
 // - **height:** Sets the hero section to full viewport height.
 // - **display:** Uses flexbox for centering content vertically and horizontally.
+
 .c-hero {
-  position: relative;
+
   @include radius($border-radius-lg); // if needed for content container
-  padding: $spacing-xl $spacing-md; // Add padding for spacing
-  text-align: center; // Center-align text
-  color: var(--color-text); // Use primary text color
+
+  @include respond-to('md') {
+
+    block-size: 100vh;
+    padding: $spacing-xl $spacing-md;
+
+    &__title {
+
+      font-size: $font-size-xl;
+      margin-block-end: $spacing-md;
+    }
+
+    &__description {
+
+      font-size: $font-size-md;
+      margin-block-end: $spacing-lg;
+    }
+
+    &__banner {
+
+      flex-direction: row;
+      gap: $spacing-lg;
+    }
+
+    &__figure {
+
+      block-size: 150px;
+      inline-size: 150px;
+      margin-block-end: $spacing-md;
+    }
+  }
+
+  // ### Hero Title
+  // - **.c-hero__title:** Styles for the main title in the hero section.
+  // - **font-size:** Uses a large font size for prominence.
+  // - **font-weight:** Makes the title bold for emphasis.
+  // - **animation:** Adds a fade-in effect for visual appeal.
+  @media screen and (prefers-reduced-motion: reduce) {
+    &__title {
+
+      animation: none; // Fade-in animation
+      font-weight: $font-weight-bold; // Bold font weight
+      margin-block-end: $spacing-md; // Add spacing below the title
+    }
+  }
+  align-items: center;
   background: 
-    radial-gradient(circle at center, $color-white 0%, $color-white 35%, transparent 45%),
-    radial-gradient(circle at bottom left, $color-accent 0%, $color-accent 8%, transparent 20%),
-    radial-gradient(circle at top right, $color-primary 0%, $color-primary 10%, transparent 20%);
+    radial-gradient(circle at center, #{$color-white} 0%, #{$color-white} 35%, transparent 45%),
+    radial-gradient(circle at bottom left, #{$color-accent} 0%, #{$color-accent} 8%, transparent 20%),
+    radial-gradient(circle at top right, #{$color-primary} 0%, #{$color-primary} 10%, transparent 20%);
   background-blend-mode: normal;
   background-size: cover;
-  height: 100vh; // Full viewport height
+  block-size: 100vh; // Full viewport height
+  color: var(--color-text); // Use primary text color
   display: flex; // Flexbox for centering content
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  padding: $spacing-xl $spacing-md; // Add padding for spacing
+  position: relative;
+  text-align: center; // Center-align text
 
   &::before {
-    // Overlay for the hero background
-    content: "";
+
+    background: rgb(var(--color-white-rgb), #{$hero-overlay-opacity});
+    block-size: 100%;
+    content: '';
+    inline-size: 100%;
+    inset-block-start: 0;
+    inset-inline-start: 0;
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(var(--color-white-rgb), $hero-overlay-opacity); // Semi-transparent overlay
-    z-index: 0; // Place behind content
+    z-index: 0;
   }
 
   > * {
@@ -50,15 +97,11 @@
     z-index: 1;
   }
 
-  // ### Hero Title
-  // - **.c-hero__title:** Styles for the main title in the hero section.
-  // - **font-size:** Uses a large font size for prominence.
-  // - **font-weight:** Makes the title bold for emphasis.
-  // - **animation:** Adds a fade-in effect for visual appeal.
   &__title {
+
+    animation: fade-in #{$animation-duration-default} ease-in-out; // Fade-in animation
     font-weight: $font-weight-bold; // Bold font weight
-    margin-bottom: $spacing-md; // Add spacing below the title
-    animation: fadeIn $animation-duration-default ease-in-out; // Fade-in animation
+    margin-block-end: $spacing-md; // Add spacing below the title
   }
 
   // ### Hero Description
@@ -66,11 +109,14 @@
   // - **font-size:** Uses a medium font size for readability.
   // - **max-width:** Limits the width for better readability.
   // - **color:** Uses a secondary text color for contrast.
+
   &__description {
-    font-size: $font-size-md; // Medium font size
-    max-width: 600px; // Limit width for readability
-    margin: 0 auto $spacing-lg; // Center and add spacing below
-    color: $color-text-secondary; // Secondary text color
+
+    color: $color-text-secondary;
+    font-size: $font-size-md;
+    margin-block-end: $spacing-lg;
+    margin-inline: auto;
+    max-inline-size: 600px;
   }
 
   // ### Call-to-Action Button
@@ -79,35 +125,12 @@
   // - **background-color:** Uses the primary color for the button.
   // - **border-radius:** Adds rounded corners for a modern look.
   // - **transition:** Enables smooth hover effects.
+
   &__cta {
-    @extend .c-btn;  // use standardized button
+
+    @extend %c-btn;  // use standardized button
+
     @include transition(background-color);
-  }
-
-  @include respond-to('md') {
-    height: 100vh;
-    padding: $spacing-xl $spacing-md;
-
-    &__title {
-      font-size: $font-size-xl;
-      margin-bottom: $spacing-md;
-    }
-
-    &__description {
-      font-size: $font-size-md;
-      margin-bottom: $spacing-lg;
-    }
-
-    &__banner {
-      flex-direction: row;
-      gap: $spacing-lg;
-    }
-
-    &__figure {
-      width: 150px;
-      height: 150px;
-      margin-bottom: $spacing-md;
-    }
   }
 }
 
@@ -115,24 +138,26 @@
 // - **.c-hero--home-page:** Modifier for the hero section on the home page.
 // - **padding:** Adjusts padding for the home page layout.
 // - **background:** Reuses the radial gradient background.
+
 .c-hero--home-page {
-  padding: $spacing-xl $spacing-sm; // Adjust padding for home page
+
   background: 
-    radial-gradient(circle at center, $color-white 0%, $color-white 35%, transparent 45%),
-    radial-gradient(circle at bottom left, $color-accent 0%, $color-accent 8%, transparent 20%),
-    radial-gradient(circle at top right, $color-primary 0%, $color-primary 10%, transparent 20%);
+    radial-gradient(circle at center, #{$color-white} 0%, #{$color-white} 35%, transparent 45%),
+    radial-gradient(circle at bottom left, #{$color-accent} 0%, #{$color-accent} 8%, transparent 20%),
+    radial-gradient(circle at top right, #{$color-primary} 0%, #{$color-primary} 10%, transparent 20%);
   background-blend-mode: normal;
   background-size: cover;
+  padding: $spacing-xl $spacing-sm; // Adjust padding for home page
 
   &::before {
-    // Overlay for the home page hero
-    content: "";
+
+    background: rgb(var(--color-white-rgb), #{$hero-overlay-opacity});
+    block-size: 100%;
+    content: '';
+    inline-size: 100%;
+    inset-block-start: 0;
+    inset-inline-start: 0;
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(var(--color-white-rgb), $hero-overlay-opacity); // Semi-transparent overlay
     z-index: 0;
   }
 }
@@ -141,34 +166,40 @@
 // - **.c-hero__banner:** Container for the banner content in the hero section.
 // - **gap:** Adds spacing between elements in the banner.
 // - **margin-top:** Adds spacing above the banner.
+
 .c-hero__banner {
+
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: $spacing-md;
   justify-content: center;
-  gap: $spacing-md; // Add spacing between elements
-  margin-top: $spacing-lg; // Add spacing above the banner
+  margin-block-start: $spacing-lg;
 
   &__photo {
-    // Styles for the banner photo
-    max-width: 180px; // Limit photo width
+
     border-radius: $border-radius-circle; // Circular photo
     box-shadow: $box-shadow-lg; // Add shadow for depth
+    // Styles for the banner photo
+    max-inline-size: 180px; // Limit photo width
   }
 
   &__text {
+
+    padding: $spacing-md; // Add padding for spacing
     // Styles for the banner text
     text-align: center;
-    padding: $spacing-md; // Add padding for spacing
 
     &__title {
+
       font-size: $font-size-xl; // Large font size
-      margin-bottom: $spacing-md; // Add spacing below the title
+      margin-block-end: $spacing-md; // Add spacing below the title
     }
 
     &__description {
+
       font-size: $font-size-md; // Medium font size
-      margin-bottom: $spacing-lg; // Add spacing below the description
+      margin-block-end: $spacing-lg; // Add spacing below the description
     }
   }
 }
@@ -178,37 +209,47 @@
 // - **width, height:** Ensures a perfect circular shape.
 // - **border-radius:** Applies a circular shape.
 // - **box-shadow:** Adds depth to the image.
+
 .c-hero__figure {
-  width: 150px; // Fixed width
-  height: 150px; // Fixed height for a perfect circle
-  border-radius: 50%; // Circular shape
-  overflow: hidden; // Ensure the image stays within the circle
-  box-shadow: $box-shadow-md; // Add subtle shadow
-  margin-bottom: $spacing-md; // Add spacing below the image
+
+  block-size: 150px;
+  border-radius: 50%;
+  box-shadow: $box-shadow-md;
+  inline-size: 150px;
+  margin-block-end: $spacing-md;
+  overflow: hidden;
 
   &__image {
-    // Styles for the image inside the figure
-    width: 100%; // Fill the container
-    height: 100%; // Fill the container
-    object-fit: cover; // Maintain aspect ratio and crop if necessary
+
+    block-size: 100%;
+    inline-size: 100%;
+    object-fit: cover;
   }
 }
 
 // ### Keyframes for Animations
-// - **fadeIn:** Adds a fade-in effect for elements.
-@keyframes fadeIn {
+// - **fade-in:** Adds a fade-in effect for elements.
+
+@keyframes fade-in {
+
   from {
+
     opacity: 0;
   }
+
   to {
+
     opacity: 1;
   }
 }
 
 // ### Reduced Motion Styles
 // - **@media (prefers-reduced-motion: reduce):** Disables animations for users who prefer reduced motion.
+
 @media (prefers-reduced-motion: reduce) {
+
   h1 {
+
     animation: none; // Disable animations for users who prefer reduced motion
   }
 }
@@ -217,16 +258,32 @@
 // - **@media (prefers-color-scheme: dark):** Adjusts styles for dark mode.
 // - **color:** Uses dark mode text color.
 // - **background:** Adjusts the background gradients for dark mode.
+
 @media (prefers-color-scheme: dark) {
+
   .c-hero {
-    color: $color-text-dark; // Use dark mode text color
+
     background: 
-      radial-gradient(circle at center, $color-background-dark 0%, $color-background-dark 35%, transparent 45%),
-      radial-gradient(circle at bottom left, $color-accent-dark 0%, $color-accent-dark 8%, transparent 20%),
-      radial-gradient(circle at top right, $color-primary-dark 0%, $color-primary-dark 10%, transparent 20%);
+      radial-gradient(circle at center, #{$color-background-dark} 0%, #{$color-background-dark} 35%, transparent 45%),
+      radial-gradient(circle at bottom left, #{$color-accent-dark} 0%, #{$color-accent-dark} 8%, transparent 20%),
+      radial-gradient(circle at top right, #{$color-primary-dark} 0%, #{$color-primary-dark} 10%, transparent 20%);
+    color: $color-text-dark; // Use dark mode text color
+  }
+
+  .c-hero__description {
+
+    color: $color-text-dark-secondary;
   }
 
   .c-hero--home-page::before {
-    background: rgba($color-background-dark, $hero-overlay-opacity); // Adjust overlay for dark mode
+
+    background: rgb(#{$color-background-dark}, #{$hero-overlay-opacity});
+    block-size: 100%;
+    content: '';
+    inline-size: 100%;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    position: absolute;
+    z-index: 0;
   }
 }

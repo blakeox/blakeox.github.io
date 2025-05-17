@@ -16,31 +16,33 @@
   margin: $spacing-lg 0; // Use spacing variable from _spacing.scss
 
   &__list {
+    border-block-end: 1px solid var(--color-border-light); // Add a light border at the bottom
+    border-block-start: 1px solid var(--color-border-light); // Add a light border at the top
     // Style the list of anchor links
     display: flex; // Arrange links in a horizontal row
-    justify-content: center; // Center-align the links
     gap: $spacing-lg; // Add spacing between links using a variable
+    justify-content: center; // Center-align the links
     list-style: none; // Remove default list styling
     padding: $spacing-md 0; // Add vertical padding using a variable
-    border-top: 1px solid $color-border-light; // Add a light border at the top
-    border-bottom: 1px solid $color-border-light; // Add a light border at the bottom
   }
 
-  &__link {
-    // Style the anchor links
-    text-decoration: none; // Remove underline by default
-    color: $color-primary; // Use the primary color for the text
-    font-weight: $font-weight-medium; // Apply medium font weight for emphasis
+  @media (prefers-color-scheme: light), (prefers-color-scheme: dark) {
+    &__link {
+      color: $color-primary; // Use the primary color for the text
+      font-weight: $font-weight-medium; // Apply medium font weight for emphasis
+      // Style the anchor links
+      text-decoration: none; // Remove underline by default
 
-    &:hover {
-      // Add hover effect for anchor links
-      text-decoration: underline; // Underline the text on hover for better visibility
-    }
+      &:hover {
+        // Add hover effect for anchor links
+        text-decoration: underline; // Underline the text on hover for better visibility
+      }
 
-    &:focus {
-      // Add focus styles for accessibility
-      outline: 2px solid $color-primary; // Highlight the link with a focus outline
-      outline-offset: 2px; // Add spacing between the outline and the link
+      &:focus {
+        // Add focus styles for accessibility
+        outline: 2px solid var(--color-primary); // Highlight the link with a focus outline
+        outline-offset: 2px; // Add spacing between the outline and the link
+      }
     }
   }
 }

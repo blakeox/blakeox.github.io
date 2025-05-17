@@ -1,0 +1,291 @@
+/**
+ * Tech keyboard shortcuts component
+ * Styling for keyboard shortcut elements throughout the site
+ */
+
+@media (prefers-color-scheme: light) {
+  .tech-key {
+
+    background: rgb(33 150 243 / 0.1);
+    border: 1px solid var(--tech-accent-color, #2196f3);
+    border-radius: 4px;
+    box-shadow: 0 0 5px var(--tech-glow-color, rgb(33 150 243 / 0.3));
+    color: var(--tech-accent-color, #2196f3);
+    display: inline-block;
+    font-family: monospace;
+    font-size: 0.9em;
+    letter-spacing: 0;
+    margin: 0 2px;
+    padding: 3px 8px;
+    position: relative;
+    text-transform: none;
+  }
+
+  .tech-key--large {
+
+    font-size: 1.1em;
+    padding: 5px 10px;
+  }
+
+  .tech-key--small {
+
+    font-size: 0.8em;
+    padding: 2px 6px;
+  }
+
+  .key-separator {
+
+    color: var(--tech-text-color, rgb(33 33 33 / 0.7));
+    margin: 0 2px;
+  }
+
+  .c-search-overlay__shortcuts kbd {
+
+    background: rgb(var(--tech-secondary-rgb) 0.15);
+    block-size: 28px;
+    border: 1px solid rgb(var(--tech-accent-rgb) 0.3);
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 0.1), 0 1px 0 rgb(255 255 255 / 0.1) inset;
+    color: var(--tech-accent);
+    display: inline-flex;
+    font-family: var(--tech-font-mono, monospace);
+    font-size: 0.85rem;
+    font-weight: 600;
+    justify-content: center;
+    margin-inline-end: 6px;
+    min-inline-size: 24px;
+    padding: 6px 8px;
+    position: relative;
+    text-shadow: 0 1px 1px rgb(0 0 0 / 0.2);
+    transition-duration: 0.2s;
+    transition-property: all;
+    transition-timing-function: ease;
+  }
+
+  .c-search-overlay__shortcuts span {
+
+    color: rgb(var(--tech-text-color-rgb) 0.8);
+    font-weight: 500;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .tech-key {
+
+    background: rgb(33 150 243 / 0.15);
+    border: 1px solid var(--tech-accent-color-dark, #64b5f6);
+    border-radius: 4px;
+    box-shadow: 0 0 8px var(--tech-glow-color-dark, rgb(33 150 243 / 0.5));
+    color: var(--tech-accent-color-dark, #64b5f6);
+    display: inline-block;
+    font-family: monospace;
+    font-size: 0.9em;
+    letter-spacing: 0;
+    margin: 0 2px;
+    padding: 3px 8px;
+    position: relative;
+    text-transform: none;
+  }
+
+  .tech-key--large {
+
+    font-size: 1.1em;
+    padding: 5px 10px;
+  }
+
+  .tech-key--small {
+
+    font-size: 0.8em;
+    padding: 2px 6px;
+  }
+
+  .key-separator {
+
+    color: var(--tech-text-color-dark, rgb(200 200 200 / 0.7));
+    margin: 0 2px;
+  }
+
+  .c-search-overlay__shortcuts kbd {
+
+    background: rgb(var(--tech-secondary-rgb-dark) 0.15);
+    block-size: 28px;
+    border: 1px solid rgb(var(--tech-accent-rgb-dark) 0.3);
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 0.2), 0 1px 0 rgb(255 255 255 / 0.1) inset;
+    color: var(--tech-accent-dark);
+    display: inline-flex;
+    font-family: var(--tech-font-mono, monospace);
+    font-size: 0.85rem;
+    font-weight: 600;
+    justify-content: center;
+    margin-inline-end: 6px;
+    min-inline-size: 24px;
+    padding: 6px 8px;
+    position: relative;
+    text-shadow: 0 1px 1px rgb(0 0 0 / 0.3);
+    transition-duration: 0.2s;
+    transition-property: all;
+    transition-timing-function: ease;
+  }
+
+  .c-search-overlay__shortcuts span {
+
+    color: rgb(var(--tech-text-color-rgb-dark) 0.8);
+    font-weight: 500;
+  }
+}
+
+// Add subtle top highlight for 3D effect
+.tech-key::after {
+
+  background: linear-gradient(to bottom, rgb(255 255 255 / 0.15), transparent);
+  block-size: 30%;
+  border-radius: 2px 2px 0 0;
+  content: '';
+  inset-block-start: 1px;
+  inset-inline: 3px;
+  pointer-events: none;
+  position: absolute;
+}
+
+// Special key combinations like Ctrl+K
+.key-combo {
+
+  align-items: center;
+  display: inline-flex;
+  gap: 2px;
+}
+
+// Interactive key effect
+@media screen and (prefers-reduced-motion: reduce) {
+  .tech-key-interactive {
+
+    cursor: pointer;
+    position: relative;
+    transition: none;
+    &:hover, &:focus {
+
+      box-shadow: 0 0 8px var(--tech-glow-color, rgb(33 150 243 / 0.5));
+      transform: translateY(-1px);
+    }
+    &:active {
+
+      box-shadow: 0 0 3px var(--tech-glow-color, rgb(33 150 243 / 0.3));
+    }
+  }
+}
+
+.tech-key-interactive {
+
+  cursor: pointer;
+  position: relative;
+  transition-duration: 0.1s;
+  transition-property: transform, box-shadow;
+  transition-timing-function: ease;
+}
+
+.tech-key-interactive:hover {
+
+  box-shadow: 0 0 8px var(--tech-glow-color, rgb(33 150 243 / 0.5));
+}
+
+.tech-key-interactive:focus {
+
+  transform: translateY(-1px);
+}
+
+.tech-key-interactive:active {
+
+  box-shadow: 0 0 3px var(--tech-glow-color, rgb(33 150 243 / 0.3));
+}
+
+.tech-key-interactive.is-pressed {
+
+  transform: translateY(1px);
+}
+
+// Enhanced styles for search overlay keyboard shortcuts
+.c-search-overlay__shortcuts {
+
+  @keyframes key-press {
+    0% {
+
+      transform: translateY(0);
+    }
+    50% {
+
+      box-shadow: 0 1px 2px rgb(0 0 0 / 0.1);
+      transform: translateY(2px);
+    }
+    100% {
+
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 480px) {
+
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding: 12px;
+    .shortcut-key {
+
+      flex-shrink: 0;
+    }
+  }
+
+  @media screen and (prefers-reduced-motion: reduce) {
+    .key-press {
+
+      animation: none;
+    }
+  }
+
+  /* Add backdrop-filter for supported browsers */
+  @supports ((-webkit-backdrop-filter: blur(8px)) or (backdrop-filter: blur(8px))) {
+    /* stylelint-disable-next-line property-no-vendor-prefix */
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+
+  /* Ensure background is partially transparent for backdrop-filter to work */
+  background: rgb(var(--tech-bg-color-rgb) / 0.4);
+  border: 1px solid rgb(var(--tech-secondary-rgb) / 0.2);
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.05);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin-block-start: 16px;
+  padding: 16px;
+
+  .shortcut-key {
+
+    align-items: center;
+    display: flex;
+    font-size: 0.9rem;
+  }
+
+  .key-press {
+
+    animation: key-press 0.2s ease;
+  }
+
+  .arrow-key {
+
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    &::before {
+
+      font-size: 1.2em;
+      line-height: 0;
+    }
+    &.up::before { content: '↑'; }
+    &.down::before { content: '↓'; }
+    &.left::before { content: '←'; }
+    &.right::before { content: '→'; }
+  }
+}

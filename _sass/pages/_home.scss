@@ -4,7 +4,7 @@
 // SASS variables are used for spacing and animations to ensure consistency and easy updates.
 // Referenced variables are defined in the settings folder for maintainability.
 
-.home-page {
+.c-home-page {
   // ### Base Styles
   // - **margin:** Centers the content horizontally.
   // - **padding:** Removes inner spacing for a clean layout.
@@ -12,15 +12,19 @@
   padding: $spacing-none; // Use spacing variable from _spacing.scss
 }
 
-@keyframes fadeIn {
+@keyframes fade-in {
   // ### Fade-In Animation
   // - **Purpose:** Creates a smooth fade-in effect for elements.
   // - **from:** Starts with full transparency.
   // - **to:** Transitions to full opacity.
+
   from {
+
     opacity: 0; // Start with full transparency
   }
+
   to {
+
     opacity: 1; // Transition to full opacity
   }
 }

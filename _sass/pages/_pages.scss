@@ -3,28 +3,37 @@
 // Each imported file corresponds to a specific page or page type, ensuring modularity and maintainability.
 
 // Import styles for the "About" page
+
 @import 'about';
 
 // Import styles for the "Blog" page
+
 @import 'blog';
 
 // Import styles for the "Contact" page
+
 @import 'contact';
 
 // Import styles for the "Error" page (e.g., 404 page)
+
 @import 'error';
 
 // Import styles for the "Home" page
+
 @import 'home';
 
 // Import styles for individual project pages
+
 @import 'project';
 
 // Import styles for the "Projects" listing page
+
 @import 'projects';
 
 // Import styles for the "Search" page
+
 @import 'search';
 
 // Import styles for the Admin pages
+
 @import 'admin';

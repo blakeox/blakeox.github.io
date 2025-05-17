@@ -1,61 +1,22 @@
 // ## Flexbox Utilities
-// This file contains utility classes for applying common flexbox properties to elements.
-// These classes provide a quick and consistent way to create flexible and responsive layouts.
-// By centralizing these utilities, the project ensures maintainability and reusability.
+.flex { display: flex; }
 
-// ### Utility Classes
-// - **.flex:** Enables flexbox layout by setting `display: flex`.
-// - **.flex-row:** Arranges items in a horizontal row (default) using `flex-direction: row`.
-// - **.flex-column:** Arranges items in a vertical column using `flex-direction: column`.
-// - **.flex-wrap:** Allows flex items to wrap onto multiple lines using `flex-wrap: wrap`.
-// - **.justify-start:** Aligns items to the start of the main axis using `justify-content: flex-start`.
-// - **.justify-center:** Centers items along the main axis using `justify-content: center`.
-// - **.justify-end:** Aligns items to the end of the main axis using `justify-content: flex-end`.
-// - **.justify-between:** Distributes items evenly with space between them using `justify-content: space-between`.
-// - **.align-start:** Aligns items to the start of the cross axis using `align-items: flex-start`.
-// - **.align-center:** Centers items along the cross axis using `align-items: center`.
-// - **.align-end:** Aligns items to the end of the cross axis using `align-items: flex-end`.
+.flex-row { flex-direction: row; }
 
-.flex { 
-  display: flex; // Enables flexbox layout 
-}
+.flex-column { flex-direction: column; }
 
-.flex-row { 
-  flex-direction: row; // Horizontal arrangement (default) 
-}
+.flex-wrap { flex-wrap: wrap; }
 
-.flex-column { 
-  flex-direction: column; // Vertical arrangement 
-}
+.justify-start { justify-content: flex-start; }
 
-.flex-wrap { 
-  flex-wrap: wrap; // Allows items to wrap onto multiple lines 
-}
+.justify-center { justify-content: center; }
 
-.justify-start { 
-  justify-content: flex-start; // Align items to the start of the main axis 
-}
+.justify-end { justify-content: flex-end; }
 
-.justify-center { 
-  justify-content: center; // Center items along the main axis 
-}
+.justify-between { justify-content: space-between; }
 
-.justify-end { 
-  justify-content: flex-end; // Align items to the end of the main axis 
-}
+.align-start { align-items: flex-start; }
 
-.justify-between { 
-  justify-content: space-between; // Distribute items with space between them 
-}
+.align-center { align-items: center; }
 
-.align-start { 
-  align-items: flex-start; // Align items to the start of the cross axis 
-}
-
-.align-center { 
-  align-items: center; // Center items along the cross axis 
-}
-
-.align-end { 
-  align-items: flex-end; // Align items to the end of the cross axis 
-}
+.align-end { align-items: flex-end; }

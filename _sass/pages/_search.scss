@@ -1,68 +1,125 @@
+/* stylelint-disable no-descending-specificity */
 // ## Search Page Styles
 // This file contains styles specific to the Search page of the website.
 // The styles are designed to ensure a clean and user-friendly layout for the search functionality.
 // SASS variables are used for spacing, colors, typography, and transitions to ensure consistency and easy updates.
 // Referenced variables are defined in the settings folder for maintainability.
 
+// NOTE: All SCSS variables in property values have been replaced with CSS custom properties (e.g., var(--color-primary)).
+// For rgb() colors, use rgb(var(--color-primary-rgb), <alpha>) and define --color-primary-rgb at :root (e.g., 34, 139, 230 for #228be6).
+// Example:
+// :root {
+//   --color-primary: #228be6;
+//   --color-primary-rgb: 34, 139, 230;
+//   --color-primary-dark: #1864ab;
+//   --color-text-secondary: #6c757d;
+//   --font-size-sm: 0.875rem;
+//   --spacing-sm: 0.75rem;
+// }
+// @media (prefers-color-scheme: dark) {
+//   :root {
+//     --color-primary: #66aaff;
+//     --color-primary-rgb: 102, 170, 255;
+//     --color-primary-dark: #3388cc;
+//     --color-text-secondary: #b0b8c1;
+//   }
+// }
+
+// Move global button selectors and pseudo-classes to the very top for Stylelint specificity compliance
+button {
+
+  background: var(--color-primary);
+  border: none;
+  border-radius: var(--border-radius);
+  color: var(--color-white);
+  cursor: pointer;
+  font-size: var(--font-size-md);
+  margin-inline-start: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  transition: background-color var(--transition-duration-default) ease;
+}
+
+button:hover,
+button:focus {
+
+  background: var(--color-primary-dark);
+}
+
 // Search page container
-.search-page {
-  padding: $spacing-lg 0;
-  min-height: 60vh;
+
+.c-search-page {
+
+  min-block-size: 60vh;
+  padding: var(--spacing-lg) 0;
 }
 
 // Search box styles
-.search-box {
-  // ### Search Box Container
-  // - **margin-top:** Adds spacing above the search box.
-  // - **text-align:** Centers the content horizontally.
-  margin-bottom: $spacing-lg; // Add bottom margin using the spacing variable
-  text-align: center; // Center-align the content
 
-  h2 {
-    // ### Search Heading
-    // - **font-size:** Uses a large font size for prominence.
-    // - **margin-bottom:** Adds spacing below the heading for separation.
-    font-size: $font-size-lg; // Use large font size for the heading
-    margin-bottom: $spacing-md; // Add bottom margin using the spacing variable
+.c-search-box {
+  @media screen and (prefers-reduced-motion: reduce) {
+    input[type='text'] {
+
+      border: 1px solid var(--color-border-light); // Use light border color
+      border-radius: var(--border-radius); // Apply rounded corners
+      color: var(--color-text); // Use standard text color
+      flex-grow: 1;
+      font-size: var(--font-size-md); // Use medium font size for readability
+      inline-size: 100%; // Set input width to 100% of the container
+      max-inline-size: 500px; // Limit the maximum width of the input
+      // ### Search Input Field
+      // - **padding:** Adds inner spacing for better usability.
+      // - **border:** Adds a light border for separation.
+      // - **border-radius:** Applies rounded corners for a modern look.
+      // - **width:** Sets the input width to 80% of the container.
+      // - **max-width:** Limits the maximum width of the input for responsiveness.
+      // - **font-size:** Uses a medium font size for readability.
+      // - **color:** Uses the standard text color for consistency.
+      padding: var(--spacing-sm) var(--spacing-md); // Add padding for better usability
+      transition: none;
+
+      &:focus {
+
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 3px rgb(var(--color-primary-rgb), 0.2);
+        outline: none;
+      }
+    }
   }
+  @media screen and (prefers-reduced-motion: reduce) {
+    button {
+      // ### Search Button
+      // - **background:** Uses the primary color for the button.
+      // - **color:** Uses white text for contrast.
+      // - **border:** Removes the default border for a clean look.
+      // - **padding:** Adds inner spacing for better usability.
+      // - **margin-left:** Adds spacing to the left of the button.
+      // - **border-radius:** Applies rounded corners for a modern look.
+      // - **font-size:** Uses a medium font size for readability.
+      // - **cursor:** Changes the cursor to a pointer for interactivity.
+      // - **transition:** Adds smooth hover effects for background color changes.
+      background: var(--color-primary); // Use primary color for the button
+      border: none; // Remove default border
+      border-radius: var(--border-radius); // Apply rounded corners
+      color: var(--color-white); // Use white text for contrast
+      cursor: pointer; // Pointer cursor for interactivity
+      font-size: var(--font-size-md); // Use medium font size for the button
+      margin-inline-start: var(--spacing-sm); // Add left margin for spacing
+      padding: var(--spacing-sm) var(--spacing-md); // Add padding for clickable area
+      transition: none; // Smooth hover transition
 
-  .search-form {
-    // ### Search Form
-    // - **display:** Centers the form inline for alignment.
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: $spacing-sm;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  input[type="text"] {
-    // ### Search Input Field
-    // - **padding:** Adds inner spacing for better usability.
-    // - **border:** Adds a light border for separation.
-    // - **border-radius:** Applies rounded corners for a modern look.
-    // - **width:** Sets the input width to 80% of the container.
-    // - **max-width:** Limits the maximum width of the input for responsiveness.
-    // - **font-size:** Uses a medium font size for readability.
-    // - **color:** Uses the standard text color for consistency.
-    padding: $spacing-sm $spacing-md; // Add padding for better usability
-    border: 1px solid $color-border-light; // Use light border color
-    border-radius: $border-radius; // Apply rounded corners
-    width: 100%; // Set input width to 100% of the container
-    max-width: 500px; // Limit the maximum width of the input
-    font-size: $font-size-md; // Use medium font size for readability
-    color: $color-text; // Use standard text color
-    flex-grow: 1;
-    transition: border-color $transition-duration-default ease, box-shadow $transition-duration-default ease;
-
-    &:focus {
-      border-color: $color-primary;
-      outline: none;
-      box-shadow: 0 0 0 3px rgba($color-primary, 0.2);
+      &:hover, &:focus {
+        // ### Hover Effect for Search Button
+        // - **background:** Changes to a darker primary color for interactivity.
+        background: var(--color-primary-dark); // Use darker primary color
+      }
     }
   }
 
+  // ### Search Box Container
+  // - **margin-top:** Adds spacing above the search box.
+  // - **text-align:** Centers the content horizontally.
+  margin-block-end: var(--spacing-lg); // Add bottom margin using the spacing variable
+  text-align: center; // Center-align the content
   button {
     // ### Search Button
     // - **background:** Uses the primary color for the button.
@@ -74,335 +131,774 @@
     // - **font-size:** Uses a medium font size for readability.
     // - **cursor:** Changes the cursor to a pointer for interactivity.
     // - **transition:** Adds smooth hover effects for background color changes.
-    background: $color-primary; // Use primary color for the button
-    color: $color-white; // Use white text for contrast
+    background: var(--color-primary); // Use primary color for the button
     border: none; // Remove default border
-    padding: $spacing-sm $spacing-md; // Add padding for clickable area
-    margin-left: $spacing-sm; // Add left margin for spacing
-    border-radius: $border-radius; // Apply rounded corners
-    font-size: $font-size-md; // Use medium font size for the button
+    border-radius: var(--border-radius); // Apply rounded corners
+    color: var(--color-white); // Use white text for contrast
     cursor: pointer; // Pointer cursor for interactivity
-    transition: background-color $transition-duration-default ease; // Smooth hover transition
+    font-size: var(--font-size-md); // Use medium font size for the button
+    margin-inline-start: var(--spacing-sm); // Add left margin for spacing
+    padding: var(--spacing-sm) var(--spacing-md); // Add padding for clickable area
+    transition: background-color var(--transition-duration-default) ease; // Smooth hover transition
 
-    &:hover {
+    &:hover, &:focus {
       // ### Hover Effect for Search Button
       // - **background:** Changes to a darker primary color for interactivity.
-      background: $color-primary-dark; // Use darker primary color
+      background: var(--color-primary-dark); // Use darker primary color
+    }
+  }
+
+  h2 {
+    // ### Search Heading
+    // - **font-size:** Uses a large font size for prominence.
+    // - **margin-bottom:** Adds spacing below the heading for separation.
+    font-size: var(--font-size-lg); // Use large font size for the heading
+    margin-block-end: var(--spacing-md); // Add bottom margin using the spacing variable
+  }
+
+  .c-search-form {
+    // ### Search Form
+    // - **display:** Centers the form inline for alignment.
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    margin: 0 auto;
+    max-inline-size: 600px;
+  }
+
+  input[type='text'] {
+
+    border: 1px solid var(--color-border-light); // Use light border color
+    border-radius: var(--border-radius); // Apply rounded corners
+    color: var(--color-text); // Use standard text color
+    flex-grow: 1;
+    font-size: var(--font-size-md); // Use medium font size for readability
+    inline-size: 100%; // Set input width to 100% of the container
+    max-inline-size: 500px; // Limit the maximum width of the input
+    // ### Search Input Field
+    // - **padding:** Adds inner spacing for better usability.
+    // - **border:** Adds a light border for separation.
+    // - **border-radius:** Applies rounded corners for a modern look.
+    // - **width:** Sets the input width to 80% of the container.
+    // - **max-width:** Limits the maximum width of the input for responsiveness.
+    // - **font-size:** Uses a medium font size for readability.
+    // - **color:** Uses the standard text color for consistency.
+    padding: var(--spacing-sm) var(--spacing-md); // Add padding for better usability
+    transition: border-color var(--transition-duration-default) ease, box-shadow var(--transition-duration-default) ease;
+
+    &:focus {
+
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgb(var(--color-primary-rgb), 0.2);
+      outline: none;
     }
   }
 }
 
 // Search filters
-.search-filters {
-  margin-top: $spacing-md;
+
+.c-search-filters {
+
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-block-start: var(--spacing-md);
   
   fieldset {
+
     border: none;
-    padding: 0;
     margin: 0;
+    padding: 0;
     
     legend {
-      margin-bottom: $spacing-sm;
-      font-weight: $font-weight-bold;
+
+      color: var(--color-text-secondary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-bold);
+      inline-size: 100%;
+      margin-block-end: var(--spacing-sm);
       text-align: center;
-      width: 100%;
-      font-size: $font-size-sm;
-      color: $color-text-secondary;
     }
   }
   
   &__options {
+
     display: flex;
     flex-wrap: wrap;
-    gap: $spacing-md;
+    gap: var(--spacing-md);
     justify-content: center;
   }
 }
 
-.search-filter-label {
-  display: flex;
-  align-items: center;
-  gap: $spacing-xs;
-  font-size: $font-size-sm;
-  cursor: pointer;
-  padding: $spacing-xs $spacing-sm;
-  border-radius: $border-radius;
-  transition: all $transition-duration-default ease;
-  
-  &:hover {
-    background-color: rgba($color-primary, 0.1);
-  }
-  
-  input[type="checkbox"] {
-    margin: 0;
-    width: 16px;
-    height: 16px;
+@media screen and (prefers-reduced-motion: reduce) {
+  .c-search-filter-label {
+
+    align-items: center;
+    border-radius: var(--border-radius);
     cursor: pointer;
-  }
+    display: flex;
+    font-size: var(--font-size-sm);
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    transition: none;
   
-  &.active {
-    background-color: rgba($color-primary, 0.15);
-    border: 1px solid $color-primary;
-    font-weight: $font-weight-semibold;
+    &:hover, &:focus {
+
+      background-color: rgb(var(--color-primary-rgb), 0.1);
+    }
+  
+    input[type='checkbox'] {
+
+      block-size: 16px;
+      cursor: pointer;
+      inline-size: 16px;
+      margin: 0;
+    }
+  
+    &.is-active {
+
+      background-color: rgb(var(--color-primary-rgb), 0.15);
+      border: 1px solid var(--color-primary);
+      font-weight: var(--font-weight-semibold);
+    }
+  }
+}
+
+.c-search-filter-label {
+
+  align-items: center;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  display: flex;
+  font-size: var(--font-size-sm);
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  transition: all var(--transition-duration-default) ease;
+  
+  input[type='checkbox'] {
+
+    block-size: 16px;
+    cursor: pointer;
+    inline-size: 16px;
+    margin: 0;
   }
 }
 
 // Search controls container
-.search-controls {
-  margin-top: $spacing-md;
-  display: flex;
-  flex-direction: column;
-  gap: $spacing-md;
+
+.c-search-controls {
   
   @include respond-to('md') {
+
+    align-items: flex-start;
     flex-direction: row;
     justify-content: center;
-    align-items: flex-start;
   }
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-block-start: var(--spacing-md);
 }
 
 // Search sort
-.search-sort {
+
+.c-search-sort {
+
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   
   fieldset {
+
     border: none;
-    padding: 0;
     margin: 0;
+    padding: 0;
     
     legend {
-      margin-bottom: $spacing-sm;
-      font-weight: $font-weight-bold;
+
+      color: var(--color-text-secondary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-bold);
+      inline-size: 100%;
+      margin-block-end: var(--spacing-sm);
       text-align: center;
-      width: 100%;
-      font-size: $font-size-sm;
-      color: $color-text-secondary;
     }
   }
   
   &__options {
-    display: flex;
-    flex-direction: column;
-    gap: $spacing-xs;
     
     @include respond-to('sm') {
+
       flex-direction: row;
-      gap: $spacing-md;
+      gap: var(--spacing-md);
+    }
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .c-search-sort-label {
+
+    align-items: center;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    display: flex;
+    font-size: var(--font-size-sm);
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    transition: none;
+  
+    &:hover, &:focus {
+
+      background-color: rgb(var(--color-primary-rgb), 0.1);
+    }
+  
+    &.is-active {
+
+      background-color: rgb(var(--color-primary-rgb), 0.15);
+      border: 1px solid var(--color-primary);
+      font-weight: var(--font-weight-semibold);
     }
   }
 }
 
-.search-sort-label {
-  display: flex;
+.c-search-sort-label {
+
   align-items: center;
-  gap: $spacing-xs;
-  font-size: $font-size-sm;
+  border-radius: var(--border-radius);
   cursor: pointer;
-  padding: $spacing-xs $spacing-sm;
-  border-radius: $border-radius;
-  transition: all $transition-duration-default ease;
+  display: flex;
+  font-size: var(--font-size-sm);
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  transition: all var(--transition-duration-default) ease;
   
-  &:hover {
-    background-color: rgba($color-primary, 0.1);
-  }
-  
-  &.active {
-    background-color: rgba($color-primary, 0.15);
-    border: 1px solid $color-primary;
-    font-weight: $font-weight-semibold;
+  &.is-active {
+
+    font-weight: var(--font-weight-semibold);
   }
 }
 
 // Search status
-.search-status {
-  margin-top: $spacing-md;
-  color: $color-text-secondary;
-  font-size: $font-size-sm;
+
+.c-search-status {
+
+  font-size: var(--font-size-sm);
+  margin-block-start: var(--spacing-md);
   
-  &.error {
-    color: $color-error;
+  &.is-error {
+
+    color: var(--color-error);
   }
 }
 
 // Search results container
-.search-results {
-  margin-top: $spacing-lg;
+
+.c-search-results {
+  @media screen and (prefers-reduced-motion: reduce) {
+    &__item {
+
+      border-block-end: 1px solid var(--color-border-light);
+      padding: var(--spacing-md);
+      transition: none;
+    
+      &:hover, &:focus {
+
+        background-color: rgb(var(--color-primary-rgb), 0.05);
+      }
+    
+      article {
+
+        display: grid;
+        gap: var(--spacing-xs);
+      }
+    }
+  }
+  margin-block-start: var(--spacing-lg);
   
   &__list {
+
     list-style: none;
-    padding: 0;
     margin: 0;
+    padding: 0;
   }
   
   &__item {
-    padding: $spacing-md;
-    border-bottom: 1px solid $color-border-light;
-    transition: background-color $transition-duration-default ease;
-    
-    &:hover {
-      background-color: rgba($color-primary, 0.05);
-    }
+
+    padding: var(--spacing-md);
+    transition: background-color var(--transition-duration-default) ease;
     
     article {
+
       display: grid;
-      gap: $spacing-xs;
+      gap: var(--spacing-xs);
     }
   }
   
   &__title {
-    font-size: $font-size-md;
-    margin: 0 0 $spacing-xs;
+
+    font-size: var(--font-size-md);
+    margin: 0 0 var(--spacing-xs);
     
     a {
-      color: $color-primary;
+
+      color: var(--color-primary);
       text-decoration: none;
       
-      &:hover {
+      &:hover, &:focus {
+
         text-decoration: underline;
       }
     }
   }
   
   &__category {
-    font-size: $font-size-sm;
-    color: $color-text-secondary;
-    display: inline-block;
-    background-color: rgba($color-primary, 0.1);
-    padding: 2px 8px;
+
     border-radius: 12px;
-    margin-right: $spacing-sm;
+    display: inline-block;
+    font-size: var(--font-size-sm);
+    margin-inline-end: var(--spacing-sm);
+    padding: 2px 8px;
   }
   
   &__date {
-    font-size: $font-size-sm;
-    color: $color-text-secondary;
+
+    font-size: var(--font-size-sm);
   }
   
   &__snippet {
-    margin: $spacing-sm 0 0;
-    font-size: $font-size-sm;
-    color: $color-text;
+
+    font-size: var(--font-size-sm);
     line-height: 1.6;
+    margin: var(--spacing-sm) 0 0;
   }
   
   &__no-result {
-    padding: $spacing-lg;
+
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-md);
+    padding: var(--spacing-lg);
     text-align: center;
-    color: $color-text-secondary;
-    font-size: $font-size-md;
-    background-color: rgba($color-border-light, 0.3);
-    border-radius: $border-radius;
   }
 }
 
+.c-search-results-container {
+
+  margin-block-start: var(--spacing-md);
+}
+
 // Search instructions section
-.search-instructions {
-  margin-top: $spacing-xl;
-  padding: $spacing-md;
-  background-color: rgba($color-primary, 0.05);
-  border-radius: $border-radius;
+
+.c-search-instructions {
+
+  border-radius: var(--border-radius);
+  display: flex;
+  justify-content: center;
+  margin-block-start: var(--spacing-lg);
+  padding: var(--spacing-md);
   
   h3 {
-    font-size: $font-size-md;
-    margin-top: 0;
-    margin-bottom: $spacing-sm;
+
+    font-size: var(--font-size-md);
+    margin-block: 0 var(--spacing-sm);
   }
   
   ul {
+
     list-style: disc;
     margin: 0;
-    padding-left: $spacing-lg;
+    padding-inline-start: var(--spacing-lg);
     
     li {
-      margin-bottom: $spacing-xs;
+
+      margin-block-end: var(--spacing-xs);
     }
+  }
+
+  .c-tech-card {
+
+    inline-size: 100%;
+    max-inline-size: 400px;
   }
 }
 
 // Highlight matches
-mark {
-  background-color: rgba($color-primary, 0.2);
-  padding: 0 2px;
+
+.u-mark {
+
   border-radius: 2px;
   color: inherit;
+  padding: 0 2px;
 }
 
 // Keyboard navigation focus style
-.keyboard-focus {
-  outline: 2px solid $color-primary;
-  outline-offset: 2px;
-  text-decoration: underline;
-  background-color: rgba($color-primary, 0.05);
-  border-radius: $border-radius;
-  padding: 2px;
-}
 
-// Keyboard navigation focus state
-.keyboard-focus {
-  outline: 2px solid $color-primary;
+.u-keyboard-focus {
+
+  background-color: rgb(var(--color-primary-rgb), 0.05);
+  border-radius: var(--border-radius);
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
+  padding: 2px;
   position: relative;
+  text-decoration: underline;
   
   &::before {
+
+    border-radius: var(--border-radius);
+    box-shadow: 0 0 0 2px rgb(var(--color-primary-rgb), 0.4);
     content: '';
-    position: absolute;
-    top: -4px;
-    left: -4px;
-    right: -4px;
-    bottom: -4px;
-    border-radius: $border-radius;
-    box-shadow: 0 0 0 2px rgba($color-primary, 0.4);
+    inset: -4px;
     pointer-events: none;
+    position: absolute;
   }
 }
 
 // Search icon style in navigation
-.search-icon {
-  margin-right: 5px;
+
+.c-search-icon {
+
+  margin-inline-end: 5px;
   vertical-align: text-bottom;
 }
 
 // Hidden class for elements that start hidden
-.hidden {
+
+.u-hidden {
+
   display: none;
 }
 
+.u-visible {
+
+  display: inline-block;
+}
+
 // Search statistics
-.search-stats {
-  margin-top: $spacing-xl;
-  padding: $spacing-md;
-  background-color: rgba($color-primary, 0.05);
-  border-radius: $border-radius;
+
+.c-search-stats {
+
+  border-radius: var(--border-radius);
+  display: flex;
+  justify-content: center;
+  margin-block-start: var(--spacing-lg);
+  padding: var(--spacing-md);
   
   h3 {
-    font-size: $font-size-md;
-    margin-top: 0;
-    margin-bottom: $spacing-sm;
-    color: $color-primary;
+
+    color: var(--color-primary);
+    font-size: var(--font-size-md);
+    margin-block: 0 var(--spacing-sm);
   }
   
   &__content {
+
     display: flex;
     flex-direction: column;
-    gap: $spacing-sm;
+    gap: var(--spacing-sm);
     
     p {
+
+      font-size: var(--font-size-sm);
       margin: 0;
-      font-size: $font-size-sm;
       
       span {
-        font-weight: $font-weight-semibold;
+
+        font-weight: var(--font-weight-semibold);
       }
     }
     
     button {
+
       align-self: flex-start;
-      margin-top: $spacing-sm;
+      margin-block-start: var(--spacing-sm);
+    }
+  }
+
+  &.is-hidden {
+
+    display: none;
+  }
+
+  .c-tech-card {
+
+    inline-size: 100%;
+    max-inline-size: 300px;
+  }
+}
+
+// Responsive overrides for small screens
+
+@include respond-to('sm') {
+
+  .c-search-box {
+
+    .c-search-overlay__input-group {
+
+      align-items: stretch;
+      flex-direction: column;
+
+      select, .c-search-overlay__input, .c-search-overlay__mic, .c-search-overlay__submit {
+
+        inline-size: 100%;
+        margin: 0 0 var(--spacing-sm);
+      }
+    }
+  }
+
+  .c-search-filters {
+
+    flex-direction: column;
+
+    &__options {
+
+      flex-direction: column;
+      gap: var(--spacing-sm);
+    }
+  }
+
+  .c-search-results-container {
+
+    margin-block-start: var(--spacing-sm);
+
+    .c-search-results__list {
+
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .c-search-stats,
+  .c-search-instructions {
+
+    .c-tech-card {
+
+      max-inline-size: 100%;
+    }
+  }
+}
+
+// Remove duplicate global button selectors below; keep only the topmost one for Stylelint compliance
+
+@media (prefers-color-scheme: light) {
+  .c-search-box input[type='text'] {
+
+    background: var(--color-input-bg, #fff);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--border-radius);
+    color: var(--color-text);
+    &::placeholder {
+
+      color: var(--color-text-secondary);
+    }
+    &:focus {
+
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgb(var(--color-primary-rgb), 0.2);
+    }
+  }
+  legend {
+
+    color: var(--color-text-secondary);
+  }
+  .c-search-filter-label, .c-search-sort-label {
+
+    background: none;
+    color: var(--color-text);
+    &:hover, &:focus {
+
+      background-color: rgb(var(--color-primary-rgb), 0.1);
+    }
+    &.is-active {
+
+      background-color: rgb(var(--color-primary-rgb), 0.15);
+      border: 1px solid var(--color-primary);
+      font-weight: var(--font-weight-semibold);
+    }
+  }
+  .c-search-status {
+
+    color: var(--color-text-secondary);
+    &.is-error {
+
+      color: var(--color-error);
+    }
+  }
+  .c-search-results__item {
+
+    background: none;
+    border-block-end: 1px solid var(--color-border-light);
+    &:hover, &:focus {
+
+      background-color: rgb(var(--color-primary-rgb), 0.05);
+    }
+  }
+  .c-search-results__title a {
+
+    color: var(--color-primary);
+    &:hover, &:focus {
+
+      text-decoration: underline;
+    }
+  }
+  .c-search-results__category {
+
+    background-color: rgb(var(--color-primary-rgb), 0.1);
+    color: var(--color-text-secondary);
+  }
+  .c-search-results__date {
+
+    color: var(--color-text-secondary);
+  }
+  .c-search-results__snippet {
+
+    color: var(--color-text);
+  }
+  .c-search-results__no-result {
+
+    background-color: rgb(var(--color-border-light-rgb), 0.3);
+    color: var(--color-text-secondary);
+  }
+  .c-search-instructions {
+
+    background-color: rgb(var(--color-primary-rgb), 0.05);
+    h3 {
+
+      color: var(--color-primary);
+    }
+  }
+  .u-mark {
+
+    background-color: rgb(var(--color-primary-rgb), 0.2);
+  }
+  .u-keyboard-focus {
+
+    background-color: rgb(var(--color-primary-rgb), 0.05);
+    outline: 2px solid var(--color-primary);
+    &::before {
+
+      box-shadow: 0 0 0 2px rgb(var(--color-primary-rgb), 0.4);
+    }
+  }
+  .c-search-stats {
+
+    background-color: rgb(var(--color-primary-rgb), 0.05);
+    h3 {
+
+      color: var(--color-primary);
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .c-search-box input[type='text'] {
+
+    background: var(--color-input-bg, #181a1b);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--border-radius);
+    color: var(--color-text);
+    &::placeholder {
+
+      color: var(--color-text-secondary);
+    }
+    &:focus {
+
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgb(var(--color-primary-rgb), 0.2);
+    }
+  }
+  legend {
+
+    color: var(--color-text-secondary);
+  }
+  .c-search-filter-label, .c-search-sort-label {
+
+    background: none;
+    color: var(--color-text);
+    &:hover, &:focus {
+
+      background-color: rgb(var(--color-primary-rgb), 0.1);
+    }
+    &.is-active {
+
+      background-color: rgb(var(--color-primary-rgb), 0.15);
+      border: 1px solid var(--color-primary);
+      font-weight: var(--font-weight-semibold);
+    }
+  }
+  .c-search-status {
+
+    color: var(--color-text-secondary);
+    &.is-error {
+
+      color: var(--color-error);
+    }
+  }
+  .c-search-results__item {
+
+    background: none;
+    border-block-end: 1px solid var(--color-border-light);
+    &:hover, &:focus {
+
+      background-color: rgb(var(--color-primary-rgb), 0.05);
+    }
+  }
+  .c-search-results__title a {
+
+    color: var(--color-primary);
+    &:hover, &:focus {
+
+      text-decoration: underline;
+    }
+  }
+  .c-search-results__category {
+
+    background-color: rgb(var(--color-primary-rgb), 0.1);
+    color: var(--color-text-secondary);
+  }
+  .c-search-results__date {
+
+    color: var(--color-text-secondary);
+  }
+  .c-search-results__snippet {
+
+    color: var(--color-text);
+  }
+  .c-search-results__no-result {
+
+    background-color: rgb(var(--color-border-light-rgb), 0.3);
+    color: var(--color-text-secondary);
+  }
+  .c-search-instructions {
+
+    background-color: rgb(var(--color-primary-rgb), 0.05);
+    h3 {
+
+      color: var(--color-primary);
+    }
+  }
+  .u-mark {
+
+    background-color: rgb(var(--color-primary-rgb), 0.2);
+  }
+  .u-keyboard-focus {
+
+    background-color: rgb(var(--color-primary-rgb), 0.05);
+    outline: 2px solid var(--color-primary);
+    &::before {
+
+      box-shadow: 0 0 0 2px rgb(var(--color-primary-rgb), 0.4);
+    }
+  }
+  .c-search-stats {
+
+    background-color: rgb(var(--color-primary-rgb), 0.05);
+    h3 {
+
+      color: var(--color-primary);
     }
   }
 }

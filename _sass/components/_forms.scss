@@ -4,11 +4,74 @@
 // SASS variables are used for colors, spacing, and typography to ensure maintainability and easy updates.
 // Referenced variables are defined in the settings folder for consistency across the project.
 
+// Define color custom properties for light and dark mode
+:root {
+  --color-primary: #{$color-primary};
+  --color-secondary: #{$color-secondary};
+  --color-text: #{$color-text};
+  --background-color-light: #{$background-color-light};
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary: #{$color-primary-dark};
+    --color-secondary: #{$color-secondary-dark};
+    --color-text: #{$color-white};
+    --background-color-light: #{$background-color-dark};
+  }
+}
+
 // ### Form Group
 // - **.c-form-group:** A wrapper for form elements to provide consistent spacing.
 // - **margin-bottom:** Adds spacing below each form group for better layout separation.
+
 .c-form-group {
-  margin-bottom: $spacing-md; // Add spacing below each form group
+  // --- Color, border, and box-shadow styles must be inside color-scheme media queries ---
+  @media (prefers-color-scheme: light) {
+    input,
+    textarea,
+    select {
+
+      background: var(--background-color-light);
+      border-color: var(--color-secondary);
+      border-radius: $border-radius;
+      border-style: solid;
+      border-width: 1px;
+      color: var(--color-text);
+      font-size: $font-size-sm;
+      inline-size: 100%;
+      padding: $spacing-sm;
+      &:focus {
+
+        border-color: var(--color-primary); // Highlight border with primary color
+        box-shadow: 0 0 5px var(--color-primary); // Add a subtle shadow for focus indication
+        outline: none; // Remove default browser outline
+      }
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    input,
+    textarea,
+    select {
+
+      background: var(--background-color-light);
+      border-color: var(--color-secondary);
+      border-radius: $border-radius;
+      border-style: solid;
+      border-width: 1px;
+      color: var(--color-text);
+      font-size: $font-size-sm;
+      inline-size: 100%;
+      padding: $spacing-sm;
+      &:focus {
+
+        border-color: var(--color-primary-dark); // Highlight border with dark primary color
+        box-shadow: 0 0 5px var(--color-primary-dark); // Add a subtle shadow for focus indication
+        outline: none; // Remove default browser outline
+      }
+    }
+  }
+  margin-block-end: $spacing-md; // Add spacing below each form group
 
   // ### Form Labels
   // - **&__label:** Styles for form labels.
@@ -16,44 +79,32 @@
   // - **font-size:** Uses a small font size for readability.
   // - **font-weight:** Makes labels bold for better visibility.
   // - **margin-bottom:** Adds spacing below the label for separation.
+
   &__label {
+
     display: block; // Ensure labels are displayed on their own line
     font-size: $font-size-sm; // Use small font size for labels
     font-weight: bold; // Make labels bold for better visibility
-    margin-bottom: $spacing-sm; // Add spacing below the label
+    margin-block-end: $spacing-sm; // Add spacing below the label
   }
 
-  // ### Input, Textarea, and Select Fields
-  // - **input, textarea, select:** Base styles for form fields.
-  // - **width:** Ensures fields take up the full width of the parent container.
-  // - **padding:** Adds inner padding for better usability.
-  // - **border:** Adds a border using the secondary color.
-  // - **border-radius:** Applies rounded corners for a modern design.
-  // - **font-size:** Uses a small font size for input text.
-  // - **color:** Sets the text color to the standard text color.
-  // - **focus styles:** Adds visual feedback for focus state.
-  input,
-  textarea,
-  select {
-    width: 100%; // Full width to match the parent container
-    padding: $spacing-sm; // Add inner padding for better usability
-    border: 1px solid $color-secondary; // Use secondary color for the border
-    border-radius: $border-radius; // Apply rounded corners for modern design
-    font-size: $font-size-sm; // Use small font size for input text
-    color: $color-text; // Use standard text color
-
-    &:focus {
-      // Focus styles for accessibility and interactivity
-      outline: none; // Remove default browser outline
-      border-color: $color-primary; // Highlight border with primary color
-      box-shadow: 0 0 5px $color-primary; // Add a subtle shadow for focus indication
-    }
-  }
-
-  // ### Textarea
-  // - **textarea:** Additional styles for textareas.
-  // - **resize:** Allows vertical resizing only to maintain layout consistency.
+  // --- Move textarea rule above more specific selectors to resolve specificity ---
   textarea {
+
     resize: vertical; // Allow vertical resizing only
   }
 }
+
+/*
+  NOTE: Ensure the following CSS custom properties are defined at :root for both color schemes, e.g.
+  :root {
+    --color-primary: #yourPrimaryColor;
+    --color-primary-dark: #yourPrimaryDarkColor;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-primary: #yourPrimaryColorDark;
+      --color-primary-dark: #yourPrimaryDarkColorDark;
+    }
+  }
+*/

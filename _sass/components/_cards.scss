@@ -4,7 +4,7 @@
 // SASS variables are used for colors, spacing, and typography to ensure maintainability and easy updates.
 // Referenced variables are defined in the settings folder for consistency across the project.
 
-@import '../utilities/mixins';
+@import '../tools/mixins';
 
 // ### Card Container
 // - **.c-card:** The main container for the card component.
@@ -14,17 +14,45 @@
 // - **box-shadow:** Adds depth to the card with a small shadow.
 // - **overflow:** Ensures content stays within the card boundaries.
 // - **transition:** Enables smooth hover effects.
+
 .c-card {
-  background: var(--color-background); // Use background color variable from _colors.scss
-  border: 1px solid var(--color-secondary); // Use secondary color for the border
+
   @include radius($border-radius); // Apply rounded corners using the border-radius variable
-  @include shadow-sm; // Apply a small shadow for depth
-  overflow: hidden; // Prevent content overflow
+
+  @include shadow-sm (); // Apply a small shadow for depth
+
   @include transition(box-shadow, transform); // Add transform transition
 
-  &:hover {
+  @media (prefers-color-scheme: dark) {
+    &__header {
+
+      background-color: var(--color-primary-dark);
+      color: var(--color-white);
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    &__body {
+
+      color: var(--color-white);
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    &__footer {
+
+      background-color: var(--color-secondary-dark);
+      color: var(--color-white);
+    }
+  }
+  background: var(--color-background); // Use background color variable from _colors.scss
+  border: 1px solid var(--color-secondary); // Use secondary color for the border
+  overflow: hidden; // Prevent content overflow
+
+  &:hover, &:focus {
     // Hover effect for the card
-    @include shadow-md; // Deeper shadow on hover
+
+    @include shadow-md (); // Deeper shadow on hover
     transform: translateY(-4px); // Lift card on hover
   }
 
@@ -35,12 +63,14 @@
   // - **font-weight:** Makes the header text bold.
   // - **background-color:** Uses the primary color for the header background.
   // - **color:** Sets the text color to white for contrast.
+
   &__header {
-    padding: $spacing-md; // Apply medium spacing for padding
-    font-size: $font-size-md; // Use medium font size for the header text
-    font-weight: bold; // Make the header text bold
+
     background-color: var(--color-primary); // Use primary color for the header background
     color: var(--color-white); // White text for contrast
+    font-size: $font-size-md; // Use medium font size for the header text
+    font-weight: bold; // Make the header text bold
+    padding: $spacing-md; // Apply medium spacing for padding
   }
 
   // ### Card Body
@@ -48,10 +78,12 @@
   // - **padding:** Adds inner spacing for better readability.
   // - **font-size:** Uses small font size for the body text.
   // - **color:** Sets the text color to the standard text color.
+
   &__body {
-    padding: $spacing-md; // Apply medium spacing for padding
-    font-size: $font-size-sm; // Use small font size for the body text
+
     color: var(--color-text); // Use standard text color
+    font-size: $font-size-sm; // Use small font size for the body text
+    padding: $spacing-md; // Apply medium spacing for padding
   }
 
   // ### Card Footer
@@ -60,10 +92,12 @@
   // - **background-color:** Uses the secondary color for the footer background.
   // - **color:** Sets the text color to white for contrast.
   // - **text-align:** Centers the footer content.
+
   &__footer {
-    padding: $spacing-sm; // Apply small spacing for padding
+
     background-color: var(--color-secondary); // Use secondary color for the footer background
     color: var(--color-white); // White text for contrast
+    padding: $spacing-sm; // Apply small spacing for padding
     text-align: center; // Center-align the footer content
   }
 }
@@ -71,10 +105,11 @@
 // ### Card Base Placeholder
 // Reusable definition for card-like components (box-shadow, border-radius, padding, transition)
 %card-base {
+
   background: var(--color-background-light);
-  color: var(--color-text);
   border-radius: $border-radius-md;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 16px rgb(0 0 0 / 0.1);
+  color: var(--color-text);
   padding: $spacing-lg $spacing-md;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }

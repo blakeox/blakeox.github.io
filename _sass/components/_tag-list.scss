@@ -4,16 +4,41 @@
 // SASS variables are used for colors, spacing, typography, and border-radius to ensure consistency and easy updates.
 
 .c-tag-list {
+
+  display: flex; // Arrange tags in a horizontal row
+  flex-wrap: wrap; // Allow tags to wrap to the next line if necessary
+  gap: $spacing-sm; // Add spacing between tags using a spacing variable
   // ### Tag List Container
   // - **display:** Uses flexbox for layout to arrange tags in a horizontal row.
   // - **flex-wrap:** Allows tags to wrap to the next line if necessary for responsiveness.
   // - **gap:** Adds spacing between tags for better readability.
   list-style: none; // Remove default list styling
-  padding: 0; // Remove default padding
   margin: 0.5rem 0 0; // Add top margin for spacing
-  display: flex; // Arrange tags in a horizontal row
-  flex-wrap: wrap; // Allow tags to wrap to the next line if necessary
-  gap: $spacing-sm; // Add spacing between tags using a spacing variable
+  padding: 0; // Remove default padding@media screen and (prefers-reduced-motion: reduce) {
+    &__item {
+      // ### Individual Tag Styles
+      // - **background-color:** Uses the secondary color for the tag background.
+      // - **color:** Uses white text for contrast against the background.
+      // - **padding:** Adds inner spacing for better readability and usability.
+      // - **border-radius:** Applies small rounded corners for a modern look.
+      // - **font-size:** Uses a small font size to keep tags compact.
+      // - **text-transform:** Capitalizes the first letter of each tag for consistency.
+      // - **transition:** Adds smooth hover effects for background and text color changes.
+      background-color: $color-secondary; // Use secondary color for the background
+      border-radius: $border-radius-sm; // Apply small rounded corners
+      color: $color-white; // Use white text for contrast
+      font-size: $font-size-xs; // Use small font size for tags
+      padding: $spacing-xs $spacing-sm; // Add padding for better readability
+      text-transform: capitalize; // Capitalize the first letter of each tag
+      transition: none; // Smooth transition for hover effects
+
+      &:hover, &:focus {
+        // Hover effect for tags
+        background-color: $color-primary-dark; // Use a darker shade of the secondary color
+        color: $color-white; // Ensure text remains readable
+      }
+    }
+  }
 
   &__item {
     // ### Individual Tag Styles
@@ -25,14 +50,14 @@
     // - **text-transform:** Capitalizes the first letter of each tag for consistency.
     // - **transition:** Adds smooth hover effects for background and text color changes.
     background-color: $color-secondary; // Use secondary color for the background
-    color: $color-white; // Use white text for contrast
-    padding: $spacing-xs $spacing-sm; // Add padding for better readability
     border-radius: $border-radius-sm; // Apply small rounded corners
+    color: $color-white; // Use white text for contrast
     font-size: $font-size-xs; // Use small font size for tags
+    padding: $spacing-xs $spacing-sm; // Add padding for better readability
     text-transform: capitalize; // Capitalize the first letter of each tag
     transition: background-color 0.3s ease, color 0.3s ease; // Smooth transition for hover effects
 
-    &:hover {
+    &:hover, &:focus {
       // Hover effect for tags
       background-color: $color-primary-dark; // Use a darker shade of the secondary color
       color: $color-white; // Ensure text remains readable
@@ -40,15 +65,18 @@
   }
 
   // Additional pill-style modifiers if needed
+
   &--pill {
+
     &__item {
-      display: inline-block;
-      background-color: rgba($color-primary, 0.1);
-      color: $color-primary;
-      padding: $spacing-xs $spacing-sm;
+
+      background-color: rgb($color-primary 0.1);
       border-radius: 9999px;
+      color: $color-primary;
+      display: inline-block;
       font-size: $font-size-sm;
       margin: $spacing-xs $spacing-sm 0 0;
+      padding: $spacing-xs $spacing-sm;
     }
   }
 }

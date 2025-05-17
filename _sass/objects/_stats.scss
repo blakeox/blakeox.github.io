@@ -1,0 +1,82 @@
+// ## Stats Section Styles
+// Styles for the animated counters in the About page stats section.
+
+.c-stats {
+
+  display: grid;
+  gap: $spacing-lg;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  margin: $spacing-lg 0;@media screen and (prefers-reduced-motion: reduce) {
+    &__item {
+
+      background-color: $background-color-secondary;
+      border: 1px solid $color-border-light;
+      border-radius: $border-radius-md;
+      box-shadow: 0 4px 8px rgb($color-black 0.05);
+      padding: $spacing-lg;
+      text-align: center;
+      transition: none;
+
+      &:hover, &:focus {
+
+        box-shadow: 0 8px 16px rgb($color-black 0.1);
+        transform: translateY(-6px);
+      }
+
+      &__value {
+
+        color: $color-primary;
+        display: block;
+        font-size: $font-size-xxl;
+        font-weight: $font-weight-bold;
+        letter-spacing: 0.5px;
+        margin-bottom: $spacing-xs;
+      }
+
+      &__label {
+
+        color: $color-text-secondary;
+        display: block;
+        font-size: $font-size-sm;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  &__item {
+
+    background-color: $background-color-secondary;
+    border: 1px solid $color-border-light;
+    border-radius: $border-radius-md;
+    box-shadow: 0 4px 8px rgb($color-black 0.05);
+    padding: $spacing-lg;
+    text-align: center;
+    transition: transform $transition-duration-fast ease, box-shadow $transition-duration-fast ease;
+
+    &:hover, &:focus {
+
+      box-shadow: 0 8px 16px rgb($color-black 0.1);
+      transform: translateY(-6px);
+    }
+
+    &__value {
+
+      color: $color-primary;
+      display: block;
+      font-size: $font-size-xxl;
+      font-weight: $font-weight-bold;
+      letter-spacing: 0.5px;
+      margin-bottom: $spacing-xs;
+    }
+
+    &__label {
+
+      color: $color-text-secondary;
+      display: block;
+      font-size: $font-size-sm;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+  }
+}

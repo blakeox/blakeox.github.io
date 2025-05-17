@@ -5,7 +5,9 @@ description: Search through blog posts, projects, and more to find exactly what 
 permalink: /search/
 ---
 
-<div class="tech-search-page" data-tech-theme="default">
+{% include search-overlay.html %}
+
+<div class="tech-search-page search-page" data-tech-theme="default">
   <div class="container">
     <div class="search-section">
       <div class="search-header tech-header">
@@ -20,7 +22,7 @@ permalink: /search/
       </div>
 
       <!-- Search Bar (matches overlay style) -->
-      <div class="tech-search-box">
+      <div class="search-box">
         <form class="search-form">
           <div class="c-search-overlay__input-group">
             <select class="c-search-overlay__filter" aria-label="Filter">
@@ -42,45 +44,47 @@ permalink: /search/
 
       <!-- Filters, Results, and Analytics -->
       <div class="search-results">
-        <div class="search-filters">
-          <div class="search-filter-group">
-            <span class="filter-group-label">Category</span>
-            <div class="search-category-filters">
-              <button type="button" class="category-filter-btn active" data-category="all" aria-pressed="true">
-                <span class="filter-icon"></span>
-                <span class="filter-text">All</span>
-                <span class="filter-count">0</span>
-              </button>
-              <button type="button" class="category-filter-btn" data-category="blog" aria-pressed="false">
-                <span class="filter-icon"></span>
-                <span class="filter-text">Blog</span>
-                <span class="filter-count">0</span>
-              </button>
-              <button type="button" class="category-filter-btn" data-category="project" aria-pressed="false">
-                <span class="filter-icon"></span>
-                <span class="filter-text">Projects</span>
-                <span class="filter-count">0</span>
-              </button>
-              <button type="button" class="category-filter-btn" data-category="page" aria-pressed="false">
-                <span class="filter-icon"></span>
-                <span class="filter-text">Pages</span>
-                <span class="filter-count">0</span>
-              </button>
-              <span class="search-filters-loading" aria-hidden="true"></span>
+        <div class="search-controls">
+          <div class="search-filters">
+            <div class="search-filter-group">
+              <span class="filter-group-label">Category</span>
+              <div class="search-category-filters">
+                <button type="button" class="category-filter-btn active" data-category="all" aria-pressed="true">
+                  <span class="filter-icon"></span>
+                  <span class="filter-text">All</span>
+                  <span class="filter-count">0</span>
+                </button>
+                <button type="button" class="category-filter-btn" data-category="blog" aria-pressed="false">
+                  <span class="filter-icon"></span>
+                  <span class="filter-text">Blog</span>
+                  <span class="filter-count">0</span>
+                </button>
+                <button type="button" class="category-filter-btn" data-category="project" aria-pressed="false">
+                  <span class="filter-icon"></span>
+                  <span class="filter-text">Projects</span>
+                  <span class="filter-count">0</span>
+                </button>
+                <button type="button" class="category-filter-btn" data-category="page" aria-pressed="false">
+                  <span class="filter-icon"></span>
+                  <span class="filter-text">Pages</span>
+                  <span class="filter-count">0</span>
+                </button>
+                <span class="search-filters-loading" aria-hidden="true"></span>
+              </div>
             </div>
-          </div>
 
-          <div class="search-sort-group">
-            <span class="sort-group-label">Sort by</span>
-            <div class="search-sort-options">
-              <label class="search-sort-label active">
-                <input type="radio" name="sort" class="search-sort-option" value="relevance" checked>
-                <span class="sort-text">Relevance</span>
-              </label>
-              <label class="search-sort-label">
-                <input type="radio" name="sort" class="search-sort-option" value="date">
-                <span class="sort-text">Date</span>
-              </label>
+            <div class="search-sort">
+              <span class="sort-group-label">Sort by</span>
+              <div class="search-sort-options">
+                <label class="search-sort-label active">
+                  <input type="radio" name="sort" class="search-sort-option" value="relevance" checked>
+                  <span class="sort-text">Relevance</span>
+                </label>
+                <label class="search-sort-label">
+                  <input type="radio" name="sort" class="search-sort-option" value="date">
+                  <span class="sort-text">Date</span>
+                </label>
+              </div>
             </div>
           </div>
         </div>
@@ -95,7 +99,7 @@ permalink: /search/
     </div>
 
     <!-- Basic Search Stats Card (simplified) -->
-    <div class="search-stats hidden">
+    <div class="search-stats" aria-hidden="true">
       <div class="tech-card">
         <div class="card-header">
           <h3>Your Search Activity</h3>
@@ -113,7 +117,7 @@ permalink: /search/
       </div>
     </div>
 
-    <div class="search-tips">
+    <div class="search-instructions">
       <div class="tech-card">
         <div class="card-header">
           <h3>Search Tips</h3>
@@ -142,21 +146,6 @@ permalink: /search/
 <script src="/assets/js/tech-settings.js" defer></script>
 <script src="/assets/js/category-filters.js" defer></script>
 <script src="/assets/js/tech-search-previews.js" defer></script>
-
-<style>
-  .tech-key {
-    display: inline-block;
-    padding: 3px 8px;
-    background: rgba(33, 150, 243, 0.1);
-    border: 1px solid var(--tech-accent-color, #2196f3);
-    border-radius: 4px;
-    color: var(--tech-accent-color, #2196f3);
-    font-family: monospace;
-    font-size: 0.9em;
-    box-shadow: 0 0 5px var(--tech-glow-color, rgba(33, 150, 243, 0.3));
-    margin: 0 2px;
-  }
-</style>
 
 <script>
   // Initialize all modular tech search components
@@ -203,7 +192,7 @@ permalink: /search/
         searchInputSelector: '#search-input',
         resultsContainerSelector: '.search-results__list',
         statusElementSelector: '#search-status',
-        searchBoxSelector: '.tech-search-box',
+        searchBoxSelector: '.search-box',
         searchFormSelector: '.search-form',
         resultItemClass: 'search-results__item',
         // Pass the initial query from URL
@@ -228,7 +217,7 @@ permalink: /search/
     // Initialize search analytics
     if (window.TechSearchAnalytics) {
       window.TechSearchAnalytics.init({
-        analyticsContainerSelector: '.search-analytics'
+        analyticsContainerSelector: '.search-stats'
       });
     }
     

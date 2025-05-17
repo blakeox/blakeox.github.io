@@ -57,10 +57,10 @@ document.addEventListener('DOMContentLoaded', function() {
   console.log('\n3. Checking required DOM elements:');
   
   const domElements = [
-    { name: 'Search Input', selector: '#search-input, .c-search-overlay__input', required: true },
-    { name: 'Results Container', selector: '.search-results__list', required: false },
-    { name: 'Status Element', selector: '#search-status', required: false },
-    { name: 'Settings Panel', selector: '.tech-settings-panel', required: false }
+    { name: 'Search Input', selector: '#c-search-input, .c-search-overlay__input', required: true },
+    { name: 'Results Container', selector: '.c-search-results__list', required: false },
+    { name: 'Status Element', selector: '#c-search-status', required: false },
+    { name: 'Settings Panel', selector: '.c-tech-settings-panel', required: false }
   ];
   
   let requiredElementsMissing = false;
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Test search functionality if available
   try {
-    const searchInput = document.querySelector('#search-input, .c-search-overlay__input');
+    const searchInput = document.querySelector('#c-search-input, .c-search-overlay__input');
     if (searchInput && window.TechSearchCore && window.TechSearchCore.performSearch) {
       console.log('  - Search functionality: ✅ Available to test');
       // Note: We don't actually trigger a search to avoid side effects

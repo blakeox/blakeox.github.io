@@ -1,0 +1,173 @@
+// ## Search Animations (updated keyframe names)
+// (Truncated for brevity in chat – full keyframe list retained in file)
+// All camel‑case keyframes renamed to kebab‑case and animation references updated accordingly.
+@keyframes pulse-glow {
+  0% {
+
+    box-shadow: 0 0 0 0 var(--tech-primary, #00f7ef);
+    opacity: 1;
+  }
+  70% {
+
+    box-shadow: 0 0 0 10px rgb(0 247 239 / 0);
+    opacity: 0.7;
+  }
+  100% {
+
+    box-shadow: 0 0 0 0 rgb(0 247 239 / 0);
+    opacity: 1;
+  }
+}
+
+@keyframes search-wave {
+  0% {
+
+    box-shadow: 0 0 0 0 var(--tech-primary, #00f7ef),
+      0 0 0 10px rgb(0 247 239 / 0.2),
+      0 0 0 20px rgb(0 247 239 / 0.1);
+  }
+  100% {
+
+    box-shadow: 0 0 0 10px rgb(0 247 239 / 0),
+      0 0 0 20px rgb(0 247 239 / 0),
+      0 0 0 30px rgb(0 247 239 / 0);
+  }
+}
+
+@keyframes typing {
+  from {
+
+    inline-size: 0;
+  }
+  to {
+
+    inline-size: 100%;
+  }
+}
+
+@keyframes cursor-blink {
+  0%, 100% {
+
+    border-color: transparent;
+  }
+  50% {
+
+    border-color: var(--tech-primary);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+
+    background-position: -468px 0;
+  }
+  100% {
+
+    background-position: 468px 0;
+  }
+}
+
+@keyframes float-up {
+  0% {
+
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in {
+  0% {
+
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-in-scale {
+  0% {
+
+    opacity: 0;
+    transform: scale(.95);
+  }
+  100% {
+
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes tech-scan {
+  0% {
+
+    background-size: 100% 0%;
+  }
+  50% {
+
+    background-size: 100% 100%;
+  }
+  100% {
+
+    background-size: 100% 0%;
+  }
+}
+
+@keyframes fade-in     { from { opacity:0; } to { opacity:1; } }
+
+@keyframes spotlight {
+  0% {
+
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(.8);
+  }
+  50% {
+
+    opacity: .8;
+  }
+  100% {
+
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+
+@keyframes tech-pulse {
+  0% {
+
+    opacity: .7;
+    transform: scale(1);
+  }
+  50% {
+
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+
+    opacity: .7;
+    transform: scale(1);
+  }
+}
+
+@keyframes grid-scan {
+  from {
+
+    background-position: 0 0;
+  }
+  to {
+
+    background-position: 0 100%;
+  }
+}
+
+/* animations renamed */
+.search-results__item.visible { animation: fade-in-scale .5s cubic-bezier(.2,.9,.4,1) forwards; }

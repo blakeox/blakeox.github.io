@@ -43,6 +43,8 @@ $ease-out: cubic-bezier(0, 0, 0.2, 1); // Ease-out for exiting elements
 // ```scss
 // @include transition(all, $transition-duration-default, $ease-in-out);
 // ```
+
 @mixin transition($property, $duration, $easing) {
+
   transition: $property $duration $easing;
 }

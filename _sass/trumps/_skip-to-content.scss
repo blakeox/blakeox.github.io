@@ -1,0 +1,74 @@
+// ## Skip to Content Link Styles
+// This file contains styles for the "Skip to content" link used for accessibility.
+// The link allows users, especially those using screen readers or keyboard navigation, to bypass repetitive navigation and jump directly to the main content.
+// The styles are designed to ensure the link is visually hidden by default but becomes visible when focused.
+// SASS variables are used for colors and spacing to ensure consistency and easy customization.
+// Referenced variables are defined in the settings folder for maintainability.
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .c-skip-to-content {
+
+    inset-block-start: -40px; // Hide the link above the viewport by default
+    inset-inline-start: 0; // Align the link to the left edge
+    padding: 0.5rem; // Add padding for better clickability
+    // ### Base Styles
+    // - **position:** Positions the link absolutely within the document.
+    // - **top:** Hides the link above the viewport by default.
+    // - **left:** Aligns the link to the left edge of the viewport.
+    // - **background:** Uses the primary color for the background.
+    // - **color:** Uses white text for contrast.
+    // - **padding:** Adds padding for better clickability.
+    // - **z-index:** Ensures the link appears above other elements.
+    // - **transition:** Adds a smooth transition for visibility changes.
+    position: absolute; // Position the link absolutely within the document
+    transition: none; // Smooth transition for visibility changes
+    z-index: 100; // Ensure the link appears above other elements
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .c-skip-to-content {
+
+    background: var(--color-primary);
+    color: #fff;
+    inset-block-start: -40px;
+    inset-inline-start: 0;
+    padding: 0.5rem;
+    position: absolute;
+    transition: top 0.3s ease;
+    z-index: 100;
+  }
+  .c-skip-to-content:focus {
+
+    inset-block-start: 0;
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .c-skip-to-content {
+
+    background: var(--color-primary);
+    color: #fff;
+    inset-block-start: -40px;
+    inset-inline-start: 0;
+    padding: 0.5rem;
+    position: absolute;
+    transition: top 0.3s ease;
+    z-index: 100;
+  }
+  .c-skip-to-content:focus {
+
+    inset-block-start: 0;
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .c-skip-to-content {
+
+    transition: none;
+  }
+}

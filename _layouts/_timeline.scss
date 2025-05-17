@@ -4,85 +4,153 @@
 // SASS variables are used for colors, spacing, and typography to ensure maintainability and easy updates.
 
 .timeline {
-  position: relative;
 
   // Vertical spine: only display on medium+ screens
+
   @include respond-to('md') {
+
     &::before {
+
+      background-color: $color-border-medium;
       content: '';
-      position: absolute;
+      height: 100%;
       left: 50%;
+      position: absolute;
       top: 0;
       transform: translateX(-50%);
       width: 2px;
-      height: 100%;
-      background-color: $color-border-medium;
     }
   }
+
+  @include respond-to('sm') {
+
+    .timeline-item {
+
+      align-items: flex-start;
+      flex-direction: row;
+      gap: $spacing-lg; // Increase gap on larger screens
+      justify-content: space-between;
+    }
+
+    .timeline-year {
+
+      margin-bottom: 0;
+      margin-right: $spacing-md; // Space to the right of year
+    }
+
+    .timeline-content {
+
+      flex: 1; // Allow content to fill remaining space
+    }
+  }
+
+  @media (min-width: $breakpoint-md) {
+
+    .timeline-item:nth-child(odd) {
+
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      text-align: right;
+
+      .timeline-year {
+
+        margin-left: $spacing-md;
+        margin-right: 0;
+      }
+    }
+  }
+  position: relative;
 
   // ### Timeline Container
   // - **Purpose:** Acts as the main container for the timeline component.
   // - **Structure:** Contains individual timeline items.
 
   .timeline-item {
-    position: relative;
-    width: 100%;
-    padding: $spacing-lg 0;
-
-    // Node marker
-    &::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      width: 12px;
-      height: 12px;
-      background-color: $color-primary;
-      border-radius: 50%;
-      transform: translateX(-50%);
-      top: $spacing-lg;
-    }
 
     // ### Timeline Item
     // - **display:** Uses flexbox for horizontal alignment of elements.
     // - **gap:** Adds spacing between the year and content.
     // - **margin-bottom:** Adds vertical spacing between timeline items.
+
     @extend .flex;
+
     @extend .flex-column;
+
     @extend .align-center;
-    text-align: center;
     gap: $spacing-md; // Add spacing between elements using a spacing variable
     margin-bottom: $spacing-lg; // Add bottom margin for spacing
+    padding: $spacing-lg 0;
+    position: relative;
+    text-align: center;
+    width: 100%;
+
+    // Node marker
+
+    &::before {
+
+      background-color: $color-primary;
+      border-radius: 50%;
+      content: '';
+      height: 12px;
+      left: 50%;
+      position: absolute;
+      top: $spacing-lg;
+      transform: translateX(-50%);
+      width: 12px;
+    }@media screen and (prefers-reduced-motion: reduce) {
+      .timeline-trigger {
+
+        background: $color-background-light;
+        border: 1px solid $color-primary;
+        border-radius: $border-radius-circle;
+        cursor: pointer;
+        display: inline-block;
+        font-weight: $font-weight-semibold;
+        padding: $spacing-xs $spacing-md;
+        transition: none;
+
+        &:hover, &:focus {
+
+          background-color: $color-primary;
+          color: $color-white;
+        }
+      }
+    }
 
     .timeline-trigger {
+
       background: $color-background-light;
       border: 1px solid $color-primary;
-      padding: $spacing-xs $spacing-md;
       border-radius: $border-radius-circle;
-      font-weight: $font-weight-semibold;
       cursor: pointer;
-      transition: background-color $transition-duration-fast ease;
       display: inline-block;
+      font-weight: $font-weight-semibold;
+      padding: $spacing-xs $spacing-md;
+      transition: background-color $transition-duration-fast ease;
 
-      &:hover {
+      &:hover, &:focus {
+
         background-color: $color-primary;
         color: $color-white;
       }
     }
 
     .timeline-details {
+
       background: $background-color-light;
+      border-radius: $border-radius-md;
       margin-top: $spacing-sm;
       padding: $spacing-md;
-      border-radius: $border-radius-md;
     }
   }
 
   .timeline-year {
+
+    color: $color-primary; // Use the primary color for the year
     // ### Timeline Year
     // - **font-weight:** Uses bold font weight to emphasize the year or date.
     // - **color:** Uses the primary color to highlight the year.
     font-weight: $font-weight-bold; // Use bold font weight for emphasis
-    color: $color-primary; // Use the primary color for the year
     margin-bottom: $spacing-xs; // Space below year on mobile
   }
 
@@ -90,47 +158,31 @@
     // ### Timeline Content
     // - **Purpose:** Contains the description or details for each timeline item.
     // - **p:** Removes default paragraph margins for a cleaner layout.
+
     p {
+
       margin: 0; // Remove default margin for paragraphs
     }
   }
 
-  // Timeline details collapse animation
+  // Timeline details collapse animation@media screen and (prefers-reduced-motion: reduce) {
+    .timeline-details {
+
+      max-height: 0;
+      overflow: hidden;
+      transition: none;
+    }
+  }
+
   .timeline-details {
+
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
   }
+
   .timeline-details.open {
+
     max-height: 500px; // adjust as needed
-  }
-
-  @include respond-to('sm') {
-    .timeline-item {
-      flex-direction: row;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: $spacing-lg; // Increase gap on larger screens
-    }
-    .timeline-year {
-      margin-bottom: 0;
-      margin-right: $spacing-md; // Space to the right of year
-    }
-    .timeline-content {
-      flex: 1; // Allow content to fill remaining space
-    }
-  }
-
-  @media (min-width: $breakpoint-md) {
-    .timeline-item:nth-child(odd) {
-      flex-direction: row-reverse;
-      justify-content: space-between;
-      text-align: right;
-
-      .timeline-year {
-        margin-right: 0;
-        margin-left: $spacing-md;
-      }
-    }
   }
 }

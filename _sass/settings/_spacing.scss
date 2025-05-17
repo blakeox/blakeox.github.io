@@ -33,16 +33,24 @@ $btn-padding: $spacing-sm $spacing-md; // Use spacing variables instead of hard-
 
 // ### Margin Utilities
 // Utility classes for margins.
-.mt-1 { margin-top: $spacing-sm; }
-.mt-2 { margin-top: $spacing-md; }
-.mt-3 { margin-top: $spacing-lg; }
 
-.mb-1 { margin-bottom: $spacing-sm; }
-.mb-2 { margin-bottom: $spacing-md; }
-.mb-3 { margin-bottom: $spacing-lg; }
+.u-mt-1 { margin-block-start: $spacing-sm; }
+
+.u-mt-2 { margin-block-start: $spacing-md; }
+
+.u-mt-3 { margin-block-start: $spacing-lg; }
+
+.u-mb-1 { margin-block-end: $spacing-sm; }
+
+.u-mb-2 { margin-block-end: $spacing-md; }
+
+.u-mb-3 { margin-block-end: $spacing-lg; }
 
 // ### Padding Utilities
 // Utility classes for paddings.
-.p-1 { padding: $spacing-sm; }
-.p-2 { padding: $spacing-md; }
-.p-3 { padding: $spacing-lg; }
+
+.u-p-1 { padding: $spacing-sm; }
+
+.u-p-2 { padding: $spacing-md; }
+
+.u-p-3 { padding: $spacing-lg; }

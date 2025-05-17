@@ -132,7 +132,7 @@ if (typeof window.TechSettings === 'undefined') {
      */
     function applyTechTheme(theme) {
       const searchContainer = document.querySelector('.tech-search-page');
-      const searchOverlay = document.getElementById('search-overlay');
+      const searchOverlay = document.getElementById('c-search-overlay');
       
       // Apply to main search page container
       if (searchContainer) {
@@ -334,7 +334,7 @@ if (typeof window.TechSettings === 'undefined') {
     function initPageThemeSynchronization() {
       // Get all tech theme containers
       const themeContainers = document.querySelectorAll('[data-tech-theme]');
-      const searchOverlay = document.getElementById('search-overlay');
+      const searchOverlay = document.getElementById('c-search-overlay');
       const searchPage = document.querySelector('.tech-search-page');
       
       // Load saved theme from localStorage

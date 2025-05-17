@@ -1,30 +1,35 @@
+// ITCSS Utility Layer: All selectors use the 'u-' prefix for visibility utilities
 // ## Visibility Utilities
 // This file contains utility classes for controlling the visibility and display properties of elements.
 // These classes provide a quick and consistent way to toggle the visibility or display behavior of elements across the project.
 // By centralizing these utilities, the project ensures maintainability and reusability.
 
 // ### Utility Classes
-// - **.hidden:** Hides the element by setting `display: none !important`.
+// - **.u-hidden:** Hides the element by setting `display: none !important`.
 //   - **Use Case:** Completely remove an element from the layout, often used for conditional rendering or hiding elements dynamically.
-// - **.visible:** Makes the element visible by setting `display: block !important`.
+// - **.u-visible:** Makes the element visible by setting `display: block !important`.
 //   - **Use Case:** Ensure an element is displayed as a block-level element, often used for showing hidden content.
-// - **.inline:** Displays the element as an inline element using `display: inline !important`.
+// - **.u-inline:** Displays the element as an inline element using `display: inline !important`.
 //   - **Use Case:** Use for inline elements like text or links that need to be dynamically shown or hidden.
-// - **.inline-block:** Displays the element as an inline-block element using `display: inline-block !important`.
+// - **.u-inline-block:** Displays the element as an inline-block element using `display: inline-block !important`.
 //   - **Use Case:** Use for elements that need to behave like inline elements but support block-level properties like width and height.
 
-.hidden { 
+.u-hidden { 
+
   display: none !important; // Completely hide the element
 }
 
-.visible { 
+.u-visible { 
+
   display: block !important; // Make the element visible as a block-level element
 }
 
-.inline { 
+.u-inline { 
+
   display: inline !important; // Display the element as an inline element
 }
 
-.inline-block { 
+.u-inline-block { 
+
   display: inline-block !important; // Display the element as an inline-block element
 }

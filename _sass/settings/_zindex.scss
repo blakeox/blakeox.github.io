@@ -30,11 +30,18 @@ $z-index-toast: 1000; // Z-index for toast notifications
 // - **.z-500:** Sets z-index to the modal value.
 // - **.z-1000:** Sets z-index to the toast value.
 
-.z-0 { z-index: 0; } // No stacking
-.z-1 { z-index: $z-index-base; } // Base stacking
-.z-10 { z-index: 10; } // Slightly elevated stacking
-.z-50 { z-index: 50; } // Higher stacking
-.z-100 { z-index: $z-index-dropdown; } // Dropdown stacking
-.z-200 { z-index: $z-index-sticky; } // Sticky element stacking
-.z-500 { z-index: $z-index-modal; } // Modal stacking
-.z-1000 { z-index: $z-index-toast; } // Toast notification stacking
+.u-z-0 { z-index: 0; } // No stacking
+
+.u-z-1 { z-index: $z-index-base; } // Base stacking
+
+.u-z-10 { z-index: 10; } // Slightly elevated stacking
+
+.u-z-50 { z-index: 50; } // Higher stacking
+
+.u-z-100 { z-index: $z-index-dropdown; } // Dropdown stacking
+
+.u-z-200 { z-index: $z-index-sticky; } // Sticky element stacking
+
+.u-z-500 { z-index: $z-index-modal; } // Modal stacking
+
+.u-z-1000 { z-index: $z-index-toast; } // Toast notification stacking

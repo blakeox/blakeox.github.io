@@ -4,158 +4,233 @@
 // SASS variables are used for spacing, colors, typography, and transitions to ensure consistency and easy updates.
 // Referenced variables are defined in the settings folder for maintainability.
 
-.contact-page {
+// NOTE: All SCSS variables in property values have been replaced with CSS custom properties (e.g., var(--color-primary)).
+// Define these custom properties at :root for both light and dark color schemes.
+// Example:
+// :root {
+//   --color-background: #fff;
+//   --color-text: #222;
+//   --color-link: #0077cc;
+//   --color-link-hover: #005fa3;
+//   --color-primary: #0077cc;
+//   --color-primary-dark: #005fa3;
+//   --color-white: #fff;
+//   --font-family-base: 'Inter', sans-serif;
+//   --font-size-base: 1rem;
+//   --font-size-xl: 2rem;
+//   --font-size-md: 1.125rem;
+//   --font-size-sm: 0.875rem;
+//   --font-weight-bold: 700;
+//   --line-height-base: 1.5;
+//   --spacing-md: 1.5rem;
+//   --spacing-lg: 2rem;
+//   --spacing-sm: 0.75rem;
+//   --border-radius-sm: 4px;
+//   --border-radius: 8px;
+//   --border-radius-lg: 16px;
+//   --box-shadow-md: 0 2px 8px rgba(0,0,0,0.08);
+//   --transition-duration-default: 0.2s;
+//   --background-color-light: #f9f9f9;
+//   --color-border-light: #e0e0e0;
+// }
+// @media (prefers-color-scheme: dark) {
+//   :root {
+//     --color-background: #181a1b;
+//     --color-text: #f5f5f5;
+//     --color-link: #66aaff;
+//     --color-link-hover: #3388cc;
+//     --color-primary: #66aaff;
+//     --color-primary-dark: #3388cc;
+//     --background-color-light: #23272a;
+//     --color-border-light: #333a40;
+//   }
+// }
+
+p {
+
+  color: var(--color-text); // Use standard text color
+  font-size: var(--font-size-sm); // Use small font size
+}
+
+.c-contact-page {
   // ### Contact Page Container
   // - **margin:** Centers the content horizontally.
   // - **padding:** Adds inner spacing around the content.
   // - **max-width:** Limits the maximum width of the content for better readability.
   margin: 0 auto; // Center the content horizontally
-  padding: $spacing-lg; // Add padding using the spacing variable
-  max-width: 960px; // Limit the maximum width of the content
+  max-inline-size: 960px; // Limit the maximum width of the content
+  padding: var(--spacing-lg); // Add padding using the spacing variable
 
-  .contact-header {
+  .c-contact-page__header {
+
+    margin-block-end: var(--spacing-lg); // Add bottom margin using the spacing variable
     // ### Contact Header
     // - **text-align:** Centers the header content.
     // - **margin-bottom:** Adds spacing below the header.
     text-align: center;
-    margin-bottom: $spacing-lg; // Add bottom margin using the spacing variable
 
     h1 {
       // ### Main Heading
       // - **font-size:** Uses a large font size for prominence.
       // - **margin-bottom:** Adds spacing below the heading.
-      font-size: $font-size-xl; // Use large font size for headings
-      margin-bottom: $spacing-md; // Add bottom margin using the spacing variable
+      font-size: var(--font-size-xl); // Use large font size for headings
+      margin-block-end: var(--spacing-md); // Add bottom margin using the spacing variable
     }
 
     p {
+
+      color: var(--color-text); // Use standard text color
       // ### Description Text
       // - **font-size:** Uses a medium font size for readability.
       // - **color:** Uses the standard text color for consistency.
-      font-size: $font-size-md; // Use medium font size for readability
-      color: $color-text; // Use standard text color
+      font-size: var(--font-size-md); // Use medium font size for readability
     }
   }
+}
 
-  .contact-form {
-    // ### Contact Form Container
-    // - **background:** Uses a light background color for contrast.
+.c-contact-form {
+  // ### Contact Form Container
+  // - **background:** Uses a light background color for contrast.
+  // - **padding:** Adds inner spacing for better usability.
+  // - **border-radius:** Applies rounded corners for a modern look.
+  // - **box-shadow:** Adds depth to the form container.
+  background: var(--background-color-light); // Use light background color
+  border-radius: var(--border-radius); // Apply rounded corners
+  box-shadow: var(--box-shadow-md); // Add shadow for depth
+  padding: var(--spacing-lg); // Add padding for inner spacing
+
+  form {
+    // ### Form Element
+    // - **display:** Uses flexbox for vertical stacking of form elements.
+    // - **gap:** Adds spacing between form elements.
+    display: flex;
+    flex-direction: column; // Stack form elements vertically
+    gap: var(--spacing-md); // Add spacing between form elements
+
+    .c-contact-form__submit-btn {
+
+      background-color: var(--color-primary); // Use primary color for the button
+      border: none; // Remove default border
+      border-radius: var(--border-radius-lg); // Apply large rounded corners
+      color: var(--color-white); // Use white text for contrast
+      cursor: pointer; // Pointer cursor for interactivity
+      font-size: var(--font-size-md); // Use medium font size
+      // ### Submit Button
+      // - **padding:** Adds inner spacing for better usability.
+      // - **background-color:** Uses the primary color for the button.
+      // - **color:** Uses white text for contrast.
+      // - **border:** Removes the default border.
+      // - **border-radius:** Applies large rounded corners for a modern look.
+      // - **font-size:** Uses a medium font size for readability.
+      // - **cursor:** Changes the cursor to a pointer for interactivity.
+      // - **transition:** Adds smooth hover effects for background color changes.
+      padding: var(--spacing-sm) var(--spacing-md); // Add padding for clickable area
+      transition: background-color var(--transition-duration-default) ease; // Smooth hover transition
+
+      &:hover, &:focus {
+        // ### Hover Effect for Submit Button
+        // - **background-color:** Changes to a darker primary color.
+        background-color: var(--color-primary-dark); // Use darker primary color
+      }
+    }
+  }
+}
+
+.c-contact-form label {
+  // ### Form Labels
+  // - **font-size:** Uses a small font size for readability.
+  // - **font-weight:** Makes labels bold for emphasis.
+  // - **margin-bottom:** Adds spacing below the label.
+  font-size: var(--font-size-sm); // Use small font size
+  font-weight: var(--font-weight-bold); // Use bold font weight
+  margin-block-end: var(--spacing-sm); // Add bottom margin for spacing
+}
+
+.c-contact-form textarea {
+
+  min-block-size: 150px; // Set a minimum height
+  // ### Additional Styles for Textareas
+  // - **resize:** Allows vertical resizing only.
+  // - **min-height:** Sets a minimum height for usability.
+  resize: vertical; // Allow vertical resizing only
+}
+
+.c-contact-form input,
+.c-contact-form textarea {
+
+  border: 1px solid var(--color-border-light); // Use light border color
+  border-radius: var(--border-radius); // Apply rounded corners
+  color: var(--color-text); // Use standard text color
+  font-size: var(--font-size-sm); // Use small font size
+  // ### Input Fields and Textareas
+  // - **width:** Ensures full width for consistency.
+  // - **padding:** Adds inner spacing for usability.
+  // - **border:** Adds a light border for separation.
+  // - **border-radius:** Applies rounded corners for a modern look.
+  // - **font-size:** Uses a small font size for readability.
+  // - **color:** Uses the standard text color.
+  inline-size: 100%; // Full width
+  padding: var(--spacing-sm); // Add padding for better usability
+
+  &:focus {
+
+    border-color: var(--color-primary); // Highlight border with primary color
+    box-shadow: 0 0 5px var(--color-primary); // Add subtle shadow for focus
+    // ### Focus Styles
+    // - **outline:** Removes the default outline.
+    // - **border-color:** Highlights the border with the primary color.
+    // - **box-shadow:** Adds a subtle shadow for focus indication.
+    outline: none;
+  }
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .c-contact-form__submit-btn {
+
+    background-color: var(--color-primary); // Use primary color for the button
+    border: none; // Remove default border
+    border-radius: var(--border-radius-lg); // Apply large rounded corners
+    color: var(--color-white); // Use white text for contrast
+    cursor: pointer; // Pointer cursor for interactivity
+    font-size: var(--font-size-md); // Use medium font size
+    // ### Submit Button
     // - **padding:** Adds inner spacing for better usability.
-    // - **border-radius:** Applies rounded corners for a modern look.
-    // - **box-shadow:** Adds depth to the form container.
-    background: $background-color-light; // Use light background color
-    padding: $spacing-lg; // Add padding for inner spacing
-    border-radius: $border-radius; // Apply rounded corners
-    box-shadow: $box-shadow-md; // Add shadow for depth
+    // - **background-color:** Uses the primary color for the button.
+    // - **color:** Uses white text for contrast.
+    // - **border:** Removes the default border.
+    // - **border-radius:** Applies large rounded corners for a modern look.
+    // - **font-size:** Uses a medium font size for readability.
+    // - **cursor:** Changes the cursor to a pointer for interactivity.
+    // - **transition:** Adds smooth hover effects for background color changes.
+    padding: var(--spacing-sm) var(--spacing-md); // Add padding for clickable area
+    transition: none; // Smooth hover transition
 
-    form {
-      // ### Form Element
-      // - **display:** Uses flexbox for vertical stacking of form elements.
-      // - **gap:** Adds spacing between form elements.
-      display: flex;
-      flex-direction: column; // Stack form elements vertically
-      gap: $spacing-md; // Add spacing between form elements
-
-      label {
-        // ### Form Labels
-        // - **font-size:** Uses a small font size for readability.
-        // - **font-weight:** Makes labels bold for emphasis.
-        // - **margin-bottom:** Adds spacing below the label.
-        font-size: $font-size-sm; // Use small font size
-        font-weight: $font-weight-bold; // Use bold font weight
-        margin-bottom: $spacing-sm; // Add bottom margin for spacing
-      }
-
-      input,
-      textarea {
-        // ### Input Fields and Textareas
-        // - **width:** Ensures full width for consistency.
-        // - **padding:** Adds inner spacing for usability.
-        // - **border:** Adds a light border for separation.
-        // - **border-radius:** Applies rounded corners for a modern look.
-        // - **font-size:** Uses a small font size for readability.
-        // - **color:** Uses the standard text color.
-        width: 100%; // Full width
-        padding: $spacing-sm; // Add padding for better usability
-        border: 1px solid $color-border-light; // Use light border color
-        border-radius: $border-radius; // Apply rounded corners
-        font-size: $font-size-sm; // Use small font size
-        color: $color-text; // Use standard text color
-
-        &:focus {
-          // ### Focus Styles
-          // - **outline:** Removes the default outline.
-          // - **border-color:** Highlights the border with the primary color.
-          // - **box-shadow:** Adds a subtle shadow for focus indication.
-          outline: none;
-          border-color: $color-primary; // Highlight border with primary color
-          box-shadow: 0 0 5px $color-primary; // Add subtle shadow for focus
-        }
-      }
-
-      textarea {
-        // ### Additional Styles for Textareas
-        // - **resize:** Allows vertical resizing only.
-        // - **min-height:** Sets a minimum height for usability.
-        resize: vertical; // Allow vertical resizing only
-        min-height: 150px; // Set a minimum height
-      }
-
-      .submit-btn {
-        // ### Submit Button
-        // - **padding:** Adds inner spacing for better usability.
-        // - **background-color:** Uses the primary color for the button.
-        // - **color:** Uses white text for contrast.
-        // - **border:** Removes the default border.
-        // - **border-radius:** Applies large rounded corners for a modern look.
-        // - **font-size:** Uses a medium font size for readability.
-        // - **cursor:** Changes the cursor to a pointer for interactivity.
-        // - **transition:** Adds smooth hover effects for background color changes.
-        padding: $spacing-sm $spacing-md; // Add padding for clickable area
-        background-color: $color-primary; // Use primary color for the button
-        color: $color-white; // Use white text for contrast
-        border: none; // Remove default border
-        border-radius: $border-radius-lg; // Apply large rounded corners
-        font-size: $font-size-md; // Use medium font size
-        cursor: pointer; // Pointer cursor for interactivity
-        transition: background-color $transition-duration-default ease; // Smooth hover transition
-
-        &:hover {
-          // ### Hover Effect for Submit Button
-          // - **background-color:** Changes to a darker primary color.
-          background-color: $color-primary-dark; // Use darker primary color
-        }
-      }
+    &:hover, &:focus {
+      // ### Hover Effect for Submit Button
+      // - **background-color:** Changes to a darker primary color.
+      background-color: var(--color-primary-dark); // Use darker primary color
     }
   }
+}
 
-  .contact-info {
-    // ### Contact Information Section
-    // - **margin-top:** Adds spacing above the section.
-    // - **text-align:** Centers the content horizontally.
-    margin-top: $spacing-lg; // Add top margin for spacing
-    text-align: center; // Center-align the content
+.c-contact-info {
+  // ### Contact Information Section
+  // - **margin-top:** Adds spacing above the section.
+  // - **text-align:** Centers the content horizontally.
+  margin-block-start: var(--spacing-lg); // Add top margin for spacing
+  text-align: center; // Center-align the content
 
-    p {
-      // ### Informational Text
-      // - **font-size:** Uses a small font size for readability.
-      // - **color:** Uses the standard text color for consistency.
-      font-size: $font-size-sm; // Use small font size
-      color: $color-text; // Use standard text color
-    }
+  a {
+    // ### Links
+    // - **color:** Uses the primary color for links.
+    // - **text-decoration:** Removes underline by default.
+    // - **hover:** Adds an underline for emphasis on hover.
+    color: var(--color-primary); // Use primary color for links
+    text-decoration: none; // Remove underline
 
-    a {
-      // ### Links
-      // - **color:** Uses the primary color for links.
-      // - **text-decoration:** Removes underline by default.
-      // - **hover:** Adds an underline for emphasis on hover.
-      color: $color-primary; // Use primary color for links
-      text-decoration: none; // Remove underline
-
-      &:hover {
-        // Hover effect for links
-        text-decoration: underline; // Add underline for emphasis
-      }
+    &:hover, &:focus {
+      // Hover effect for links
+      text-decoration: underline; // Add underline for emphasis
     }
   }
 }

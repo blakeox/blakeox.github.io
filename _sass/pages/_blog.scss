@@ -10,6 +10,6 @@
   // - **padding:** Adds inner spacing around the content for better readability.
   // - **max-width:** Limits the maximum width of the content to improve readability on larger screens.
   margin: 0 auto; // Center the content horizontally
+  max-inline-size: 960px; // Limit the maximum width of the content
   padding: $spacing-lg; // Add padding using the spacing variable
-  max-width: 960px; // Limit the maximum width of the content
 }

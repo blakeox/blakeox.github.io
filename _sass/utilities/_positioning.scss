@@ -18,17 +18,21 @@
 //   - **Example:** Sticky navigation bars or table headers.
 
 .position-relative { 
+
   position: relative; // Position relative to its normal position
 }
 
 .position-absolute { 
+
   position: absolute; // Position relative to the nearest positioned ancestor
 }
 
 .position-fixed { 
+
   position: fixed; // Position relative to the viewport
 }
 
 .position-sticky { 
+
   position: sticky; // Switch between relative and fixed based on scroll
 }

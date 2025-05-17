@@ -1,56 +1,50 @@
 // ## Display Utilities
-// This file contains utility classes for controlling the `display` property of elements.
-// These classes provide a quick and consistent way to apply common display styles across the project.
-// By centralizing these utilities, the project ensures maintainability and reusability.
+.u-d-block {
 
-// ### Utility Classes
-// - **.d-block:** Sets the element to `display: block`.
-//   - **Use Case:** For block-level elements like divs or sections.
-// - **.d-inline:** Sets the element to `display: inline`.
-//   - **Use Case:** For inline elements like spans or links.
-// - **.d-inline-block:** Sets the element to `display: inline-block`.
-//   - **Use Case:** For elements that need to behave like inline elements but support block-level properties like width and height.
-// - **.d-flex:** Sets the element to `display: flex` for flexbox layout.
-//   - **Use Case:** For creating flexible and responsive layouts.
-// - **.d-none:** Hides the element by setting `display: none`.
-//   - **Use Case:** For conditionally hiding elements.
-
-.d-block { 
-  display: block; // Block-level element
+  display: block;
 }
 
-.d-inline { 
-  display: inline; // Inline element
+.u-d-inline {
+
+  display: inline;
 }
 
-.d-inline-block { 
-  display: inline-block; // Inline-block element
+.u-d-inline-block {
+
+  display: inline-block;
 }
 
-.d-flex { 
-  display: flex; // Flexbox container
+.u-d-flex {
+
+  display: flex;
 }
 
-.d-none { 
-  display: none; // Hidden element
+.u-d-none {
+
+  display: none;
 }
 
-.d-inline-flex { 
-  display: inline-flex; // Inline flex container
+.u-d-inline-flex {
+
+  display: inline-flex;
 }
 
-.d-grid { 
-  display: grid; // Grid layout container
+.u-d-grid {
+
+  display: grid;
 }
 
-.d-inline-grid { 
-  display: inline-grid; // Inline grid container
+.u-d-inline-grid {
+
+  display: inline-grid;
 }
 
-.hidden {
+.u-hidden {
+
   display: none !important;
 }
 
-.visible {
+.u-visible {
+
   display: inline-block !important;
 }

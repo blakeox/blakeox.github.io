@@ -1,17 +1,38 @@
-# Ignore the generated _site/ directory
+# ----------------------------------------
+# ✅ Jekyll build and Ruby artifacts
+# ----------------------------------------
 _site/
+.sass-cache/
+.bundle/
+Gemfile.lock
 
-# Ignore log files and temp files
+# ----------------------------------------
+# ✅ Node & Yarn (v1 and modern Yarn/Berry)
+# ----------------------------------------
+node_modules/
+.yarn/cache/
+.yarn/unplugged/
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+.pnp.js
+
+# ----------------------------------------
+# ✅ Editor + System cruft
+# ----------------------------------------
 *.log
 *.tmp
 *.swp
 *.DS_Store
 Thumbs.db
 
-# Ignore dependency files
-Gemfile.lock
-node_modules/
+# ----------------------------------------
+# 🧪 Test & coverage artifacts (if using Jest, etc.)
+# Uncomment if needed
+# coverage/
+# jest-test-results.json
 
-# Ignore system files
-.sass-cache/
-.bundle/
+# ----------------------------------------
+# 🧠 VSCode project settings (optional)
+# Uncomment if you don't want to track these
+# .vscode/

@@ -1,57 +1,116 @@
 // ## Layout Utility Classes
 // Reusable utility classes for layout adjustments.
 
-.full-width {
-  width: 100%; // Full width
-  max-width: none; // Remove width constraints
+.u-full-width {
+
   margin: 0; // Remove centering
+  max-inline-size: none; // Remove width constraints
   padding: 0; // Remove padding
+  inline-size: 100%; // Full width
 }
 
-.centered {
+.u-centered {
+
   margin: 0 auto; // Center horizontally
   text-align: center; // Center text
 }
 
-.flex {
+.u-flex {
+
   display: flex; // Use flexbox
 }
 
-.flex-center {
+.u-flex-center {
+
+  align-items: center; // Center items vertically
   display: flex; // Use flexbox
   justify-content: center; // Center items horizontally
-  align-items: center; // Center items vertically
 }
 
 // ### Gap Utilities
 // Apply consistent gaps between items in flex or grid containers
-.gap-1 { gap: $spacing-sm; }
-.gap-2 { gap: $spacing-md; }
-.gap-3 { gap: $spacing-lg; }
+
+.u-gap-1 {
+
+  gap: $spacing-sm;
+}
+
+.u-gap-2 {
+
+  gap: $spacing-md;
+}
+
+.u-gap-3 {
+
+  gap: $spacing-lg;
+}
 
 // ### Flex Direction Utilities
-.flex-row { display: flex; flex-direction: row; }
-.flex-col { display: flex; flex-direction: column; }
+
+.u-flex-row {
+
+  display: flex;
+  flex-direction: row;
+}
+
+.u-flex-col {
+
+  display: flex;
+  flex-direction: column;
+}
 
 // ### Flex Alignment Utilities
-.justify-center { justify-content: center; }
-.justify-between { justify-content: space-between; }
-.align-center { align-items: center; }
-.align-start { align-items: flex-start; }
-.align-end { align-items: flex-end; }
+
+.u-justify-center {
+
+  justify-content: center;
+}
+
+.u-justify-between {
+
+  justify-content: space-between;
+}
+
+.u-align-center {
+
+  align-items: center;
+}
+
+.u-align-start {
+
+  align-items: flex-start;
+}
+
+.u-align-end {
+
+  align-items: flex-end;
+}
 
 // ### Grid Column Utilities
-.grid-cols-2 { display: grid; grid-template-columns: repeat(2, 1fr); }
-.grid-cols-3 { display: grid; grid-template-columns: repeat(3, 1fr); }
+
+.u-grid-cols-2 {
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.u-grid-cols-3 {
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
 
 // ### List Utilities
 // Removes default list styles
-.list-unstyled {
+
+.u-list-unstyled {
+
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.debug {
+.u-debug {
+
   outline: 1px solid red !important; // Add red outline for debugging
 }

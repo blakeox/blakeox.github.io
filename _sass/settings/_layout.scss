@@ -37,10 +37,12 @@ $filter-min-width: 200px; // Minimum width for filter controls
 // ### Mixin for Containers
 // A reusable mixin for creating responsive containers with a maximum width.
 // This mixin ensures that containers are centered and have appropriate padding.
+
 @mixin container($max-width) {
-  width: 100%; // Full width by default
-  max-width: $max-width; // Limit the width to the specified max-width
+
+  inline-size: 100%; // Full width by default
   margin: 0 auto; // Center the container horizontally
+  max-inline-size: $max-width; // Limit the width to the specified max-width
   padding: 0 $grid-gutter-width / 2; // Add horizontal padding using half the gutter width
 }
 

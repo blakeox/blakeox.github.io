@@ -1,0 +1,368 @@
+// ## Category Filters Styles
+// This file contains styles for the category filter buttons in the search page
+// The filters allow users to narrow search results by content type
+// Uses tech-themed styling consistent with site design
+
+// ITCSS/BEM: o- for object, is- for state
+// All color, background, border, and interactive state rules are now inside color-scheme media queries
+
+.o-search-category-filters {
+  @media (max-width: 768px) {
+
+    gap: 0.5rem;
+  }
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+
+@media (prefers-color-scheme: light) {
+  .o-category-filter-btn {
+
+    -webkit-backdrop-filter: blur(5px); // stylelint-disable-line property-no-vendor-prefix
+    backdrop-filter: blur(5px);
+    background: rgb(var(--tech-bg-color-rgb) 0.5);
+    border: 1px solid rgb(var(--tech-secondary-rgb) 0.3);
+    border-radius: 6px;
+    color: var(--tech-text-color);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    overflow: hidden;
+    padding: 0.5rem 1rem;
+    position: relative;
+    transition: all 0.2s ease;
+    &::before {
+
+      background: linear-gradient(135deg, rgb(var(--tech-primary-rgb) 0.4) 0%, rgb(var(--tech-primary-rgb) 0) 60%);
+      block-size: 100%;
+      content: '';
+      inline-size: 100%;
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      opacity: 0;
+      position: absolute;
+      transition: opacity 0.2s ease;
+      z-index: -1;
+    }
+    &:hover {
+
+      background: rgb(var(--tech-bg-color-rgb) 0.7);
+      border-color: rgb(var(--tech-primary-rgb) 0.6);
+      box-shadow: 0 3px 8px rgb(0 0 0 / 0.1);
+      transform: translateY(-2px);
+      &::before {
+
+        opacity: 0.4;
+      }
+    }
+    &:focus {
+
+      box-shadow: 0 0 0 2px rgb(var(--tech-primary-rgb) 0.4);
+      outline: none;
+    }
+    .o-category-filter-icon {
+
+      display: inline-block;
+      margin-inline-end: 5px;
+      opacity: 0.7;
+      transition: opacity 0.2s ease;
+    }
+    &:disabled {
+
+      cursor: not-allowed;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  }
+
+  // Count badge — light mode
+  .o-category-filter-btn .o-category-filter-count {
+
+    align-items: center;
+    background: rgb(var(--tech-secondary-rgb) 0.2);
+    block-size: 20px;
+    border-radius: 10px;
+    color: rgb(var(--tech-text-color-rgb) 0.8);
+    display: inline-flex;
+    font-size: 0.75rem;
+    justify-content: center;
+    margin-inline-start: 6px;
+    min-inline-size: 20px;
+    padding: 0 5px;
+    transition: all 0.2s ease;
+  }
+
+  // Active state — light mode
+  .o-category-filter-btn.is-active {
+
+    background: rgb(var(--tech-primary-rgb) 0.15);
+    border-color: var(--tech-primary);
+    box-shadow: 0 2px 5px rgb(var(--tech-primary-rgb) 0.2),
+                inset 0 0 0 1px rgb(var(--tech-primary-rgb) 0.3);
+    color: var(--tech-primary);
+  }
+
+  .o-category-filter-btn.is-active::after {
+
+    background: var(--tech-primary);
+    block-size: 2px;
+    box-shadow: 0 0 8px 1px var(--tech-primary);
+    content: '';
+    inline-size: 100%;
+    inset-block-end: 0;
+    inset-inline-start: 0;
+    position: absolute;
+  }
+
+  .o-category-filter-btn.is-active::before {
+
+    animation: pulse-glow 2s infinite alternate;
+  }
+
+  .o-category-filter-btn.is-active .o-category-filter-count {
+
+    background: rgb(var(--tech-primary-rgb) 0.3);
+    color: var(--tech-primary);
+  }
+
+  .o-category-filter-btn.is-active .o-category-filter-icon {
+
+    opacity: 1;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .o-category-filter-btn {
+
+    -webkit-backdrop-filter: blur(5px); // stylelint-disable-line property-no-vendor-prefix
+    backdrop-filter: blur(5px);
+
+    // Use same structure, but override colors for dark mode if needed
+    background: rgb(var(--tech-bg-color-rgb) 0.3);
+    border: 1px solid rgb(var(--tech-secondary-rgb) 0.2);
+    border-radius: 6px;
+    color: var(--tech-text-color);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    overflow: hidden;
+    padding: 0.5rem 1rem;
+    position: relative;
+    transition: all 0.2s ease;
+    &::before {
+
+      background: linear-gradient(135deg, rgb(var(--tech-primary-rgb) 0.3) 0%, rgb(var(--tech-primary-rgb) 0) 60%);
+      block-size: 100%;
+      content: '';
+      inline-size: 100%;
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      opacity: 0;
+      position: absolute;
+      transition: opacity 0.2s ease;
+      z-index: -1;
+    }
+    &:hover {
+
+      background: rgb(var(--tech-bg-color-rgb) 0.5);
+      border-color: rgb(var(--tech-primary-rgb) 0.5);
+      box-shadow: 0 3px 8px rgb(0 0 0 / 0.2);
+      transform: translateY(-2px);
+      &::before {
+
+        opacity: 0.4;
+      }
+    }
+    &:focus {
+
+      box-shadow: 0 0 0 2px rgb(var(--tech-primary-rgb) 0.3);
+      outline: none;
+    }
+    .o-category-filter-icon {
+
+      display: inline-block;
+      margin-inline-end: 5px;
+      opacity: 0.7;
+      transition: opacity 0.2s ease;
+    }
+    &:disabled {
+
+      cursor: not-allowed;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  }
+
+  // Active state — dark mode
+  .o-category-filter-btn.is-active {
+
+    background: rgb(var(--tech-primary-rgb) 0.2);
+    border-color: var(--tech-primary);
+    box-shadow: 0 2px 5px rgb(var(--tech-primary-rgb) 0.2),
+                inset 0 0 0 1px rgb(var(--tech-primary-rgb) 0.3);
+    color: var(--tech-primary);
+  }
+
+  .o-category-filter-btn.is-active::after {
+
+    background: var(--tech-primary);
+    block-size: 2px;
+    box-shadow: 0 0 8px 1px var(--tech-primary);
+    content: '';
+    inline-size: 100%;
+    inset-block-end: 0;
+    inset-inline-start: 0;
+    position: absolute;
+  }
+
+  .o-category-filter-btn.is-active::before {
+
+    animation: pulse-glow 2s infinite alternate;
+  }
+
+  .o-category-filter-btn.is-active .o-category-filter-count {
+
+    background: rgb(var(--tech-primary-rgb) 0.25);
+    color: var(--tech-primary);
+  }
+
+  .o-category-filter-btn.is-active .o-category-filter-icon {
+
+    opacity: 1;
+  }
+}
+
+// Reduced motion overrides
+@media screen and (prefers-reduced-motion: reduce) {
+  .o-category-filter-btn {
+
+    transition: none;
+    &::before {
+
+      transition: none;
+    }
+    .o-category-filter-count {
+
+      transition: none;
+    }
+    &.is-active::before {
+
+      animation: none;
+    }
+    .o-category-filter-icon {
+
+      transition: none;
+    }
+  }
+}
+
+// Specific styles for each category
+.o-category-filter-btn[data-category='all'] {
+  .o-category-filter-icon::before {
+
+    content: '⊕';
+  }
+}
+
+.o-category-filter-btn[data-category='blog'] {
+  .o-category-filter-icon::before {
+
+    content: '📝';
+  }
+}
+
+.o-category-filter-btn[data-category='project'] {
+  .o-category-filter-icon::before {
+
+    content: '🔧';
+  }
+}
+
+.o-category-filter-btn[data-category='page'] {
+  .o-category-filter-icon::before {
+
+    content: '📄';
+  }
+}
+
+// Animations
+@keyframes pulse-glow {
+  0% {
+
+    opacity: 0.2;
+  }
+  100% {
+
+    opacity: 0.4;
+  }
+}
+
+// Loading state animation
+@media screen and (prefers-reduced-motion: reduce) {
+  .o-search-filters-loading {
+
+    animation: none;
+    block-size: 20px;
+    border: 2px solid rgb(var(--tech-primary-rgb) 0.2);
+    border-block-start: 2px solid var(--tech-primary);
+    border-radius: 50%;
+    display: inline-block;
+    inline-size: 20px;
+    margin-inline-start: 8px;
+    opacity: 0;
+    transition: none;
+    &.is-visible {
+
+      opacity: 1;
+    }
+  }
+}
+
+.o-search-filters-loading {
+
+  animation: spinner-rotate 0.8s linear infinite;
+  block-size: 20px;
+  border: 2px solid rgb(var(--tech-primary-rgb) 0.2);
+  border-block-start: 2px solid var(--tech-primary);
+  border-radius: 50%;
+  display: inline-block;
+  inline-size: 20px;
+  margin-inline-start: 8px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  &.is-visible {
+
+    opacity: 1;
+  }
+}
+
+@keyframes spinner-rotate {
+  0% {
+
+    transform: rotate(0deg);
+  }
+  100% {
+
+    transform: rotate(360deg);
+  }
+}
+
+  // Count badge — dark mode
+  .o-category-filter-btn .o-category-filter-count {
+
+    align-items: center;
+    background: rgb(var(--tech-secondary-rgb) 0.15);
+    block-size: 20px;
+    border-radius: 10px;
+    color: rgb(var(--tech-text-color-rgb) 0.7);
+    display: inline-flex;
+    font-size: 0.75rem;
+    justify-content: center;
+    margin-inline-start: 6px;
+    min-inline-size: 20px;
+    padding: 0 5px;
+    transition: all 0.2s ease;
+  }

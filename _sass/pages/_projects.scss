@@ -5,39 +5,62 @@
 // Referenced variables are defined in the settings folder for maintainability.
 
 .c-projects-list {
+
+  @media screen and (prefers-reduced-motion: reduce) {
+    .c-projects-list__load-more .c-btn {
+
+      background-color: $color-primary; // Use primary color for the button
+      border: none; // Remove default border
+      border-radius: $border-radius-lg; // Apply large rounded corners
+      color: $color-white; // Use white text for contrast
+      cursor: pointer; // Pointer cursor for interactivity
+      font-size: $font-size-md; // Use medium font size
+      padding: $spacing-sm $spacing-md; // Add padding for clickable area
+      transition: none; // No transition for reduced motion
+      &:hover, &:focus {
+
+        background-color: $color-primary-dark; // Use darker primary color
+      }
+    }
+  }
+
   // ### Base Styles
   // - **margin:** Centers the content horizontally.
   // - **padding:** Adds inner spacing around the content.
   // - **max-width:** Limits the maximum width of the content for better readability.
   margin: 0 auto; // Center the content horizontally
+  max-inline-size: 960px; // Limit the maximum width of the content
   padding: $spacing-lg; // Add padding using the spacing variable
-  max-width: 960px; // Limit the maximum width of the content
 
   &__header {
+
+    margin-block-end: $spacing-lg; // Add bottom margin using the spacing variable
     // ### Header Section
     // - **text-align:** Centers the header content.
     // - **margin-bottom:** Adds spacing below the header.
     text-align: center;
-    margin-bottom: $spacing-lg; // Add bottom margin using the spacing variable
 
     &__title {
       // ### Main Heading
       // - **font-size:** Uses a large font size for prominence.
       // - **margin-bottom:** Adds spacing below the heading.
       font-size: $font-size-xl; // Use large font size for headings
-      margin-bottom: $spacing-md; // Add bottom margin using the spacing variable
+      margin-block-end: $spacing-md; // Add bottom margin using the spacing variable
     }
 
     &__intro {
+
+      color: $color-text; // Use standard text color
       // ### Description Text
       // - **font-size:** Uses a medium font size for readability.
       // - **color:** Uses the standard text color for consistency.
       font-size: $font-size-md; // Use medium font size for readability
-      color: $color-text; // Use standard text color
     }
   }
 
   &__filter-bar {
+
+    align-items: center; // Align items vertically
     // ### Filter Bar
     // - **display:** Uses flexbox for layout.
     // - **flex-wrap:** Allows items to wrap to the next line if necessary.
@@ -47,11 +70,13 @@
     display: flex;
     flex-wrap: wrap; // Allow items to wrap to the next line if necessary
     justify-content: space-between; // Space out filter elements
-    align-items: center; // Align items vertically
-    margin-bottom: $spacing-lg; // Add bottom margin using the spacing variable
+    margin-block-end: $spacing-lg; // Add bottom margin using the spacing variable
 
     &__dropdown,
     &__search-input {
+
+      border: 1px solid var(--color-secondary); // Use CSS custom property for border
+      border-radius: $border-radius; // Apply rounded corners
       // ### Dropdowns and Search Input
       // - **flex:** Allows flexible resizing.
       // - **max-width:** Limits the maximum width of the input fields.
@@ -61,21 +86,21 @@
       // - **border-radius:** Applies rounded corners for a modern look.
       // - **font-size:** Uses a small font size for readability.
       flex: 1; // Allow flexible resizing
-      max-width: 300px; // Limit the maximum width
-      margin: 0 $spacing-sm; // Add horizontal margin using the spacing variable
-      padding: $spacing-sm; // Add padding for better usability
-      border: 1px solid $color-secondary; // Use secondary color for the border
-      border-radius: $border-radius; // Apply rounded corners
       font-size: $font-size-sm; // Use small font size for inputs
+      margin: 0 var(--spacing-sm); // Use CSS custom property for margin
+      max-inline-size: 300px; // Limit the maximum width
+      padding: $spacing-sm; // Add padding for better usability
 
       &:focus {
+
+        border-color: $color-primary; // Highlight border with primary color
+        /* stylelint-disable-next-line declaration-property-value-no-unknown */
+        box-shadow: 0 0 5px $color-primary; // Add subtle shadow for focus
         // ### Focus Styles
         // - **outline:** Removes the default outline.
         // - **border-color:** Highlights the border with the primary color.
         // - **box-shadow:** Adds a subtle shadow for focus indication.
         outline: none;
-        border-color: $color-primary; // Highlight border with primary color
-        box-shadow: 0 0 5px $color-primary; // Add subtle shadow for focus
       }
     }
   }
@@ -87,69 +112,62 @@
     // - **gap:** Adds spacing between grid items.
     // - **margin-top, margin-bottom:** Adds vertical spacing around the grid.
     display: grid; // Use grid layout for responsive design
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); // Create responsive columns
     gap: $spacing-lg; // Add spacing between grid items
-    margin-top: $spacing-lg; // Add top margin for spacing
-    margin-bottom: $spacing-xl; // Add bottom margin for spacing
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); // Create responsive columns
+    margin-block: $spacing-lg $spacing-xl; // Add bottom margin for spacing // Add top margin for spacing
   }
 
   &__no-results {
+
+    color: $color-text; // Use standard text color
+    font-size: $font-size-md; // Use medium font size for readability
+    margin-block-start: $spacing-lg; // Add top margin for spacing
     // ### No Results Message
     // - **text-align:** Centers the message horizontally.
     // - **font-size:** Uses a medium font size for readability.
     // - **color:** Uses the standard text color for consistency.
     // - **margin-top:** Adds spacing above the message.
     text-align: center; // Center-align the text
-    font-size: $font-size-md; // Use medium font size for readability
-    color: $color-text; // Use standard text color
-    margin-top: $spacing-lg; // Add top margin for spacing
   }
 
   &__load-more {
+
+    margin-block-start: $spacing-lg; // Add top margin for spacing
     // ### Load More Button Container
     // - **text-align:** Centers the button horizontally.
     // - **margin-top:** Adds spacing above the button.
     text-align: center; // Center-align the button
-    margin-top: $spacing-lg; // Add top margin for spacing
+  }
 
-    .c-btn {
-      // ### Load More Button
-      // - **padding:** Adds inner spacing for better usability.
-      // - **background-color:** Uses the primary color for the button.
-      // - **color:** Uses white text for contrast.
-      // - **border:** Removes the default border.
-      // - **border-radius:** Applies large rounded corners for a modern look.
-      // - **font-size:** Uses a medium font size for readability.
-      // - **cursor:** Changes the cursor to a pointer for interactivity.
-      // - **transition:** Adds smooth hover effects for background color changes.
-      padding: $spacing-sm $spacing-md; // Add padding for clickable area
-      background-color: $color-primary; // Use primary color for the button
-      color: $color-white; // Use white text for contrast
-      border: none; // Remove default border
-      border-radius: $border-radius-lg; // Apply large rounded corners
-      font-size: $font-size-md; // Use medium font size
-      cursor: pointer; // Pointer cursor for interactivity
-      transition: background-color $transition-duration-default ease; // Smooth hover transition
+  .c-projects-list__load-more .c-btn {
 
-      &:hover {
-        // ### Hover Effect for Button
-        // - **background-color:** Changes to a darker primary color for interactivity.
-        background-color: $color-primary-dark; // Use darker primary color
-      }
+    background-color: $color-primary; // Use primary color for the button
+    border: none; // Remove default border
+    border-radius: $border-radius-lg; // Apply large rounded corners
+    color: $color-white; // Use white text for contrast
+    cursor: pointer; // Pointer cursor for interactivity
+    font-size: $font-size-md; // Use medium font size
+    padding: $spacing-sm $spacing-md; // Add padding for clickable area
+    transition-duration: var(--transition-duration-default);
+    transition-property: background-color;
+    transition-timing-function: ease;
+    &:hover, &:focus {
+
+      background-color: $color-primary-dark; // Use darker primary color
     }
+  }
 
-    .spinner {
-      // ### Loading Spinner
-      // - **display:** Hidden by default.
-      // - **margin-top:** Adds spacing above the spinner.
-      display: none; // Hidden by default
-      margin-top: $spacing-sm; // Add top margin for spacing
-    }
+  .c-spinner {
+    // ### Loading Spinner
+    // - **display:** Hidden by default.
+    // - **margin-top:** Adds spacing above the spinner.
+    display: none; // Hidden by default
+    margin-block-start: $spacing-sm; // Add top margin for spacing
+  }
 
-    .spinner.active {
-      // ### Active Spinner
-      // - **display:** Shows the spinner when active.
-      display: inline-block; // Show spinner when active
-    }
+  .c-spinner.c-active {
+    // ### Active Spinner
+    // - **display:** Shows the spinner when active.
+    display: inline-block; // Show spinner when active
   }
 }

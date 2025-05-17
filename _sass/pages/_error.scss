@@ -3,30 +3,47 @@
 // The styles are designed to ensure a clean and user-friendly layout, providing clear messaging and navigation options.
 // SASS variables are used for colors, spacing, typography, and transitions to ensure consistency and easy updates.
 
-.error-page {
+.c-error-page {@media screen and (prefers-reduced-motion: reduce) {
+    .c-error-page__link {
+      // ### Error Page Links
+      // - **color:** Uses the primary color for links.
+      // - **text-decoration:** Underlines links by default for accessibility.
+      // - **transition:** Adds smooth hover effects for color changes.
+      color: $color-primary; // Use primary color for links
+      text-decoration: underline; // Underline links by default
+      transition: none; // Smooth transition for hover effects
+
+      &:hover, &:focus {
+        // ### Hover Effect for Links
+        // - **color:** Changes to a darker primary color for emphasis.
+        color: $color-primary-dark; // Use darker primary color on hover
+      }
+    }
+  }
+  padding: $spacing-lg; // Add padding using the spacing variable
   // ### Error Page Container
   // - **text-align:** Centers all content horizontally.
   // - **padding:** Adds inner spacing around the content for better readability.
   text-align: center; // Center-align the content
-  padding: $spacing-lg; // Add padding using the spacing variable
 
-  h1 {
+  .c-error-page__heading {
     // ### Error Page Heading
     // - **font-size:** Uses a large font size for prominence.
     // - **margin-bottom:** Adds spacing below the heading for separation.
-    margin-bottom: $spacing-md; // Add bottom margin using the spacing variable
+    margin-block-end: $spacing-md; // Add bottom margin using the spacing variable
   }
 
-  p {
+  .c-error-page__description {
+
+    color: $color-text; // Use standard text color
     // ### Error Page Description
     // - **margin-bottom:** Adds spacing below the paragraph for separation.
     // - **font-size:** Uses a medium font size for readability.
     // - **color:** Uses the standard text color for consistency.
-    margin-bottom: $spacing-md; // Add bottom margin using the spacing variable
-    color: $color-text; // Use standard text color
+    margin-block-end: $spacing-md; // Add bottom margin using the spacing variable
   }
 
-  ul {
+  .c-error-page__list {
     // ### Error Page List
     // - **list-style:** Displays a disc as the list marker for each item.
     // - **margin:** Adds vertical spacing around the list and indents it for better readability.
@@ -34,16 +51,18 @@
     margin: $spacing-md 0 $spacing-md $spacing-lg; // Add vertical and left margin using spacing variables
   }
 
-  a {
+  .c-error-page__link {
     // ### Error Page Links
     // - **color:** Uses the primary color for links.
     // - **text-decoration:** Underlines links by default for accessibility.
     // - **transition:** Adds smooth hover effects for color changes.
     color: $color-primary; // Use primary color for links
     text-decoration: underline; // Underline links by default
-    transition: color $transition-duration-default ease; // Smooth transition for hover effects
+    transition-duration: $transition-duration-default;
+    transition-property: color;
+    transition-timing-function: ease;
 
-    &:hover {
+    &:hover, &:focus {
       // ### Hover Effect for Links
       // - **color:** Changes to a darker primary color for emphasis.
       color: $color-primary-dark; // Use darker primary color on hover

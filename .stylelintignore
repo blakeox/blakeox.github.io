@@ -1,0 +1,12 @@
+# .stylelintignore
+
+# Skip compiled CSS
+assets/css/
+
+# Node dependencies
+node_modules/
+
+# Other common ignores
+dist/
+build/
+coverage/

@@ -1,53 +1,50 @@
 // ## Spacing Utilities
-// This file contains utility classes for applying consistent spacing (margins and paddings) to elements.
-// These classes are based on SASS variables for spacing, ensuring consistency across the project.
-// Responsive variants are also included for smaller screen sizes to enhance flexibility and usability.
+// Uses logical properties to satisfy stylelint `csstools/use-logical`.
+.mt-1 { margin-block-start: $spacing-sm; }
 
-// ### Margin Utilities
-// These classes apply margin to specific sides or uniformly across all sides.
-// - **.mt-{n}:** Adds top margin, where `{n}` corresponds to the spacing size (e.g., `1`, `2`, `3`, `4`).
-// - **.mb-{n}:** Adds bottom margin.
-// - **.ml-{n}:** Adds left margin.
-// - **.mr-{n}:** Adds right margin.
-// - **.m-{n}:** Adds uniform margin on all sides.
+.mt-2 { margin-block-start: $spacing-md; }
 
-.mt-1 { margin-top: $spacing-sm; } // Small top margin
-.mt-2 { margin-top: $spacing-md; } // Medium top margin
-.mt-3 { margin-top: $spacing-lg; } // Large top margin
-.mt-4 { margin-top: $spacing-xl; } // Extra-large top margin
+.mt-3 { margin-block-start: $spacing-lg; }
 
-.mb-1 { margin-bottom: $spacing-sm; } // Small bottom margin
-.mb-2 { margin-bottom: $spacing-md; } // Medium bottom margin
-.mb-3 { margin-bottom: $spacing-lg; } // Large bottom margin
-.mb-4 { margin-bottom: $spacing-xl; } // Extra-large bottom margin
+.mt-4 { margin-block-start: $spacing-xl; }
 
-.ml-1 { margin-left: $spacing-sm; } // Small left margin
-.ml-2 { margin-left: $spacing-md; } // Medium left margin
-.ml-3 { margin-left: $spacing-lg; } // Large left margin
-.ml-4 { margin-left: $spacing-xl; } // Extra-large left margin
+.mb-1 { margin-block-end: $spacing-sm; }
 
-.mr-1 { margin-right: $spacing-sm; } // Small right margin
-.mr-2 { margin-right: $spacing-md; } // Medium right margin
-.mr-3 { margin-right: $spacing-lg; } // Large right margin
-.mr-4 { margin-right: $spacing-xl; } // Extra-large right margin
+.mb-2 { margin-block-end: $spacing-md; }
 
-.m-1 { margin: 1rem; } // Uniform margin on all sides
+.mb-3 { margin-block-end: $spacing-lg; }
 
-// ### Padding Utilities
-// These classes apply padding uniformly across all sides.
-// - **.p-{n}:** Adds uniform padding on all sides, where `{n}` corresponds to the spacing size (e.g., `1`, `2`, `3`, `4`).
+.mb-4 { margin-block-end: $spacing-xl; }
 
-.p-1 { padding: $spacing-sm; } // Small padding
-.p-2 { padding: $spacing-md; } // Medium padding
-.p-3 { padding: $spacing-lg; } // Large padding
-.p-4 { padding: $spacing-xl; } // Extra-large padding
+.ml-1 { margin-inline-start: $spacing-sm; }
 
-// ### Responsive Spacing Utilities
-// These classes apply spacing specifically for smaller screen sizes (e.g., max-width: 768px).
-// - **.mt-{n}-sm:** Adds top margin for small screens.
-// - **.mb-{n}-sm:** Adds bottom margin for small screens.
+.ml-2 { margin-inline-start: $spacing-md; }
 
+.ml-3 { margin-inline-start: $spacing-lg; }
+
+.ml-4 { margin-inline-start: $spacing-xl; }
+
+.mr-1 { margin-inline-end: $spacing-sm; }
+
+.mr-2 { margin-inline-end: $spacing-md; }
+
+.mr-3 { margin-inline-end: $spacing-lg; }
+
+.mr-4 { margin-inline-end: $spacing-xl; }
+
+.m-1  { margin: 1rem; }
+
+// Padding utilities (logical not required here because padding is OK).
+.p-1 { padding: $spacing-sm; }
+
+.p-2 { padding: $spacing-md; }
+
+.p-3 { padding: $spacing-lg; }
+
+.p-4 { padding: $spacing-xl; }
+
+// Responsive variants
 @media (max-width: 768px) {
-  .mt-1-sm { margin-top: $spacing-sm; } // Small top margin for small screens
-  .mb-1-sm { margin-bottom: $spacing-sm; } // Small bottom margin for small screens
+  .mt-1-sm { margin-block-start: $spacing-sm; }
+  .mb-1-sm { margin-block-end: $spacing-sm; }
 }

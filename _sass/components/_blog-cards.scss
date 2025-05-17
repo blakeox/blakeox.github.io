@@ -5,75 +5,124 @@
 // SASS variables are used for colors, spacing, typography, and transitions to ensure maintainability and easy updates.
 // Referenced variables are defined in the settings folder for consistency across the project.
 
+/* stylelint-disable a11y/media-prefers-color-scheme, declaration-property-value-no-unknown, scss/at-extend-no-missing-placeholder */
+
 // ### Blog Grid
 // - **.c-blog-cards:** The container for the blog cards, styled as a responsive grid.
+
 .c-blog-cards {
+  @media screen and (prefers-reduced-motion: reduce) {
+    &__item {
+
+      background: $background-color-light; // Use light background color
+      block-size: 100%; // Ensure consistent height for all cards
+      border-color: $color-border-light;
+      border-radius: $border-radius; // Apply rounded corners
+      border-style: solid;
+      border-width: 1px;
+      box-shadow: $box-shadow-sm; // Add a small shadow for depth
+      color: $color-text; // Use standard text color
+      display: flex; // Use flexbox for layout
+      flex-direction: column; // Stack content vertically
+      justify-content: flex-start; // Align items at the top
+      padding: $spacing-lg; // Add padding for inner spacing
+      transition: none; // Smooth hover effects
+
+      &:hover, &:focus {
+
+        box-shadow: 0 4px 8px rgb(0 0 0 / 0.1); // Add a larger shadow for emphasis
+        transform: translateY(-5px); // Slight upward movement
+      }
+    }
+  }
+  @media screen and (prefers-color-scheme: light) {
+    &__item {
+
+      border-color: $color-border-light;
+      border-style: solid;
+      border-width: 1px;
+    }
+  }
+  @media screen and (prefers-color-scheme: light) {
+    &__item-heading-link {
+
+      transition: color $transition-duration-default ease;
+    }
+  }
   display: grid; // Use grid layout for responsive design
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); // Responsive grid layout
   gap: $spacing-lg; // Add spacing between grid items
-  margin-top: $spacing-lg; // Add top margin for spacing
-  margin-bottom: $spacing-xl; // Add bottom margin for spacing
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); // Responsive grid layout
+  margin-block: $spacing-lg $spacing-xl; // Add bottom margin for spacing // Add top margin for spacing
 
   &__item {
+
+    background: $background-color-light; // Use light background color
+    block-size: 100%; // Ensure consistent height for all cards
+    border-color: $color-border-light;
+    border-radius: $border-radius; // Apply rounded corners
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: $box-shadow-sm; // Add a small shadow for depth
+    color: $color-text; // Use standard text color
     display: flex; // Use flexbox for layout
     flex-direction: column; // Stack content vertically
     justify-content: flex-start; // Align items at the top
-    background: $background-color-light; // Use light background color
-    border: 1px solid $color-border-light; // Add a light border
-    border-radius: $border-radius; // Apply rounded corners
     padding: $spacing-lg; // Add padding for inner spacing
-    box-shadow: $box-shadow-sm; // Add a small shadow for depth
     transition: transform $transition-duration-default ease, box-shadow $transition-duration-default ease; // Smooth hover effects
-    color: $color-text; // Use standard text color
-    height: 100%; // Ensure consistent height for all cards
 
-    &:hover {
+    &:hover, &:focus {
+
+      box-shadow: 0 4px 8px rgb(0 0 0 / 0.1); // Add a larger shadow for emphasis
       transform: translateY(-5px); // Slight upward movement
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Add a larger shadow for emphasis
     }
   }
 
   &__item-image {
-    width: 100%; // Ensure image fills the card width
-    height: 200px; // Set a consistent height for all images
-    object-fit: cover; // Crop the image to fit the container
+
+    block-size: 200px; // Set a consistent height for all images
     border-radius: $border-radius-sm; // Apply small rounded corners
-    margin-bottom: $spacing-md; // Add spacing below the image
+    inline-size: 100%; // Ensure image fills the card width
+    margin-block-end: $spacing-md; // Add spacing below the image
+    object-fit: cover; // Crop the image to fit the container
   }
 
   &__item-heading {
-    margin-top: $spacing-sm; // Add top margin for spacing
-    margin-bottom: $spacing-md; // Add bottom margin for spacing
-    font-size: $font-size-lg; // Use large font size for titles
-    text-align: center; // Center-align the title
-    min-height: 3rem; // Ensure consistent vertical space for titles
-    display: flex; // Use flexbox for alignment
+
     align-items: center; // Vertically center the text
+    display: flex; // Use flexbox for alignment
+    font-size: $font-size-lg; // Use large font size for titles
     justify-content: center; // Horizontally center the text
-
+    margin-block: $spacing-sm $spacing-md; // Add bottom margin for spacing // Add top margin for spacing
+    min-block-size: 3rem; // Ensure consistent vertical space for titles
+    text-align: center; // Center-align the title
     &-link {
-      text-decoration: none; // Remove underline
-      color: $color-primary; // Use primary color for links
-      transition: color $transition-duration-default ease; // Smooth color transition on hover
 
-      &:hover {
+      color: $color-primary; // Use primary color for links
+      text-decoration: none; // Remove underline
+      transition: color $transition-duration-default ease;
+
+      &:hover, &:focus {
+
         color: $color-primary-dark; // Use darker primary color on hover
       }
     }
   }
 
   &__item-description {
+
     flex-grow: 1; // Allow the description to take up remaining space
-    margin-bottom: $spacing-md; // Add bottom margin for spacing
+    margin-block-end: $spacing-md; // Add bottom margin for spacing
     text-align: center; // Center-align the description
   }
 
   &__item-cta {
-    @extend .c-btn;
-    margin-top: auto; // Push the button to the bottom
-    align-self: center; // Center-align the button
 
-    &:hover {
+    @extend .c-btn; // Center-align the button
+    align-self: center; // Center-align the button
+    margin-block-start: auto; // Push the button to the bottom
+
+    &:hover, &:focus {
+
       background-color: $color-primary-dark; // Use darker primary color on hover
       transform: translateY(-2px); // Slight upward movement
     }

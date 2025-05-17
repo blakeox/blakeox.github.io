@@ -1,0 +1,16 @@
+# .eslintignore
+
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+coverage/
+
+# Compiled CSS or external SCSS
+assets/css/
+
+# Minified or vendor JS
+public/vendor/
+*.min.js

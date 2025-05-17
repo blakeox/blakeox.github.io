@@ -1,0 +1,30 @@
+// _sass/utilities/_index.scss
+// Utility classes (ITCSS: Trumps layer)
+
+// Layout + Display
+@import 'display';
+@import 'flexbox';
+@import 'layout-utilities';
+@import 'positioning';
+@import 'width-height';
+@import 'overflow';
+@import 'visibility';
+
+// Spacing
+@import 'spacing';
+
+// Text & Visual
+@import 'text';
+@import 'shadows';
+@import 'border';
+@import 'animations';
+
+// Component-specific utils
+@import 'search-animations';
+@import 'search-loading-states';
+@import 'search-types';
+@import 'tech-keyboard';
+@import 'tech-search-utils';
+
+// Global utility pack (if exists)
+@import 'utilities';

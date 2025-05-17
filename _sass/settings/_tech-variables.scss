@@ -6,11 +6,12 @@
 // Base Tech Theme Variables 
 // ============================================================
 $tech-primary: var(--tech-primary, var(--color-primary));
+$tech-primary-rgb: var(--tech-primary-rgb, var(--color-primary-rgb));
 $tech-secondary: var(--tech-secondary, #0af);
 $tech-accent: var(--tech-accent, #f0a);
-$tech-grid-color: var(--tech-grid-color, rgba(85, 210, 230, 0.15));
-$tech-glow-color: var(--tech-glow-color, rgba(0, 170, 255, 0.6));
-$tech-bg-color: var(--tech-bg-color, rgba(0, 20, 40, 0.9));
+$tech-grid-color: var(--tech-grid-color, rgb(85 210 230 / 0.15));
+$tech-glow-color: var(--tech-glow-color, rgb(0 170 255 / 0.6));
+$tech-bg-color: var(--tech-bg-color, rgb(0 20 40 / 0.9));
 
 // ============================================================
 // Animation Timing Variables
@@ -18,7 +19,6 @@ $tech-bg-color: var(--tech-bg-color, rgba(0, 20, 40, 0.9));
 $tech-transition-fast: 0.2s;
 $tech-transition-medium: 0.3s;
 $tech-transition-slow: 0.6s;
-
 $tech-animation-ping: 2.5s;
 $tech-animation-scan: 3s;
 $tech-animation-pulse: 2s;
@@ -30,7 +30,6 @@ $tech-animation-glow: 1.5s;
 $tech-border-radius-sm: 3px;
 $tech-border-radius-md: 6px;
 $tech-border-radius-lg: 10px;
-
 $tech-spacing-sm: 5px;
 $tech-spacing-md: 10px;
 $tech-spacing-lg: 20px;
@@ -45,9 +44,9 @@ $tech-theme-default: (
   primary: #4dc8aa,
   secondary: #0af,
   accent: #f0a,
-  grid: rgba(85, 210, 230, 0.15),
-  glow: rgba(0, 170, 255, 0.6),
-  bg: rgba(0, 20, 40, 0.9)
+  grid: rgb(85 210 230 / 0.15),
+  glow: rgb(0 170 255 / 0.6),
+  bg: rgb(0 20 40 / 0.9)
 );
 
 // Neon Theme (Cyan/Pink)
@@ -55,9 +54,9 @@ $tech-theme-neon: (
   primary: #0ff,
   secondary: #f0f,
   accent: #ff0,
-  grid: rgba(0, 255, 255, 0.15),
-  glow: rgba(255, 0, 255, 0.6),
-  bg: rgba(0, 10, 20, 0.95)
+  grid: rgb(0 255 255 / 0.15),
+  glow: rgb(255 0 255 / 0.6),
+  bg: rgb(0 10 20 / 0.95)
 );
 
 // Cyberpunk Theme (Orange/Red)
@@ -65,9 +64,9 @@ $tech-theme-cyberpunk: (
   primary: #f5a623,
   secondary: #ff3b77,
   accent: #00ffc8,
-  grid: rgba(245, 166, 35, 0.15),
-  glow: rgba(255, 59, 119, 0.6),
-  bg: rgba(20, 5, 20, 0.95)
+  grid: rgb(245 166 35 / 0.15),
+  glow: rgb(255 59 119 / 0.6),
+  bg: rgb(20 5 20 / 0.95)
 );
 
 // Matrix Theme (Blue/Purple)
@@ -75,9 +74,9 @@ $tech-theme-dark: (
   primary: #3d7cf5,
   secondary: #5f33ff,
   accent: #00e5ff,
-  grid: rgba(61, 124, 245, 0.15),
-  glow: rgba(95, 51, 255, 0.6),
-  bg: rgba(5, 10, 25, 0.95)
+  grid: rgb(61 124 245 / 0.15),
+  glow: rgb(95 51 255 / 0.6),
+  bg: rgb(5 10 25 / 0.95)
 );
 
 // ============================================================
@@ -97,3 +96,22 @@ $tech-breakpoint-sm: 576px;
 $tech-breakpoint-md: 768px;
 $tech-breakpoint-lg: 992px;
 $tech-breakpoint-xl: 1200px;
+
+// ============================================================
+// Documentation and Code Comments
+// ============================================================
+// In _settings/_colors.scss, ensure you have:
+// :root {
+//   --tech-primary: var(--color-primary);
+//   --tech-primary-rgb: var(--color-primary-rgb);
+//   ...other tech variables...
+// }
+// In _settings/_tech-variables.scss, use SCSS variables that reference the CSS custom properties:
+// $tech-primary: var(--tech-primary, var(--color-primary));
+// $tech-primary-rgb: var(--tech-primary-rgb, var(--color-primary-rgb));
+// ...
+// This way, all components and utilities can use $tech-primary or var(--tech-primary) without redeclaring.
+// Example usage in a component:
+// color: var(--tech-primary);
+// border-color: var(--tech-primary);
+// background: rgb(var(--tech-primary-rgb) 0.15);

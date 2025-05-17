@@ -10,9 +10,9 @@
 // - **$font-family-base:** Default font for body text.
 // - **$font-family-heading:** Font for headings to create visual hierarchy.
 // - **$font-family-monospace:** Monospace font for code blocks or technical content.
-$font-family-base: 'Work Sans', 'Helvetica Neue', Arial, sans-serif; // Base font for body text
-$font-family-heading: 'Playfair Display', Georgia, serif; // Font for headings
-$font-family-monospace: 'Courier New', Courier, monospace; // Monospace font for code blocks
+$font-family-base: 'Work Sans', 'Helvetica Neue', arial, sans-serif; // Base font for body text
+$font-family-heading: 'Playfair Display', georgia, serif; // Font for headings
+$font-family-monospace: 'Courier New', courier, monospace; // Monospace font for code blocks
 
 // ### Font Sizes
 // Defines font sizes for various text elements.
@@ -86,28 +86,41 @@ $text-transform-capitalize: capitalize; // Capitalized text
 
 // ### Base Typography Styles
 // Styles for headings and paragraphs using the typographic scale and settings.
-h1, h2, h3, h4, h5, h6 {
-  font-family: $font-family-heading;
-  color: $color-text;
-  line-height: $line-height-heading;
-  margin-bottom: $spacing-sm;
+
+@media (prefers-color-scheme: dark), (prefers-color-scheme: light) {
+  h1, h2, h3, h4, h5, h6 {
+
+    color: $color-text;
+    font-family: $font-family-heading;
+    line-height: $line-height-heading;
+    margin-block-end: $spacing-sm;
+  }
 }
-h1 { font-size: map-get($type-scale, 'xxl'); }
-h2 { font-size: map-get($type-scale, 'xl'); }
-h3 { font-size: map-get($type-scale, 'lg'); }
-h4 { font-size: map-get($type-scale, 'md'); }
-h5 { font-size: map-get($type-scale, 'sm'); }
-h6 { font-size: map-get($type-scale, 'xs'); }
+
+h1 { font-size: map.get($type-scale, 'xxl'); }
+
+h2 { font-size: map.get($type-scale, 'xl'); }
+
+h3 { font-size: map.get($type-scale, 'lg'); }
+
+h4 { font-size: map.get($type-scale, 'md'); }
+
+h5 { font-size: map.get($type-scale, 'sm'); }
+
+h6 { font-size: map.get($type-scale, 'xs'); }
 
 p {
+
   font-size: $font-size-base;
   line-height: $line-height-base;
-  margin-bottom: $spacing-md;
+  margin-block-end: $spacing-md;
 }
 
 // ### Responsive Typography
 // Mixin for fluid type scaling between two sizes across viewports.
+
 @mixin fluid-type($min-size, $max-size) {
+
   font-size: clamp(
     #{$min-size},
     calc(#{$min-size} + (#{$max-size} - #{$min-size}) * ((100vw - #{$breakpoint-sm}) / (#{$breakpoint-lg} - #{$breakpoint-sm}))),

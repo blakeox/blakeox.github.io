@@ -1,4 +1,4 @@
-<head>
+<!-- Begin head include content (integrated into default.html) -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -32,7 +32,7 @@
   <meta property="twitter:image" content="{{ page.image | absolute_url | default: '/assets/images/og-image.png' }}">
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
 
   <!-- Preconnect for Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -67,6 +67,6 @@
   <script src="/assets/js/image-lazyload.js" defer></script>
   
   <!-- Search Enhancements -->
+  <script src="/assets/js/search-history.js" defer></script>
   <script src="/assets/js/search-overlay.js" defer></script>
-  <script src="/assets/js/search-enhancements.js" defer></script>
-</head>
+<!-- End head include content -->

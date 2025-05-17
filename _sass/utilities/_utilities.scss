@@ -16,16 +16,32 @@
 // - **visibility:** Utility classes for controlling element visibility.
 // - **width-height:** Utility classes for setting width and height properties.
 
-@import "animations"; // Utility classes for animations and keyframes
-@import "border"; // Utility classes for border styles and border-radius
-@import "display"; // Utility classes for controlling the `display` property
-@import "flexbox"; // Utility classes for applying common flexbox properties
-@import "layout-utilities"; // Utility classes for layout management
-@import "overflow"; // Utility classes for managing content overflow behavior
-@import "positioning"; // Utility classes for controlling element positioning
-@import "shadows"; // Utility classes for applying box shadows
-@import "spacing"; // Utility classes for margins and paddings
-@import "text"; // Utility classes for text alignment and transformations
-@import "visibility"; // Utility classes for controlling element visibility
-@import "width-height"; // Utility classes for setting width and height properties
-@import "tech-search-utils"; // Utility classes for tech search animation toggles and browser compatibility
+@import 'animations'; // Utility classes for animations and keyframes
+
+@import 'border'; // Utility classes for border styles and border-radius
+
+@import 'display'; // Utility classes for controlling the `display` property
+
+@import 'flexbox'; // Utility classes for applying common flexbox properties
+
+@import 'layout-utilities'; // Utility classes for layout management
+
+@import 'overflow'; // Utility classes for managing content overflow behavior
+
+@import 'positioning'; // Utility classes for controlling element positioning
+
+@import 'shadows'; // Utility classes for applying box shadows
+
+@import 'spacing'; // Utility classes for margins and paddings
+
+@import 'text'; // Utility classes for text alignment and transformations
+
+@import 'visibility'; // Utility classes for controlling element visibility
+
+@import 'width-height'; // Utility classes for setting width and height properties
+
+@import 'tech-search-utils'; // Utility classes for tech search animation toggles and browser compatibility
+
+@import 'search-loading-states'; // Utility classes for search loading states
+
+// Ensure that .u-hidden and .u-visible are used in the project instead of .hidden and .visible.

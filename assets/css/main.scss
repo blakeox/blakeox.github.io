@@ -1,6 +1,5 @@
 ---
 ---
-
 // ## Main Stylesheet
 // This file serves as the central entry point for all styles in the project.
 // It organizes imports for settings, base styles, utilities, layouts, components, and page-specific styles.
@@ -9,15 +8,15 @@
 // ### Settings
 // Import global variables and configurations, such as colors, typography, and spacing.
 @import "settings/index";
+@import "settings/shadows";
 
 // ### Base Styles
 // Import foundational styles, including resets, typography, and global elements.
-@import "base";
+@import "elements/base";
 
 // ### Utility Classes
 // Import reusable utility classes for common CSS properties, such as spacing, display, and visibility.
 @import "utilities/utilities";
-
 
 // ### Page-Specific Styles
 // Import styles specific to individual pages, such as the blog, contact, and about pages.

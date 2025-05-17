@@ -5,15 +5,15 @@
 // ### Light Mode Colors
 // These colors are used in the default (light) mode.
 $color-primary: #4dc8aa; // Primary brand color
-$color-primary-dark: #3BAF92; // Darker shade of the primary color
-$color-secondary: #6C757D; // Secondary brand color
-$color-accent: rgba(77, 200, 170, 0.8); // Accent color with transparency
-$color-accent-dark: darken($color-accent, 20%); // Darker accent color
-$color-white: #ffffff; // White color
+$color-primary-dark: #3baf92; // Darker shade of the primary color
+$color-secondary: #6c757d; // Secondary brand color
+$color-accent: rgb(77 200 170 / 0.8); // Accent color with transparency
+$color-accent-dark: color.adjust($color-accent, $lightness: -20%); // Darker accent color
+$color-white: #fff; // White color
 $color-black: #000; // Black color
 $color-text: #333; // Default text color
 $color-background: #f9f9f9; // Light gray background color
-$color-background-light: #ffffff; // Light background color (e.g., white)
+$color-background-light: #fff; // Light background color (e.g., white)
 
 // ### Dark Mode Colors
 // These colors are used in dark mode for better readability and contrast.
@@ -21,7 +21,7 @@ $dark-mode-background: #121212; // Background color for dark mode
 $dark-mode-text: #e0e0e0; // Text color for dark mode
 $dark-mode-primary: #90caf9; // Primary color for dark mode
 $dark-mode-secondary: #b0bec5; // Secondary color for dark mode
-$dark-mode-accent: rgba(144, 202, 249, 0.8); // Accent color for dark mode
+$dark-mode-accent: rgb(144 202 249 / 0.8); // Accent color for dark mode
 $dark-mode-border: #333; // Border color for dark mode
 
 // ### Tech Search Theme Colors
@@ -30,17 +30,18 @@ $dark-mode-border: #333; // Border color for dark mode
 
 // ### CSS Variables
 // Define CSS variables for runtime theming and toggling between light and dark modes.
+
 :root {
   --color-primary: #4dc8aa;
-  --color-primary-dark: #3BAF92;
-  --color-secondary: #6C757D;
-  --color-accent: rgba(77, 200, 170, 0.8);
-  --color-accent-dark: darken(#4dc8aa, 20%);
-  --color-white: #ffffff;
+  --color-primary-dark: #3baf92;
+  --color-secondary: #6c757d;
+  --color-accent: rgb(77 200 170 / 0.8);
+  --color-accent-dark: color.adjust(#4dc8aa, $lightness: -20%);
+  --color-white: #fff;
   --color-black: #000;
   --color-text: #333;
   --color-background: #f9f9f9;
-  --color-background-light: #ffffff;
+  --color-background-light: #fff;
   --color-background-light-hover: #fafafa;
   
   // RGB variants for opacity manipulation
@@ -51,21 +52,21 @@ $dark-mode-border: #333; // Border color for dark mode
   --tech-primary: var(--color-primary);
   --tech-secondary: #0af;
   --tech-accent: #f0a;
-  --tech-grid-color: rgba(85, 210, 230, 0.15);
-  --tech-glow-color: rgba(0, 170, 255, 0.6);
-  --tech-bg-color: rgba(0, 20, 40, 0.9);
+  --tech-grid-color: rgb(85 210 230 / 0.15);
+  --tech-glow-color: rgb(0 170 255 / 0.6);
+  --tech-bg-color: rgb(0 20 40 / 0.9);
   
   // Hover state variations
   --tech-secondary-hover: #3d8eff;
-  --tech-accent-hover: #ff66cc;
+  --tech-accent-hover: #f6c;
 }
 
-[data-theme="dark"] {
+[data-theme='dark'] {
   --color-primary: #90caf9;
   --color-primary-dark: #5d99c6;
   --color-secondary: #b0bec5;
-  --color-accent: rgba(144, 202, 249, 0.8);
-  --color-accent-dark: darken(#90caf9, 20%);
+  --color-accent: rgb(144 202 249 / 0.8);
+  --color-accent-dark: color.adjust(#90caf9, $lightness: -20%);
   --color-white: #121212;
   --color-black: #e0e0e0;
   --color-text: #e0e0e0;
@@ -80,9 +81,9 @@ $dark-mode-border: #333; // Border color for dark mode
   --tech-primary: var(--color-primary);
   --tech-secondary: #3d8eff;
   --tech-accent: #f459cc;
-  --tech-grid-color: rgba(85, 210, 230, 0.2);
-  --tech-glow-color: rgba(61, 142, 255, 0.6);
-  --tech-bg-color: rgba(20, 30, 40, 0.9);
+  --tech-grid-color: rgb(85 210 230 / 0.2);
+  --tech-glow-color: rgb(61 142 255 / 0.6);
+  --tech-bg-color: rgb(20 30 40 / 0.9);
   
   // Hover state variations
   --tech-secondary-hover: #5d9eff;
@@ -90,76 +91,105 @@ $dark-mode-border: #333; // Border color for dark mode
 }
 
 // Tech theme variations
-[data-tech-theme="default"] {
+
+[data-tech-theme='default'] {
   --tech-primary: var(--color-primary);
   --tech-secondary: #0af;
   --tech-accent: #f0a;
-  --tech-grid-color: rgba(85, 210, 230, 0.15);
-  --tech-glow-color: rgba(0, 170, 255, 0.6);
-  --tech-bg-color: rgba(0, 20, 40, 0.9);
+  --tech-grid-color: rgb(85 210 230 / 0.15);
+  --tech-glow-color: rgb(0 170 255 / 0.6);
+  --tech-bg-color: rgb(0 20 40 / 0.9);
 }
 
-[data-tech-theme="neon"] {
+[data-tech-theme='neon'] {
   --tech-primary: #0ff;
   --tech-secondary: #f0f;
   --tech-accent: #ff0;
-  --tech-grid-color: rgba(0, 255, 255, 0.15);
-  --tech-glow-color: rgba(255, 0, 255, 0.6);
-  --tech-bg-color: rgba(0, 10, 20, 0.95);
+  --tech-grid-color: rgb(0 255 255 / 0.15);
+  --tech-glow-color: rgb(255 0 255 / 0.6);
+  --tech-bg-color: rgb(0 10 20 / 0.95);
 }
 
-[data-tech-theme="cyberpunk"] {
+[data-tech-theme='cyberpunk'] {
   --tech-primary: #f5a623;
   --tech-secondary: #ff3b77;
   --tech-accent: #00ffc8;
-  --tech-grid-color: rgba(245, 166, 35, 0.15);
-  --tech-glow-color: rgba(255, 59, 119, 0.6);
-  --tech-bg-color: rgba(20, 5, 20, 0.95);
+  --tech-grid-color: rgb(245 166 35 / 0.15);
+  --tech-glow-color: rgb(255 59 119 / 0.6);
+  --tech-bg-color: rgb(20 5 20 / 0.95);
 }
 
-[data-tech-theme="dark"] {
+[data-tech-theme='dark'] {
   --tech-primary: #3d7cf5;
   --tech-secondary: #5f33ff;
   --tech-accent: #00e5ff;
-  --tech-grid-color: rgba(61, 124, 245, 0.15);
-  --tech-glow-color: rgba(95, 51, 255, 0.6);
-  --tech-bg-color: rgba(5, 10, 25, 0.95);
+  --tech-grid-color: rgb(61 124 245 / 0.15);
+  --tech-glow-color: rgb(95 51 255 / 0.6);
+  --tech-bg-color: rgb(5 10 25 / 0.95);
 }
 
-// Support class-based dark mode
+// Support class-based dark mode with placeholder selector
+%data-theme-dark {
+  --color-primary: #90caf9;
+  --color-primary-dark: #5d99c6;
+  --color-secondary: #b0bec5;
+  --color-accent: rgb(144 202 249 / 0.8);
+  --color-accent-dark: color.adjust(#90caf9, $lightness: -20%);
+  --color-white: #121212;
+  --color-black: #e0e0e0;
+  --color-text: #e0e0e0;
+  --color-background: #121212;
+  --color-background-light: #1e1e1e;
+}
+
 body.dark-mode {
-  @extend [data-theme="dark"]; // Apply the same variables as attribute-based selector
+  @extend %data-theme-dark;
 }
 
 // ### Utility Classes
 // Add utility classes for applying colors directly.
-.bg-primary { background-color: var(--color-primary); }
-.bg-secondary { background-color: var(--color-secondary); }
-.bg-accent { background-color: var(--color-accent); }
-.text-primary { color: var(--color-primary); }
-.text-secondary { color: var(--color-secondary); }
-.text-accent { color: var(--color-accent); }
-.text-white { color: #fff !important; }
+
+// stylelint-disable-next-line selector-class-pattern
+@media (prefers-color-scheme: light) {
+  .u-bg-primary { background-color: var(--color-primary); }
+  .u-bg-secondary { background-color: var(--color-secondary); }
+  .u-bg-accent { background-color: var(--color-accent); }
+  .u-text-primary { color: var(--color-primary); }
+  .u-text-secondary { color: var(--color-secondary); }
+  .u-text-accent { color: var(--color-accent); }
+  .u-text-white { color: #fff !important; }
+}
+
+// stylelint-disable-next-line selector-class-pattern
+@media (prefers-color-scheme: dark) {
+  .u-bg-primary { background-color: var(--color-primary); }
+  .u-bg-secondary { background-color: var(--color-secondary); }
+  .u-bg-accent { background-color: var(--color-accent); }
+  .u-text-primary { color: var(--color-primary); }
+  .u-text-secondary { color: var(--color-secondary); }
+  .u-text-accent { color: var(--color-accent); }
+  .u-text-white { color: #fff !important; }
+}
 
 // ### Text Colors
 // These colors are used for text content, including links and secondary text.
 $color-text-secondary: #555; // Muted text color for secondary content
-$color-link: #4DC8AA; // Link color
+$color-link: #4dc8aa; // Link color
 
 // ### Background Colors
 // These colors are used for backgrounds of various sections and components.
 $background-color-secondary: #f4f4f4; // Secondary background color
 $background-color-highlight: #fffbea; // Highlighted background color
-$background-color-light: #ffffff; // Light background color (e.g., white)
+$background-color-light: #fff; // Light background color (e.g., white)
 
 // ### Neutral Colors
 // These are shades of gray used for subtle elements like borders and backgrounds.
 $color-gray-light: #f1f1f1; // Light gray for backgrounds
-$color-gray-medium: #cccccc; // Medium gray for borders
-$color-gray-dark: #666666; // Dark gray for subtle text
+$color-gray-medium: #ccc; // Medium gray for borders
+$color-gray-dark: #666; // Dark gray for subtle text
 
 $gray-light: $color-gray-light; // Alias for gray-light
-$gray-dark:  $color-gray-dark;  // Alias for gray-dark
+$gray-dark: $color-gray-dark;  // Alias for gray-dark
 
 // ### Border Colors
 // These colors are used for borders of elements like cards, buttons, and containers.
@@ -177,12 +207,12 @@ $color-error: #dc3545; // Red for errors
 
 // ### Hover and Active States
 // Colors for hover and active states of interactive elements like buttons and links.
-$color-primary-hover: darken($color-primary, 10%); // Darker shade for hover state
-$color-secondary-hover: lighten($color-secondary, 10%); // Lighter shade for hover state
+$color-primary-hover: color.adjust($color-primary, $lightness: -10%); // Darker shade for hover state
+$color-secondary-hover: color.adjust($color-secondary, $lightness: 10%); // Lighter shade for hover state
 
 // ### Shadows or Overlays
 // Colors used for shadows and overlays to create depth and focus.
-$color-overlay: rgba(0, 0, 0, 0.5); // Semi-transparent black for overlays
+$color-overlay: rgb(0 0 0 / 0.5); // Semi-transparent black for overlays
 
 // ### Opacity Variables
 // Opacity values for specific use cases like hero section overlays.
@@ -210,27 +240,27 @@ $color-text-muted: $color-text-secondary; // Muted text color
 // ### Gradients
 // Gradient definitions for backgrounds or decorative elements.
 $gradient-primary: linear-gradient(90deg, $color-primary, $color-primary-dark); // Primary gradient
-$gradient-secondary: linear-gradient(90deg, $color-secondary, lighten($color-secondary, 10%)); // Secondary gradient
+$gradient-secondary: linear-gradient(90deg, $color-secondary, color.adjust($color-secondary, $lightness: 10%)); // Secondary gradient
 
 // ## Accessibility Improvements
 // Added high-contrast colors and transparent variants for better accessibility and design flexibility.
 
 // ### Accessibility Colors
 // High-contrast colors for improved accessibility and readability.
-$color-high-contrast-text: #000000; // Black for high-contrast text
-$color-high-contrast-background: #ffffff; // White for high-contrast backgrounds
+$color-high-contrast-text: #000; // Black for high-contrast text
+$color-high-contrast-background: #fff; // White for high-contrast backgrounds
 $color-high-contrast-link: #0056b3; // Dark blue for high-contrast links
 
 // ### Transparent Variants
 // Transparent versions of colors for overlays or subtle effects.
-$color-primary-transparent: rgba($color-primary, 0.1); // Transparent primary color
-$color-secondary-transparent: rgba($color-secondary, 0.1); // Transparent secondary color
-$color-black-transparent: rgba(0, 0, 0, 0.5); // Semi-transparent black
-$color-white-transparent: rgba(255, 255, 255, 0.8); // Semi-transparent white
+$color-primary-transparent: rgb($color-primary 0.1); // Transparent primary color
+$color-secondary-transparent: rgb($color-secondary 0.1); // Transparent secondary color
+$color-black-transparent: rgb(0 0 0 / 0.5); // Semi-transparent black
+$color-white-transparent: rgb(255 255 255 / 0.8); // Semi-transparent white
 
 // ### Accent Colors
 // Added `$color-accent-dark` for darker accent color variants.
-$color-accent-dark: darken($color-accent, 20%); // Darker accent color with transparency
+$color-accent-dark: color.adjust($color-accent, $lightness: -20%); // Darker accent color with transparency
 
 // ### Color Palette Map
 // A centralized map of colors for easier reference and iteration.

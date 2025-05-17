@@ -8,72 +8,115 @@
 // - **.c-call-to-action:** The main container for the CTA section.
 // - **text-align:** Centers the content horizontally.
 // - **margin-top:** Adds spacing above the section.
+
 .c-call-to-action {
-  text-align: center; // Center-align the content
-  margin-top: $spacing-lg; // Add top margin for spacing
+  @media (prefers-color-scheme: dark) {
+    .c-btn {
+      @media (hover: hover), (pointer: fine) {
+        &:hover, &:focus {
 
-  // ### CTA Buttons
-  // - **.c-btn:** Styles for buttons within the CTA section.
-  // - **padding:** Adds inner spacing for better usability.
-  // - **background-color:** Uses the primary color for the button.
-  // - **border-radius:** Adds rounded corners for a modern look.
-  // - **transition:** Enables smooth hover effects.
-  .c-btn {
-    padding: $spacing-sm $spacing-md; // Add padding for clickable area
-    background-color: $color-primary; // Use primary color for the button
-    color: $color-white; // Use white text for contrast
-    border: none; // Remove default border
-    border-radius: $border-radius-lg; // Apply large rounded corners
-    font-size: $font-size-md; // Use medium font size for the button text
-    cursor: pointer; // Change cursor to pointer for interactivity
-    transition: background-color $transition-duration-default ease; // Smooth hover effect
-
-    &:hover {
-      // Hover effect for buttons
-      background-color: $color-primary-dark; // Use darker primary color for hover state
+          background-color: $color-primary-darkest;
+        }
+      }
+      background-color: $color-primary-dark;
+      border: none;
+      border-radius: $border-radius-lg;
+      color: $color-white;
+      cursor: pointer;
+      font-size: $font-size-md;
+      padding: $spacing-sm $spacing-md;
+      transition-duration: $transition-duration-default;
+      transition-property: background-color;
+      transition-timing-function: ease;
     }
   }
+  @media (prefers-color-scheme: light), (prefers-color-scheme: no-preference) {
+    .c-btn {
+      @media (hover: hover), (pointer: fine) {
+        &:hover, &:focus {
+
+          background-color: $color-primary-dark;
+        }
+      }
+      background-color: $color-primary;
+      border: none;
+      border-radius: $border-radius-lg;
+      color: $color-white;
+      cursor: pointer;
+      font-size: $font-size-md;
+      padding: $spacing-sm $spacing-md;
+      transition-duration: $transition-duration-default;
+      transition-property: background-color;
+      transition-timing-function: ease;
+    }
+  }
+  margin-block-start: $spacing-lg; // Add top margin for spacing
+  text-align: center; // Center-align the content
 }
 
 // ### About CTA Group (improved)
 // - Reuse base .c-call-to-action styles
 // - Use CSS Grid for responsive columns
 // - Equal-width buttons with consistent spacing
-.c-about-cta-group {
-  @extend .c-call-to-action;
 
-  // Base grid: one column stack on mobile
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: $spacing-md;
-  background-color: $background-color-highlight;
-  padding: $spacing-lg;
-  border-radius: $border-radius-md;
-  margin-top: $spacing-xl;
+@media (prefers-color-scheme: dark) {
+  .c-about-cta-group {
 
-  // Two columns at small breakpoint
-  @include respond-to('sm') {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .c-btn {
-    // Full width within grid cell
-    width: 100%;
-    max-width: none; // let grid control sizing
+    background-color: $background-color-highlight;
+    border-radius: $border-radius-md;
+    display: grid;
+    gap: $spacing-md;
+    grid-template-columns: 1fr;
+    margin-block-start: $spacing-xl;
+    padding: $spacing-lg;
     text-align: center;
+    .c-btn {
+      @media (hover: hover), (pointer: fine) {
+        &:hover, &:focus-visible {
 
-    // Add consistent height and font-size for CTA buttons
-    padding: $spacing-md;
-    font-size: $font-size-md;
+          box-shadow: 0 6px 12px rgb(0 0 0 / 0.15);
+          transform: translateY(-3px);
+        }
+      }
+      box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+      font-size: $font-size-md;
+      inline-size: 100%;
+      max-inline-size: none;
+      padding: $spacing-md;
+      text-align: center;
+      transition-property: none;
+    }
+  }
+}
 
-    // Upgrade hover/focus with elevation
-    box-shadow: 0 2px 6px rgba($color-black, 0.1);
-    transition: transform $transition-duration-fast ease, box-shadow $transition-duration-fast ease;
+@media (prefers-color-scheme: light), (prefers-color-scheme: no-preference) {
+  .c-about-cta-group {
 
-    &:hover,
-    &:focus-visible {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 12px rgba($color-black, 0.15);
+    background-color: $background-color-highlight;
+    border-radius: $border-radius-md;
+    display: grid;
+    gap: $spacing-md;
+    grid-template-columns: 1fr;
+    margin-block-start: $spacing-xl;
+    padding: $spacing-lg;
+    text-align: center;
+    .c-btn {
+      @media (hover: hover), (pointer: fine) {
+        &:hover, &:focus-visible {
+
+          box-shadow: 0 6px 12px rgb(0 0 0 / 0.15);
+          transform: translateY(-3px);
+        }
+      }
+      box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+      font-size: $font-size-md;
+      inline-size: 100%;
+      max-inline-size: none;
+      padding: $spacing-md;
+      text-align: center;
+      transition-duration: $transition-duration-fast, $transition-duration-fast;
+      transition-property: transform, box-shadow;
+      transition-timing-function: ease, ease;
     }
   }
 }

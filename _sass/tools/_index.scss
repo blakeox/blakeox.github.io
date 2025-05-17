@@ -1,0 +1,5 @@
+// _sass/tools/_index.scss
+// Tools Layer (ITCSS): Global mixins, functions, and reusable SASS logic.
+// These should never output actual CSS directly — they only assist other layers.
+
+@import 'mixins'; // Global reusable mixins (e.g., clearfix, media queries)

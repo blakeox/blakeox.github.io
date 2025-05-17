@@ -1,0 +1,25 @@
+// _sass/objects/_index.scss
+// ## ITCSS Objects Layer
+// This layer holds non-cosmetic layout abstractions — structural patterns like wrappers, grids, media objects, etc.
+// These are typically classed with an `o-` prefix (e.g., `o-container`, `o-grid`, `o-media`) and avoid styling details like colors or font sizes.
+
+// ──────────────────────────────
+// Layout Wrappers & Regions
+// ──────────────────────────────
+@import 'container';         // o-container: horizontal padding & max-width
+@import 'grid';              // o-grid: flex/grid-based layout system
+
+// ──────────────────────────────
+// Page Structure
+// ──────────────────────────────
+@import 'header';            // o-header: header layout shell
+@import 'footer';            // o-footer: footer layout shell
+
+// ──────────────────────────────
+// Modular Object Patterns
+// ──────────────────────────────
+@import 'media';             // o-media: classic media object pattern
+@import 'stats';             // o-stats: layout for stat blocks
+@import 'resume-summary';    // o-resume-summary: structured resume sections
+@import 'filter-controls';   // o-filter-controls: filter bar and buttons
+@import 'category-filters';  // o-category-filters: layout pattern for tag/category filtering

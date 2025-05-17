@@ -4,23 +4,24 @@
 // SASS variables are used for spacing, colors, typography, and transitions to ensure consistency and easy updates.
 // Referenced variables are defined in the settings folder for maintainability.
 
-.project-detail {
+.c-project-detail {
   // ### Base Styles
   // - **margin:** Centers the content horizontally.
   // - **padding:** Adds inner spacing around the content.
   // - **max-width:** Limits the maximum width of the content for better readability.
   margin: 0 auto; // Center the content horizontally
+  max-inline-size: 960px; // Limit the maximum width of the content
   padding: $spacing-lg; // Add padding using the spacing variable
-  max-width: 960px; // Limit the maximum width of the content
 
-  .breadcrumb {
+  .c-breadcrumb {
+
+    color: $color-text; // Use standard text color
+    font-size: $font-size-sm; // Use small font size for breadcrumbs
     // ### Breadcrumb Navigation
     // - **margin-bottom:** Adds spacing below the breadcrumb for separation.
     // - **font-size:** Uses a small font size for readability.
     // - **color:** Uses the standard text color for consistency.
-    margin-bottom: $spacing-md; // Add bottom margin for spacing
-    font-size: $font-size-sm; // Use small font size for breadcrumbs
-    color: $color-text; // Use standard text color
+    margin-block-end: $spacing-md; // Add bottom margin for spacing
   }
 
   h1 {
@@ -29,29 +30,32 @@
     // - **margin-bottom:** Adds spacing below the title for separation.
     // - **text-align:** Centers the title horizontally.
     font-size: $font-size-xl; // Use large font size for prominence
-    margin-bottom: $spacing-md; // Add bottom margin for spacing
+    margin-block-end: $spacing-md; // Add bottom margin for spacing
     text-align: center; // Center-align the title
   }
 
-  .project-image {
+  .c-project-image {
     // ### Project Image Container
     // - **margin:** Adds vertical spacing around the image.
     margin: $spacing-md 0; // Add vertical margin for spacing
 
     img {
+
+      block-size: auto; // Maintain aspect ratio
+      border-radius: $border-radius; // Apply rounded corners
+      box-shadow: $box-shadow-md; // Add shadow for depth
       // ### Project Image
       // - **max-width:** Ensures the image scales responsively.
       // - **height:** Maintains the aspect ratio of the image.
       // - **border-radius:** Applies rounded corners for a modern look.
       // - **box-shadow:** Adds depth to the image.
-      max-width: 100%; // Ensure the image scales responsively
-      height: auto; // Maintain aspect ratio
-      border-radius: $border-radius; // Apply rounded corners
-      box-shadow: $box-shadow-md; // Add shadow for depth
+      max-inline-size: 100%; // Ensure the image scales responsively
     }
   }
 
-  .project-overview {
+  .c-project-overview {
+
+    color: $color-text; // Use standard text color
     // ### Project Overview Section
     // - **font-size:** Uses a medium font size for readability.
     // - **line-height:** Ensures consistent spacing between lines.
@@ -59,11 +63,14 @@
     // - **margin-bottom:** Adds spacing below the overview for separation.
     font-size: $font-size-md; // Use medium font size for readability
     line-height: $line-height-base; // Use base line height for consistent spacing
-    color: $color-text; // Use standard text color
-    margin-bottom: $spacing-lg; // Add bottom margin for spacing
+    margin-block-end: $spacing-lg; // Add bottom margin for spacing
   }
 
-  .tag {
+  .c-tag {
+
+    background: $color-primary; // Use primary color for the background
+    border-radius: $border-radius-sm; // Apply small rounded corners
+    color: $color-white; // Use white text for contrast
     // ### Individual Tags
     // - **display:** Ensures tags are inline-block for layout flexibility.
     // - **background:** Uses the primary color for the tag background.
@@ -75,44 +82,49 @@
     // - **text-decoration:** Removes underline for a clean look.
     // - **transition:** Adds smooth hover effects for background color changes.
     display: inline-block;
-    background: $color-primary; // Use primary color for the background
-    color: $color-white; // Use white text for contrast
-    padding: $spacing-xs $spacing-sm; // Add padding for better readability
-    border-radius: $border-radius-sm; // Apply small rounded corners
     font-size: $font-size-xs; // Use small font size for tags
-    margin-right: $spacing-sm; // Add spacing between tags
+    margin-inline-end: $spacing-sm; // Add spacing between tags
+    padding: $spacing-xs $spacing-sm; // Add padding for better readability
     text-decoration: none; // Remove underline
-    transition: background-color $transition-duration-default ease; // Smooth hover transition
+    transition-duration: $transition-duration-default;
+    transition-property: background-color;
+    transition-timing-function: ease; // Smooth hover transition
 
-    &:hover {
+    &:hover, &:focus {
       // ### Hover Effect for Tags
       // - **background:** Changes to a darker primary color for interactivity.
       background: $color-primary-dark; // Use darker primary color
     }
   }
 
-  .project-body {
+  .c-project-body {
+
+    color: $color-text; // Use standard text color
+    font-size: $font-size-md; // Use medium font size for readability
     // ### Project Body Content
     // - **line-height:** Ensures consistent spacing between lines.
     // - **font-size:** Uses a medium font size for readability.
     // - **color:** Uses the standard text color for consistency.
     line-height: $line-height-base; // Use base line height for consistent spacing
-    font-size: $font-size-md; // Use medium font size for readability
-    color: $color-text; // Use standard text color
 
     img {
+
+      block-size: auto; // Maintain aspect ratio
+      border-radius: $border-radius; // Apply rounded corners
+      margin: $spacing-md 0; // Add vertical margin for spacing
       // ### Images in Project Body
       // - **max-width:** Ensures images scale responsively.
       // - **height:** Maintains the aspect ratio of images.
       // - **margin:** Adds vertical spacing around images.
       // - **border-radius:** Applies rounded corners for a modern look.
-      max-width: 100%; // Ensure images scale responsively
-      height: auto; // Maintain aspect ratio
-      margin: $spacing-md 0; // Add vertical margin for spacing
-      border-radius: $border-radius; // Apply rounded corners
+      max-inline-size: 100%; // Ensure images scale responsively
     }
 
     blockquote {
+
+      background: $background-color-light; // Use light background color
+      border-inline-start: 4px solid var(--color-primary); // Add a left border with the primary color
+      font-style: italic; // Italicize the text
       // ### Blockquotes
       // - **margin:** Adds vertical spacing around blockquotes.
       // - **padding:** Adds inner spacing for better readability.
@@ -121,20 +133,24 @@
       // - **font-style:** Italicizes the text for emphasis.
       margin: $spacing-lg 0; // Add vertical margin for spacing
       padding: $spacing-md; // Add padding for inner spacing
-      background: $background-color-light; // Use light background color
-      border-left: 4px solid $color-primary; // Add a left border with the primary color
-      font-style: italic; // Italicize the text
     }
   }
 
-  .project-navigation {
+  .c-project-navigation {
     // ### Project Navigation
     // - **margin-top:** Adds spacing above the navigation section.
     // - **text-align:** Centers the navigation buttons horizontally.
-    margin-top: $spacing-lg; // Add top margin for spacing
+    margin-block-start: $spacing-lg; // Add top margin for spacing
     text-align: center; // Center-align the navigation buttons
 
-    .btn {
+    .c-btn {
+
+      background-color: $color-primary; // Use primary color for the button
+      border: none; // Remove default border
+      border-radius: $border-radius-lg; // Apply large rounded corners
+      color: $color-white; // Use white text for contrast
+      cursor: pointer; // Pointer cursor for interactivity
+      font-size: $font-size-md; // Use medium font size
       // ### Navigation Buttons
       // - **padding:** Adds inner spacing for better usability.
       // - **background-color:** Uses the primary color for the button.
@@ -145,15 +161,11 @@
       // - **cursor:** Changes the cursor to a pointer for interactivity.
       // - **transition:** Adds smooth hover effects for background color changes.
       padding: $spacing-sm $spacing-md; // Add padding for clickable area
-      background-color: $color-primary; // Use primary color for the button
-      color: $color-white; // Use white text for contrast
-      border: none; // Remove default border
-      border-radius: $border-radius-lg; // Apply large rounded corners
-      font-size: $font-size-md; // Use medium font size
-      cursor: pointer; // Pointer cursor for interactivity
-      transition: background-color $transition-duration-default ease; // Smooth hover transition
+      transition-duration: $transition-duration-default;
+      transition-property: background-color;
+      transition-timing-function: ease; // Smooth hover transition
 
-      &:hover {
+      &:hover, &:focus {
         // ### Hover Effect for Buttons
         // - **background-color:** Changes to a darker primary color for interactivity.
         background-color: $color-primary-dark; // Use darker primary color
@@ -161,20 +173,24 @@
     }
   }
 
-  .related-projects {
+  .c-related-projects {
     // ### Related Projects Section
     // - **margin-top:** Adds spacing above the section.
-    margin-top: $spacing-lg; // Add top margin for spacing
+    margin-block-start: $spacing-lg; // Add top margin for spacing
 
     h2 {
       // ### Related Projects Heading
       // - **font-size:** Uses a large font size for prominence.
       // - **margin-bottom:** Adds spacing below the heading for separation.
       font-size: $font-size-lg; // Use large font size for prominence
-      margin-bottom: $spacing-md; // Add bottom margin for spacing
+      margin-block-end: $spacing-md; // Add bottom margin for spacing
     }
 
     ul {
+
+      display: flex; // Use flexbox for layout
+      gap: $spacing-md; // Add spacing between items
+      justify-content: center; // Center-align the list
       // ### Related Projects List
       // - **list-style:** Removes default list styling.
       // - **padding:** Removes default padding for a clean layout.
@@ -183,35 +199,102 @@
       // - **justify-content:** Centers the list horizontally.
       list-style: none; // Remove default list styling
       padding: 0; // Remove default padding
-      display: flex; // Use flexbox for layout
-      gap: $spacing-md; // Add spacing between items
-      justify-content: center; // Center-align the list
+    }
+  }
 
-      li {
-        a {
-          // ### Related Project Links
-          // - **display:** Ensures links behave like inline-block elements.
-          // - **padding:** Adds inner spacing for better usability.
-          // - **background:** Uses the secondary color for the link background.
-          // - **color:** Uses white text for contrast.
-          // - **border-radius:** Applies rounded corners for a modern look.
-          // - **text-decoration:** Removes underline for a clean look.
-          // - **transition:** Adds smooth hover effects for background color changes.
-          display: inline-block;
-          padding: $spacing-sm $spacing-md; // Add padding for clickable area
-          background: $color-secondary; // Use secondary color for the background
-          color: $color-white; // Use white text for contrast
-          border-radius: $border-radius; // Apply rounded corners
-          text-decoration: none; // Remove underline
-          transition: background-color $transition-duration-default ease; // Smooth hover transition
+  .c-related-projects .c-related-link {
 
-          &:hover {
-            // ### Hover Effect for Links
-            // - **background:** Changes to the primary color for interactivity.
-            background: $color-primary; // Use primary color
-          }
-        }
-      }
+    background: $color-secondary; // Use secondary color for the background
+    border-radius: $border-radius; // Apply rounded corners
+    color: $color-white; // Use white text for contrast
+    // ### Related Project Links
+    // - **display:** Ensures links behave like inline-block elements.
+    // - **padding:** Adds inner spacing for better usability.
+    // - **background:** Uses the secondary color for the link background.
+    // - **color:** Uses white text for contrast.
+    // - **border-radius:** Applies rounded corners for a modern look.
+    // - **text-decoration:** Removes underline for a clean look.
+    // - **transition:** Adds smooth hover effects for background color changes.
+    display: inline-block;
+    padding: $spacing-sm $spacing-md; // Add padding for clickable area
+    text-decoration: none; // Remove underline
+    transition-duration: $transition-duration-default;
+    transition-property: background-color;
+    transition-timing-function: ease; // Smooth hover transition
+
+    &:hover, &:focus {
+      // ### Hover Effect for Links
+      // - **background:** Changes to the primary color for interactivity.
+      background: $color-primary; // Use primary color
+    }
+  }
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .c-project-detail .c-related-projects ul li .c-related-link {
+
+    background: $color-secondary;
+    border-radius: $border-radius;
+    color: $color-white;
+    display: inline-block;
+    padding: $spacing-sm $spacing-md;
+    text-decoration: none;
+    transition: none;
+
+    &:hover, &:focus {
+
+      background: $color-primary;
+    }
+  }
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .c-project-detail .c-tag {
+
+    display: inline-block;
+    font-size: $font-size-xs;
+    margin-inline-end: $spacing-sm;
+    padding: $spacing-xs $spacing-sm;
+    text-decoration: none;
+    transition: none;
+
+    &:hover, &:focus {
+
+      background: $color-primary-dark;
+    }
+  }
+
+  .c-project-detail .c-project-navigation .c-btn {
+
+    background-color: $color-primary;
+    border: none;
+    border-radius: $border-radius-lg;
+    color: $color-white;
+    cursor: pointer;
+    font-size: $font-size-md;
+    padding: $spacing-sm $spacing-md;
+    transition: none;
+
+    &:hover, &:focus {
+
+      background-color: $color-primary-dark;
+    }
+  }
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .c-related-projects .c-related-link {
+
+    background: $color-secondary;
+    border-radius: $border-radius;
+    color: $color-white;
+    display: inline-block;
+    padding: $spacing-sm $spacing-md;
+    text-decoration: none;
+    transition: none;
+    &:hover, &:focus {
+
+      background: $color-primary;
     }
   }
 }

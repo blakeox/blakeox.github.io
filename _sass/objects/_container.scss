@@ -1,0 +1,43 @@
+// ITCSS Objects Layer: Container
+// Reusable container object for layout widths
+// .o-container, .o-container-md, .o-container-lg, .o-container-xl definitions here
+
+// Use a placeholder selector for container base styles for Stylelint compliance
+%o-container {
+
+  box-sizing: border-box;
+  inline-size: 100%;
+  margin-inline: auto;
+  max-inline-size: 100vw;
+  padding-inline: 1rem;
+}
+
+.o-container {
+  @extend %o-container;
+}
+
+.o-container-md {
+  @extend %o-container;
+  max-inline-size: 720px;
+}
+
+.o-container-lg {
+  @extend %o-container;
+  max-inline-size: 960px;
+}
+
+.o-container-xl {
+  @extend %o-container;
+  max-inline-size: 1200px;
+}
+
+// Responsive adjustments for containers
+@media (max-width: 575.98px) {
+  .o-container,
+  .o-container-md,
+  .o-container-lg,
+  .o-container-xl {
+
+    padding-inline: 0.5rem;
+  }
+}

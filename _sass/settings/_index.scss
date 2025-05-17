@@ -1,26 +1,32 @@
-// ## Settings Index
-// This file serves as the main entry point for all the settings files used throughout the project.
-// It imports and organizes SASS variables and configurations for consistent theming and maintainability.
-// The settings files are categorized and imported in a specific order to resolve dependencies correctly.
-// These variables are used across components like buttons, cards, modals, and layouts to ensure consistency.
+// _sass/settings/_index.scss
+// ## Settings Layer
+// This is the global configuration layer of the project.
+// It contains all SASS variables for colors, spacing, typography, and responsive layout —
+// intended to be reused across all other layers (tools, components, utilities, etc).
 
-// ### Import Order
-// The imports are organized to ensure that dependencies are resolved correctly:
-// 1. **Breakpoints:** Responsive breakpoints for media queries.
-// 2. **Colors:** Color variables for consistent theming.
-// 3. **Layout:** Layout-related variables (e.g., container widths).
-// 4. **Radius:** Border-radius variables for rounded elements.
-// 5. **Spacing:** Spacing variables for margins and paddings.
-// 6. **Transitions:** Transition variables for animations.
-// 7. **Typography:** Typography variables (e.g., font sizes, weights).
-// 8. **Z-Index:** Z-index variables for layering elements.
+// ──────────────────────────────
+// Responsive Layout
+// ──────────────────────────────
+@import 'breakpoints';         // Responsive breakpoints
+@import 'layout';              // Layout-related variables (e.g., container widths)
 
-@import 'breakpoints'; // Defines responsive breakpoints for media queries
-@import 'colors'; // Defines color variables for consistent theming
-@import 'tech-variables'; // Defines tech search theme variables and animations
-@import 'layout'; // Defines layout-related variables (e.g., container widths)
-@import 'radius'; // Defines border-radius variables for rounded elements
-@import 'spacing'; // Defines spacing variables for margins and paddings
-@import 'transitions'; // Defines transition variables for animations
-@import 'typography'; // Defines typography variables (e.g., font sizes, weights)
-@import 'zindex'; // Defines z-index variables for layering elements
+// ──────────────────────────────
+// Design Tokens: Core
+// ──────────────────────────────
+@import 'colors';              // Core color palette
+@import 'shadows';             // Shadow styles
+@import 'radius';              // Border-radius tokens
+@import 'spacing';             // Margin/padding scale
+@import 'zindex';              // Layering order
+
+// ──────────────────────────────
+// Design Tokens: Behavior
+// ──────────────────────────────
+@import 'transitions';         // Animation timing
+@import 'typography';          // Font stack, sizes, weights
+
+// ──────────────────────────────
+// Project-Specific Config
+// ──────────────────────────────
+@import 'tech-variables';      // Tech search theme variables
+@import 'search-theme';        // Search-specific overrides (theme-related)

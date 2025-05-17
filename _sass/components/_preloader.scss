@@ -3,7 +3,42 @@
 // The preloader ensures a smooth user experience by visually indicating that the page is in the process of loading.
 // SASS variables are used for colors and transitions to ensure consistency and easy updates.
 
+@media screen and (prefers-reduced-motion: reduce) {
+  #preloader {
+
+    align-items: center; // Vertically center the spinner
+    background-color: $background-color-light; // Use the light background color variable
+    display: flex; // Use flexbox for centering the spinner
+    height: 100%; // Full height of the viewport
+    justify-content: center; // Horizontally center the spinner
+    left: 0;
+    opacity: 1; // Fully visible by default
+    // ### Base Preloader Styles
+    // - **position:** Fixes the preloader to the viewport to cover the entire screen.
+    // - **width, height:** Ensures the preloader spans the full viewport dimensions.
+    // - **background-color:** Uses a light background color for contrast.
+    // - **display:** Uses flexbox to center the spinner both vertically and horizontally.
+    // - **z-index:** Ensures the preloader is above all other elements.
+    // - **opacity, visibility:** Controls the visibility of the preloader.
+    // - **transition:** Adds smooth transitions for hiding the preloader.
+    position: fixed; // Fix the preloader to the viewport
+    top: 0;
+    transition: none; // Smooth transition for hiding the preloader
+    visibility: visible; // Visible by default
+    width: 100%; // Full width of the viewport
+    z-index: 9999; // Ensure the preloader is above all other elements
+  }
+}
+
 #preloader {
+
+  align-items: center; // Vertically center the spinner
+  background-color: $background-color-light; // Use the light background color variable
+  display: flex; // Use flexbox for centering the spinner
+  height: 100%; // Full height of the viewport
+  justify-content: center; // Horizontally center the spinner
+  left: 0;
+  opacity: 1; // Fully visible by default
   // ### Base Preloader Styles
   // - **position:** Fixes the preloader to the viewport to cover the entire screen.
   // - **width, height:** Ensures the preloader spans the full viewport dimensions.
@@ -14,17 +49,10 @@
   // - **transition:** Adds smooth transitions for hiding the preloader.
   position: fixed; // Fix the preloader to the viewport
   top: 0;
-  left: 0;
-  width: 100%; // Full width of the viewport
-  height: 100%; // Full height of the viewport
-  background-color: $background-color-light; // Use the light background color variable
-  display: flex; // Use flexbox for centering the spinner
-  align-items: center; // Vertically center the spinner
-  justify-content: center; // Horizontally center the spinner
-  z-index: 9999; // Ensure the preloader is above all other elements
-  opacity: 1; // Fully visible by default
-  visibility: visible; // Visible by default
   transition: opacity 0.3s ease, visibility 0.3s ease; // Smooth transition for hiding the preloader
+  visibility: visible; // Visible by default
+  width: 100%; // Full width of the viewport
+  z-index: 9999; // Ensure the preloader is above all other elements
 }
 
 #preloader.hidden {
@@ -36,29 +64,51 @@
 }
 
 // Fade-out when body gets 'loaded' class for smooth state change
+
 body.loaded #preloader {
+
   opacity: 0;
   visibility: hidden;
 }
 
+@media screen and (prefers-reduced-motion: reduce) {
+  .spinner {
+
+    animation: none; // Continuous spinning animation
+    border: 5px solid $color-border-light; // Light border color
+    border-radius: 50%; // Circular shape
+    border-top: 5px solid $color-primary; // Primary color for the top border
+    height: 50px; // Fixed height for the spinner
+    // ### Spinner Styles
+    // - **width, height:** Sets a fixed size for the spinner.
+    // - **border:** Creates a circular spinner with a light border and a primary-colored top border.
+    // - **border-radius:** Ensures the spinner is circular.
+    // - **animation:** Adds a continuous spinning animation.
+    width: 50px; // Fixed width for the spinner
+  }
+}
+
 .spinner {
+
+  animation: spin 1s linear infinite; // Continuous spinning animation
+  border: 5px solid $color-border-light; // Light border color
+  border-radius: 50%; // Circular shape
+  border-top: 5px solid $color-primary; // Primary color for the top border
+  height: 50px; // Fixed height for the spinner
   // ### Spinner Styles
   // - **width, height:** Sets a fixed size for the spinner.
   // - **border:** Creates a circular spinner with a light border and a primary-colored top border.
   // - **border-radius:** Ensures the spinner is circular.
   // - **animation:** Adds a continuous spinning animation.
   width: 50px; // Fixed width for the spinner
-  height: 50px; // Fixed height for the spinner
-  border: 5px solid $color-border-light; // Light border color
-  border-top: 5px solid $color-primary; // Primary color for the top border
-  border-radius: 50%; // Circular shape
-  animation: spin 1s linear infinite; // Continuous spinning animation
 }
 
 @keyframes spin {
   // ### Spinner Animation Keyframes
   // - **transform:** Rotates the spinner 360 degrees for a smooth spinning effect.
+
   to {
+
     transform: rotate(360deg); // Full rotation
   }
 }

@@ -12,13 +12,16 @@
 //   - **Use Case:** Dynamically handles overflow, often used for responsive layouts or content-heavy sections.
 
 .overflow-hidden { 
+
   overflow: hidden; // Hide overflowing content
 }
 
 .overflow-scroll { 
+
   overflow: scroll; // Always show scrollbars for overflowing content
 }
 
 .overflow-auto { 
+
   overflow: auto; // Show scrollbars only when content overflows
 }
