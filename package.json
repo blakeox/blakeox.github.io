@@ -31,7 +31,7 @@
     "@axe-core/puppeteer": "^4.10.1",
     "@double-great/stylelint-a11y": "^3.0.4",
     "@lhci/cli": "^0.14.0",
-    "eslint": "^9.26.0",
+    "eslint": "^9.27.0",
     "flat-cache": "^6.1.9",
     "husky": "^9.1.7",
     "lint-staged": "^16.0.0",
