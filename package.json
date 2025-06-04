@@ -34,7 +34,7 @@
     "eslint": "^9.28.0",
     "flat-cache": "^6.1.9",
     "husky": "^9.1.7",
-    "lint-staged": "^16.0.0",
+    "lint-staged": "^16.1.0",
     "postcss": "^8.5.4",
     "postcss-scss": "^4.0.9",
     "postcss-syntax": "^0.36.2",
