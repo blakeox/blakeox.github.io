@@ -5,14 +5,14 @@ __metadata:
   version: 8
   cacheKey: 10c0
 
-"@axe-core/puppeteer@npm:^4.10.1":
-  version: 4.10.1
-  resolution: "@axe-core/puppeteer@npm:4.10.1"
+"@axe-core/puppeteer@npm:^4.10.2":
+  version: 4.10.2
+  resolution: "@axe-core/puppeteer@npm:4.10.2"
   dependencies:
-    axe-core: "npm:~4.10.2"
+    axe-core: "npm:~4.10.3"
   peerDependencies:
     puppeteer: ">=1.10.0"
-  checksum: 10c0/784427ad441d21e8f34d63bddcc2c4cdc0c9a0633d479732caeb60e8b33df2187ab238582f059afa376b59a911726ef4eda9cd6e82ef983ebc21e1665d888317
+  checksum: 10c0/19520addf563b3f46f8bd5f7325802ba98da361706b1ed8764c65d6ee4ac66abff4ffd6cb6303373625428c0f3357345ee66820f4cef7805b76df8b55250ea01
   languageName: node
   linkType: hard
 
@@ -675,7 +675,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axe-core@npm:^4.9.1, axe-core@npm:~4.10.2":
+"axe-core@npm:^4.9.1, axe-core@npm:~4.10.3":
   version: 4.10.3
   resolution: "axe-core@npm:4.10.3"
   checksum: 10c0/1b1c24f435b2ffe89d76eca0001cbfff42dbf012ad9bd37398b70b11f0d614281a38a28bc3069e8972e3c90ec929a8937994bd24b0ebcbaab87b8d1e241ab0c7
@@ -777,7 +777,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "blakeox.github.io@workspace:."
   dependencies:
-    "@axe-core/puppeteer": "npm:^4.10.1"
+    "@axe-core/puppeteer": "npm:^4.10.2"
     "@double-great/stylelint-a11y": "npm:^3.0.4"
     "@lhci/cli": "npm:^0.14.0"
     eslint: "npm:^9.28.0"
