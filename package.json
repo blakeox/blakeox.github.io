@@ -28,7 +28,7 @@
   },
   "packageManager": "yarn@4.9.1",
   "devDependencies": {
-    "@axe-core/puppeteer": "^4.10.1",
+    "@axe-core/puppeteer": "^4.10.2",
     "@double-great/stylelint-a11y": "^3.0.4",
     "@lhci/cli": "^0.14.0",
     "eslint": "^9.28.0",
