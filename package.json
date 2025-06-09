@@ -32,7 +32,7 @@
     "@double-great/stylelint-a11y": "^3.0.4",
     "@lhci/cli": "^0.14.0",
     "eslint": "^9.28.0",
-    "flat-cache": "^6.1.9",
+    "flat-cache": "^6.1.10",
     "husky": "^9.1.7",
     "lint-staged": "^16.0.0",
     "postcss": "^8.5.4",

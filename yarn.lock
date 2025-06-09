@@ -781,7 +781,7 @@ __metadata:
     "@double-great/stylelint-a11y": "npm:^3.0.4"
     "@lhci/cli": "npm:^0.14.0"
     eslint: "npm:^9.28.0"
-    flat-cache: "npm:^6.1.9"
+    flat-cache: "npm:^6.1.10"
     husky: "npm:^9.1.7"
     lint-staged: "npm:^16.0.0"
     postcss: "npm:^8.5.4"
