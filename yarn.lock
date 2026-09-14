@@ -69,14 +69,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@double-great/stylelint-a11y@npm:^3.0.4":
-  version: 3.0.4
-  resolution: "@double-great/stylelint-a11y@npm:3.0.4"
+"@double-great/stylelint-a11y@npm:^3.5.3":
+  version: 3.5.3
+  resolution: "@double-great/stylelint-a11y@npm:3.5.3"
   dependencies:
-    postcss: "npm:^8.4.33"
+    postcss: "npm:^8.5.28"
   peerDependencies:
     stylelint: ">=16.0.0"
-  checksum: 10c0/3afcdb3313a62319a5a1f228e8cdaffca314b64753744cca95ba15d441cabef07a74a2f1fb0c044e6428b6ff6baa38543527794a15d2b5e62079351bc60f6e50
+  checksum: 10c0/42da569b55e81eaaed5f7b00b6197badbb102e11449252e34dd560c1d273cce0b79289779b449530071ba5314cbca2edc789bcc6d0fd5da3459f991ddbda59c1
   languageName: node
   linkType: hard
 
@@ -788,7 +788,7 @@ __metadata:
   resolution: "blakeox.github.io@workspace:."
   dependencies:
     "@axe-core/puppeteer": "npm:^4.11.0"
-    "@double-great/stylelint-a11y": "npm:^3.0.4"
+    "@double-great/stylelint-a11y": "npm:^3.5.3"
     "@lhci/cli": "npm:^0.14.0"
     eslint: "npm:^9.28.0"
     flat-cache: "npm:^6.1.18"
@@ -2950,7 +2950,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nanoid@npm:^3.3.16, nanoid@npm:^3.3.8":
+"nanoid@npm:^3.3.16, nanoid@npm:^3.3.18, nanoid@npm:^3.3.8":
   version: 3.3.19
   resolution: "nanoid@npm:3.3.19"
   bin:
@@ -3336,17 +3336,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.4.33, postcss@npm:^8.5.3":
-  version: 8.5.3
-  resolution: "postcss@npm:8.5.3"
-  dependencies:
-    nanoid: "npm:^3.3.8"
-    picocolors: "npm:^1.1.1"
-    source-map-js: "npm:^1.2.1"
-  checksum: 10c0/b75510d7b28c3ab728c8733dd01538314a18c52af426f199a3c9177e63eb08602a3938bfb66b62dc01350b9aed62087eabbf229af97a1659eb8d3513cec823b3
-  languageName: node
-  linkType: hard
-
 "postcss@npm:^8.5.24":
   version: 8.5.24
   resolution: "postcss@npm:8.5.24"
@@ -3355,6 +3344,28 @@ __metadata:
     picocolors: "npm:^1.1.1"
     source-map-js: "npm:^1.2.1"
   checksum: 10c0/b3854840ffee4604249a1bad97291105a974009d63b068b716dbee1d2e034bb965353a9fb4d6e957ede475b2acf4167cd4b1d41074f8dd3ce2fe488b60c8ce44
+  languageName: node
+  linkType: hard
+
+"postcss@npm:^8.5.28":
+  version: 8.5.28
+  resolution: "postcss@npm:8.5.28"
+  dependencies:
+    nanoid: "npm:^3.3.18"
+    picocolors: "npm:^1.1.1"
+    source-map-js: "npm:^1.2.1"
+  checksum: 10c0/9fe44215a6628d89c8a75184b92f5b2f77e16f9e5b13b39b9009bb7e8e6eccddf82c8854bae922db1f17ace6ef3445073fe38abff513caeb03e5285b1b55620a
+  languageName: node
+  linkType: hard
+
+"postcss@npm:^8.5.3":
+  version: 8.5.3
+  resolution: "postcss@npm:8.5.3"
+  dependencies:
+    nanoid: "npm:^3.3.8"
+    picocolors: "npm:^1.1.1"
+    source-map-js: "npm:^1.2.1"
+  checksum: 10c0/b75510d7b28c3ab728c8733dd01538314a18c52af426f199a3c9177e63eb08602a3938bfb66b62dc01350b9aed62087eabbf229af97a1659eb8d3513cec823b3
   languageName: node
   linkType: hard
 
