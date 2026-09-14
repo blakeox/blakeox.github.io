@@ -35,7 +35,7 @@
     "flat-cache": "^6.1.18",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.6",
-    "postcss": "^8.5.4",
+    "postcss": "^8.5.23",
     "postcss-scss": "^4.0.9",
     "postcss-syntax": "^0.36.2",
     "puppeteer": "^24.9.0",
