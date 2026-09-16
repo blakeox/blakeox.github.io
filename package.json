@@ -29,7 +29,7 @@
   "packageManager": "yarn@4.9.1",
   "devDependencies": {
     "@axe-core/puppeteer": "^4.11.0",
-    "@double-great/stylelint-a11y": "^3.0.4",
+    "@double-great/stylelint-a11y": "^3.5.3",
     "@lhci/cli": "^0.14.0",
     "eslint": "^9.28.0",
     "flat-cache": "^6.1.18",
