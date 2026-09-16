@@ -30,7 +30,7 @@
   "devDependencies": {
     "@axe-core/puppeteer": "^4.11.0",
     "@double-great/stylelint-a11y": "^3.5.3",
-    "@lhci/cli": "^0.14.0",
+    "@lhci/cli": "^0.15.1",
     "eslint": "^9.28.0",
     "flat-cache": "^6.1.18",
     "husky": "^9.1.7",
