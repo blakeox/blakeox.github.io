@@ -69,14 +69,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@double-great/stylelint-a11y@npm:^3.5.3":
-  version: 3.5.3
-  resolution: "@double-great/stylelint-a11y@npm:3.5.3"
+"@double-great/stylelint-a11y@npm:^3.5.4":
+  version: 3.5.4
+  resolution: "@double-great/stylelint-a11y@npm:3.5.4"
   dependencies:
     postcss: "npm:^8.5.28"
   peerDependencies:
     stylelint: ">=16.0.0"
-  checksum: 10c0/42da569b55e81eaaed5f7b00b6197badbb102e11449252e34dd560c1d273cce0b79289779b449530071ba5314cbca2edc789bcc6d0fd5da3459f991ddbda59c1
+  checksum: 10c0/57bb0d3d92428bec118e41579093681a9df9e8af028d64791a873099754ac3d66b20830b901e779d63b80be7730a9ef75e4422f509b064af334235894c93ad4d
   languageName: node
   linkType: hard
 
@@ -775,7 +775,7 @@ __metadata:
   resolution: "blakeox.github.io@workspace:."
   dependencies:
     "@axe-core/puppeteer": "npm:^4.11.0"
-    "@double-great/stylelint-a11y": "npm:^3.5.3"
+    "@double-great/stylelint-a11y": "npm:^3.5.4"
     "@lhci/cli": "npm:^0.15.1"
     eslint: "npm:^9.28.0"
     flat-cache: "npm:^6.1.18"
