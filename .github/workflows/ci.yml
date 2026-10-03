@@ -128,12 +128,12 @@ jobs:
           bundle exec jekyll build --incremental
 
       # ---- cache html‑proofer & Jekyll cache
-      - uses: actions/cache@v4
+      - uses: actions/cache@v5
         with:
           path: .jekyll-cache
           key: jekyll-cache-${{ hashFiles('_config.yml') }}
 
-      - uses: actions/cache@v4
+      - uses: actions/cache@v5
         with:
           path: ~/.gem
           key: htmlproofer-${{ matrix.ruby }}-${{ hashFiles('**/Gemfile.lock') }}
